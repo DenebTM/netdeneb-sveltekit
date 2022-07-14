@@ -1,5 +1,5 @@
-export const filesBase = '/home/deneb/files'
-export const artBase = '/home/deneb/Pictures/Furry/Deneeeeeeeeb'
+export const filesBase = '/files'
+export const artBase = '/art'
 
 export const navItems = {
     'Home': '/',

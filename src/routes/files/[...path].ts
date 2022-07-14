@@ -1,7 +1,7 @@
 // Not done yet
 
 import type { RequestHandler } from '@sveltejs/kit'
-import { filesBase } from '$lib/js/config'
+import { filesBase } from 'config'
 import { join } from 'path'
 import { promises as fs } from 'fs'
 
