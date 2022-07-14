@@ -3,7 +3,7 @@ ENV NODE_ENV=production
 RUN mkdir /app
 WORKDIR /app
 COPY . .
-RUN npm install --dev
+RUN npm install --include=dev
 RUN npm run build
 
 EXPOSE 3000

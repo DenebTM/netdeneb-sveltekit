@@ -1,7 +1,7 @@
 import type { RequestHandler } from '@sveltejs/kit'
 import { promises as fs } from 'fs'
 import { join } from 'path'
-import { artBase } from 'config'
+import { artBase } from '$lib/js/config'
 
 export const get: RequestHandler = async ({ params }) => {
 

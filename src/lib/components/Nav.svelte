@@ -5,7 +5,7 @@ import NavDropdown from '$lib/components/NavDropdown.svelte'
 // import { pagename } from '$lib/js/globals'
 import { fly, fade } from 'svelte/transition'
 import { clickOutside } from '$lib/js/clickOutside'
-import { navItems } from 'config'
+import { navItems } from '$lib/js/config'
 
 const toggleNav = () => open = !open
 const closeNav = () => open = false
