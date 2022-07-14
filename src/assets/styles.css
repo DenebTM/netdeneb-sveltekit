@@ -1,0 +1,79 @@
+html {
+    height: 100%;
+}
+
+:root * {
+    box-sizing: border-box;
+    color: var(--text-color);
+    accent-color: var(--primary);
+}
+
+.bold {
+    font-weight: bold;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0.75rem;
+}
+
+.chevron {
+    display: inline-block;
+    margin-left: .255em;
+    vertical-align: .255em;
+    content: "";
+    border-top: .255em solid;
+    border-right: .255em solid transparent;
+    border-bottom: 0;
+    border-left: .255em solid transparent;
+    color: inherit;
+}
+
+body {
+    background: var(--page-background);
+    background-attachment: fixed;
+    background-position-x: 20%;
+    background-size: cover;
+}
+div.bg-blur {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 10px;
+
+    background-attachment: fixed;
+    background-position-x: 20%;
+    background-size: cover;
+    filter: blur(5px);
+    z-index: -1;
+}
+
+button {
+    background: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: 0.15s;
+    box-shadow: 0 0 3px 3px var(--shadow-color);
+}
+button:hover {
+    background: var(--primary-hover);
+}
+button:active {
+    background: var(--primary-active);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+.grid > *:not(:last-child) {
+    margin-right: 20px;
+}
+
+/* my fucking god why are you so stubborn */
+.svelte-fa, .svelte-fa * {
+    transition: inherit;
+}

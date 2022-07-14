@@ -1,0 +1,70 @@
+:root {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    --shadow-color-dark: rgba(0,0,0,0.3);
+    --shadow-color-light: rgba(0,0,0,0.1);
+    /* --page-background-dark: gray; */
+    --background-color-dark: rgba(0,0,0,0.75);
+    --text-color-dark: white;
+    --text-color-dark-inverted: black;
+    
+    /* --page-background-light: lightpink; */
+    --background-color-light: rgba(255,255,255,0.75);
+    --text-color-light: black;
+    --text-color-light-inverted: white;
+
+    --primary: #d81b60;
+    --primary-hover: #e72f73;
+    --primary-active: #72153a;
+    --primary-inverse: #FFF;
+    --form-element-active-border-color: var(--primary);
+    --form-element-focus-color: var(--primary-focus);
+    --switch-color: var(--primary-inverse);
+    --switch-checked-background-color: var(--primary);
+
+    --page-background: url('/img/bg.jpg') !important;
+}
+
+/* Pink Light scheme (Default) */
+/* Can be forced with data-theme="light" */
+[data-theme="light"],
+:root:not([data-theme="dark"]) {
+    --primary-focus: rgba(216, 27, 96, 0.125);
+
+    --page-background: var(--page-background-light);
+    --background-color: var(--background-color-light);
+    --text-color: var(--text-color-light);
+    --text-color-inverted: var(--text-color-light-inverted);
+    --shadow-color: var(--shadow-color-light)
+}
+
+/* Pink Dark scheme (Auto) */
+/* Automatically enabled if user has Dark mode enabled */
+@media only screen and (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --primary-focus: rgba(216, 27, 96, 0.25);
+
+        --page-background: var(--page-background-dark);
+        --background-color: var(--background-color-dark);
+        --text-color: var(--text-color-dark);
+        --text-color-inverted: var(--text-color-dark-inverted);
+        --shadow-color: var(--shadow-color-dark)
+    }
+}
+
+/* Pink Dark scheme (Forced) */
+/* Enabled if forced with data-theme="dark" */
+[data-theme="dark"] {
+    --primary-focus: rgba(216, 27, 96, 0.25);
+
+    --page-background: var(--page-background-dark);
+    --background-color: var(--background-color-dark);
+    --text-color: var(--text-color-dark);
+    --text-color-inverted: var(--text-color-dark-inverted);
+    --shadow-color: var(--shadow-color-dark)
+}
+
+/* button:is([aria-current], :active) {
+    background-color: var(--primary-active);
+} */
