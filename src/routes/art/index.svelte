@@ -18,13 +18,9 @@ export const load : Load = async ({ params, fetch, session, props }) => {
 
 <script lang="ts">
 import { setTitle } from '$lib/js/tools'
-
-export let fileList : Array<{
-    name: string,
-    artistLink: string
-}>
-
 import Gallery from 'svelte-image-gallery'
+
+export let fileList : ArtList
 
 setTitle('Art gallery')
 

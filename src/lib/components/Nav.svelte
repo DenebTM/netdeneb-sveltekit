@@ -12,6 +12,7 @@ const closeNav = () => open = false
 
 let open = false
 $: innerWidth = 0
+$: isMobile = innerWidth <= 600
 </script>
 
 <svelte:window bind:innerWidth />
@@ -65,6 +66,13 @@ nav li:active {
     background-color: var(--background-active);
 }
 
+nav .dd-icon {
+    transition: transform 0.2s ease-in-out;
+}
+[open=true] > i > .dd-icon, [open=true] > a > .dd-icon {
+    transform: rotate(180deg);
+}
+
 .open-nav {
     cursor: pointer;
     transition: 0.1s;
@@ -72,6 +80,7 @@ nav li:active {
 .open-nav:active {
     transform: translateY(2px);
 }
+
 @media only screen and (min-width: 601px) {
     .open-nav {
         display: none;
@@ -98,6 +107,7 @@ nav li:active {
         margin-top: 0;
         background-color: var(--background-color);
         backdrop-filter: blur(3px);
+        box-shadow: 0 0 3px 3px var(--shadow-color);
     }
     nav > ul > li {
         float: none;
@@ -114,15 +124,15 @@ nav li:active {
 }
 </style>
 
-<nav use:clickOutside={() => open = false}>
+<nav use:clickOutside={() => open = false} {open}>
     <i class="open-nav" on:click={toggleNav}>
-        <Fa icon={faChevronDown} size="lg" rotate={open ? 180 : 0} />
+        <Fa class="dd-icon" icon={faChevronDown} size="lg" />
     </i>
-    {#if innerWidth > 600 || open}
-        <ul {open} transition:fly={{ y: -10, duration: 150 }}>
+    {#if !isMobile || open}
+        <ul transition:fly={{ y: -10, duration: 150 }}>
             {#each Object.entries(navItems) as [name, href], i}
                 {#if typeof(href) === 'string'}
-                    <li in:fly={{ y: -10, duration: 150, delay: i*75 }} out:fade>
+                    <li in:fly={{ y: -10, duration: 150, delay: i*75}} out:fade>
                         <a {href} on:click={closeNav}>{name}</a>
                     </li>
                 {:else}

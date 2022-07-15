@@ -9,21 +9,21 @@ export let name : string
 export let entries : Record<string, any> = {}
 export let delay = 0
 
-let expanded = false
-const toggleDropdown = () => expanded = !expanded
-const closeDropdown = () => expanded = false
+let open = false
+const toggleDropdown = () => open = !open
+const closeDropdown = () => open = false
 
 const dispatch = createEventDispatcher()
 </script>
 
-<li open={expanded} class="dropdown" use:clickOutside={() => expanded = false}
+<li {open} class="dropdown" use:clickOutside={() => open = false}
   in:fly={{ y: -10, duration: 150, delay }} out:fade>
     <a href={undefined} on:click={toggleDropdown}>
         {name}
-        <Fa icon={faCaretDown} scale=0.66 rotate={expanded ? 180 : 0} />
+        <Fa class="dd-icon" icon={faCaretDown} scale=0.66 />
         <!-- <div class="chevron" /> -->
     </a>
-    {#if expanded}
+    {#if open}
         <div transition:fly={{ y: -10, duration: 150 }}>
             <ul>
                 {#each Object.entries(entries) as [name, href], i}

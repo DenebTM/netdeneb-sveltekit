@@ -22,3 +22,8 @@ declare module '@fortawesome/free-brands-svg-icons/index.es' {
 }
 
 declare module 'svelte-image-gallery'
+
+type ArtList = Array<{
+	name: string,
+	artistLink: string|undefined
+}>
