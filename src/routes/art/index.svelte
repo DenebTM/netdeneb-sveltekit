@@ -1,4 +1,4 @@
-<!-- leaving this here so I can refer back to it later
+<!-- leaving this here for future reference
 <script lang="ts" context="module">
 import type { Load } from '@sveltejs/kit';
 
@@ -17,12 +17,14 @@ export const load : Load = async ({ params, fetch, session, props }) => {
 </script> -->
 
 <script lang="ts">
-import { setTitle } from '$lib/js/tools'
+import { beginNavigation, finishNavigation, setTitle } from '$lib/js/tools'
 import Gallery from 'svelte-image-gallery'
 
 export let fileList : ArtList
 
+beginNavigation()
 setTitle('Art gallery')
+finishNavigation()
 
 function test(e: Record<string, any>) {
     const target = e.detail.alt

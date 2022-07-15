@@ -1,18 +1,25 @@
 <!-- Not done yet -->
 
 <script lang="ts">
-import { setTitle } from '$lib/js/tools'
+import { beginNavigation, finishNavigation, setTitle } from '$lib/js/tools'
 import { page } from '$app/stores'
 
 export let dirList : Array<string>
 export let fileList : Array<string>
 
+beginNavigation()
+
 setTitle('Public files')
 
 $: isRoot = $page.params.path == ''
 $: current = '/' + $page.params.path + (!isRoot ? '/' : '')
-console.log(current)
+
+finishNavigation()
 </script>
+
+<style>
+
+</style>
 
 <h1>List of {current}</h1>
 {#each dirList as dir}

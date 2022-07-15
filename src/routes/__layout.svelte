@@ -2,9 +2,12 @@
 import '$lib/js/styles'
 
 import { pagename } from '$lib/js/globals'
-// import { setTitle } from '$lib/js/tools'
+import { afterNavigation } from '$lib/js/tools'
 
 import Nav from '$lib/components/Nav.svelte'
+
+let show = true
+afterNavigation(s => show = s)
 </script>
 
 <svelte:head>
@@ -50,6 +53,16 @@ div.content {
     text-decoration: underline;
 }
 
+main[show=false] {
+    transition: 0.2s;
+    opacity: 1;
+}
+
+main[show=true] {
+    transform: translateY(20px);
+    opacity: 0;
+}
+
 @media only screen and (max-width: 600px) {
     .title {
         margin-top: 0.5em;
@@ -60,7 +73,7 @@ div.content {
 <div class="content">
     <div class="bg-blur" />
     <Nav />
-    <main>
+    <main {show}>
         <slot />
     </main>
 </div>

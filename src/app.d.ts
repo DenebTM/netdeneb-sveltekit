@@ -8,8 +8,11 @@ declare namespace App {
 	// interface Platform {}
 	// interface Session {}
 	// interface Stuff {}
+}
+
+declare namespace svelte.JSX {
 	interface HTMLAttributes<T> {
-        visible?: boolean
+        show?: boolean
     }
 }
 
