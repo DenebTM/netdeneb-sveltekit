@@ -16,7 +16,7 @@ const closeDropdown = () => open = false
 const dispatch = createEventDispatcher()
 </script>
 
-<li {open} class="dropdown" use:clickOutside={() => open = false}
+<li {open} class="click-move-down dropdown" use:clickOutside={() => open = false}
   in:fly={{ y: -10, duration: 150, delay }} out:fade>
     <a href={undefined} on:click={toggleDropdown}>
         {name}
@@ -27,7 +27,7 @@ const dispatch = createEventDispatcher()
         <div transition:fly={{ y: -10, duration: 150 }}>
             <ul>
                 {#each Object.entries(entries) as [name, href], i}
-                    <li in:fly={{ y: -10, duration: 150, delay: i*75 }} out:fade
+                    <li class="click-move-down" in:fly={{ y: -10, duration: 150, delay: i*75 }} out:fade
                         on:click={e => {closeDropdown(); dispatch('navigate', e)}}>
                         <a {href}>{name}</a>
                     </li>

@@ -1,5 +1,12 @@
 /// <reference types="@sveltejs/kit" />
 
+type ArtList = Array<{
+	name: string,
+	artistLink: string|undefined
+}>
+
+type BoolString = 'true' | 'false'
+
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
 // and what to do when importing types
@@ -12,7 +19,7 @@ declare namespace App {
 
 declare namespace svelte.JSX {
 	interface HTMLAttributes<T> {
-        show?: boolean
+        show?: BoolString
     }
 }
 
@@ -25,8 +32,3 @@ declare module '@fortawesome/free-brands-svg-icons/index.es' {
 }
 
 declare module 'svelte-image-gallery'
-
-type ArtList = Array<{
-	name: string,
-	artistLink: string|undefined
-}>

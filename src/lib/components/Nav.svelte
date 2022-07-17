@@ -20,8 +20,6 @@ $: isMobile = innerWidth <= 600
 <style global>
 nav {
     --border-radius: 5px;
-    --background-hover: rgba(255, 255, 255, 0.4);
-    --background-active: rgba(255, 255, 255, 0.3);
 
     text-align: center;
     border-bottom: 1px solid var(--primary);
@@ -52,7 +50,6 @@ nav a {
 }
 
 nav li {
-    transition: 0.1s ease-in-out;
     user-select: none;
 }
 
@@ -62,7 +59,6 @@ nav li:hover {
 }
 
 nav li:active {
-    transform: translateY(2px);
     background-color: var(--background-active);
 }
 
@@ -132,7 +128,7 @@ nav .dd-icon {
         <ul transition:fly={{ y: -10, duration: 150 }}>
             {#each Object.entries(navItems) as [name, href], i}
                 {#if typeof(href) === 'string'}
-                    <li in:fly={{ y: -10, duration: 150, delay: i*75}} out:fade>
+                    <li class="click-move-down" in:fly={{ y: -10, duration: 150, delay: i*75}} out:fade>
                         <a {href} on:click={closeNav}>{name}</a>
                     </li>
                 {:else}

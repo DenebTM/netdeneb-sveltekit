@@ -19,11 +19,8 @@ span {
 a {
     text-decoration: none;
 }
-a:active {
-    transform: translateY(2px);
-}
 a, a p, a p * {
-    transition: 0.15s;
+    transition: 0.1s ease-in-out;
 }
 a p {
     margin: 0;
@@ -63,6 +60,6 @@ div > * {
 <p style="margin: 20px 0 10px 0">Feel free to bark at me on:</p>
 <div style="text-align: left; width: fit-content; margin: 0 auto">
     {#each links as {icon, href, text}}
-        <a {href}><p><Fa color="var(--text-color)" fw {icon} size="lg" /><span>{text}</span></p></a>
+        <a class="click-move-down" {href}><p><Fa color="var(--text-color)" fw {icon} size="lg" /><span>{text}</span></p></a>
     {/each}
 </div>

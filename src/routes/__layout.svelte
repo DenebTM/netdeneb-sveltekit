@@ -2,12 +2,13 @@
 import '$lib/js/styles'
 
 import { pagename } from '$lib/js/globals'
-import { afterNavigation } from '$lib/js/tools'
+import { afterNavigation, beginNavigation } from '$lib/js/tools'
 
 import Nav from '$lib/components/Nav.svelte'
 
-let show = true
+let show : BoolString = 'false'
 afterNavigation(s => show = s)
+beginNavigation()
 </script>
 
 <svelte:head>
@@ -54,13 +55,13 @@ div.content {
 }
 
 main[show=false] {
-    transition: 0.2s;
-    opacity: 1;
+    transform: translateY(20px);
+    opacity: 0;
 }
 
 main[show=true] {
-    transform: translateY(20px);
-    opacity: 0;
+    transition: 0.2s;
+    opacity: 1;
 }
 
 @media only screen and (max-width: 600px) {

@@ -42,6 +42,6 @@ function test(e: Record<string, any>) {
 <p>Click on an image to go to the artist's page!</p>
 <Gallery loading="lazy" hover on:click={test}>
     {#each fileList as { name, artistLink }}
-        <img src={`/art/${name}`} alt={artistLink} />
+        <img src={`/getfile/art/${name}`} alt={artistLink} />
     {/each}
 </Gallery>

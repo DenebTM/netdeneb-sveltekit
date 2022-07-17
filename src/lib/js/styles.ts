@@ -1,3 +1,3 @@
 // import '@picocss/pico'
-import '/src/assets/theme.css'
-import '/src/assets/styles.css'
+import '/src/assets/css/theme.css'
+import '/src/assets/css/styles.css'

@@ -77,3 +77,11 @@ button:active {
 .svelte-fa, .svelte-fa * {
     transition: inherit;
 }
+
+.click-move-down {
+    transition: 0.125s ease-in-out;
+}
+
+.click-move-down:active {
+    transform: translateY(2px);
+}

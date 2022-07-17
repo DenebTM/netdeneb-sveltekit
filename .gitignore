@@ -6,6 +6,6 @@ node_modules
 .env
 .env.*
 !.env.example
-static/bg-1.png
-static/img
-static/img/*
+**/*.png
+**/*.jpg
+**/*.webp
