@@ -1,10 +1,10 @@
 <script lang="ts">
 import Social from '$lib/components/Social.svelte'
-import { beginNavigation, finishNavigation, setTitle } from '$lib/js/tools'
+import { /* beginNavigation, finishNavigation, */ setTitle } from '$lib/js/tools'
 
-beginNavigation()
+// beginNavigation()
 setTitle('Home')
-finishNavigation()
+// finishNavigation()
 </script>
 <style>
 #me {

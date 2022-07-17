@@ -1,21 +1,24 @@
 <script lang="ts">
 import '$lib/js/styles'
 
-import { pagename } from '$lib/js/globals'
-import { afterNavigation, beginNavigation } from '$lib/js/tools'
+import { sitename } from '$lib/js/globals'
+import { afterNavigate, beforeNavigate } from '$app/navigation'
+// import { afterNavigation, beginNavigation } from '$lib/js/tools'
 
 import Nav from '$lib/components/Nav.svelte'
 
 let show : BoolString = 'false'
-afterNavigation(s => show = s)
-beginNavigation()
+// afterNavigation(s => show = s)
+// beginNavigation()
+beforeNavigate(() => show = 'false')
+afterNavigate(() => show = 'true')
 </script>
 
 <svelte:head>
-    <title>{pagename}</title>
+    <title>{sitename}</title>
 </svelte:head>
 
-<a href="/" class="title">{pagename}</a>
+<a href="/" class="title">{sitename}</a>
 
 <style>
 div.bg-blur {

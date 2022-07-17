@@ -1,7 +1,7 @@
 export const filesBase = '/files'
 export const artBase = '/art'
 
-export const navItems = {
+const navItems : Record<string, any> = {
     'Home': '/',
     // 'Bark at me': '/social',
     'Art gallery': '/art',
@@ -11,7 +11,8 @@ export const navItems = {
         'Public files': '/ftpdir',
         'Best website (mirror)': '/yiff.toys',
         // '天安门 Yes': '/pooh',
-        'Source code': 'https://github.com/DenebTM/netdeneb',
-        'More coming soon!': undefined
+        'Source code': 'https://github.com/DenebTM/netdeneb'
     }
 }
+
+export {navItems}

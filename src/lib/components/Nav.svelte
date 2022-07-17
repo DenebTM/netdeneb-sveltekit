@@ -2,10 +2,17 @@
 import Fa from 'svelte-fa'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import NavDropdown from '$lib/components/NavDropdown.svelte'
-// import { pagename } from '$lib/js/globals'
+// import { sitename } from '$lib/js/globals'
 import { fly, fade } from 'svelte/transition'
 import { clickOutside } from '$lib/js/clickOutside'
+
 import { navItems } from '$lib/js/config'
+import { isLoggedIn } from '$lib/js/auth'
+
+if (isLoggedIn())
+    navItems['Other']['Logout'] = '/logout'
+else
+    delete navItems['Other']['Logout']
 
 const toggleNav = () => open = !open
 const closeNav = () => open = false

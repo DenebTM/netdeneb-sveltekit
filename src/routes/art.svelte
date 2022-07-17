@@ -17,14 +17,14 @@ export const load : Load = async ({ params, fetch, session, props }) => {
 </script> -->
 
 <script lang="ts">
-import { beginNavigation, finishNavigation, setTitle } from '$lib/js/tools'
+import { /* beginNavigation, finishNavigation, */ setTitle } from '$lib/js/tools'
 import Gallery from 'svelte-image-gallery'
 
 export let fileList : ArtList
 
-beginNavigation()
+// beginNavigation()
 setTitle('Art gallery')
-finishNavigation()
+// finishNavigation()
 
 function test(e: Record<string, any>) {
     const target = e.detail.alt

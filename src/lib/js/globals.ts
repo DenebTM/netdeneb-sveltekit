@@ -1,1 +1,1 @@
-export const pagename = 'netdeneb.com'
+export const sitename = 'netdeneb.com'
