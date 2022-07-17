@@ -23,7 +23,7 @@
     --switch-color: var(--primary-inverse);
     --switch-checked-background-color: var(--primary);
 
-    --page-background: url('/img/bg.jpg') !important;
+    --page-background: url('/img/bg.webp') !important;
 
     --background-hover: rgba(255, 255, 255, 0.4);
     --background-active: rgba(255, 255, 255, 0.3);
