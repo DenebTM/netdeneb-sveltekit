@@ -40,9 +40,9 @@ $: current = $page.params.path
 }
 
 .margin-box {
-    width: 130px;
     margin: 0;
     padding: 0 10px 10px 0;
+    transition: width 0.25s ease, height 0.25s ease;
 }
 
 .file.box {
@@ -80,7 +80,7 @@ button.box {
     }
 }
 
-@media screen and (max-width: 1050px) {
+@media screen and (min-width: 801px) {
     .margin-box { width: 12.5%; }
 }
 @media screen and (max-width: 800px) {

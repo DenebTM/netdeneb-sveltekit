@@ -25,4 +25,4 @@ h1 {
 </style>
 
 <h1>{status}</h1>
-<p>{error.message}</p>
+<p>{error ? error.message : 'Unknown error'}</p>
