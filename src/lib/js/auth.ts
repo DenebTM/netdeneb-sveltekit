@@ -1,4 +1,3 @@
-import type { RequestEvent } from '@sveltejs/kit'
 import { session } from '$app/stores'
 import { get } from 'svelte/store'
 

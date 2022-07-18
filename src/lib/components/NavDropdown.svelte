@@ -21,7 +21,6 @@ const dispatch = createEventDispatcher()
     <a href={undefined} on:click={toggleDropdown}>
         {name}
         <Fa class="dd-icon" icon={faCaretDown} scale=0.66 />
-        <!-- <div class="chevron" /> -->
     </a>
     {#if open}
         <div transition:fly={{ y: -10, duration: 150 }}>

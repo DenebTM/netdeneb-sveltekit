@@ -18,7 +18,7 @@ export const load : Load = async ({ session, props, params: { path } }) => {
 </script>
 
 <script lang="ts">
-import { /* beginNavigation, finishNavigation, */ setTitle } from '$lib/js/tools'
+import { setTitle } from '$lib/js/tools'
 
 import Fa from 'svelte-fa'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
@@ -27,7 +27,6 @@ import { slide } from 'svelte/transition';
 import folderIcon from '/src/assets/icons/folder.png'
 import fileIcon from '/src/assets/icons/file.png'
 import { goto } from '$app/navigation'
-import { get } from 'svelte/store';
 
 export let dirList  : Array<string>
 export let fileList : Array<string>
@@ -39,14 +38,10 @@ const goForward = () => window.history.forward()
 let dirsCollapsed = false
 const toggleDirs = () => dirsCollapsed = !dirsCollapsed
 
-// beginNavigation()
 setTitle('Public files')
 
 $: isRoot = $page.params.path == ''
 $: current = (!isRoot ? '/' : '') + $page.params.path
-
-// $: current, beginNavigation(), finishNavigation()
-// finishNavigation()
 </script>
 
 <style>

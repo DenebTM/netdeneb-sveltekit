@@ -1,30 +1,10 @@
-<!-- leaving this here for future reference
-<script lang="ts" context="module">
-import type { Load } from '@sveltejs/kit';
-
-export const load : Load = async ({ params, fetch, session, props }) => {
-    for (const file of props.fileList) {
-        console.log(await (await (await fetch(`/art/${file}`)).blob()).text())
-    }
-    
-    return {
-        props: {
-            rrr: 'rrr'
-        }
-    }
-}
-
-</script> -->
-
 <script lang="ts">
-import { /* beginNavigation, finishNavigation, */ setTitle } from '$lib/js/tools'
+import { setTitle } from '$lib/js/tools'
 import Gallery from 'svelte-image-gallery'
 
 export let fileList : ArtList
 
-// beginNavigation()
 setTitle('Art gallery')
-// finishNavigation()
 
 function test(e: Record<string, any>) {
     const target = e.detail.alt

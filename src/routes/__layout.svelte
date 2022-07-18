@@ -3,15 +3,12 @@ import '$lib/js/styles'
 
 import { sitename } from '$lib/js/globals'
 import { afterNavigate, beforeNavigate } from '$app/navigation'
-// import { afterNavigation, beginNavigation } from '$lib/js/tools'
 
 import Nav from '$lib/components/Nav.svelte'
 
-let show : BoolString = 'false'
-// afterNavigation(s => show = s)
-// beginNavigation()
-beforeNavigate(() => show = 'false')
-afterNavigate(() => show = 'true')
+let show = false
+beforeNavigate(() => show = false)
+afterNavigate(() => show = true)
 </script>
 
 <svelte:head>

@@ -2,7 +2,6 @@
 import Fa from 'svelte-fa'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import NavDropdown from '$lib/components/NavDropdown.svelte'
-// import { sitename } from '$lib/js/globals'
 import { fly, fade } from 'svelte/transition'
 import { clickOutside } from '$lib/js/clickOutside'
 

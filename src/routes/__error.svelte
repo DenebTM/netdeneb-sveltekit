@@ -9,12 +9,8 @@ export const load : Load = async ({ error, status }) => ({
 </script>
 
 <script lang="ts">
-// import { finishNavigation } from '$lib/js/tools'
-
 export let status : number
 export let error : Error
-
-// finishNavigation()
 </script>
 
 <style>
