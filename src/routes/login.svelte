@@ -21,6 +21,7 @@ export const load : Load = ({ session, url: { searchParams } }) => {
 <script lang="ts">
 import { login } from '$lib/js/auth'
 import { page } from '$app/stores'
+import { setTitle } from '$lib/js/tools'
 
 const redirect = decodeURIComponent($page.url.searchParams.get('redirect') || '/')
 
@@ -38,6 +39,8 @@ const submit = async () => {
         message = response.message
     }
 }
+
+setTitle('Login')
 </script>
 
 <style>

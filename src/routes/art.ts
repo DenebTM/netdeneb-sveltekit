@@ -1,7 +1,7 @@
 import type { RequestHandler } from '@sveltejs/kit'
 import { promises as fs } from 'fs'
 import { join as pathJoin } from 'path'
-import { artBase } from '$lib/js/config'
+import { artBase } from '$lib/config'
 
 export const get: RequestHandler = async () => {
     const fileListPath = pathJoin(artBase, 'files.json')

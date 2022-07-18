@@ -1,11 +1,16 @@
 <script lang="ts" context="module">
 import type { Load } from '@sveltejs/kit';
 
-export const load : Load = async ({ error, status }) => ({
-    props: {
-        error, status
+export const load : Load = async ({ url, params, error, status }) => {
+    if (url.pathname.startsWith('/ftpdir') && status === 403) {
+        return {
+            status: 302,
+            redirect: `/login?redirect=${encodeURIComponent('/ftpdir' + params.path)}`
+        }
     }
-})
+
+    return { props: { error, status } }
+}
 </script>
 
 <script lang="ts">

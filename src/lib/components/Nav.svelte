@@ -5,7 +5,7 @@ import NavDropdown from '$lib/components/NavDropdown.svelte'
 import { fly, fade } from 'svelte/transition'
 import { clickOutside } from '$lib/js/clickOutside'
 
-import { navItems } from '$lib/js/config'
+import { navItems } from '$lib/config'
 import { isLoggedIn } from '$lib/js/auth'
 
 if (isLoggedIn())

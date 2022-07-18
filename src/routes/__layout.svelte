@@ -40,7 +40,7 @@ div.content {
 .title {
     display: block;
     width: fit-content;
-    margin: 15vh auto 0.5em auto;
+    margin: 7.5vh auto 0.5em auto;
     font-size: 3em;
     line-height: 1;
 
