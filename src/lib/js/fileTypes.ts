@@ -5,7 +5,7 @@ import msiIcon from '/src/assets/icons/msifile.svg'
 import isoIcon from '/src/assets/icons/isofile.svg'
 import zipIcon from '/src/assets/icons/zipfile.svg'
 import rarIcon from '/src/assets/icons/rarfile.svg'
-import txtIcon from '/src/assets/icons/zipfile.svg'
+import txtIcon from '/src/assets/icons/txtfile.svg'
 import jpgIcon from '/src/assets/icons/jpgfile.svg'
 import pngIcon from '/src/assets/icons/pngfile.svg'
 
