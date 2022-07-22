@@ -6,7 +6,7 @@ const navItems : Record<string, any> = {
     'Screemail': 'https://mail.screee.ee/',
     'Other': {
         'Best website (archived)': '/yiff.toys',
-        'AAAAA': '/leggy',
+        'AAAAAA': '/leggy',
         '天安门 Yes': '/pooh',
         'Source code': 'https://github.com/DenebTM/netdeneb'
     }

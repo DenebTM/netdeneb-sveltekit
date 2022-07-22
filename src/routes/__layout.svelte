@@ -3,11 +3,12 @@ import '$lib/js/styles'
 
 import { sitename } from '$lib/js/globals'
 import { afterNavigate, beforeNavigate } from '$app/navigation'
+import { page } from '$app/stores'
 
 import Nav from '$lib/components/Nav.svelte'
 
 let show = false
-beforeNavigate(() => show = false)
+beforeNavigate(() => !$page.url.pathname.startsWith('/getfile') && (show = false))
 afterNavigate(() => show = true)
 </script>
 

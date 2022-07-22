@@ -1,13 +1,19 @@
 <script lang="ts">
 import { goto } from '$app/navigation'
 import { page } from '$app/stores'
+import { slide } from 'svelte/transition'
+import { sitename } from '$lib/js/globals'
 
 import Fa from 'svelte-fa'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
-import { slide } from 'svelte/transition'
-import folderIcon from '/src/assets/icons/folder.png'
-import fileIcon from '/src/assets/icons/file.png'
-import { sitename } from '$lib/js/globals';
+
+import folderIcon from '/src/assets/icons/folder.svg'
+import { extIcons } from '$lib/js/fileTypes'
+const getIcon = (filename : string) => {
+    const ext = filename.split('.').pop()?.toLowerCase() || 'default'
+    
+    return extIcons[ext] || extIcons.default
+}
 
 export let dirList  : Array<string>
 export let fileList : Array<string>
@@ -45,25 +51,8 @@ $: current = $page.params.path
     transition: width 0.25s ease, height 0.25s ease;
 }
 
-.file.box {
-    word-wrap: break-word;
-}
-.file.box div {
-    padding: 10px;
-}
-.file.box img {
-    width: 100%;
-}
-.file.box p {
-    margin: 0;
-}
-
 button.box {
     margin: 0 10px 10px 0;
-}
-
-[data-theme="dark"] .file.box img {
-    filter: invert();
 }
 
 .dd-icon {
@@ -74,6 +63,24 @@ button.box {
     transform: rotate(-90deg);
 }
 
+.file.box {
+    word-wrap: break-word;
+}
+.file.box div {
+    padding: 10px;
+}
+.file.box img {
+    width: 100%;
+    transition: filter 0.2s;
+}
+.file.box p {
+    margin: 0;
+    transition: color 0.2s;
+}
+
+[data-theme="dark"] .file.box img {
+    filter: invert();
+}
 @media only screen and (prefers-color-scheme: dark) {
     .file.box img {
         filter: invert();
@@ -128,7 +135,7 @@ button.box {
                 <div class="file box click-move-down">
                     <a href={`/getfile/files${current}/${file}`}>
                         <div>
-                            <img src={fileIcon} alt="file icon">
+                            <img src={getIcon(file)} alt="file icon">
                             <p>{file}</p>
                         </div>
                     </a>
