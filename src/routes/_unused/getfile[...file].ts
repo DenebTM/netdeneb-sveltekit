@@ -1,7 +1,7 @@
 import type { RequestHandler } from '@sveltejs/kit'
 import { promises as fs } from 'fs'
 
-export const get: RequestHandler = async ({ params: { file } }) => {
+export const GET: RequestHandler = async ({ params: { file } }) => {
     if (!(file.startsWith('/files/') || file.startsWith('/art/')))
         return {
             status: 403,

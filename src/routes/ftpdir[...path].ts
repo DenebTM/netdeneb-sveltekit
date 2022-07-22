@@ -30,7 +30,7 @@ async function readdir(path: string): Promise<FileDirList> {
     }
 }
 
-export const get: RequestHandler = async ({ locals: { token }, params: { path } }) => {
+export const GET: RequestHandler = async ({ locals: { token }, params: { path } }) => {
     if (path.startsWith('/Users') && token !== '🦊') {
         return {
             status: 403, // https://i.redd.it/z6mbo9dyc1x51.jpg

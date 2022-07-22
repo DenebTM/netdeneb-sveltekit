@@ -3,7 +3,7 @@ import { promises as fs } from 'fs'
 import { join as pathJoin } from 'path'
 import { artBase } from '$lib/config'
 
-export const get: RequestHandler = async () => {
+export const GET: RequestHandler = async () => {
     const fileListPath = pathJoin(artBase, 'files.json')
     let response : ArtList
 

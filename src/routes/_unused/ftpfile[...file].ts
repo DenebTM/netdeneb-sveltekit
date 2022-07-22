@@ -2,7 +2,7 @@
 import type { RequestHandler } from '@sveltejs/kit'
 import { join as pathJoin } from 'path'
 
-export const get: RequestHandler = async ({ params: { file } }) => ({
+export const GET: RequestHandler = async ({ params: { file } }) => ({
     status: 301,
     headers: { 'Location': pathJoin('/getfile/files', file) }
 })

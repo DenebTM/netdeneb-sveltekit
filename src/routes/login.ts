@@ -2,13 +2,13 @@ import type { RequestHandler } from '@sveltejs/kit'
 import users from '$lib/users.json'
 import cookie from 'cookie'
 
-export const post: RequestHandler = async (event) => {
+export const POST: RequestHandler = async ({ request }) => {
     let creds : {
         username: keyof typeof users | '' | undefined,
         password: string | undefined
     } = { username: undefined, password: undefined }
     try {
-        creds = await event.request.json()
+        creds = await request.json()
     } catch {
         /* invalid json idc */
     }

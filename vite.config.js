@@ -9,6 +9,12 @@ const config = {
 			'@fortawesome/free-solid-svg-icons',
 			'@fortawesome/free-brands-svg-icons'
 		]
+	},
+	server: {
+		port: 3000
+	},
+	preview: {
+		port: 3000
 	}
 }
 

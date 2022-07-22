@@ -1,6 +1,6 @@
 <script lang="ts">
 import { setTitle } from '$lib/js/tools'
-import Gallery from 'svelte-image-gallery'
+import Gallery from '$lib/components/Gallery.svelte';
 
 export let fileList : ArtList
 

@@ -1,7 +1,7 @@
 import type { RequestHandler } from '@sveltejs/kit'
 import cookie from 'cookie';
 
-export const get: RequestHandler = async ({ params: { file } }) => {
+export const GET: RequestHandler = async ({ params: { file } }) => {
     return {
         status: 302,
         headers: {
@@ -11,4 +11,4 @@ export const get: RequestHandler = async ({ params: { file } }) => {
     }
 }
 
-export const post = get
+export const POST = get
