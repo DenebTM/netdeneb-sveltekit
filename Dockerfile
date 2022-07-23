@@ -6,5 +6,8 @@ COPY . .
 RUN npm install
 RUN npm run build
 
+RUN apk update
+RUN apk add graphicsmagick
+
 EXPOSE 3000
 CMD [ "node", "/app/build/index.js" ]

@@ -30,5 +30,6 @@ export const extIcons : Record<string, string> = {
     'xz'  : zipIcon,
     'txt' : txtIcon,
     'jpg' : jpgIcon,
+    'jpeg': jpgIcon,
     'png' : pngIcon
 }

@@ -1,22 +1,74 @@
 <script lang="ts">
-import { goto } from '$app/navigation'
+import { afterNavigate, goto } from '$app/navigation'
 import { page } from '$app/stores'
 import { slide } from 'svelte/transition'
 import { sitename } from '$lib/js/globals'
+import { browser } from '$app/env'
+import { afterUpdate } from 'svelte'
 
 import Fa from 'svelte-fa'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
 import folderIcon from '/src/assets/icons/folder.svg'
 import { extIcons } from '$lib/js/fileTypes'
+
 const getIcon = (filename : string) => {
     const ext = filename.split('.').pop()?.toLowerCase() || 'default'
-    
     return extIcons[ext] || extIcons.default
 }
 
 export let dirList  : Array<string>
 export let fileList : Array<string>
+export let availableThumbs : Record<string, string>
+
+const thumbsLoaded: Record<string, boolean> = {}
+const updateImageSources = (fl: Array<string>) => {
+    return fl.reduce(
+        (acc, curr) => {
+            thumbsLoaded[curr] = false
+            return Object.assign(acc, { [curr]: getIcon(curr)})
+        },
+        {} as Record<string, string>)
+}
+
+const updateThumbs = async (basePath: string) => {
+    if (!browser) return
+
+    const needThumbs = fileList
+        .filter(f => !availableThumbs[f] && isImage(f))
+        .map(f => `${basePath}/${f}`)
+    
+    if (needThumbs.length == 0) return
+
+    const numParts = needThumbs.length > 15 ? Math.ceil(needThumbs.length / 10) : 1
+    const partSize = numParts > 1 ? 10 : needThumbs.length
+    for (let part = 0; part < numParts; part++) {
+        const startIndex = part * partSize,
+              endIndex = Math.min(needThumbs.length, startIndex + partSize)
+
+        const newThumbs = await (await fetch('/createThumbs', { method: 'POST',body: JSON.stringify(
+            needThumbs.slice(startIndex, endIndex)
+        )})).json()
+        availableThumbs = Object.assign(availableThumbs, newThumbs)
+        for (const t in newThumbs) {
+            thumbsLoaded[t] = true
+        }
+        imageSources = Object.assign(imageSources, newThumbs)
+    }
+}
+
+$: current = $page.params.path
+$: imageSources = updateImageSources(fileList)
+$: updateThumbs(current)
+
+afterUpdate(() => {
+    for (const t in availableThumbs) {
+        thumbsLoaded[t] = true
+    }
+    imageSources = Object.assign(imageSources, availableThumbs)
+})
+
+const isImage = (f: string) => /\.(jpe?g|png|gif|webp|bmp)$/.test(f)
 
 const goUp = () => goto('/ftpdir' + current.replace(/\/[^\/]*$/, ''))
 const goBack = () => window.history.back()
@@ -24,9 +76,6 @@ const goForward = () => window.history.forward()
 
 let dirsCollapsed = false
 const toggleDirs = () => dirsCollapsed = !dirsCollapsed
-
-let current : string
-$: current = $page.params.path
 </script>
 
 <svelte:head>
@@ -78,11 +127,11 @@ button.box {
     transition: color 0.2s;
 }
 
-[data-theme="dark"] .file.box img {
+[data-theme="dark"] .file.box img:not(.thumb) {
     filter: invert();
 }
 @media only screen and (prefers-color-scheme: dark) {
-    .file.box img {
+    .file.box img:not(.thumb) {
         filter: invert();
     }
 }
@@ -135,7 +184,7 @@ button.box {
                 <div class="file box click-move-down">
                     <a href={`/getfile/files${current}/${file}`}>
                         <div>
-                            <img src={getIcon(file)} alt="file icon">
+                            <img src={imageSources[file]} class={isImage(file) && thumbsLoaded[file] == true ? 'thumb' : ''} alt="file icon">
                             <p>{file}</p>
                         </div>
                     </a>
