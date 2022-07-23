@@ -4,5 +4,5 @@ import { join as pathJoin } from 'path'
 
 export const GET: RequestHandler = async ({ params: { file } }) => ({
     status: 301,
-    headers: { 'Location': pathJoin('/getfile/files', file) }
+    headers: { 'Location': pathJoin('/files', file) }
 })

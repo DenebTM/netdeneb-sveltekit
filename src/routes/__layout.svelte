@@ -8,7 +8,7 @@ import { page } from '$app/stores'
 import Nav from '$lib/components/Nav.svelte'
 
 let show = false
-beforeNavigate(() => !$page.url.pathname.startsWith('/getfile') && (show = false))
+beforeNavigate(() => !$page.url.pathname.startsWith('/files') && (show = false))
 afterNavigate(() => show = true)
 </script>
 

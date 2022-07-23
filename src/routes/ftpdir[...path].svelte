@@ -182,7 +182,7 @@ button.box {
         {#each fileList as file}
             <div class="margin-box">
                 <div class="file box click-move-down">
-                    <a href={`/getfile/files${current}/${file}`}>
+                    <a href={`/files${current}/${file}`}>
                         <div>
                             <img src={imageSources[file]} class={isImage(file) && thumbsLoaded[file] == true ? 'thumb' : ''} alt="file icon">
                             <p>{file}</p>
