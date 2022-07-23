@@ -20,3 +20,4 @@ services:
       - ./ISOs:/files/Public/ISOs:ro
       - ./art:/art:ro
       - ./thumbs:/thumbs:ro
+      - ./other:/other:ro

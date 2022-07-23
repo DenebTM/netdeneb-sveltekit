@@ -11,4 +11,4 @@ export const GET: RequestHandler = async ({ params: { file } }) => {
     }
 }
 
-export const POST = get
+export const POST = GET

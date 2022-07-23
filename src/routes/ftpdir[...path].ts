@@ -35,7 +35,7 @@ async function readDir(path: string): Promise<FileDirList> {
     }
 }
 
-const isImage = (f: string) => /\.(jpe?g|png|gif|webp|bmp)$/.test(f)
+const isImage = (f: string) => /\.(jpe?g|png|gif|webp|bmp)$/.test(f.toLowerCase())
 async function getAvailableThumbs(fileList: string[], basePath: string) {
     let availableThumbs: Record<string, string> = {}
     for (let imageFileName of fileList.filter(f => isImage(f))) {

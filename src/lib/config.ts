@@ -5,7 +5,7 @@ const navItems : Record<string, any> = {
     'Nextcloud': 'https://cloud.netdeneb.com/',
     'Screemail': 'https://mail.screee.ee/',
     'Other': {
-        'Best website (archived)': '/yiff.toys',
+        'Best website (archived)': '/other/yiff.toys',
         'AAAAAA': '/leggy',
         '天安门 Yes': '/pooh',
         'Source code': 'https://github.com/DenebTM/netdeneb'

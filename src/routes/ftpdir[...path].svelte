@@ -40,20 +40,25 @@ const updateThumbs = async (basePath: string) => {
     
     if (needThumbs.length == 0) return
 
-    const numParts = needThumbs.length > 15 ? Math.ceil(needThumbs.length / 10) : 1
-    const partSize = numParts > 1 ? 10 : needThumbs.length
+    const partSize = needThumbs.length > 16 ? 8 : needThumbs.length
+    const numParts = partSize < needThumbs.length ? Math.ceil(needThumbs.length / partSize) : 1
     for (let part = 0; part < numParts; part++) {
         const startIndex = part * partSize,
               endIndex = Math.min(needThumbs.length, startIndex + partSize)
 
-        const newThumbs = await (await fetch('/createThumbs', { method: 'POST',body: JSON.stringify(
-            needThumbs.slice(startIndex, endIndex)
-        )})).json()
-        availableThumbs = Object.assign(availableThumbs, newThumbs)
-        for (const t in newThumbs) {
-            thumbsLoaded[t] = true
-        }
-        imageSources = Object.assign(imageSources, newThumbs)
+        setTimeout(() => {
+            fetch('/createThumbs', { method: 'POST', body: JSON.stringify(
+                needThumbs.slice(startIndex, endIndex)
+            )})
+            .then(async data => {
+                const newThumbs = (await data.json() as Record<string, string>)
+                for (const t in newThumbs) {
+                    availableThumbs[t] = newThumbs[t]
+                    imageSources[t] = newThumbs[t]
+                    thumbsLoaded[t] = true
+                }
+            })
+        }, part * 500)
     }
 }
 
@@ -68,7 +73,7 @@ afterUpdate(() => {
     imageSources = Object.assign(imageSources, availableThumbs)
 })
 
-const isImage = (f: string) => /\.(jpe?g|png|gif|webp|bmp)$/.test(f)
+const isImage = (f: string) => /\.(jpe?g|png|gif|webp|bmp)$/.test(f.toLowerCase())
 
 const goUp = () => goto('/ftpdir' + current.replace(/\/[^\/]*$/, ''))
 const goBack = () => window.history.back()
