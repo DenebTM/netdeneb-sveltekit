@@ -13,7 +13,7 @@ setTitle('Home')
 
 <div class="grid">
     <section>
-        <img id="me" src="/img/deneb1.png" alt="Art of Deneb, by twitter.com/fl0zz0" />
+        <img id="me" src="/img/deneb1.webp" alt="Art of Deneb, by twitter.com/fl0zz0" />
         <h1>Hi!</h1>
         <p>
             I'm Deneb, a maned wolf and hobbyist developer from 🇦🇹&nbsp;Austria,
