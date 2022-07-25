@@ -23,6 +23,26 @@ $: isMobile = innerWidth <= 600
 
 <svelte:window bind:innerWidth />
 
+<nav use:clickOutside={() => open = false} {open}>
+    <i class="open-nav" on:click={toggleNav}>
+        <Fa class="dd-icon" icon={faChevronDown} size="lg" />
+    </i>
+    {#if !isMobile || open}
+        <ul transition:fly={{ y: -10, duration: 150 }}>
+            {#each Object.entries(navItems) as [name, href], i}
+                {#if typeof(href) === 'string'}
+                    <li class="click-move-down" in:fly={{ y: -10, duration: 150, delay: i*75}} out:fade>
+                        <a {href} on:click={closeNav}>{name}</a>
+                    </li>
+                {:else}
+                    <NavDropdown {name} entries={href} delay={i*75}
+                        on:navigate={closeNav}/>
+                {/if}
+            {/each}
+        </ul>
+    {/if}
+</nav>
+
 <style global>
 nav {
     --border-radius: 5px;
@@ -125,23 +145,3 @@ nav .dd-icon {
     }
 }
 </style>
-
-<nav use:clickOutside={() => open = false} {open}>
-    <i class="open-nav" on:click={toggleNav}>
-        <Fa class="dd-icon" icon={faChevronDown} size="lg" />
-    </i>
-    {#if !isMobile || open}
-        <ul transition:fly={{ y: -10, duration: 150 }}>
-            {#each Object.entries(navItems) as [name, href], i}
-                {#if typeof(href) === 'string'}
-                    <li class="click-move-down" in:fly={{ y: -10, duration: 150, delay: i*75}} out:fade>
-                        <a {href} on:click={closeNav}>{name}</a>
-                    </li>
-                {:else}
-                    <NavDropdown {name} entries={href} delay={i*75}
-                        on:navigate={closeNav}/>
-                {/if}
-            {/each}
-        </ul>
-    {/if}
-</nav>

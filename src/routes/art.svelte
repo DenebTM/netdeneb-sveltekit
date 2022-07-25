@@ -1,8 +1,8 @@
 <script lang="ts">
 import { setTitle } from '$lib/js/tools'
-import Gallery from '$lib/components/Gallery.svelte';
+import Gallery from '$lib/components/Gallery.svelte'
 
-export let fileList : ArtList
+export let imgList : ArtList
 
 setTitle('Art gallery')
 
@@ -13,15 +13,4 @@ function test(e: Record<string, any>) {
 }
 </script>
 
-<style>
-    img:not([alt=""]) {
-        cursor: pointer;
-    }
-</style>
-
-<p>Click on an image to go to the artist's page!</p>
-<Gallery loading="lazy" hover on:click={test}>
-    {#each fileList as { name, artistLink }}
-        <img src={`/art/${name}`} alt={artistLink} />
-    {/each}
-</Gallery>
+<Gallery {imgList} />

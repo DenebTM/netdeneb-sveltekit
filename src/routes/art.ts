@@ -5,27 +5,25 @@ import { artBase } from '$lib/config'
 
 export const GET: RequestHandler = async () => {
     const fileListPath = pathJoin(artBase, 'files.json')
-    let response : ArtList
 
     let fileList
     try {
-        fileList = JSON.parse(await fs.readFile(fileListPath, { encoding: 'utf-8' }))
+        fileList = (JSON.parse(await fs.readFile(fileListPath, { encoding: 'utf-8' })) as ArtList)
     } catch (err) {
         console.error(err)
     }
 
     if (fileList) {
-        response = fileList
+        return {
+            status: 200,
+            body: {
+                imgList: fileList.map(i => Object.assign(i, { fileName: `/art/${i.fileName}` }))
+            }
+        }
     } else {
-        response = (await fs.readdir(artBase, { withFileTypes: true }))
-            .filter(de => de.isFile())
-            .map(de => ({ name: de.name, artistLink: undefined }))
-    }
-
-    return {
-        status: 200,
-        body: {
-            fileList: response
+        return {
+            status: 404,
+            body: '"files.json not found in /art"'
         }
     }
 }

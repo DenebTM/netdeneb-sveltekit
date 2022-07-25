@@ -4,12 +4,6 @@ import { setTitle } from '$lib/js/tools'
 
 setTitle('Home')
 </script>
-<style>
-#me {
-    width: 160px;
-    border-radius: 120px;
-}
-</style>
 
 <div class="grid">
     <section>
@@ -27,3 +21,10 @@ setTitle('Home')
         <Social />
     </section>
 </div>
+
+<style>
+#me {
+    width: 160px;
+    border-radius: 120px;
+}
+</style>

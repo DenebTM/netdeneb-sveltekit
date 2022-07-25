@@ -88,6 +88,53 @@ const toggleDirs = () => dirsCollapsed = !dirsCollapsed
     <meta name="description" content={fileList.toString()}>
 </svelte:head>
 
+<div class="file-nav">
+    <h1>Path: {current || '/'}</h1>
+    <button class="box click-move-down"
+        on:click={goBack}>Back</button>
+    <button class="box click-move-down"
+        on:click={goForward}>Forward</button>
+    <button class="box click-move-down"
+        on:click={goUp}>Up</button>
+</div>
+
+{#if dirList.length > 0}
+    <h3 style="cursor: pointer" on:click={toggleDirs}><div class="dd-icon" class:collapsed={dirsCollapsed}><Fa icon={faChevronDown} fw /></div> Directories</h3>
+    {#if !dirsCollapsed}
+        <section class="file-list dirs" transition:slide|local={{ duration: 150 }}>
+            {#each dirList as dir}
+            <div class="margin-box">
+                <div class="file box click-move-down">
+                    <a href={`/ftpdir${current}/${dir}`}>
+                        <div>
+                            <img src={folderIcon} alt="folder icon">
+                            <p>{dir}</p>
+                        </div>
+                    </a>
+                    </div>
+                </div>
+            {/each}
+        </section>
+    {/if}
+{/if}
+{#if fileList.length > 0}
+    <h3>Files</h3>
+    <section class="file-list files">
+        {#each fileList as file}
+            <div class="margin-box">
+                <div class="file box click-move-down">
+                    <a href={`/files${current}/${file}`}>
+                        <div>
+                            <img src={imageSources[file]} class={isImage(file) && thumbsLoaded[file] == true ? 'thumb' : ''} alt="file icon">
+                            <p>{file}</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        {/each}
+    </section>
+{/if}
+
 <style>
 .file-nav, h3 {
     text-align: left;
@@ -151,50 +198,3 @@ button.box {
     .margin-box { width: 25%; }
 }
 </style>
-
-<div class="file-nav">
-    <h1>Path: {current || '/'}</h1>
-    <button class="box click-move-down"
-        on:click={goBack}>Back</button>
-    <button class="box click-move-down"
-        on:click={goForward}>Forward</button>
-    <button class="box click-move-down"
-        on:click={goUp}>Up</button>
-</div>
-
-{#if dirList.length > 0}
-    <h3 style="cursor: pointer" on:click={toggleDirs}><div class="dd-icon" class:collapsed={dirsCollapsed}><Fa icon={faChevronDown} fw /></div> Directories</h3>
-    {#if !dirsCollapsed}
-        <section class="file-list dirs" transition:slide|local={{ duration: 150 }}>
-            {#each dirList as dir}
-            <div class="margin-box">
-                <div class="file box click-move-down">
-                    <a href={`/ftpdir${current}/${dir}`}>
-                        <div>
-                            <img src={folderIcon} alt="folder icon">
-                            <p>{dir}</p>
-                        </div>
-                    </a>
-                    </div>
-                </div>
-            {/each}
-        </section>
-    {/if}
-{/if}
-{#if fileList.length > 0}
-    <h3>Files</h3>
-    <section class="file-list files">
-        {#each fileList as file}
-            <div class="margin-box">
-                <div class="file box click-move-down">
-                    <a href={`/files${current}/${file}`}>
-                        <div>
-                            <img src={imageSources[file]} class={isImage(file) && thumbsLoaded[file] == true ? 'thumb' : ''} alt="file icon">
-                            <p>{file}</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        {/each}
-    </section>
-{/if}

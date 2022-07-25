@@ -12,6 +12,13 @@ const links = [
 ]
 </script>
 
+<p style="margin: 20px 0 10px 0">Feel free to bark at me on:</p>
+<div style="text-align: left; width: fit-content; margin: 0 auto">
+    {#each links as {icon, href, text}}
+        <a class="click-move-down" {href}><p><Fa color="var(--text-color)" fw {icon} size="lg" /><span>{text}</span></p></a>
+    {/each}
+</div>
+
 <style>
 span {
     margin-left: 5px;
@@ -56,10 +63,3 @@ div > * {
     }
 }
 </style>
-
-<p style="margin: 20px 0 10px 0">Feel free to bark at me on:</p>
-<div style="text-align: left; width: fit-content; margin: 0 auto">
-    {#each links as {icon, href, text}}
-        <a class="click-move-down" {href}><p><Fa color="var(--text-color)" fw {icon} size="lg" /><span>{text}</span></p></a>
-    {/each}
-</div>

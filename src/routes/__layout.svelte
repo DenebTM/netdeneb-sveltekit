@@ -3,16 +3,16 @@ import '$lib/js/styles'
 
 import { sitename } from '$lib/js/globals'
 import { afterNavigate, beforeNavigate } from '$app/navigation'
-import { page } from '$app/stores'
 
 import Nav from '$lib/components/Nav.svelte'
+import { enableScroll } from '$lib/js/tools';
 
 let show = false
 beforeNavigate(nav => {
     if (!(nav.to?.pathname.startsWith('/files') || nav.to?.host != nav.from.host))
         show = false
 })
-afterNavigate(() => show = true)
+afterNavigate(() => {show = true; enableScroll() })
 </script>
 
 <svelte:head>
@@ -20,6 +20,13 @@ afterNavigate(() => show = true)
 </svelte:head>
 
 <a href="/" class="title">{sitename}</a>
+<div class="content">
+    <div class="bg-blur" />
+    <Nav />
+    <main {show}>
+        <slot />
+    </main>
+</div>
 
 <style>
 div.bg-blur {
@@ -74,11 +81,3 @@ main[show=true] {
     }
 }
 </style>
-
-<div class="content">
-    <div class="bg-blur" />
-    <Nav />
-    <main {show}>
-        <slot />
-    </main>
-</div>

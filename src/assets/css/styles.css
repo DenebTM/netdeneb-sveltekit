@@ -2,6 +2,10 @@ html {
     height: 100%;
 }
 
+a {
+    text-decoration: none;
+}
+
 :root * {
     box-sizing: border-box;
     color: var(--text-color);
@@ -49,22 +53,14 @@ div.bg-blur {
     z-index: -1;
 }
 
-button {
+button, .btn {
     background: transparent;
-    /* background: var(--primary);
-    border: 1px solid var(--primary); */
     border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
     transition: 0.15s;
     box-shadow: 0 0 3px 3px var(--shadow-color);
 }
-/* button:hover {
-    background: var(--primary-hover);
-}
-button:active {
-    background: var(--primary-active);
-} */
 
 .grid {
     display: grid;
@@ -87,15 +83,15 @@ button:active {
     transform: translateY(2px);
 }
 
-.box, button {
+.box, button, .btn {
     border: 1px solid var(--text-color);
     border-radius: 5px;
     box-shadow: 0 0 3px 3px var(--shadow-color);
 }
-.box:hover, button:hover {
+.box:hover, button:hover, .btn:hover {
     background-color: var(--background-hover);
 }
-.box:active, button:active {
+.box:active, button:active, .btn:active {
     background-color: var(--background-active);
 }
 .box a {

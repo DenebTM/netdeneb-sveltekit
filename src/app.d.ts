@@ -1,9 +1,11 @@
 /// <reference types="@sveltejs/kit" />
 
-type ArtList = Array<{
-	name: string,
-	artistLink: string|undefined
-}>
+type ArtItem = {
+	fileName: string,
+	description: string,
+	artistLink: string,
+}
+type ArtList = Array<ArtItem>
 
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces

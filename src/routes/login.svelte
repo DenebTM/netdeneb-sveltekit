@@ -43,12 +43,6 @@ const submit = async () => {
 setTitle('Login')
 </script>
 
-<style>
-    form input {
-        color: black;
-    }
-</style>
-
 <h1>Login</h1>
 <form id="login" on:submit|preventDefault={submit}>
     <p>
@@ -62,3 +56,9 @@ setTitle('Login')
     <button class="click-move-down" type="submit">Login</button>
 </form>
 <p style="color: red">{ message }</p>
+
+<style>
+form input {
+    color: black;
+}
+</style>

@@ -1,106 +1,149 @@
-<!-- https://www.npmjs.com/package/svelte-image-gallery (not packaged correctly by the author) -->
-<script>
-    import { onMount, createEventDispatcher } from "svelte";
-    import { tick } from "svelte";
+<script lang="ts">
+import { fade } from 'svelte/transition'
+import Fa from 'svelte-fa'
+import { faClose, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
+import { disableScroll, enableScroll } from '$lib/js/tools';
+import { goto } from '$app/navigation';
 
-    export let gap = 10;
-    export let maxColumnWidth = 250;
-    export let hover = false;
-    export let loading;
+export let imgList : ArtList
+export let gap = 10
+export let hover = true
 
-    const dispatch = createEventDispatcher();
+const titleImage = imgList.at(0)
+const galleryImages = imgList.slice(1)
 
-    let slotHolder = null;
-    let columns = [];
-    let galleryWidth = 0;
-    let columnCount = 0;
+let maxColWidth = 250
+let galleryWidth = 0
+let columns : Array<ArtList> = []
 
-    $: columnCount = parseInt(galleryWidth / maxColumnWidth) || 1;
-    $: columnCount && Draw();
-    $: galleryStyle = `grid-template-columns: repeat(${columnCount}, 1fr); --gap: ${gap}px`;
+let modalVisible = false
+let modalImg : ArtItem
+const showModal = (img?: ArtItem) => {
+    if (img) modalImg = img
+    modalVisible = true
+    disableScroll()
+}
+const hideModal = () => {
+    modalVisible = false
+    enableScroll()
+}
 
-    onMount(Draw);
+const updateGallery = (colCount: number) => {
+    if (colCount == 0) return
 
-    function HandleClick(e) {
-        dispatch("click", { src: e.target.src, alt: e.target.alt, loading: e.target.loading, class: e.target.className });
+    let newColumns : Array<ArtList> = Array(colCount).fill([]).map(() => [])
+
+    let col = 0
+    for (let img of galleryImages) {
+        newColumns[col].push(img)
+        col = (col + 1) % colCount
     }
+    
+    columns = newColumns
+}
 
-    async function Draw() {
-        await tick();
-
-        if (!slotHolder) {
-            return;
-        }
-
-        const images = Array.from(slotHolder.childNodes).filter(
-            (child) => child.tagName === "IMG"
-        );
-        columns = [];
-
-        // Fill the columns with image URLs
-        for (let i = 0; i < images.length; i++) {
-            const idx = i % columnCount;
-            columns[idx] = [
-                ...(columns[idx] || []),
-                { src: images[i].src, alt: images[i].alt, class: images[i].className },
-            ];
-        }
-    }
+$: columnCount = Math.floor(galleryWidth / maxColWidth)
+$: updateGallery(columnCount)
+$: gridStyle = `grid-template-columns: repeat(${columnCount}, 1fr); gap: ${gap}px`
 </script>
 
-<div
-    id="slotHolder"
-    bind:this={slotHolder}
-    on:DOMNodeInserted={Draw}
-    on:DOMNodeRemoved={Draw}
->
-    <slot />
-</div>
-
-{#if columns}
-    <div id="gallery" bind:clientWidth={galleryWidth} style={galleryStyle}>
-        {#each columns as column}
+<div class="gallery" bind:clientWidth={galleryWidth}>
+    <div class="gallery-title gallery-img" class:gallery-hover={hover} on:click={() => showModal(titleImage)}>
+        <img src={titleImage?.fileName} alt={titleImage?.description}>
+        <span>{titleImage?.description}</span>
+    </div>
+    <div class="gallery-columns" style={gridStyle}>
+        {#each columns as col}
             <div class="column">
-                {#each column as img}
-                    <img
-                        src={img.src}
-                        alt={img.alt}
-                        on:click={HandleClick}
-                        class="{hover === true ? "img-hover" : ""} {img.class}"
-                        loading={loading}
-                    />
+                {#each col as img, i}
+                    <img class="gallery-img" class:gallery-hover={hover} style={`margin-bottom: ${(i < col.length) ? gap : 0}px`}
+                        src={img.fileName} alt={img.description} on:click={() => showModal(img)}>
                 {/each}
             </div>
         {/each}
     </div>
-{/if}
+
+    {#if modalVisible}
+        <button class="modal-close" on:click={hideModal} transition:fade={{duration: 100}}>
+            <Fa icon={faClose} scale=1.5 />
+        </button>
+        <div class="gallery-modal" on:click={hideModal} transition:fade={{duration: 100}}>
+            <div class="modal-row image">
+                <img src={modalImg?.fileName} alt={modalImg?.artistLink}>
+            </div>
+            <div class="modal-row details">
+                <span>{modalImg?.description}</span>
+                <a class="btn" href={modalImg?.artistLink}>
+                    <Fa icon={faArrowUpRightFromSquare} scale=1.25 />
+                </a>
+            </div>
+        </div>
+    {/if}
+</div>
 
 <style>
-    #slotHolder {
-        display: none;
-    }
-    #gallery {
-        width: 100%;
-        display: grid;
-        gap: var(--gap);
-    }
-    #gallery .column {
-        display: flex;
-        flex-direction: column;
-    }
-    #gallery .column * {
-        width: 100%;
-        margin-top: var(--gap);
-    }
-    #gallery .column *:nth-child(1) {
-        margin-top: 0;
-    }
-    .img-hover {
-        opacity: 0.9;
-        transition: all 0.2s;
-    }
-    .img-hover:hover {
-        opacity: 1;
-        transform: scale(1.05);
-    }
+.gallery-title {
+    margin-bottom: 20px;
+}
+.gallery-columns {
+    display: grid;
+}
+.column {
+    display: flex;
+    flex-direction: column;
+}
+.gallery-title img, .column img {
+    width: 100%;
+}
+.gallery-img {
+    cursor: pointer;
+}
+.gallery-hover {
+    transition: 0.2s;
+    filter: brightness(90%);
+    position: relative;
+}
+.gallery-hover:hover {
+    filter: none;
+    transform: scale(1.03);
+    z-index: 99;
+}
+.gallery-modal {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: grid;
+    grid-template-rows: calc(100vh - 80px) 1fr;
+}
+.modal-close {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 101;
+}
+.modal-row img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+.modal-row span {
+    line-height: 80px;
+}
+.modal-row.details {
+    background: rgba(0, 0, 0, 0.95);
+}
+
+button, .btn {
+    display: inline-block;
+    padding: 0;
+    border: none;
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    margin-left: 5px;
+}
 </style>
