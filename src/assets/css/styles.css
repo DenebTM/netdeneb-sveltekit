@@ -1,5 +1,11 @@
-html {
+html, body {
     height: 100%;
+}
+body {
+    background: var(--page-background);
+    background-attachment: fixed;
+    background-position-x: 20%;
+    background-size: cover;
 }
 
 a {
@@ -32,12 +38,6 @@ h1, h2, h3, h4, h5, h6 {
     color: inherit;
 }
 
-body {
-    background: var(--page-background);
-    background-attachment: fixed;
-    background-position-x: 20%;
-    background-size: cover;
-}
 div.bg-blur {
     position: absolute;
     top: 0;

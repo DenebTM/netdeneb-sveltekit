@@ -5,7 +5,7 @@ import { faClose, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-i
 import { disableScroll, enableScroll } from '$lib/js/tools';
 import { goto } from '$app/navigation';
 
-export let imgList : ArtList
+export let imgList: ArtList
 export let gap = 10
 export let hover = true
 
@@ -14,10 +14,10 @@ const galleryImages = imgList.slice(1)
 
 let maxColWidth = 250
 let galleryWidth = 0
-let columns : Array<ArtList> = []
+let columns: Array<ArtList> = []
 
 let modalVisible = false
-let modalImg : ArtItem
+let modalImg: ArtItem
 const showModal = (img?: ArtItem) => {
     if (img) modalImg = img
     modalVisible = true
@@ -31,7 +31,7 @@ const hideModal = () => {
 const updateGallery = (colCount: number) => {
     if (colCount == 0) return
 
-    let newColumns : Array<ArtList> = Array(colCount).fill([]).map(() => [])
+    let newColumns: Array<ArtList> = Array(colCount).fill([]).map(() => [])
 
     let col = 0
     for (let img of galleryImages) {
@@ -42,10 +42,15 @@ const updateGallery = (colCount: number) => {
     columns = newColumns
 }
 
+let innerHeight = 0
+$: modalStyle = `grid-template-rows: ${innerHeight - 80}px 1fr;`
+
 $: columnCount = Math.floor(galleryWidth / maxColWidth)
 $: updateGallery(columnCount)
 $: gridStyle = `grid-template-columns: repeat(${columnCount}, 1fr); gap: ${gap}px`
 </script>
+
+<svelte:window bind:innerHeight={innerHeight} />
 
 <div class="gallery" bind:clientWidth={galleryWidth}>
     <div class="gallery-title gallery-img" class:gallery-hover={hover} on:click={() => showModal(titleImage)}>
@@ -67,7 +72,7 @@ $: gridStyle = `grid-template-columns: repeat(${columnCount}, 1fr); gap: ${gap}p
         <button class="modal-close" on:click={hideModal} transition:fade={{duration: 100}}>
             <Fa icon={faClose} scale=1.5 />
         </button>
-        <div class="gallery-modal" on:click={hideModal} transition:fade={{duration: 100}}>
+        <div class="gallery-modal" on:click={hideModal} transition:fade={{duration: 100}} style={modalStyle}>
             <div class="modal-row image">
                 <img src={modalImg?.fileName} alt={modalImg?.artistLink}>
             </div>
@@ -113,11 +118,10 @@ $: gridStyle = `grid-template-columns: repeat(${columnCount}, 1fr); gap: ${gap}p
     z-index: 100;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
     background-color: rgba(0, 0, 0, 0.8);
     display: grid;
-    grid-template-rows: calc(100vh - 80px) 1fr;
+    /* grid-template-rows set by JavaScript */
 }
 .modal-close {
     position: fixed;
@@ -141,6 +145,7 @@ button, .btn {
     display: inline-block;
     padding: 0;
     border: none;
+    box-shadow: none;
     height: 50px;
     width: 50px;
     line-height: 50px;

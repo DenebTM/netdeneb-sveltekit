@@ -2,7 +2,7 @@
 import type { Load } from "@sveltejs/kit"
 import { isLoggedIn } from "$lib/js/auth"
 
-export const load : Load = ({ session, url: { searchParams } }) => {
+export const load: Load = ({ session, url: { searchParams } }) => {
     const redirect = decodeURIComponent(searchParams.get('redirect') || '/')
 
     if (isLoggedIn(session)) {

@@ -12,14 +12,14 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import folderIcon from '/src/assets/icons/folder.svg'
 import { extIcons } from '$lib/js/fileTypes'
 
-const getIcon = (filename : string) => {
+const getIcon = (filename: string) => {
     const ext = filename.split('.').pop()?.toLowerCase() || 'default'
     return extIcons[ext] || extIcons.default
 }
 
-export let dirList  : Array<string>
-export let fileList : Array<string>
-export let availableThumbs : Record<string, string>
+export let dirList: Array<string>
+export let fileList: Array<string>
+export let availableThumbs: Record<string, string>
 
 const thumbsLoaded: Record<string, boolean> = {}
 const updateImageSources = (fl: Array<string>) => {
@@ -179,9 +179,6 @@ button.box {
     transition: color 0.2s;
 }
 
-[data-theme="dark"] .file.box img:not(.thumb) {
-    filter: invert();
-}
 @media only screen and (prefers-color-scheme: dark) {
     .file.box img:not(.thumb) {
         filter: invert();

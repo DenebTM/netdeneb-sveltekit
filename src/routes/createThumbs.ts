@@ -5,8 +5,8 @@ import gm from 'gm'
 import crypto from 'crypto'
 
 export const POST: RequestHandler = async ({ request }) => {
-    let paths : string[]
-    let thumbFileNames : Record<string, string> = {}
+    let paths: string[]
+    let thumbFileNames: Record<string, string> = {}
     try {
         paths = (await request.json() as string[])
             .map(p => pathJoin(filesBase, p))

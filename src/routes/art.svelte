@@ -2,7 +2,7 @@
 import { setTitle } from '$lib/js/tools'
 import Gallery from '$lib/components/Gallery.svelte'
 
-export let imgList : ArtList
+export let imgList: ArtList
 
 setTitle('Art gallery')
 

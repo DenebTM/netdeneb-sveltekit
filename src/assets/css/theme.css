@@ -9,7 +9,6 @@
     --text-color-dark: white;
     --text-color-dark-inverted: black;
     
-    /* --page-background-light: lightpink; */
     --background-color-light: rgba(255,255,255,0.75);
     --text-color-light: black;
     --text-color-light-inverted: white;
@@ -29,45 +28,26 @@
     --background-active: rgba(255, 255, 255, 0.3);
 }
 
-/* Pink Light scheme (Default) */
-/* Can be forced with data-theme="light" */
-[data-theme="light"],
-:root:not([data-theme="dark"]) {
-    --primary-focus: rgba(216, 27, 96, 0.125);
-
-    --page-background: var(--page-background-light);
-    --background-color: var(--background-color-light);
-    --text-color: var(--text-color-light);
-    --text-color-inverted: var(--text-color-light-inverted);
-    --shadow-color: var(--shadow-color-light)
-}
-
-/* Pink Dark scheme (Auto) */
-/* Automatically enabled if user has Dark mode enabled */
-@media only screen and (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-        --primary-focus: rgba(216, 27, 96, 0.25);
-
-        --page-background: var(--page-background-dark);
-        --background-color: var(--background-color-dark);
-        --text-color: var(--text-color-dark);
-        --text-color-inverted: var(--text-color-dark-inverted);
-        --shadow-color: var(--shadow-color-dark)
-    }
-}
-
-/* Pink Dark scheme (Forced) */
-/* Enabled if forced with data-theme="dark" */
-[data-theme="dark"] {
+/* Dark colour scheme (default) */
+:root {
     --primary-focus: rgba(216, 27, 96, 0.25);
 
     --page-background: var(--page-background-dark);
     --background-color: var(--background-color-dark);
     --text-color: var(--text-color-dark);
     --text-color-inverted: var(--text-color-dark-inverted);
-    --shadow-color: var(--shadow-color-dark)
+    --shadow-color: var(--shadow-color-dark)/
 }
 
-/* button:is([aria-current], :active) {
-    background-color: var(--primary-active);
-} */
+/* Light colour scheme (set by browser) */
+@media only screen and (prefers-color-scheme: light) {
+    :root {
+        --primary-focus: rgba(216, 27, 96, 0.125);
+    
+        --page-background: var(--page-background-light);
+        --background-color: var(--background-color-light);
+        --text-color: var(--text-color-light);
+        --text-color-inverted: var(--text-color-light-inverted);
+        --shadow-color: var(--shadow-color-light);
+    }
+}

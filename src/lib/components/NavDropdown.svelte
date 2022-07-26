@@ -5,8 +5,8 @@ import { fly, fade } from 'svelte/transition'
 import { clickOutside } from '$lib/js/clickOutside'
 import { createEventDispatcher } from 'svelte'
 
-export let name : string
-export let entries : Record<string, any> = {}
+export let name: string
+export let entries: Record<string, any> = {}
 export let delay = 0
 
 let open = false

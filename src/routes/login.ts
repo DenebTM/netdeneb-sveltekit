@@ -3,7 +3,7 @@ import users from '$lib/users.json'
 import cookie from 'cookie'
 
 export const POST: RequestHandler = async ({ request }) => {
-    let creds : {
+    let creds: {
         username: keyof typeof users | '' | undefined,
         password: string | undefined
     } = { username: undefined, password: undefined }
@@ -13,7 +13,7 @@ export const POST: RequestHandler = async ({ request }) => {
         /* invalid json idc */
     }
 
-    const response : Record<string, any> = {
+    const response: Record<string, any> = {
         status: 403,
         body: {
             status: 'Error',

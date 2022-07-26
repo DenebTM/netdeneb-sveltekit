@@ -1,4 +1,4 @@
-const navItems : Record<string, any> = {
+const navItems: Record<string, any> = {
     'Home': '/',
     'Art gallery': '/art',
     'Public files': '/ftpdir',
