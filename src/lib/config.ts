@@ -17,4 +17,4 @@ export const artBase = '/art'
 export const filesBase = '/files'
 export const excludeFiles = ['Thumbs.db']
 
-export const sessionListPath = '/home/deneb/sessions.txt'
+export const sessionListPath = '/sessions.txt'
