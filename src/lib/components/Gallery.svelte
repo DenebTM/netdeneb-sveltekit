@@ -101,7 +101,7 @@ $: gridStyle = `grid-template-columns: repeat(${columnCount}, 1fr); gap: ${gap}p
     width: 100%;
 }
 .gallery-img {
-    cursor: pointer;
+    cursor: zoom-in;
 }
 .gallery-hover {
     transition: 0.2s;

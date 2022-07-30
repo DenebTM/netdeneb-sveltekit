@@ -15,6 +15,5 @@ export const logout = (fetch: Function) =>
     })
 
 export const isLoggedIn = (sess?: App.Session) => {
-    const token = (sess || get(session)).token
-    return token == '🦊'
+    return (sess || get(session))?.token ? true : false
 }

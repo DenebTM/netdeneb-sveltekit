@@ -23,7 +23,7 @@ export const GET: RequestHandler = async () => {
     } else {
         return {
             status: 404,
-            body: '"files.json not found in /art"'
+            body: '"files.json not found or invalid"'
         }
     }
 }

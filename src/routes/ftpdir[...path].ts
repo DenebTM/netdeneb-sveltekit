@@ -3,6 +3,7 @@ import { filesBase, excludeFiles } from '$lib/config'
 import { join as pathJoin } from 'path'
 import { promises as fs, constants as fsConstants } from 'fs'
 import crypto from 'crypto'
+import { validateSession } from '$lib/js/session'
 
 type FileDirList = {
     dirList: Array<string>,
@@ -52,11 +53,11 @@ async function getAvailableThumbs(fileList: string[], basePath: string) {
 }
 
 export const GET: RequestHandler = async ({ locals: { token }, params: { path } }) => {
-    if (path.startsWith('/Users') && token !== '🦊') {
+    if (path.startsWith('/Users') && !(await validateSession(token))) {
         return {
-            status: 403,
+            status: 401,
             body: {
-                status: 403,
+                status: 401,
                 message: 'Unauthorized'
             }
         }

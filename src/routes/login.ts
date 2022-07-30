@@ -1,6 +1,14 @@
 import type { RequestHandler } from '@sveltejs/kit'
 import users from '$lib/users.json'
-import cookie from 'cookie'
+import { createSession, validateSession } from '$lib/js/session';
+
+export const GET: RequestHandler = async ({ locals: { token } }) => {
+    return {
+        body: {
+            validToken: await validateSession(token)
+        }
+    }
+}
 
 export const POST: RequestHandler = async ({ request }) => {
     let creds: {
@@ -14,7 +22,7 @@ export const POST: RequestHandler = async ({ request }) => {
     }
 
     const response: Record<string, any> = {
-        status: 403,
+        status: 401,
         body: {
             status: 'Error',
             message: 'Username or password incorrect'
@@ -23,7 +31,7 @@ export const POST: RequestHandler = async ({ request }) => {
     }
 
     // no login specified
-    if (!(creds.username && creds.password)) {
+    if (!(creds?.username && creds?.password)) {
         return response
     }
 
@@ -36,6 +44,6 @@ export const POST: RequestHandler = async ({ request }) => {
     response.status = 202
     response.body.status = 'OK'
     response.body.message = 'Login successful'
-    response.headers['Set-Cookie'] = cookie.serialize('token', '🦊', { path: '/', maxAge: 86400 })
+    response.headers['Set-Cookie'] = (await createSession()).toCookie()
     return response
 }

@@ -7,7 +7,6 @@ const navItems: Record<string, any> = {
     'Other': {
         'Best website (archived)': '/other/yiff.toys',
         'AAAAAA': '/leggy',
-        '天安门 Yes': '/pooh',
         'Source code': 'https://github.com/DenebTM/netdeneb'
     }
 }
@@ -17,3 +16,5 @@ export const artBase = '/art'
 
 export const filesBase = '/files'
 export const excludeFiles = ['Thumbs.db']
+
+export const sessionListPath = '/home/deneb/sessions.txt'

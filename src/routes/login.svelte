@@ -1,29 +1,15 @@
-<script lang="ts" context="module">
-import type { Load } from "@sveltejs/kit"
-import { isLoggedIn } from "$lib/js/auth"
-
-export const load: Load = ({ session, url: { searchParams } }) => {
-    const redirect = decodeURIComponent(searchParams.get('redirect') || '/')
-
-    if (isLoggedIn(session)) {
-        return {
-            status: 302,
-            redirect
-        }
-    }
-
-    return {
-        status: 200
-    }
-}
-</script>
-
 <script lang="ts">
 import { login } from '$lib/js/auth'
 import { page } from '$app/stores'
 import { setTitle } from '$lib/js/tools'
+import { browser } from '$app/env'
+import { goto } from '$app/navigation'
+
+export let validToken : boolean
 
 const redirect = decodeURIComponent($page.url.searchParams.get('redirect') || '/')
+if (validToken && browser)
+    goto(redirect)
 
 let username = ''
 let password = ''
@@ -59,6 +45,6 @@ setTitle('Login')
 
 <style>
 form input {
-    color: black;
+    color: var(--color);
 }
 </style>

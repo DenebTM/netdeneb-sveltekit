@@ -16,7 +16,7 @@ declare namespace App {
 	}
 	// interface Platform {}
 	interface Session {
-		token: string | undefined
+		token?: string
 	}
 	// interface Stuff {}
 }

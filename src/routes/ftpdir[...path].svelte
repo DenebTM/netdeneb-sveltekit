@@ -1,5 +1,5 @@
 <script lang="ts">
-import { afterNavigate, goto } from '$app/navigation'
+import { goto } from '$app/navigation'
 import { page } from '$app/stores'
 import { slide } from 'svelte/transition'
 import { sitename } from '$lib/js/globals'
