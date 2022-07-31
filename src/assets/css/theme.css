@@ -4,7 +4,6 @@
 
     --shadow-color-dark: rgba(0,0,0,0.3);
     --shadow-color-light: rgba(0,0,0,0.1);
-    /* --page-background-dark: gray; */
     --background-color-dark: rgba(0,0,0,0.75);
     --text-color-dark: white;
     --text-color-dark-inverted: black;
@@ -22,7 +21,7 @@
     --switch-color: var(--primary-inverse);
     --switch-checked-background-color: var(--primary);
 
-    --page-background: url('/img/bg.webp') !important;
+    --page-background: url('/img/bg.webp');
 
     --background-hover: rgba(255, 255, 255, 0.4);
     --background-active: rgba(255, 255, 255, 0.3);
@@ -32,7 +31,6 @@
 :root {
     --primary-focus: rgba(216, 27, 96, 0.25);
 
-    --page-background: var(--page-background-dark);
     --background-color: var(--background-color-dark);
     --text-color: var(--text-color-dark);
     --text-color-inverted: var(--text-color-dark-inverted);
@@ -44,7 +42,6 @@
     :root {
         --primary-focus: rgba(216, 27, 96, 0.125);
     
-        --page-background: var(--page-background-light);
         --background-color: var(--background-color-light);
         --text-color: var(--text-color-light);
         --text-color-inverted: var(--text-color-light-inverted);

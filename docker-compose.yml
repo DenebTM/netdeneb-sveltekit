@@ -19,5 +19,6 @@ services:
       - ./files:/files:ro
       - ./ISOs:/files/Public/ISOs:ro
       - ./art:/art:ro
+      - ./img:/img:ro
       - ./thumbs:/thumbs:ro
       - ./other:/other:ro
