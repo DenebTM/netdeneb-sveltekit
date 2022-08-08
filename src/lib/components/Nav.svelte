@@ -18,7 +18,7 @@ const closeNav = () => open = false
 
 let open = false
 $: innerWidth = 0
-$: isMobile = innerWidth <= 600
+$: isMobile = innerWidth <= 680
 </script>
 
 <svelte:window bind:innerWidth />
@@ -98,12 +98,13 @@ nav .dd-icon {
 .open-nav {
     cursor: pointer;
     transition: 0.1s;
+    z-index: 100;
 }
 .open-nav:active {
     transform: translateY(2px);
 }
 
-@media only screen and (min-width: 601px) {
+@media only screen and (min-width: 681px) {
     .open-nav {
         display: none;
     }
@@ -111,7 +112,7 @@ nav .dd-icon {
         min-height: calc((1em * 1.5) + 53px);
     }
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 680px) {
     .open-nav {
         position: absolute;
         top: 15px;
@@ -125,7 +126,6 @@ nav .dd-icon {
         top: 50px;
         right: 10px;
         min-width: 200px;
-        width: 50%;
         margin-top: 0;
         background-color: var(--background-color);
         backdrop-filter: blur(3px);

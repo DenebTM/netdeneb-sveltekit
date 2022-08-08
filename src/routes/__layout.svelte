@@ -75,7 +75,7 @@ main[show=true] {
     opacity: 1;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 680px) {
     .title {
         margin-top: 0.5em;
     }

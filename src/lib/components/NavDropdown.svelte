@@ -85,7 +85,7 @@ const dispatch = createEventDispatcher()
     display: block;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 680px) {
     .dropdown > div {
         position: absolute;
         left: 0;

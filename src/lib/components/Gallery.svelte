@@ -2,8 +2,7 @@
 import { fade } from 'svelte/transition'
 import Fa from 'svelte-fa'
 import { faClose, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
-import { disableScroll, enableScroll } from '$lib/js/tools';
-import { goto } from '$app/navigation';
+import { disableScroll, enableScroll } from '$lib/js/tools'
 
 export let imgList: ArtList
 export let gap = 10
@@ -53,7 +52,7 @@ $: gridStyle = `grid-template-columns: repeat(${columnCount}, 1fr); gap: ${gap}p
 <svelte:window bind:innerHeight={innerHeight} />
 
 <div class="gallery" bind:clientWidth={galleryWidth}>
-    <div class="gallery-title gallery-img" class:gallery-hover={hover} on:click={() => showModal(titleImage)}>
+    <div class="gallery-title gallery-img" style:width={columnCount > 2 ? '70%' : '100%'} class:gallery-hover={hover} on:click={() => showModal(titleImage)}>
         <img src={titleImage?.fileName} alt={titleImage?.description}>
         <span>{titleImage?.description}</span>
     </div>
@@ -88,7 +87,7 @@ $: gridStyle = `grid-template-columns: repeat(${columnCount}, 1fr); gap: ${gap}p
 
 <style>
 .gallery-title {
-    margin-bottom: 20px;
+    margin: 0 auto 20px auto;
 }
 .gallery-columns {
     display: grid;

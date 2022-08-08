@@ -13,9 +13,9 @@ setTitle('Home')
             I'm Deneb, a maned wolf and hobbyist developer from 🇦🇹&nbsp;Austria,
             currently studying comp-sci in Innsbruck.
         </p><p>
-            This is mostly a place for me to put my personal pet projects, but
-            you'll also find my ref and other art I've received here. Still under
-            construction, so check back later for more!
+            This is mainly a place for me to put my personal pet projects, but
+            you'll also find my ref and other art I've received here.
+            Still under construction, so check back later for more!
         </p>
         <hr />
         <Social />
