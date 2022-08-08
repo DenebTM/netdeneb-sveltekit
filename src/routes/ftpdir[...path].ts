@@ -55,10 +55,9 @@ async function getAvailableThumbs(fileList: string[], basePath: string) {
 export const GET: RequestHandler = async ({ locals: { token }, params: { path } }) => {
     if (path.startsWith('/Users') && !(await validateSession(token))) {
         return {
-            status: 401,
-            body: {
-                status: 401,
-                message: 'Unauthorized'
+            status: 307,
+            headers: {
+                Location: `/login?redirect=${encodeURIComponent('/ftpdir' + path)}`
             }
         }
     }

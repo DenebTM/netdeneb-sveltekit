@@ -8,22 +8,18 @@ export const GET: RequestHandler = async () => {
 
     let fileList
     try {
-        fileList = (JSON.parse(await fs.readFile(fileListPath, { encoding: 'utf-8' })) as ArtList)
+        fileList = JSON.parse(await fs.readFile(fileListPath, { encoding: 'utf-8' })) as ArtList
     } catch (err) {
-        console.error(err)
+        return {
+            status: 500,
+            body: Error('\'files.json\' not found or invalid')
+        }
     }
 
-    if (fileList) {
-        return {
-            status: 200,
-            body: {
-                imgList: fileList.map(i => Object.assign(i, { fileName: `/art/${i.fileName}` }))
-            }
-        }
-    } else {
-        return {
-            status: 404,
-            body: '"files.json not found or invalid"'
+    return {
+        status: 200,
+        body: {
+            imgList: fileList.map(i => Object.assign(i, { fileName: `/art/${i.fileName}` }))
         }
     }
 }
