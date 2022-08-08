@@ -19,7 +19,7 @@ export const GET: RequestHandler = async () => {
     return {
         status: 200,
         body: {
-            imgList: fileList.map(i => Object.assign(i, { fileName: `http://localhost:8000/${i.fileName}` }))
+            imgList: fileList.map(i => Object.assign(i, { fileName: `/art/${i.fileName}` }))
         }
     }
 }
