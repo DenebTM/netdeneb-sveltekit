@@ -7,7 +7,6 @@ export let imgList: ArtList
 
 <svelte:head>
     <title>{ `${sitename} - Art gallery` }</title>
-    <meta name="description" content="My ref, and more">
 </svelte:head>
 
 <Gallery {imgList} />

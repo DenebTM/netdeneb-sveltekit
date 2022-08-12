@@ -5,6 +5,8 @@ type ArtItem = {
 	full: string,
 	description: string,
 	artistLink: string,
+	width: string,
+	height: string
 }
 type ArtList = Array<ArtItem>
 
