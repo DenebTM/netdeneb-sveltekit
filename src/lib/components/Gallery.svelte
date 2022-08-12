@@ -72,7 +72,6 @@ afterNavigate(switchFullImage)
 
 <svelte:window bind:innerHeight={innerHeight} />
 <svelte:head>
-    <meta name="description" content="My ref, and more!">
     {#if modalImg}
         <meta property="og:image" content={$page.url.origin + modalImg.full}>
         <meta property="og:title" content={modalImg.description}>
