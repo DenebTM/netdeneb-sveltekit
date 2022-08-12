@@ -3,6 +3,7 @@ import { fade } from 'svelte/transition'
 import Fa from 'svelte-fa'
 import { faClose, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
 import { disableScroll, enableScroll } from '$lib/js/tools'
+import { onMount } from 'svelte'
 
 export let imgList: ArtList
 export let gap = 10
@@ -17,14 +18,34 @@ let columns: Array<ArtList> = []
 
 let modalVisible = false
 let modalImg: ArtItem
-const showModal = (img?: ArtItem) => {
-    if (img) modalImg = img
-    modalVisible = true
-    disableScroll()
+const clearHash = () => {
+    const oldURL = window.location.href
+    window.history.pushState('', '', '/art')
+    window.dispatchEvent(new HashChangeEvent('hashchange',
+        { oldURL, newURL: '/art' }))
 }
-const hideModal = () => {
-    modalVisible = false
-    enableScroll()
+const hashChange = () => {
+    function showModal(img?: ArtItem) {
+        if (img) modalImg = img
+        modalVisible = true
+        disableScroll()
+    }
+    function hideModal() {
+        modalVisible = false
+        enableScroll()
+    }
+
+    if (!window.location.hash) {
+        hideModal()
+    } else {
+        if (window.location.hash == '#ref') {
+            showModal(titleImage)
+        } else {
+            const idx = parseInt(window.location.hash.slice(1))
+            if (!isNaN(idx) && idx >= 1 && idx <= galleryImages.length)
+                showModal(galleryImages[idx-1])
+        }
+    }
 }
 
 const updateGallery = (colCount: number) => {
@@ -47,31 +68,37 @@ $: modalStyle = `grid-template-rows: ${innerHeight - 80}px 1fr;`
 $: columnCount = Math.floor(galleryWidth / maxColWidth)
 $: updateGallery(columnCount)
 $: gridStyle = `grid-template-columns: repeat(${columnCount}, 1fr); gap: ${gap}px`
+
+onMount(hashChange)
 </script>
 
-<svelte:window bind:innerHeight={innerHeight} />
+<svelte:window bind:innerHeight={innerHeight} on:hashchange={hashChange} />
 
 <div class="gallery" bind:clientWidth={galleryWidth}>
-    <div class="gallery-title gallery-img" style:width={columnCount > 2 ? '70%' : '100%'} class:gallery-hover={hover} on:click={() => showModal(titleImage)}>
-        <img src={titleImage?.fileName} alt={titleImage?.description}>
-        <span>{titleImage?.description}</span>
+    <div class="gallery-title gallery-img" style:width={columnCount > 2 ? '70%' : '100%'} class:gallery-hover={hover}>
+        <a href="#ref">
+            <img src={titleImage?.fileName} alt={titleImage?.description}>
+            <span>{titleImage?.description}</span>
+        </a>
     </div>
     <div class="gallery-columns" style={gridStyle}>
         {#each columns as col}
             <div class="column">
                 {#each col as img, i}
-                    <img class="gallery-img" class:gallery-hover={hover} style={`margin-bottom: ${(i < col.length) ? gap : 0}px`}
-                        src={img.fileName} alt={img.description} on:click={() => showModal(img)}>
+                    <a class="gallery-img" href={`#${galleryImages.indexOf(img) + 1}`}>
+                        <img class:gallery-hover={hover} style={`margin-bottom: ${(i < col.length) ? gap : 0}px`}
+                            src={img.fileName} alt={img.description}>
+                    </a>
                 {/each}
             </div>
         {/each}
     </div>
 
     {#if modalVisible}
-        <button class="modal-close" on:click={hideModal} transition:fade={{duration: 100}}>
+        <button class="modal-close" on:click={clearHash} transition:fade={{duration: 100}}>
             <Fa icon={faClose} scale=1.5 />
         </button>
-        <div class="gallery-modal" on:click={hideModal} transition:fade={{duration: 100}} style={modalStyle}>
+        <div class="gallery-modal" on:click={clearHash} transition:fade={{duration: 100}} style={modalStyle}>
             <div class="modal-row image">
                 <img src={modalImg?.fileName} alt={modalImg?.artistLink}>
             </div>
@@ -99,7 +126,7 @@ $: gridStyle = `grid-template-columns: repeat(${columnCount}, 1fr); gap: ${gap}p
 .gallery-title img, .column img {
     width: 100%;
 }
-.gallery-img {
+.gallery-img, .gallery-img * {
     cursor: zoom-in;
 }
 .gallery-hover {

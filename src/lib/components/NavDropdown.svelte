@@ -39,6 +39,7 @@ const dispatch = createEventDispatcher()
 <style>
 .dropdown {
     position: relative;
+    z-index: 100;
 }
 .dropdown[open=true] {
     background-color: var(--background-active);
@@ -63,7 +64,6 @@ const dispatch = createEventDispatcher()
     white-space: nowrap;
     box-shadow: 0 0 3px 3px var(--shadow-color);
     background-color: var(--background-color);
-    backdrop-filter: blur(3px);
     border-radius: var(--border-radius);
     margin: 0 auto;
 }
@@ -92,6 +92,11 @@ const dispatch = createEventDispatcher()
         right: 0;
         transform: none;
         padding-top: 10px;
+    }
+}
+@media only screen and not (max-width: 680px) {
+    .dropdown ul {
+        backdrop-filter: blur(3px);
     }
 }
 </style>

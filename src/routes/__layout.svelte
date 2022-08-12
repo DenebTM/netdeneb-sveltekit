@@ -30,7 +30,19 @@ afterNavigate(() => {show = true; enableScroll() })
 
 <style>
 div.bg-blur {
-    background-image: var(--page-background);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 10px;
+    z-index: -1;
+
+    background-attachment: fixed;
+    background-position-x: 20%;
+    background-size: cover;
+    /* filter: blur(5px); fuck you phones */
+    background-image: var(--page-background-blur);
 }
 div.content {
     text-align: center;

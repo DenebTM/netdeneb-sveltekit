@@ -128,8 +128,8 @@ nav .dd-icon {
         min-width: 200px;
         margin-top: 0;
         background-color: var(--background-color);
-        backdrop-filter: blur(3px);
         box-shadow: 0 0 3px 3px var(--shadow-color);
+        z-index: 100;
     }
     nav > ul > li {
         float: none;
