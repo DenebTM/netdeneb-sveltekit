@@ -2,6 +2,7 @@
 
 type ArtItem = {
 	fileName: string,
+	full: string,
 	description: string,
 	artistLink: string,
 }

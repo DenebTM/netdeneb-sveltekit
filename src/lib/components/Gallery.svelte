@@ -75,7 +75,7 @@ afterNavigate(switchFullImage)
     <meta name="description" content="My ref, and more!">
     {#if modalImg}
         <meta property="og:title" content={modalImg.description}>
-        <meta property="og:image" content={$page.url.origin + modalImg.fileName}>
+        <meta property="og:image" content={$page.url.origin + modalImg.full}>
     {/if}
 </svelte:head>
 
