@@ -3,7 +3,8 @@ import { fade } from 'svelte/transition'
 import Fa from 'svelte-fa'
 import { faClose, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons'
 import { disableScroll, enableScroll } from '$lib/js/tools'
-import { onMount } from 'svelte'
+import { page } from '$app/stores'
+import { afterNavigate } from '$app/navigation'
 
 export let imgList: ArtList
 export let gap = 10
@@ -16,36 +17,33 @@ let maxColWidth = 250
 let galleryWidth = 0
 let columns: Array<ArtList> = []
 
-let modalVisible = false
-let modalImg: ArtItem
-const clearHash = () => {
-    const oldURL = window.location.href
-    window.history.pushState('', '', '/art')
-    window.dispatchEvent(new HashChangeEvent('hashchange',
-        { oldURL, newURL: '/art' }))
+const parseURLImg = (search?: string) => {
+    let img = search?.substring(search?.indexOf('img=') + 4)
+    if (img?.includes('&')) img = img.slice(0, img.indexOf('&'))
+
+    if (img == 'ref') return titleImage
+
+    const idx = parseInt(img ?? '')
+    if (!isNaN(idx) && idx >= 1 && idx <= galleryImages.length)
+        return galleryImages[idx-1]
+
+    return undefined
 }
-const hashChange = () => {
+
+let modalImg = parseURLImg($page.url.search)
+const switchFullImage = () => {
     function showModal(img?: ArtItem) {
         if (img) modalImg = img
-        modalVisible = true
         disableScroll()
     }
     function hideModal() {
-        modalVisible = false
+        modalImg = undefined
         enableScroll()
     }
 
-    if (!window.location.hash) {
-        hideModal()
-    } else {
-        if (window.location.hash == '#ref') {
-            showModal(titleImage)
-        } else {
-            const idx = parseInt(window.location.hash.slice(1))
-            if (!isNaN(idx) && idx >= 1 && idx <= galleryImages.length)
-                showModal(galleryImages[idx-1])
-        }
-    }
+    const img = parseURLImg($page.url.search)
+    if (!img) hideModal()
+    else showModal(img)
 }
 
 const updateGallery = (colCount: number) => {
@@ -69,14 +67,21 @@ $: columnCount = Math.floor(galleryWidth / maxColWidth)
 $: updateGallery(columnCount)
 $: gridStyle = `grid-template-columns: repeat(${columnCount}, 1fr); gap: ${gap}px`
 
-onMount(hashChange)
+afterNavigate(switchFullImage)
 </script>
 
-<svelte:window bind:innerHeight={innerHeight} on:hashchange={hashChange} />
+<svelte:window bind:innerHeight={innerHeight} />
+<svelte:head>
+    <meta name="description" content="My ref, and more!">
+    {#if modalImg}
+        <meta property="og:title" content={modalImg?.description}>
+        <meta property="og:image" content={modalImg?.fileName}>
+    {/if}
+</svelte:head>
 
 <div class="gallery" bind:clientWidth={galleryWidth}>
     <div class="gallery-title gallery-img" style:width={columnCount > 2 ? '70%' : '100%'} class:gallery-hover={hover}>
-        <a href="#ref">
+        <a href="?img=ref">
             <img src={titleImage?.fileName} alt={titleImage?.description}>
             <span>{titleImage?.description}</span>
         </a>
@@ -85,7 +90,7 @@ onMount(hashChange)
         {#each columns as col}
             <div class="column">
                 {#each col as img, i}
-                    <a class="gallery-img" href={`#${galleryImages.indexOf(img) + 1}`}>
+                    <a class="gallery-img" href={`?img=${galleryImages.indexOf(img) + 1}`}>
                         <img class:gallery-hover={hover} style={`margin-bottom: ${(i < col.length) ? gap : 0}px`}
                             src={img.fileName} alt={img.description}>
                     </a>
@@ -94,21 +99,23 @@ onMount(hashChange)
         {/each}
     </div>
 
-    {#if modalVisible}
-        <button class="modal-close" on:click={clearHash} transition:fade={{duration: 100}}>
-            <Fa icon={faClose} scale=1.5 />
-        </button>
-        <div class="gallery-modal" on:click={clearHash} transition:fade={{duration: 100}} style={modalStyle}>
-            <div class="modal-row image">
-                <img src={modalImg?.fileName} alt={modalImg?.artistLink}>
+    {#if modalImg}
+        <a href="/art">
+            <button class="modal-close" transition:fade={{duration: 100}}>
+                <Fa icon={faClose} scale=1.5 />
+            </button>
+            <div class="gallery-modal" transition:fade={{duration: 100}} style={modalStyle}>
+                <div class="modal-row image">
+                    <img src={modalImg?.fileName} alt={modalImg?.artistLink}>
+                </div>
+                <div class="modal-row details">
+                    <span>{modalImg?.description}</span>
+                    <a class="btn" href={modalImg?.artistLink}>
+                        <Fa icon={faArrowUpRightFromSquare} scale=1.25 />
+                    </a>
+                </div>
             </div>
-            <div class="modal-row details">
-                <span>{modalImg?.description}</span>
-                <a class="btn" href={modalImg?.artistLink}>
-                    <Fa icon={faArrowUpRightFromSquare} scale=1.25 />
-                </a>
-            </div>
-        </div>
+        </a>
     {/if}
 </div>
 

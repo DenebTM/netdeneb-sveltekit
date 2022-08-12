@@ -1,9 +1,9 @@
 <script lang="ts">
 import { login } from '$lib/js/auth'
 import { page } from '$app/stores'
-import { setTitle } from '$lib/js/tools'
 import { browser } from '$app/env'
 import { goto } from '$app/navigation'
+import { sitename } from '$lib/js/globals'
 
 export let validToken : boolean
 
@@ -25,9 +25,11 @@ const submit = async () => {
         message = response.message
     }
 }
-
-setTitle('Login')
 </script>
+
+<svelte:head>
+    <title>{ `${sitename} - Login` }</title>
+</svelte:head>
 
 <h1>Login</h1>
 <form id="login" on:submit|preventDefault={submit}>

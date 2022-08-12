@@ -81,11 +81,15 @@ const goForward = () => window.history.forward()
 
 let dirsCollapsed = false
 const toggleDirs = () => dirsCollapsed = !dirsCollapsed
+
+$: fileListMeta = fileList.length > 0 ? 'Contents: ' + fileList.join(', ') : '(no files)'
+$: if (fileListMeta.length > 145)
+    fileListMeta = fileListMeta.slice(0, 137) + '...'
 </script>
 
 <svelte:head>
     <title>{ `${sitename} - Files: ${current || '/'}` }</title>
-    <meta name="description" content={fileList.toString()}>
+    <meta name="description" content={fileListMeta}>
 </svelte:head>
 
 <div class="file-nav">

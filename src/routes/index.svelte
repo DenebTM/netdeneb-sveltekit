@@ -1,8 +1,5 @@
 <script lang="ts">
 import Social from '$lib/components/Social.svelte'
-import { setTitle } from '$lib/js/tools'
-
-setTitle('Home')
 </script>
 
 <div class="grid">

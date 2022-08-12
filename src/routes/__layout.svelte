@@ -6,13 +6,17 @@ import { afterNavigate, beforeNavigate } from '$app/navigation'
 
 import Nav from '$lib/components/Nav.svelte'
 import { enableScroll } from '$lib/js/tools';
+import { onMount } from 'svelte';
 
 let show = false
 beforeNavigate(nav => {
-    if (!(nav.to?.pathname.startsWith('/files') || nav.to?.host != nav.from.host))
+    if (!(nav.to?.pathname.startsWith('/files')
+      || nav.to?.host != nav.from.host
+      || nav.to?.pathname == nav.from?.pathname))
         show = false
 })
 afterNavigate(() => {show = true; enableScroll() })
+onMount(() => show = true)
 </script>
 
 <svelte:head>
