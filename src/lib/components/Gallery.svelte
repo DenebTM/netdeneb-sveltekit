@@ -84,7 +84,7 @@ afterNavigate(switchFullImage)
 
 <div class="gallery" bind:clientWidth={galleryWidth}>
     <div class="gallery-title gallery-img" style:width={columnCount > 2 ? '70%' : '100%'} class:gallery-hover={hover}>
-        <a href="?img=ref">
+        <a href="?img=ref" sveltekit:noscroll>
             <img src={titleImage?.fileName} alt={titleImage?.description}>
             <span>{titleImage?.description}</span>
         </a>
@@ -93,7 +93,7 @@ afterNavigate(switchFullImage)
         {#each columns as col}
             <div class="column">
                 {#each col as img, i}
-                    <a class="gallery-img" href={`?img=${galleryImages.indexOf(img) + 1}`}>
+                    <a class="gallery-img" href={`?img=${galleryImages.indexOf(img) + 1}`} sveltekit:noscroll>
                         <img class:gallery-hover={hover} style={`margin-bottom: ${(i < col.length) ? gap : 0}px`}
                             src={img.fileName} alt={img.description}>
                     </a>
@@ -103,7 +103,7 @@ afterNavigate(switchFullImage)
     </div>
 
     {#if modalImg}
-        <a href="/art">
+        <a href="/art" sveltekit:noscroll>
             <button class="modal-close" transition:fade={{duration: 100}}>
                 <Fa icon={faClose} scale=1.5 />
             </button>
