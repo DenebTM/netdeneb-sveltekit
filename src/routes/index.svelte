@@ -1,6 +1,11 @@
 <script lang="ts">
 import Social from '$lib/components/Social.svelte'
+import { sitename } from '$lib/js/globals'
 </script>
+
+<svelte:head>
+    <title>{sitename}</title>
+</svelte:head>
 
 <div class="grid">
     <section>

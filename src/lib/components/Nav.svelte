@@ -31,7 +31,7 @@ $: isMobile = innerWidth <= 680
         <ul transition:fly={{ y: -10, duration: 150 }}>
             {#each Object.entries(navItems) as [name, href], i}
                 {#if typeof(href) === 'string'}
-                    <li class="click-move-down" in:fly={{ y: -10, duration: 150, delay: i*75}} out:fade>
+                    <li class="click-depress" in:fly={{ y: -10, duration: 150, delay: i*75}} out:fade>
                         <a {href} on:click={closeNav}>{name}</a>
                     </li>
                 {:else}
@@ -66,13 +66,8 @@ nav > ul > li {
     float: left;
     border-radius: var(--border-radius);
 }
-
-nav a {
-    color: black;
-    text-decoration: none;
-    
-    padding: 10px 20px;
-    display: block;
+nav > ul > li:not(:last-child) {
+    margin-right: 5px;
 }
 
 nav li {
@@ -86,6 +81,18 @@ nav li:hover {
 
 nav li:active {
     background-color: var(--background-active);
+}
+
+nav > ul > li > a {
+    border-radius: var(--border-radius);
+}
+
+nav a {
+    color: black;
+    text-decoration: none;
+    
+    padding: 10px 20px;
+    display: block;
 }
 
 nav .dd-icon {

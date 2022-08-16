@@ -35,7 +35,7 @@
     --background-color: var(--background-color-dark);
     --text-color: var(--text-color-dark);
     --text-color-inverted: var(--text-color-dark-inverted);
-    --shadow-color: var(--shadow-color-dark)/
+    --shadow-color: var(--shadow-color-dark);
 }
 
 /* Light colour scheme (set by browser) */

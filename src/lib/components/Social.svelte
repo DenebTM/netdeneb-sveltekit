@@ -15,7 +15,7 @@ const links = [
 <p style="margin: 20px 0 10px 0">Feel free to bark at me on:</p>
 <div style="text-align: left; width: fit-content; margin: 0 auto">
     {#each links as {icon, href, text}}
-        <a class="click-move-down" {href}><p><Fa color="var(--text-color)" fw {icon} size="lg" /><span>{text}</span></p></a>
+        <a class="click-depress" {href}><p><Fa color="var(--text-color)" fw {icon} size="lg" /><span>{text}</span></p></a>
     {/each}
 </div>
 
@@ -28,13 +28,13 @@ a {
 }
 a, a p, a p * {
     transition: 0.1s ease-in-out;
+    border-radius: var(--border-radius);
 }
 a p {
     margin: 0;
     line-height: 2;
     vertical-align: middle;
     padding: 5px;
-    border-radius: 5px;
 }
 a[href]:hover p {
     --text-color: white;

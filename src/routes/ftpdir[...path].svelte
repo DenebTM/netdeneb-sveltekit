@@ -94,12 +94,14 @@ $: if (fileListMeta.length > 145)
 
 <div class="file-nav">
     <h1>Path: {current || '/'}</h1>
-    <button class="box click-move-down"
+    <button class="box click-depress"
         on:click={goBack}>Back</button>
-    <button class="box click-move-down"
+    <button class="box click-depress"
         on:click={goForward}>Forward</button>
-    <button class="box click-move-down"
-        on:click={goUp}>Up</button>
+    {#if current.length}
+        <button class="box click-depress"
+            on:click={goUp}>Up</button>
+    {/if}
 </div>
 
 {#if dirList.length > 0}
@@ -107,15 +109,13 @@ $: if (fileListMeta.length > 145)
     {#if !dirsCollapsed}
         <section class="file-list dirs" transition:slide|local={{ duration: 150 }}>
             {#each dirList as dir}
-            <div class="margin-box">
-                <div class="file box click-move-down">
-                    <a href={`/ftpdir${current}/${dir}`}>
+                <div class="margin-box">
+                    <a class="file box click-depress" href={`/ftpdir${current}/${dir}`}>
                         <div>
                             <img src={folderIcon} alt="folder icon">
                             <p>{dir}</p>
                         </div>
                     </a>
-                    </div>
                 </div>
             {/each}
         </section>
@@ -126,14 +126,12 @@ $: if (fileListMeta.length > 145)
     <section class="file-list files">
         {#each fileList as file}
             <div class="margin-box">
-                <div class="file box click-move-down">
-                    <a href={`/files${current}/${file}`}>
-                        <div>
-                            <img src={imageSources[file]} class={isImage(file) && thumbsLoaded[file] == true ? 'thumb' : ''} alt="file icon">
-                            <p>{file}</p>
-                        </div>
-                    </a>
-                </div>
+                <a class="file box click-depress" href={`/files${current}/${file}`}>
+                    <div>
+                        <img src={imageSources[file]} class={isImage(file) && thumbsLoaded[file] == true ? 'thumb' : ''} alt="file icon">
+                        <p>{file}</p>
+                    </div>
+                </a>
             </div>
         {/each}
     </section>
@@ -170,6 +168,7 @@ button.box {
 
 .file.box {
     word-wrap: break-word;
+    display: block;
 }
 .file.box div {
     padding: 10px;

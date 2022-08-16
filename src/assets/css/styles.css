@@ -1,3 +1,7 @@
+:root {
+    --border-radius: 5px;
+}
+
 html, body {
     height: 100%;
 }
@@ -10,6 +14,7 @@ body {
 
 a {
     text-decoration: none;
+    transition: 0.125s ease-in-out;
 }
 
 :root * {
@@ -28,7 +33,7 @@ h1, h2, h3, h4, h5, h6 {
 
 button, .btn {
     background: transparent;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     padding: 10px 20px;
     cursor: pointer;
     transition: 0.15s;
@@ -48,17 +53,17 @@ button, .btn {
     transition: inherit;
 }
 
-.click-move-down {
+.click-depress {
     transition: 0.125s ease-in-out;
 }
 
-.click-move-down:active {
+.click-depress:active {
     transform: translateY(2px);
 }
 
 .box, button, .btn {
     border: 1px solid var(--text-color);
-    border-radius: 5px;
+    border-radius: var(--border-radius);
     box-shadow: 0 0 3px 3px var(--shadow-color);
 }
 .box:hover, button:hover, .btn:hover {
@@ -69,4 +74,9 @@ button, .btn {
 }
 .box a {
     text-decoration: none;
+}
+
+:focus-visible {
+    outline: none;
+    background-color: var(--background-hover);
 }

@@ -16,9 +16,10 @@ const closeDropdown = () => open = false
 const dispatch = createEventDispatcher()
 </script>
 
-<li {open} class="click-move-down dropdown" use:clickOutside={() => open = false}
+<li {open} class="click-depress dropdown" use:clickOutside={() => open = false}
   in:fly={{ y: -10, duration: 150, delay }} out:fade>
-    <a href={undefined} on:click={toggleDropdown}>
+    <a role="button" tabindex="0" href={undefined}
+      on:click={toggleDropdown} on:keypress={e => e.key == 'Enter' && toggleDropdown()}>
         {name}
         <Fa class="dd-icon" icon={faCaretDown} scale=0.66 />
     </a>
@@ -26,7 +27,7 @@ const dispatch = createEventDispatcher()
         <div transition:fly={{ y: -10, duration: 150 }}>
             <ul>
                 {#each Object.entries(entries) as [name, href], i}
-                    <li class="click-move-down" in:fly={{ y: -10, duration: 150, delay: i*75 }} out:fade
+                    <li class="click-depress" in:fly={{ y: -10, duration: 150, delay: i*75 }} out:fade
                         on:click={e => {closeDropdown(); dispatch('navigate', e)}}>
                         <a {href}>{name}</a>
                     </li>
@@ -70,11 +71,11 @@ const dispatch = createEventDispatcher()
 .dropdown ul li {
     display: block;
 }
-.dropdown ul li:first-child {
+.dropdown ul li:first-child, .dropdown ul li:first-child a {
     border-top-left-radius: var(--border-radius);
     border-top-right-radius: var(--border-radius);
 }
-.dropdown ul li:last-child {
+.dropdown ul li:last-child, .dropdown ul li:last-child a {
     border-bottom-left-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
 }

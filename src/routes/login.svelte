@@ -41,7 +41,7 @@ const submit = async () => {
         <span>Password</span>
         <input name="password" bind:value={password} type="password" required>
     </p>
-    <button class="click-move-down" type="submit">Login</button>
+    <button class="click-depress" type="submit">Login</button>
 </form>
 <p style="color: red">{ message }</p>
 

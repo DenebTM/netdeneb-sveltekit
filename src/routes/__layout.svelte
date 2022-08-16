@@ -23,7 +23,7 @@ onMount(() => show = true)
     <title>{sitename}</title>
 </svelte:head>
 
-<a href="/" class="title">{sitename}</a>
+<a href="/" class="title" tabindex="-1">{sitename}</a>
 <div class="content">
     <div class="bg-blur" />
     <Nav />
