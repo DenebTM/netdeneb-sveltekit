@@ -15,6 +15,6 @@ export const load: PageServerLoad = async () => {
     }
 
     return {
-        imgList: fileList.map(i => Object.assign(i, { fileName: `http://localhost:3001/${i.fileName}`, full: `/art/${i.full}` }))
+        imgList: fileList.map(i => Object.assign(i, { fileName: `/art/${i.fileName}`, full: `/art/${i.full}` }))
     }
 }
