@@ -5,8 +5,8 @@ import { sitename } from '$lib/js/globals'
 import { afterNavigate, beforeNavigate } from '$app/navigation'
 
 import Nav from '$lib/components/Nav.svelte'
-import { enableScroll } from '$lib/js/tools';
-import { onMount } from 'svelte';
+import { enableScroll } from '$lib/js/tools'
+import { onMount } from 'svelte'
 
 let show = false
 beforeNavigate(nav => {

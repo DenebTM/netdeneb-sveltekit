@@ -4,11 +4,11 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import NavDropdown from '$lib/components/NavDropdown.svelte'
 import { fly, fade } from 'svelte/transition'
 import { clickOutside } from '$lib/js/clickOutside'
+import { page } from '$app/stores'
 
 import { navItems } from '$lib/config'
-import { isLoggedIn } from '$lib/js/auth'
 
-if (isLoggedIn())
+if ($page.data.hasValidToken)
     navItems['Other']['Logout'] = '/logout'
 else
     delete navItems['Other']['Logout']

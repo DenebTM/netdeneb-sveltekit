@@ -10,6 +10,13 @@ type ArtItem = {
 }
 type ArtList = Array<ArtItem>
 
+type FileDirList = {
+    dirList: Array<string>,
+    fileList: Array<string>,
+    availableThumbs: Record<string, string>,
+    error: string | undefined
+}
+
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
 // and what to do when importing types
@@ -17,11 +24,6 @@ declare namespace App {
 	interface Locals {
 		token: string
 	}
-	// interface Platform {}
-	interface Session {
-		token?: string
-	}
-	// interface Stuff {}
 }
 
 declare namespace svelte.JSX {

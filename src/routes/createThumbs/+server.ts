@@ -1,3 +1,4 @@
+import { json as json$1 } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit'
 import { join as pathJoin, parse as parsePath } from 'path'
 import { filesBase } from '$lib/config'
@@ -33,8 +34,5 @@ export const POST: RequestHandler = async ({ request }) => {
         console.error(err)
     }
 
-    return {
-        status: 200,
-        body: thumbFileNames
-    }
+    return json$1(thumbFileNames);
 }

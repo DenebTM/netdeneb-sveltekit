@@ -1,16 +1,11 @@
-import type { RequestHandler } from '@sveltejs/kit'
+import type { PageServerLoad } from './$types'
+import { error, redirect } from '@sveltejs/kit'
 import { filesBase, excludeFiles } from '$lib/config'
 import { join as pathJoin } from 'path'
 import { promises as fs, constants as fsConstants } from 'fs'
 import crypto from 'crypto'
 import { validateSession } from '$lib/js/session'
 
-type FileDirList = {
-    dirList: Array<string>,
-    fileList: Array<string>,
-    availableThumbs: Record<string, string>,
-    error: string | undefined
-}
 async function readDir(path: string): Promise<FileDirList> {
     let error = undefined
     try {
@@ -52,30 +47,13 @@ async function getAvailableThumbs(fileList: string[], basePath: string) {
     return availableThumbs
 }
 
-export const GET: RequestHandler = async ({ locals: { token }, params: { path } }) => {
-    if (path.startsWith('/Users') && !(await validateSession(token))) {
-        return {
-            status: 307,
-            headers: {
-                Location: `/login?redirect=${encodeURIComponent('/ftpdir' + path)}`
-            }
-        }
-    }
+export const load: PageServerLoad = async ({ locals: { token }, params: { path } }) => {
+    if (path.startsWith('/Users') && !(await validateSession(token)))
+        throw redirect(307, `/login?redirect=${encodeURIComponent('/ftpdir' + path)}`)
 
-    const { dirList, fileList, availableThumbs, error } = await readDir(path)
+    const { dirList, fileList, availableThumbs, error: err } = await readDir(path)
 
-    if (error) {
-        return {
-            status: 500,
-            body: {
-                status: 500,
-                error
-            }
-        }
-    }
+    if (err) throw error(500, err)
 
-    return {
-        status: 200,
-        body: { dirList, fileList, availableThumbs }
-    }
+    return { dirList, fileList, availableThumbs }
 }

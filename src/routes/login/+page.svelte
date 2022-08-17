@@ -1,28 +1,27 @@
 <script lang="ts">
+import type { Errors } from './$types'
 import { login } from '$lib/js/auth'
 import { page } from '$app/stores'
 import { browser } from '$app/env'
 import { goto } from '$app/navigation'
 import { sitename } from '$lib/js/globals'
 
-export let validToken : boolean
-
-const redirect = decodeURIComponent($page.url.searchParams.get('redirect') || '/')
-if (validToken && browser)
-    goto(redirect)
+$: if ($page.data.hasValidToken && browser) goto(redirect)
 
 let username = ''
 let password = ''
-let message  = ''
+
+let errors: { message?: string }
+
+const redirect = decodeURIComponent($page.url.searchParams.get('redirect') || '/')
 
 const submit = async () => {
     const loginStatus = await login(username, password)
 
-    if (loginStatus.ok)
-        window.location.href = redirect
+    // TODO: is this even necessary anymore?
+    if (loginStatus.ok) window.location.href = redirect
     else {
-        const response = await loginStatus.json()
-        message = response.message
+        ({ errors } = await loginStatus.json())
     }
 }
 </script>
@@ -33,20 +32,26 @@ const submit = async () => {
 
 <h1>Login</h1>
 <form id="login" on:submit|preventDefault={submit}>
-    <p>
-        <span>Username</span>
-        <input name="username" bind:value={username} type="text" required>
-    </p>
-    <p>
-        <span>Password</span>
-        <input name="password" bind:value={password} type="password" required>
-    </p>
+    <span>Username</span>
+    <input name="username" bind:value={username} type="text" required>
+    <span>Password</span>
+    <input name="password" bind:value={password} type="password" required>
     <button class="click-depress" type="submit">Login</button>
 </form>
-<p style="color: red">{ message }</p>
+<p style="color: red">{ errors?.message ?? '' }</p>
 
 <style>
+form {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    gap: 10px;
+    margin: 0 auto;
+    max-width: 200px;
+}
 form input {
     color: var(--color);
+}
+form button {
+    grid-column: span 2;
 }
 </style>

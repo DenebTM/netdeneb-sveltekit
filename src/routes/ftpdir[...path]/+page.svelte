@@ -1,4 +1,5 @@
 <script lang="ts">
+import type { PageData } from './$types'
 import { goto } from '$app/navigation'
 import { page } from '$app/stores'
 import { slide } from 'svelte/transition'
@@ -17,9 +18,8 @@ const getIcon = (filename: string) => {
     return extIcons[ext] || extIcons.default
 }
 
-export let dirList: Array<string>
-export let fileList: Array<string>
-export let availableThumbs: Record<string, string>
+export let data: PageData
+$: ({ dirList, fileList, availableThumbs } = data)
 
 const thumbsLoaded: Record<string, boolean> = {}
 const updateImageSources = (fl: Array<string>) => {

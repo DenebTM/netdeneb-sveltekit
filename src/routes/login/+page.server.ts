@@ -1,49 +1,42 @@
-import type { RequestHandler } from '@sveltejs/kit'
+import type { PageServerLoad, Action } from './$types'
 import users from '$lib/users.json'
-import { createSession, validateSession } from '$lib/js/session';
+import { createSession, validateSession } from '$lib/js/session'
 
-export const GET: RequestHandler = async ({ locals: { token } }) => {
-    return {
-        body: {
-            validToken: await validateSession(token)
-        }
-    }
-}
+// TODO: redirect here maybe?
+export const load: PageServerLoad = async ({ locals: { token } }) => ({ validToken: await validateSession(token) })
 
-export const POST: RequestHandler = async ({ request }) => {
+export const POST: Action = async ({ request, setHeaders, url }) => {
     let creds: {
         username: keyof typeof users | '' | undefined,
-        password: string | undefined
-    } = { username: undefined, password: undefined }
+        password: string | undefined,
+        redirect: string | undefined
+    } = { username: undefined, password: undefined, redirect: '/' }
     try {
-        creds = await request.json()
+        Object.assign(creds, await request.json())
     } catch {
         /* invalid json idc */
     }
 
-    const response: Record<string, any> = {
+    const errorResponse = {
         status: 401,
-        body: {
-            status: 'Error',
+        errors: {
             message: 'Username or password incorrect'
-        },
-        headers: {}
+        }
     }
 
-    // no login specified
-    if (!(creds?.username && creds?.password)) {
-        return response
-    }
+    // username or password missing from request
+    if (!(creds.username && creds.password))
+        return errorResponse
 
     // invalid login
-    if (users[creds.username] !== creds.password) {
-        return response
-    }
+    if (users[creds.username] !== creds.password)
+        return errorResponse
 
     // valid login
-    response.status = 202
-    response.body.status = 'OK'
-    response.body.message = 'Login successful'
-    response.headers['Set-Cookie'] = (await createSession()).toCookie()
-    return response
+    setHeaders({ 'Set-Cookie': (await createSession()).toCookie() })
+    
+    // TODO: actually use this, maybe
+    return {
+        location: url.searchParams.get('redirect') ?? '/'
+    }
 }
