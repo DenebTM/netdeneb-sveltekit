@@ -1,5 +1,4 @@
 <script lang="ts">
-import type { Errors } from './$types'
 import { login } from '$lib/js/auth'
 import { page } from '$app/stores'
 import { browser } from '$app/env'

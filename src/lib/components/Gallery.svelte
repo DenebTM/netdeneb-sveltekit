@@ -10,7 +10,7 @@ export let imgList: ArtList
 export let gap = 10
 export let hover = true
 
-const titleImage = imgList.at(0)
+const titleImage = imgList[0]
 const galleryImages = imgList.slice(1)
 
 let maxColWidth = 250

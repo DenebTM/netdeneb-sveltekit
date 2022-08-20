@@ -12,7 +12,8 @@ const navItems: Record<string, any> = {
 }
 export {navItems}
 
-export const artBase = '/art'
+export const artPrivateBase = '/art'
+export const artPublicBase = '/art'
 
 export const filesBase = '/files'
 export const excludeFiles = ['Thumbs.db']

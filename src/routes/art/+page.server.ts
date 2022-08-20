@@ -1,11 +1,12 @@
+import { artPublicBase } from './../../lib/config'
 import type { PageServerLoad } from './$types'
 import { error } from '@sveltejs/kit'
 import { promises as fs } from 'fs'
 import { join as pathJoin } from 'path'
-import { artBase } from '$lib/config'
+import { artPrivateBase } from '$lib/config'
 
 export const load: PageServerLoad = async () => {
-    const fileListPath = pathJoin(artBase, 'files.json')
+    const fileListPath = pathJoin(artPrivateBase, 'files.json')
 
     let fileList
     try {
@@ -15,6 +16,6 @@ export const load: PageServerLoad = async () => {
     }
 
     return {
-        imgList: fileList.map(i => Object.assign(i, { fileName: `/art/${i.fileName}`, full: `/art/${i.full}` }))
+        imgList: fileList.map(i => Object.assign(i, { fileName: `${artPublicBase}/${i.fileName}`, full: `/art/${i.full}` }))
     }
 }
