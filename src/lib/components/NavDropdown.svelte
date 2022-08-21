@@ -1,7 +1,6 @@
 <script lang="ts">
 import Fa from 'svelte-fa'
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
-import { fly, fade } from 'svelte/transition'
 import { clickOutside } from '$lib/js/clickOutside'
 import { createEventDispatcher } from 'svelte'
 
@@ -9,54 +8,69 @@ export let name: string
 export let entries: Record<string, any> = {}
 export let delay = 0
 
-let open = false
-const toggleDropdown = () => open = !open
+let open = false // only for visuals at this point
 const closeDropdown = () => open = false
 
 const dispatch = createEventDispatcher()
 </script>
 
-<li {open} class="click-depress dropdown" use:clickOutside={() => open = false}
-  in:fly={{ y: -10, duration: 150, delay }} out:fade>
-    <a role="button" tabindex="0" href={undefined}
-      on:click={toggleDropdown} on:keypress={e => e.key == 'Enter' && toggleDropdown()}>
-        {name}
-        <Fa class="dd-icon" icon={faCaretDown} scale=0.66 />
-    </a>
-    {#if open}
-        <div transition:fly={{ y: -10, duration: 150 }}>
-            <ul>
-                {#each Object.entries(entries) as [name, href], i}
-                    <li class="click-depress" in:fly={{ y: -10, duration: 150, delay: i*75 }} out:fade
-                        on:click={e => {closeDropdown(); dispatch('navigate', e)}}>
-                        <a {href}>{name}</a>
-                    </li>
-                {/each}
-            </ul>
-        </div>
-    {/if}
-</li>
+<input type="checkbox" id="dropdown-isopen" style="display: none" bind:checked={open}>
+<li class="click-depress dropdown" use:clickOutside={closeDropdown} {open}
+    style={`animation-delay: ${delay}ms`}>
+    <label for="dropdown-isopen" role="button" tabindex="0" on:keypress={e => (e.key == 'Enter') && (open = !open)}>
+        {name} <Fa class="dd-icon" icon={faCaretDown} scale=0.66 />
+    </label>
 
+    <div>
+        <ul>
+            {#each Object.entries(entries) as [name, href], i}
+                <li class="click-depress" on:click={e => {closeDropdown(); dispatch('navigate', e)}}
+                  style={`animation-delay: ${(i+1) * 0.075}s`}>
+                    <a {href}>{name}</a>
+                </li>
+            {/each}
+        </ul>
+    </div>
+</li>
+    
 <style>
 .dropdown {
     position: relative;
-    z-index: 100;
+    transition: 0.2s;
 }
 .dropdown[open=true] {
     background-color: var(--background-active);
 }
 
 .dropdown[open=true]:active {
-    transform: none;
+    transform: none !important;
+}
+
+/* holy shit I hate CSS so much */
+#dropdown-isopen:checked ~ .dropdown {
+    z-index: 1;
+}
+#dropdown-isopen:not(:checked) ~ .dropdown > div {
+    display: none;
+}
+
+@keyframes dropdown-flyin {
+    from { transform: translateX(-50%) translateY(-20px) }
+    to { transform: translateX(-50%) }
+}
+@keyframes dropdown-flyin-mobile {
+    from { transform: translateY(-20px) }
+    to { transform: none }
 }
 
 .dropdown > div {
     position: absolute;
     top: 100%;
     left: 50%;
-    transform: translateX(-50%);
     padding-top: 10px;
-    z-index: 1;
+    z-index: 1; 
+
+    animation: dropdown-flyin 0.2s, fadein 0.2s both;
 }
 
 .dropdown ul {
@@ -68,34 +82,41 @@ const dispatch = createEventDispatcher()
     border-radius: var(--border-radius);
     margin: 0 auto;
 }
-.dropdown ul li {
+.dropdown li {
     display: block;
+    animation: nav-flyin 0.2s, fadein 0.2s both;
 }
-.dropdown ul li:first-child, .dropdown ul li:first-child a {
+.dropdown li:first-child, .dropdown li:first-child a {
     border-top-left-radius: var(--border-radius);
     border-top-right-radius: var(--border-radius);
 }
-.dropdown ul li:last-child, .dropdown ul li:last-child a {
+.dropdown li:last-child, .dropdown li:last-child a {
     border-bottom-left-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
 }
-.dropdown ul li:not(:last-child) {
+.dropdown li:not(:last-child) {
     border-bottom: 1px solid var(--primary);
 }
-.dropdown ul li a {
+.dropdown li a {
     display: block;
 }
 
-@media only screen and (max-width: 680px) {
+@media only screen and not (max-width: 690px) {
+    .dropdown > div {
+        transform: translateX(-50%);
+    }
+}
+@media only screen and (max-width: 690px) {
     .dropdown > div {
         position: absolute;
         left: 0;
         right: 0;
-        transform: none;
         padding-top: 10px;
+
+        animation: dropdown-flyin-mobile 0.2s, fadein 0.2s forwards;
     }
 }
-@media only screen and not (max-width: 680px) {
+@media only screen and not (max-width: 690px) {
     .dropdown ul {
         backdrop-filter: blur(3px);
     }

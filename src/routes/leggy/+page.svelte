@@ -14,6 +14,7 @@ import { sitename } from '$lib/js/globals'
 
 <style>
 img {
+    width: 100%;
     max-width: 800px;
 }
 </style>

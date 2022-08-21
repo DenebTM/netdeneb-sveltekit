@@ -28,7 +28,7 @@ declare namespace App {
 
 declare namespace svelte.JSX {
 	interface HTMLAttributes<T> {
-        show?: BoolString
+        animate?: BoolString
     }
 	interface Headers {
 		cookie: Record<string, string>

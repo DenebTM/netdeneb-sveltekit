@@ -8,15 +8,15 @@ import Nav from '$lib/components/Nav.svelte'
 import { enableScroll } from '$lib/js/tools'
 import { onMount } from 'svelte'
 
-let show = false
+let animate: boolean | undefined = true
 beforeNavigate(nav => {
     if (!(nav.to?.pathname.startsWith('/files')
       || nav.to?.host != nav.from.host
       || nav.to?.pathname == nav.from?.pathname))
-        show = false
+        animate = undefined
 })
-afterNavigate(() => {show = true; enableScroll() })
-onMount(() => show = true)
+afterNavigate(() => {animate = true; enableScroll() })
+onMount(() => animate = true)
 </script>
 
 <svelte:head>
@@ -27,12 +27,12 @@ onMount(() => show = true)
 <div class="content">
     <div class="bg-blur" />
     <Nav />
-    <main {show}>
+    <main {animate}>
         <slot />
     </main>
 </div>
 
-<style>
+<style global>
 div.bg-blur {
     position: absolute;
     top: 0;
@@ -81,17 +81,21 @@ div.content {
     text-decoration: underline;
 }
 
-main[show=false] {
-    transform: translateY(20px);
+@keyframes flyin {
+    from { transform: translateY(20px) }
+    to { transform: none }
+}
+@keyframes fadein {
+    from { opacity: 0 }
+    to { opacity: 1 }
+}
+main[animate] {
+    animation: flyin 0.3s, fadein 0.3s forwards;
     opacity: 0;
+    transform: none;
 }
 
-main[show=true] {
-    transition: 0.2s;
-    opacity: 1;
-}
-
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 690px) {
     .title {
         margin-top: 0.5em;
     }

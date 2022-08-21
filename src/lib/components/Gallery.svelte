@@ -5,6 +5,7 @@ import { faClose, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-i
 import { disableScroll, enableScroll } from '$lib/js/tools'
 import { page } from '$app/stores'
 import { afterNavigate } from '$app/navigation'
+import { browser } from '$app/env'
 
 export let imgList: ArtList
 export let gap = 10
@@ -14,7 +15,7 @@ const titleImage = imgList[0]
 const galleryImages = imgList.slice(1)
 
 let maxColWidth = 250
-let galleryWidth = 0
+let galleryWidth = 750
 let columns: Array<ArtList> = []
 
 const parseURLImg = (search?: string) => {
@@ -109,7 +110,7 @@ afterNavigate(switchFullImage)
         <div class="gallery-modal" transition:fade={{duration: 100}} style={modalStyle}>
             <div class="modal-row image">
                 <a href="/art" sveltekit:noscroll tabindex="-1">
-                    <img src={modalImg?.fileName} alt={modalImg?.artistLink}>
+                    <img src={modalImg?.fileName} alt={modalImg?.artistLink} style:height={ browser ? '100%' : ''}>
                 </a>
             </div>
             <div class="modal-row details">
@@ -167,6 +168,8 @@ a.gallery-img {
     display: grid;
     /* grid-template-rows set by JavaScript */
     cursor: initial;
+
+    
 }
 .modal-close {
     position: fixed;
@@ -177,7 +180,7 @@ a.gallery-img {
 .modal-row img {
     object-fit: contain;
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 80px);
     cursor: zoom-out;
 }
 .modal-row span {

@@ -12,7 +12,11 @@ export const POST: Action = async ({ request, setHeaders, url }) => {
         redirect: string | undefined
     } = { username: undefined, password: undefined, redirect: '/' }
     try {
-        Object.assign(creds, await request.json())
+        const formdata = await request.formData()
+        Object.assign(creds, {
+            username: formdata.get('username'),
+            password: formdata.get('password')
+        })
     } catch {
         /* invalid json idc */
     }

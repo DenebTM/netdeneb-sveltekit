@@ -75,7 +75,6 @@ afterUpdate(() => {
 
 const isImage = (f: string) => /\.(jpe?g|png|gif|webp|bmp)$/.test(f.toLowerCase())
 
-const goUp = () => goto('/ftpdir' + current.replace(/\/[^\/]*$/, ''))
 const goBack = () => window.history.back()
 const goForward = () => window.history.forward()
 
@@ -85,6 +84,7 @@ const toggleDirs = () => dirsCollapsed = !dirsCollapsed
 $: fileListMeta = fileList.length > 0 ? 'Contents: ' + fileList.join(', ') : '(no files)'
 $: if (fileListMeta.length > 145)
     fileListMeta = fileListMeta.slice(0, 137) + '...'
+$: upPath = '/ftpdir' + current.replace(/\/[^\/]*$/, '')
 </script>
 
 <svelte:head>
@@ -94,13 +94,15 @@ $: if (fileListMeta.length > 145)
 
 <div class="file-nav">
     <h1>Path: {current || '/'}</h1>
-    <button class="box click-depress"
-        on:click={goBack}>Back</button>
-    <button class="box click-depress"
-        on:click={goForward}>Forward</button>
+    {#if browser}
+        <button class="btn box click-depress"
+            on:click={goBack}>Back</button>
+        <button class="btn box click-depress"
+            on:click={goForward}>Forward</button>
+    {/if}
     {#if current.length}
-        <button class="box click-depress"
-            on:click={goUp}>Up</button>
+        <a role="button" class="btn box click-depress"
+            href={upPath}>Up</a>
     {/if}
 </div>
 
@@ -154,8 +156,11 @@ $: if (fileListMeta.length > 145)
     transition: width 0.25s ease, height 0.25s ease;
 }
 
-button.box {
+button.box, .btn.box {
     margin: 0 10px 10px 0;
+    display: inline-block;
+    font-size: 0.85em;
+    line-height: 1.25;
 }
 
 .dd-icon {
@@ -188,7 +193,7 @@ button.box {
     }
 }
 
-@media screen and (min-width: 801px) {
+@media screen and not (max-width: 800px) {
     .margin-box { width: 12.5%; }
 }
 @media screen and (max-width: 800px) {

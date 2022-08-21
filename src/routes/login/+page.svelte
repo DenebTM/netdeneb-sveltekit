@@ -10,7 +10,7 @@ $: if ($page.data.hasValidToken && browser) goto(redirect)
 let username = ''
 let password = ''
 
-let errors: { message?: string }
+export let errors: { message?: string }
 
 const redirect = decodeURIComponent($page.url.searchParams.get('redirect') || '/')
 
@@ -19,9 +19,7 @@ const submit = async () => {
 
     // TODO: is this even necessary anymore?
     if (loginStatus.ok) window.location.href = redirect
-    else {
-        ({ errors } = await loginStatus.json())
-    }
+    else ({ errors } = await loginStatus.json())
 }
 </script>
 
@@ -30,11 +28,13 @@ const submit = async () => {
 </svelte:head>
 
 <h1>Login</h1>
-<form id="login" on:submit|preventDefault={submit}>
-    <span>Username</span>
-    <input name="username" bind:value={username} type="text" required>
-    <span>Password</span>
-    <input name="password" bind:value={password} type="password" required>
+<form id="login" on:submit|preventDefault={submit} method="POST">
+    <label for="username">Username</label>
+    <input id="username" name="username" type="text"
+        bind:value={username} required>
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password"
+        bind:value={password} required>
     <button class="click-depress" type="submit">Login</button>
 </form>
 <p style="color: red">{ errors?.message ?? '' }</p>
@@ -45,10 +45,11 @@ form {
     grid-template-columns: min-content 1fr;
     gap: 10px;
     margin: 0 auto;
-    max-width: 200px;
+    max-width: 250px;
 }
 form input {
     color: var(--color);
+    min-width: 0;
 }
 form button {
     grid-column: span 2;

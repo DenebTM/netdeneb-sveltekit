@@ -2,7 +2,6 @@
 import Fa from 'svelte-fa'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import NavDropdown from '$lib/components/NavDropdown.svelte'
-import { fly, fade } from 'svelte/transition'
 import { clickOutside } from '$lib/js/clickOutside'
 import { page } from '$app/stores'
 
@@ -13,34 +12,30 @@ if ($page.data.hasValidToken)
 else
     delete navItems['Other']['Logout']
 
-const toggleNav = () => open = !open
+let open = false // only for visuals at this point
 const closeNav = () => open = false
 
-let open = false
-$: innerWidth = 0
-$: isMobile = innerWidth <= 680
+$: innerWidth = 720
 </script>
 
 <svelte:window bind:innerWidth />
 
-<nav use:clickOutside={() => open = false} {open}>
-    <i class="open-nav" on:click={toggleNav}>
+<nav use:clickOutside={closeNav} {open}>
+    <label for="nav-isopen" class="open-nav">
         <Fa class="dd-icon" icon={faChevronDown} size="lg" />
-    </i>
-    {#if !isMobile || open}
-        <ul transition:fly={{ y: -10, duration: 150 }}>
-            {#each Object.entries(navItems) as [name, href], i}
-                {#if typeof(href) === 'string'}
-                    <li class="click-depress" in:fly={{ y: -10, duration: 150, delay: i*75}} out:fade>
-                        <a {href} on:click={closeNav}>{name}</a>
-                    </li>
-                {:else}
-                    <NavDropdown {name} entries={href} delay={i*75}
-                        on:navigate={closeNav}/>
-                {/if}
-            {/each}
-        </ul>
-    {/if}
+    </label>
+    <input type="checkbox" id="nav-isopen" style="display: none" bind:checked={open}>
+    <ul>
+        {#each Object.entries(navItems) as [name, href], i}
+            {#if typeof(href) === 'string'}
+                <li class="click-depress" style={`animation-delay: ${(i+1) * 75}ms`}>
+                    <a {href} on:click={closeNav}>{name}</a>
+                </li>
+            {:else}
+                <NavDropdown {name} entries={href} delay={(i+1)*75} on:navigate={closeNav} />
+            {/if}
+        {/each}
+    </ul>
 </nav>
 
 <style global>
@@ -62,12 +57,16 @@ nav ul {
     z-index: 1;
 }
 
+@keyframes nav-flyin {
+    from { transform: translateY(-10px) }
+    to { transform: none }
+}
+
 nav > ul > li {
     float: left;
     border-radius: var(--border-radius);
-}
-nav > ul > li:not(:last-child) {
-    margin-right: 5px;
+
+    animation: nav-flyin 0.2s, fadein 0.2s both;
 }
 
 nav li {
@@ -83,22 +82,23 @@ nav li:active {
     background-color: var(--background-active);
 }
 
-nav > ul > li > a {
+nav > ul > li > a, nav > ul > li > label {
     border-radius: var(--border-radius);
 }
 
-nav a {
-    color: black;
+nav a, nav label:not(.open-nav) {
     text-decoration: none;
     
     padding: 10px 20px;
     display: block;
+    cursor: pointer;
 }
 
 nav .dd-icon {
     transition: transform 0.2s ease-in-out;
 }
-[open=true] > i > .dd-icon, [open=true] > a > .dd-icon {
+
+[open=true] > label > .dd-icon, [open=true] > a > .dd-icon {
     transform: rotate(180deg);
 }
 
@@ -111,15 +111,22 @@ nav .dd-icon {
     transform: translateY(2px);
 }
 
-@media only screen and (min-width: 681px) {
+@media only screen and not (max-width: 690px) {
     .open-nav {
         display: none;
     }
     nav {
         min-height: calc((1em * 1.5) + 53px);
     }
+    nav > ul > li:not(:last-child) {
+        margin-right: 5px;
+    }
 }
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 690px) {
+    #nav-isopen:not(:checked) ~ ul {
+        display: none;
+    }
+
     .open-nav {
         position: absolute;
         top: 15px;
@@ -137,6 +144,8 @@ nav .dd-icon {
         background-color: var(--background-color);
         box-shadow: 0 0 3px 3px var(--shadow-color);
         z-index: 100;
+
+        animation: nav-flyin 0.2s, fadein 0.2s both;
     }
     nav > ul > li {
         float: none;

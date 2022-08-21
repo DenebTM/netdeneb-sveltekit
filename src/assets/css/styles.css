@@ -58,7 +58,7 @@ button, .btn {
 }
 
 .click-depress:active {
-    transform: translateY(2px);
+    transform: translateY(2px) !important;
 }
 
 .box, button, .btn {
