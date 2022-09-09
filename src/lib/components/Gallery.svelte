@@ -104,8 +104,8 @@ afterNavigate(switchFullImage)
     </div>
 
     {#if modalImg}
-        <a class="btn modal-close" href="/art" transition:fade={{duration: 100}}>
-            <Fa icon={faClose} scale=1.25 />
+        <a class="btn modal-close fixed-color" href="/art" transition:fade={{duration: 100}}>
+            <Fa icon={faClose} scale=1.25 class="fixed-color" />
         </a>
         <div class="gallery-modal" transition:fade={{duration: 100}} style={modalStyle}>
             <div class="modal-row image">
@@ -116,7 +116,7 @@ afterNavigate(switchFullImage)
             <div class="modal-row details">
                 <span>{modalImg?.description}</span>
                 <a class="btn" role="button" href={modalImg?.artistLink}>
-                    <Fa icon={faArrowUpRightFromSquare} scale=1.25 />
+                    <Fa icon={faArrowUpRightFromSquare} scale=1.25 class="fixed-color" />
                 </a>
             </div>
         </div>
@@ -168,14 +168,15 @@ a.gallery-img {
     display: grid;
     /* grid-template-rows set by JavaScript */
     cursor: initial;
-
-    
 }
 .modal-close {
     position: fixed;
     top: 20px;
     right: 20px;
     z-index: 101;
+}
+.modal-row *, .modal-close {
+    color: white !important;
 }
 .modal-row img {
     object-fit: contain;

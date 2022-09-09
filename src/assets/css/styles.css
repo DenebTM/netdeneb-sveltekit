@@ -22,6 +22,9 @@ a {
     color: var(--text-color);
     accent-color: var(--primary);
 }
+.fixed-color, .fixed-color * {
+    color: unset !important;
+}
 
 .bold {
     font-weight: bold;

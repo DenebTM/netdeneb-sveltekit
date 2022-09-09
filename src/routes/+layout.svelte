@@ -23,7 +23,7 @@ onMount(() => animate = true)
     <title>{sitename}</title>
 </svelte:head>
 
-<a href="/" class="title" tabindex="-1">{sitename}</a>
+<a href="/" class="title fixed-color" tabindex="-1" style="color: white !important">{sitename}</a>
 <div class="content">
     <div class="bg-blur" />
     <Nav />
@@ -71,7 +71,6 @@ div.content {
     font-size: 3em;
     line-height: 1;
 
-    color: white;
     text-shadow: 0 0 5px black;
     font-weight: bold;
     text-decoration: none;
