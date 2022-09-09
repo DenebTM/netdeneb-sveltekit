@@ -4,7 +4,7 @@ import { goto } from '$app/navigation'
 import { page } from '$app/stores'
 import { slide } from 'svelte/transition'
 import { sitename } from '$lib/js/globals'
-import { browser } from '$app/env'
+import { browser } from '$app/environment'
 import { afterUpdate } from 'svelte'
 
 import Fa from 'svelte-fa'

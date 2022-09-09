@@ -10,9 +10,9 @@ import { onMount } from 'svelte'
 
 let animate: boolean | undefined = true
 beforeNavigate(nav => {
-    if (!(nav.to?.pathname.startsWith('/files')
-      || nav.to?.host != nav.from.host
-      || nav.to?.pathname == nav.from?.pathname))
+    if (!(nav.to?.url.pathname.startsWith('/files')
+      || nav.to?.url.host != nav.from?.url.host
+      || nav.to?.url.pathname == nav.from?.url.pathname))
         animate = undefined
 })
 afterNavigate(() => {animate = true; enableScroll() })

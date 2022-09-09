@@ -5,7 +5,7 @@ import { faClose, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-i
 import { disableScroll, enableScroll } from '$lib/js/tools'
 import { page } from '$app/stores'
 import { afterNavigate } from '$app/navigation'
-import { browser } from '$app/env'
+import { browser } from '$app/environment'
 
 export let imgList: ArtList
 export let gap = 10
@@ -86,7 +86,7 @@ afterNavigate(switchFullImage)
 <div class="gallery" bind:clientWidth={galleryWidth}>
     <a class="gallery-title gallery-img" class:gallery-hover={hover} tabindex={modalImg ? -1 : undefined}
       style="display: block" style:width={columnCount > 2 ? '70%' : '100%'}
-      href="?img=ref" role="button" sveltekit:noscroll>
+      href="?img=ref" role="button" data-sveltekit-noscroll>
         <img src={titleImage?.fileName} alt={titleImage?.description}>
         <span style="display: block; width: 100%; line-height: 1.5">{titleImage?.description}</span>
     </a>
@@ -95,7 +95,7 @@ afterNavigate(switchFullImage)
             <div class="column">
                 {#each col as img, i}
                     <a class="gallery-img" class:gallery-hover={hover} tabindex={modalImg ? -1 : undefined}
-                      href={`?img=${galleryImages.indexOf(img) + 1}`} role="button" sveltekit:noscroll>
+                      href={`?img=${galleryImages.indexOf(img) + 1}`} role="button" data-sveltekit-noscroll>
                         <img src={img.fileName} alt={img.description}>
                     </a>
                 {/each}
@@ -109,7 +109,7 @@ afterNavigate(switchFullImage)
         </a>
         <div class="gallery-modal" transition:fade={{duration: 100}} style={modalStyle}>
             <div class="modal-row image">
-                <a href="/art" sveltekit:noscroll tabindex="-1">
+                <a href="/art" data-sveltekit-noscroll tabindex="-1">
                     <img src={modalImg?.fileName} alt={modalImg?.artistLink} style:height={ browser ? '100%' : ''}>
                 </a>
             </div>

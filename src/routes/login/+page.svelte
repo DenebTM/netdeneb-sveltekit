@@ -1,7 +1,7 @@
 <script lang="ts">
 import { login } from '$lib/js/auth'
 import { page } from '$app/stores'
-import { browser } from '$app/env'
+import { browser } from '$app/environment'
 import { goto } from '$app/navigation'
 import { sitename } from '$lib/js/globals'
 
