@@ -55,11 +55,11 @@ const dispatch = createEventDispatcher()
 }
 
 @keyframes dropdown-flyin {
-    from { transform: translateX(-50%) translateY(-20px) }
-    to { transform: translateX(-50%) }
+    from { transform: translate(-50%, -20px) }
+    to { transform: translate(-50%, 0) }
 }
 @keyframes dropdown-flyin-mobile {
-    from { transform: translateY(-20px) }
+    from { transform: translate(0, -20px) }
     to { transform: none }
 }
 
@@ -101,9 +101,9 @@ const dispatch = createEventDispatcher()
     display: block;
 }
 
-@media only screen and not (max-width: 690px) {
+@media only screen and (min-width: 691px) {
     .dropdown > div {
-        transform: translateX(-50%);
+        transform: translate(-50%, 0);
     }
 }
 @media only screen and (max-width: 690px) {
@@ -116,7 +116,7 @@ const dispatch = createEventDispatcher()
         animation: dropdown-flyin-mobile 0.2s, fadein 0.2s forwards;
     }
 }
-@media only screen and not (max-width: 690px) {
+@media only screen and (min-width: 691px) {
     .dropdown ul {
         backdrop-filter: blur(3px);
     }

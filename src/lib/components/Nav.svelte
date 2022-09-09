@@ -111,7 +111,7 @@ nav .dd-icon {
     transform: translateY(2px);
 }
 
-@media only screen and not (max-width: 690px) {
+@media only screen and (min-width: 691px) {
     .open-nav {
         display: none;
     }

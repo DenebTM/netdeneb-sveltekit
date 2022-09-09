@@ -193,7 +193,7 @@ button.box, .btn.box {
     }
 }
 
-@media screen and not (max-width: 800px) {
+@media screen and (min-width: 801px) {
     .margin-box { width: 12.5%; }
 }
 @media screen and (max-width: 800px) {
