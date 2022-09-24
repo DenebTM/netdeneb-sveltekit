@@ -11,7 +11,6 @@ export class Session {
         this.expires = expires
     }
     public toString = () => `${this.id}|${this.expires.toISOString()}\n`
-    public toCookie = () => cookie.serialize('token', this.id, { path: '/', expires: this.expires })
 
     public static parse = (str: string) => {
         const [ id, expires ] = str.split('|')

@@ -10,17 +10,9 @@ $: if ($page.data.hasValidToken && browser) goto(redirect)
 let username = ''
 let password = ''
 
-export let errors: { message?: string }
+export let form: { message?: string }
 
 const redirect = decodeURIComponent($page.url.searchParams.get('redirect') || '/')
-
-const submit = async () => {
-    const loginStatus = await login(username, password)
-
-    // TODO: is this even necessary anymore?
-    if (loginStatus.ok) window.location.href = redirect
-    else ({ errors } = await loginStatus.json())
-}
 </script>
 
 <svelte:head>
@@ -28,7 +20,7 @@ const submit = async () => {
 </svelte:head>
 
 <h1>Login</h1>
-<form id="login" on:submit|preventDefault={submit} method="POST">
+<form id="login" method="POST">
     <label for="username">Username</label>
     <input id="username" name="username" type="text"
         bind:value={username} required>
@@ -37,7 +29,7 @@ const submit = async () => {
         bind:value={password} required>
     <button class="click-depress" type="submit">Login</button>
 </form>
-<p style="color: red">{ errors?.message ?? '' }</p>
+<p style="color: red">{ form?.message ?? '' }</p>
 
 <style>
 form {
