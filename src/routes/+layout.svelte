@@ -67,6 +67,7 @@ div.content {
 .title {
     display: block;
     width: fit-content;
+    text-align: center;
     margin: 7.5vh auto 0.5em auto;
     font-size: 3em;
     line-height: 1;
