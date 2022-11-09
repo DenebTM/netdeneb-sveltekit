@@ -1,4 +1,4 @@
-6<script lang="ts">
+<script lang="ts">
 import Social from '$lib/components/Social.svelte'
 import { sitename } from '$lib/js/globals'
 </script>
