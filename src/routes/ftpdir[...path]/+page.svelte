@@ -1,205 +1,220 @@
 <script lang="ts">
-import type { PageData } from './$types'
-import { goto } from '$app/navigation'
-import { page } from '$app/stores'
-import { slide } from 'svelte/transition'
-import { sitename } from '$lib/js/globals'
-import { browser } from '$app/environment'
-import { afterUpdate } from 'svelte'
+  import type { PageData } from './$types'
+  import { goto } from '$app/navigation'
+  import { page } from '$app/stores'
+  import { slide } from 'svelte/transition'
+  import { sitename } from '$lib/js/globals'
+  import { browser } from '$app/environment'
+  import { afterUpdate } from 'svelte'
 
-import Fa from 'svelte-fa'
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+  import Fa from 'svelte-fa'
+  import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
-import folderIcon from '/src/assets/icons/folder.svg'
-import { extIcons } from '$lib/js/fileTypes'
+  import folderIcon from '/src/assets/icons/folder.svg'
+  import { extIcons } from '$lib/js/fileTypes'
 
-const getIcon = (filename: string) => {
+  const getIcon = (filename: string) => {
     const ext = filename.split('.').pop()?.toLowerCase() || 'default'
     return extIcons[ext] || extIcons.default
-}
+  }
 
-export let data: PageData
-$: ({ dirList, fileList, availableThumbs } = data)
+  export let data: PageData
+  $: ({ dirList, fileList, availableThumbs } = data)
 
-const thumbsLoaded: Record<string, boolean> = {}
-const updateImageSources = (fl: Array<string>) => {
-    return fl.reduce(
-        (acc, curr) => {
-            thumbsLoaded[curr] = false
-            return Object.assign(acc, { [curr]: getIcon(curr)})
-        },
-        {} as Record<string, string>)
-}
+  const thumbsLoaded: Record<string, boolean> = {}
+  const updateImageSources = (fl: Array<string>) => {
+    return fl.reduce((acc, curr) => {
+      thumbsLoaded[curr] = false
+      return Object.assign(acc, { [curr]: getIcon(curr) })
+    }, {} as Record<string, string>)
+  }
 
-const updateThumbs = async (basePath: string) => {
+  const updateThumbs = async (basePath: string) => {
     if (!browser) return
 
     const needThumbs = fileList
-        .filter(f => !availableThumbs[f] && isImage(f))
-        .map(f => `${basePath}/${f}`)
-    
+      .filter(f => !availableThumbs[f] && isImage(f))
+      .map(f => `${basePath}/${f}`)
+
     if (needThumbs.length == 0) return
 
     const partSize = needThumbs.length > 16 ? 8 : needThumbs.length
-    const numParts = partSize < needThumbs.length ? Math.ceil(needThumbs.length / partSize) : 1
+    const numParts =
+      partSize < needThumbs.length ? Math.ceil(needThumbs.length / partSize) : 1
     for (let part = 0; part < numParts; part++) {
-        const startIndex = part * partSize,
-              endIndex = Math.min(needThumbs.length, startIndex + partSize)
+      const startIndex = part * partSize,
+        endIndex = Math.min(needThumbs.length, startIndex + partSize)
 
-        setTimeout(() => {
-            fetch('/createThumbs', { method: 'POST', body: JSON.stringify(
-                needThumbs.slice(startIndex, endIndex)
-            )})
-            .then(async data => {
-                const newThumbs = (await data.json() as Record<string, string>)
-                for (const t in newThumbs) {
-                    availableThumbs[t] = newThumbs[t]
-                    imageSources[t] = newThumbs[t]
-                    thumbsLoaded[t] = true
-                }
-            })
-        }, part * 500)
+      setTimeout(() => {
+        fetch('/createThumbs', {
+          method: 'POST',
+          body: JSON.stringify(needThumbs.slice(startIndex, endIndex)),
+        }).then(async data => {
+          const newThumbs = (await data.json()) as Record<string, string>
+          for (const t in newThumbs) {
+            availableThumbs[t] = newThumbs[t]
+            imageSources[t] = newThumbs[t]
+            thumbsLoaded[t] = true
+          }
+        })
+      }, part * 500)
     }
-}
+  }
 
-$: current = $page.params.path
-$: imageSources = updateImageSources(fileList)
-$: updateThumbs(current)
+  $: current = $page.params.path
+  $: imageSources = updateImageSources(fileList)
+  $: updateThumbs(current)
 
-afterUpdate(() => {
+  afterUpdate(() => {
     for (const t in availableThumbs) {
-        thumbsLoaded[t] = true
+      thumbsLoaded[t] = true
     }
     imageSources = Object.assign(imageSources, availableThumbs)
-})
+  })
 
-const isImage = (f: string) => /\.(jpe?g|png|gif|webp|bmp)$/.test(f.toLowerCase())
+  const isImage = (f: string) =>
+    /\.(jpe?g|png|gif|webp|bmp)$/.test(f.toLowerCase())
 
-const goBack = () => window.history.back()
-const goForward = () => window.history.forward()
+  const goBack = () => window.history.back()
+  const goForward = () => window.history.forward()
 
-let dirsCollapsed = false
-const toggleDirs = () => dirsCollapsed = !dirsCollapsed
+  let dirsCollapsed = false
+  const toggleDirs = () => (dirsCollapsed = !dirsCollapsed)
 
-$: fileListMeta = fileList.length > 0 ? 'Contents: ' + fileList.join(', ') : '(no files)'
-$: if (fileListMeta.length > 145)
+  $: fileListMeta =
+    fileList.length > 0 ? 'Contents: ' + fileList.join(', ') : '(no files)'
+  $: if (fileListMeta.length > 145)
     fileListMeta = fileListMeta.slice(0, 137) + '...'
-$: upPath = '/ftpdir' + current.replace(/\/[^\/]*$/, '')
+  $: upPath = '/ftpdir' + current.replace(/\/[^\/]*$/, '')
 </script>
 
 <svelte:head>
-    <title>{ `${sitename} - Files: ${current || '/'}` }</title>
-    <meta name="description" content={fileListMeta}>
+  <title>{`${sitename} - Files: ${current || '/'}`}</title>
+  <meta name="description" content={fileListMeta} />
 </svelte:head>
 
 <div class="file-nav">
-    <h1>Path: {current || '/'}</h1>
-    {#if browser}
-        <button class="btn box click-depress"
-            on:click={goBack}>Back</button>
-        <button class="btn box click-depress"
-            on:click={goForward}>Forward</button>
-    {/if}
-    {#if current.length}
-        <a role="button" class="btn box click-depress"
-            href={upPath}>Up</a>
-    {/if}
+  <h1>Path: {current || '/'}</h1>
+  {#if browser}
+    <button class="btn box click-depress" on:click={goBack}>Back</button>
+    <button class="btn box click-depress" on:click={goForward}>Forward</button>
+  {/if}
+  {#if current.length}
+    <a role="button" class="btn box click-depress" href={upPath}>Up</a>
+  {/if}
 </div>
 
 {#if dirList.length > 0}
-    <h3 style="cursor: pointer" on:click={toggleDirs}><div class="dd-icon" class:collapsed={dirsCollapsed}><Fa icon={faChevronDown} fw /></div> Directories</h3>
-    {#if !dirsCollapsed}
-        <section class="file-list dirs" transition:slide|local={{ duration: 150 }}>
-            {#each dirList as dir}
-                <div class="margin-box">
-                    <a class="file box click-depress" href={`/ftpdir${current}/${dir}`}>
-                        <div>
-                            <img src={folderIcon} alt="folder icon">
-                            <p>{dir}</p>
-                        </div>
-                    </a>
-                </div>
-            {/each}
-        </section>
-    {/if}
+  <h3 style="cursor: pointer" on:click={toggleDirs}>
+    <div class="dd-icon" class:collapsed={dirsCollapsed}>
+      <Fa icon={faChevronDown} fw />
+    </div>
+    Directories
+  </h3>
+  {#if !dirsCollapsed}
+    <section class="file-list dirs" transition:slide|local={{ duration: 150 }}>
+      {#each dirList as dir}
+        <div class="margin-box">
+          <a class="file box click-depress" href={`/ftpdir${current}/${dir}`}>
+            <div>
+              <img src={folderIcon} alt="folder icon" />
+              <p>{dir}</p>
+            </div>
+          </a>
+        </div>
+      {/each}
+    </section>
+  {/if}
 {/if}
 {#if fileList.length > 0}
-    <h3>Files</h3>
-    <section class="file-list files">
-        {#each fileList as file}
-            <div class="margin-box">
-                <a class="file box click-depress" href={`/files${current}/${file}`}>
-                    <div>
-                        <img src={imageSources[file]} class={isImage(file) && thumbsLoaded[file] == true ? 'thumb' : ''} alt="file icon">
-                        <p>{file}</p>
-                    </div>
-                </a>
-            </div>
-        {/each}
-    </section>
+  <h3>Files</h3>
+  <section class="file-list files">
+    {#each fileList as file}
+      <div class="margin-box">
+        <a class="file box click-depress" href={`/files${current}/${file}`}>
+          <div>
+            <img
+              src={imageSources[file]}
+              class={isImage(file) && thumbsLoaded[file] == true ? 'thumb' : ''}
+              alt="file icon"
+            />
+            <p>{file}</p>
+          </div>
+        </a>
+      </div>
+    {/each}
+  </section>
 {/if}
 
 <style>
-.file-nav, h3 {
+  .file-nav,
+  h3 {
     text-align: left;
-}
+  }
 
-.file-list {
+  .file-list {
     display: flex;
     flex-flow: row wrap;
     margin: 0 -10px 20px 0;
-}
+  }
 
-.margin-box {
+  .margin-box {
     margin: 0;
     padding: 0 10px 10px 0;
     transition: width 0.25s ease, height 0.25s ease;
-}
+  }
 
-button.box, .btn.box {
+  button.box,
+  .btn.box {
     margin: 0 10px 10px 0;
     display: inline-block;
     font-size: 0.85em;
     line-height: 1.25;
-}
+  }
 
-.dd-icon {
+  .dd-icon {
     display: inline-block;
     transition: transform 0.2s;
-}
-.dd-icon.collapsed {
+  }
+  .dd-icon.collapsed {
     transform: rotate(-90deg);
-}
+  }
 
-.file.box {
+  .file.box {
     word-wrap: break-word;
     display: block;
-}
-.file.box div {
+  }
+  .file.box div {
     padding: 10px;
-}
-.file.box img {
+  }
+  .file.box img {
     width: 100%;
     transition: filter 0.2s;
-}
-.file.box p {
+  }
+  .file.box p {
     margin: 0;
     transition: color 0.2s;
-}
+  }
 
-@media only screen and (prefers-color-scheme: dark) {
+  @media only screen and (prefers-color-scheme: dark) {
     .file.box img:not(.thumb) {
-        filter: invert();
+      filter: invert();
     }
-}
+  }
 
-@media screen and (min-width: 801px) {
-    .margin-box { width: 12.5%; }
-}
-@media screen and (max-width: 800px) {
-    .margin-box { width: 16.66%; }
-}
-@media screen and (max-width: 540px) {
-    .margin-box { width: 25%; }
-}
+  @media screen and (min-width: 801px) {
+    .margin-box {
+      width: 12.5%;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .margin-box {
+      width: 16.66%;
+    }
+  }
+  @media screen and (max-width: 540px) {
+    .margin-box {
+      width: 25%;
+    }
+  }
 </style>

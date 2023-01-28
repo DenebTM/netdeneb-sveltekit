@@ -1,44 +1,47 @@
-/// <reference types="@sveltejs/kit" />
+import 'svelte'
 
-type ArtItem = {
-	fileName: string,
-	full: string,
-	description: string,
-	artistLink: string,
-	width: string,
-	height: string
-}
-type ArtList = Array<ArtItem>
+declare global {
+  interface ArtItem {
+    fileName: string
+    full: string
+    description: string
+    artistLink: string
+    width: string
+    height: string
+  }
+  type ArtList = ArtItem[]
 
-type FileDirList = {
-    dirList: Array<string>,
-    fileList: Array<string>,
-    availableThumbs: Record<string, string>,
+  interface FileDirList {
+    dirList: string[]
+    fileList: string[]
+    availableThumbs: Record<string, string>
     error: string | undefined
-}
+  }
 
-// See https://kit.svelte.dev/docs/types#app
-// for information about these interfaces
-// and what to do when importing types
-declare namespace App {
-	interface Locals {
-		token: string
-	}
-}
-
-declare namespace svelte.JSX {
-	interface HTMLAttributes<T> {
-        animate?: BoolString
+  // See https://kit.svelte.dev/docs/types#app
+  // for information about these interfaces
+  // and what to do when importing types
+  declare namespace App {
+    interface Locals {
+      token: string
     }
-	interface Headers {
-		cookie: Record<string, string>
-	}
+  }
+
+  declare namespace svelteHTML {
+    interface HTMLAttributes {
+      animate?: BoolString
+      open?: boolean
+    }
+    interface Headers {
+      cookie: Record<string, string>
+    }
+  }
 }
 
 declare module '@fortawesome/free-solid-svg-icons/index.es' {
-	export * from '@fortawesome/free-solid-svg-icons'
+  export * from '@fortawesome/free-solid-svg-icons'
 }
 
 declare module '@fortawesome/free-brands-svg-icons/index.es' {
-	export * from '@fortawesome/free-brands-svg-icons'
+  export * from '@fortawesome/free-brands-svg-icons'
 }

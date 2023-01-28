@@ -8,6 +8,24 @@
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
 		"sourceMap": true,
-		"strict": true
-	}
+		"strict": true,
+
+    "ignoreDeprecations": "5.0", // remove this once https://github.com/sveltejs/kit/issues/8650 is resolved
+
+		"paths": {
+			"$lib": [
+				"./src/lib"
+			],
+			"$lib/*": [
+				"./src/lib/*"
+			],
+			"~": [
+				"./src"
+			],
+			"~/*": [
+				"./src/*"
+			]
+		},
+	},
+	"include": ["src", "vite.config.ts"]
 }

@@ -11,3 +11,4 @@ node_modules
 **/*.webp
 **/*.svg
 users.json
+package-lock.json
