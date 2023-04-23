@@ -4,7 +4,6 @@ services:
   netdeneb-node:
     image: netdeneb:latest
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
       - ./files:/files:ro
       - ./art:/art:ro
       - ./thumbs:/thumbs
