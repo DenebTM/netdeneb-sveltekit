@@ -1,12 +1,13 @@
 <script lang="ts">
   import Fa from 'svelte-fa'
   import {
-    faGithub,
-    faTelegram,
     faDiscord,
-    faTwitter,
+    faGithub,
+    faMastodon,
     faReddit,
     faSteam,
+    faTelegram,
+    faTwitter,
   } from '@fortawesome/free-brands-svg-icons'
 
   const links = [
@@ -20,9 +21,26 @@
       href: 'https://telegram.dog/DenebTM',
       text: '@DenebTM',
     },
-    { icon: faTwitter, href: 'https://twitter.com/DenebTM', text: '@DenebTM' },
-    { icon: faReddit, href: 'https://reddit.com/u/VeloxH', text: 'u/VeloxH' },
-    { icon: faGithub, href: 'https://github.com/DenebTM', text: 'DenebTM' },
+    {
+      icon: faMastodon,
+      href: 'https://wetdry.world/@Deneb',
+      text: '@Deneb@wetdry.world',
+    },
+    {
+      icon: faTwitter,
+      href: 'https://twitter.com/DenebTM',
+      text: '@DenebTM',
+    },
+    {
+      icon: faReddit,
+      href: 'https://reddit.com/u/VeloxH',
+      text: 'u/VeloxH',
+    },
+    {
+      icon: faGithub,
+      href: 'https://github.com/DenebTM',
+      text: 'DenebTM',
+    },
     {
       icon: faSteam,
       href: 'https://steamcommunity.com/id/DenebTM',
@@ -34,11 +52,11 @@
 <p style="margin: 20px 0 10px 0">Feel free to bark at me on:</p>
 <div style="text-align: left; width: fit-content; margin: 0 auto">
   {#each links as { icon, href, text }}
-    <a class="click-depress" {href}
-      ><p>
+    <a class="click-depress" {href}>
+      <p>
         <Fa color="var(--text-color)" fw {icon} size="lg" /><span>{text}</span>
-      </p></a
-    >
+      </p>
+    </a>
   {/each}
 </div>
 
@@ -69,22 +87,15 @@
   }
 
   div {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    max-width: 410px;
+    flex-wrap: wrap;
   }
+
   div > * {
-    margin: 10px;
-  }
-
-  @media only screen and (max-width: 600px) {
-    div {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  @media only screen and (max-width: 400px) {
-    div > * {
-      margin: 3px;
-    }
+    flex-grow: 0;
+    width: max-content;
   }
 </style>
