@@ -6,8 +6,6 @@
   import { browser } from '$app/environment'
   import { afterUpdate } from 'svelte'
 
-  import Fa from 'svelte-fa'
-
   import folderIcon from '/src/assets/icons/folder.svg'
   import { extIcons } from '$lib/js/fileTypes'
   import { filesPublicBasePath } from '$lib/config'
@@ -81,7 +79,11 @@
   const toggleDirs = () => (dirsCollapsed = !dirsCollapsed)
 
   const upPath = '.'
-  $: pathTo = (file: string) => `${filesPublicBasePath}${current}/${file}`
+  $: pathToDir = (file: string) =>
+    $page.route.id?.substring(0, $page.route.id.indexOf('[')) +
+    current +
+    `/${file}`
+  $: pathToFile = (file: string) => filesPublicBasePath + current + `/${file}`
 
   $: fileListMeta =
     fileList.length > 0 ? 'Contents: ' + fileList.join(', ') : '(no files)'
@@ -116,7 +118,7 @@
     <section class="file-list dirs" transition:slide|local={{ duration: 150 }}>
       {#each dirList as dir}
         <div class="margin-box">
-          <a class="file box click-depress" href={pathTo(dir)}>
+          <a class="file box click-depress" href={pathToDir(dir)}>
             <div>
               <img src={folderIcon} alt="folder icon" />
               <p>{dir}</p>
@@ -132,7 +134,7 @@
   <section class="file-list files">
     {#each fileList as file}
       <div class="margin-box">
-        <a class="file box click-depress" href={pathTo(file)}>
+        <a class="file box click-depress" href={pathToFile(file)}>
           <div>
             <img
               src={imageSources[file]}

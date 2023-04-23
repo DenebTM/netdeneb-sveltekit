@@ -1,6 +1,5 @@
 <script lang="ts">
   import { fade } from 'svelte/transition'
-  import Fa from 'svelte-fa'
   import { disableScroll, enableScroll } from '$lib/js/tools'
   import { page } from '$app/stores'
   import { afterNavigate } from '$app/navigation'
@@ -226,6 +225,7 @@
 
   .btn {
     display: inline-block;
+    vertical-align: middle;
     padding: 0;
     border: none;
     box-shadow: none;

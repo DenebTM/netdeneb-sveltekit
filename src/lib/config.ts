@@ -15,7 +15,7 @@ export const artLocalBasePath = '/art'
 export const artPublicBasePath = '/art'
 
 export const filesLocalBasePath = '/files'
-export const filesPublicBasePath = '/files'
+export const filesPublicBasePath = '/getfile'
 export const excludeFiles = ['Thumbs.db']
 
 export const sessionListPath = '/sessions.txt'

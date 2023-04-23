@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Fa from 'svelte-fa'
   import { clickOutside } from '$lib/js/clickOutside'
   import { createEventDispatcher } from 'svelte'
 
