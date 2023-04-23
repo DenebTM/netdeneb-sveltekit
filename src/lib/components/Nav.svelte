@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Fa from 'svelte-fa'
   import NavDropdown from '$lib/components/NavDropdown.svelte'
   import { clickOutside } from '$lib/js/clickOutside'
   import { page } from '$app/stores'
