@@ -1,6 +1,5 @@
 <script lang="ts">
   import Fa from 'svelte-fa'
-  import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
   import { clickOutside } from '$lib/js/clickOutside'
   import { createEventDispatcher } from 'svelte'
 
@@ -32,8 +31,11 @@
     tabindex="0"
     on:keypress={e => e.key == 'Enter' && (open = !open)}
   >
-    {name}
-    <Fa class="dd-icon" icon={faCaretDown} scale="0.66" />
+    <span>{name}</span>
+    <i
+      class="bx bx-caret-down dd-icon"
+      style="display: inline-block !important; font-size: 0.9rem"
+    />
   </label>
 
   <div>

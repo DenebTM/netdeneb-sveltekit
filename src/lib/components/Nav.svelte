@@ -1,6 +1,5 @@
 <script lang="ts">
   import Fa from 'svelte-fa'
-  import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
   import NavDropdown from '$lib/components/NavDropdown.svelte'
   import { clickOutside } from '$lib/js/clickOutside'
   import { page } from '$app/stores'
@@ -20,7 +19,7 @@
 
 <nav use:clickOutside={closeNav} {open}>
   <label for="nav-isopen" class="open-nav">
-    <Fa class="dd-icon" icon={faChevronDown} size="lg" />
+    <i class="bx bx-md bx-chevron-down dd-icon" />
   </label>
   <input
     type="checkbox"

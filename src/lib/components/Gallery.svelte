@@ -1,10 +1,6 @@
 <script lang="ts">
   import { fade } from 'svelte/transition'
   import Fa from 'svelte-fa'
-  import {
-    faClose,
-    faArrowUpRightFromSquare,
-  } from '@fortawesome/free-solid-svg-icons'
   import { disableScroll, enableScroll } from '$lib/js/tools'
   import { page } from '$app/stores'
   import { afterNavigate } from '$app/navigation'
@@ -130,7 +126,7 @@
       href={artPublicBasePath}
       transition:fade={{ duration: 100 }}
     >
-      <Fa icon={faClose} scale="1.25" class="fixed-color" />
+      <i class="bx bx-md bx-x fixed-color" />
     </a>
     <div
       class="gallery-modal"
@@ -149,11 +145,7 @@
       <div class="modal-row details">
         <span>{modalImg?.description}</span>
         <a class="btn" role="button" href={modalImg?.artistLink}>
-          <Fa
-            icon={faArrowUpRightFromSquare}
-            scale="1.25"
-            class="fixed-color"
-          />
+          <i class="bx bx-sm bx-link-external fixed-color" />
         </a>
       </div>
     </div>

@@ -4,13 +4,6 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [sveltekit()],
-  ssr: {
-    // svelte-kit build fails without this
-    noExternal: [
-      '@fortawesome/free-solid-svg-icons',
-      '@fortawesome/free-brands-svg-icons',
-    ],
-  },
   server: {
     port: 3000,
   },

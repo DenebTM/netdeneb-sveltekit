@@ -6,8 +6,9 @@ RUN apk add graphicsmagick
 
 RUN mkdir /app
 WORKDIR /app
-COPY . .
+COPY package*.json .
 RUN npm install
+COPY . .
 RUN npm run build
 
 EXPOSE 3000

@@ -97,3 +97,10 @@ button:active,
   outline: none;
   background-color: var(--background-hover);
 }
+
+.bx {
+  height: 100%;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,48 +1,37 @@
 <script lang="ts">
-  import Fa from 'svelte-fa'
-  import {
-    faDiscord,
-    faGithub,
-    faMastodon,
-    faReddit,
-    faSteam,
-    faTelegram,
-    faTwitter,
-  } from '@fortawesome/free-brands-svg-icons'
-
   const links = [
     {
-      icon: faDiscord,
+      icon: 'discord-alt',
       href: 'https://discord.com/users/300930171123531777',
       text: 'Deneb#0721',
     },
     {
-      icon: faTelegram,
+      icon: 'telegram',
       href: 'https://telegram.dog/DenebTM',
       text: '@DenebTM',
     },
     {
-      icon: faMastodon,
+      icon: 'mastodon',
       href: 'https://wetdry.world/@Deneb',
       text: '@Deneb@wetdry.world',
     },
     {
-      icon: faTwitter,
+      icon: 'twitter',
       href: 'https://twitter.com/DenebTM',
       text: '@DenebTM',
     },
     {
-      icon: faReddit,
+      icon: 'reddit',
       href: 'https://reddit.com/u/VeloxH',
       text: 'u/VeloxH',
     },
     {
-      icon: faGithub,
+      icon: 'github',
       href: 'https://github.com/DenebTM',
       text: 'DenebTM',
     },
     {
-      icon: faSteam,
+      icon: 'steam',
       href: 'https://steamcommunity.com/id/DenebTM',
       text: 'DenebTM',
     },
@@ -54,7 +43,13 @@
   {#each links as { icon, href, text }}
     <a class="click-depress" {href}>
       <p>
-        <Fa color="var(--text-color)" fw {icon} size="lg" /><span>{text}</span>
+        <i>
+          <i
+            class={`bx bx-sm bxl-${icon}`}
+            style="display: inline-block !important; vertical-align: text-top"
+          /></i
+        >
+        <span>{text}</span>
       </p>
     </a>
   {/each}

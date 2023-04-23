@@ -7,7 +7,6 @@
   import { afterUpdate } from 'svelte'
 
   import Fa from 'svelte-fa'
-  import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
   import folderIcon from '/src/assets/icons/folder.svg'
   import { extIcons } from '$lib/js/fileTypes'
@@ -109,9 +108,9 @@
 {#if dirList.length > 0}
   <h3 style="cursor: pointer" on:click={toggleDirs}>
     <div class="dd-icon" class:collapsed={dirsCollapsed}>
-      <Fa icon={faChevronDown} fw />
+      <i class="bx bx-sm bx-chevron-down" />
     </div>
-    Directories
+    <span>Directories</span>
   </h3>
   {#if !dirsCollapsed}
     <section class="file-list dirs" transition:slide|local={{ duration: 150 }}>
