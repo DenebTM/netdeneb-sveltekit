@@ -159,6 +159,9 @@
     flex-flow: row wrap;
     margin: 0 -10px 20px 0;
   }
+  .file-list:last-of-type {
+    margin-bottom: -10px;
+  }
 
   .margin-box {
     margin: 0;

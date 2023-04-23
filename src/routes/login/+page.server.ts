@@ -1,11 +1,11 @@
 import type { PageServerLoad } from './$types'
 import users from '$lib/users.json'
-import { createSession, isSessionValid } from '$lib/js/session'
+import { createSession, validateSession } from '$lib/js/session'
 import { redirect, error, type Actions } from '@sveltejs/kit'
 
 // TODO: redirect here maybe?
 export const load: PageServerLoad = async ({ locals: { token } }) => ({
-  validToken: await isSessionValid(token),
+  hasValidToken: validateSession(token) !== null,
 })
 
 export const actions: Actions = {
@@ -25,18 +25,15 @@ export const actions: Actions = {
       /* invalid json idc */
     }
 
-    // username or password missing from request
-    if (!(creds.username && creds.password)) { return error(401, { message: 'Username or password incorrect' }) }
-
-    // invalid login
-    if (users[creds.username] !== creds.password) { return error(401, { message: 'Username or password incorrect' }) }
+    if (
+      !(creds.username && creds.password) || // username or password missing from request
+      users[creds.username] !== creds.password // invalid login
+    ) {
+      throw error(401, { message: 'Username or password incorrect' })
+    }
 
     // valid login
-    const newSession = await createSession()
-    cookies.set('token', newSession.id, {
-      path: '/',
-      expires: newSession.expires,
-    })
-    throw redirect(304, url.searchParams.get('redirect') ?? '/')
+    cookies.set(...createSession(creds.username).toCookie())
+    throw redirect(303, url.searchParams.get('redirect') ?? '/')
   },
 }

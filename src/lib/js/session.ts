@@ -1,74 +1,135 @@
 import { promises as fs } from 'fs'
-import { sessionListPath } from '$lib/config'
 import crypto from 'crypto'
+import { sessionListPath } from '$lib/config'
+import type { CookieSerializeOptions } from 'cookie'
+import { basename, dirname, join as pathJoin } from 'path'
+import { sessionCookieName } from './globals'
+
+export type SessionToken = string
+
+let sessions: Session[] = []
 
 export class Session {
-  public id: string
+  public token: SessionToken
   public expires: Date
-  constructor(id: string, expires: Date) {
-    this.id = id
+  public username: string
+
+  constructor(token: SessionToken, expires: Date, username: string) {
+    this.token = token
+    this.expires = expires
+    this.username = username
+  }
+
+  public setExpiry = (expires: Date): void => {
     this.expires = expires
   }
 
-  public toString = (): string => `${this.id}|${this.expires.toISOString()}\n`
+  public extend = (): Session =>
+    new Session(
+      this.token,
+      new Date(new Date().getTime() + 7200000),
+      this.username
+    )
+
+  public toString = (): string =>
+    `${this.token}|${this.expires.toISOString()}|${this.username}`
+
+  public toCookie = (): [
+    typeof sessionCookieName,
+    typeof this.token,
+    CookieSerializeOptions
+  ] => [sessionCookieName, this.token, { path: '/', expires: this.expires }]
 
   public static parse = (str: string): Session => {
-    const [id, expires] = str.split('|')
-    return new Session(id, new Date(expires))
+    const [id, expires, username] = str.split('|')
+    return new Session(id, new Date(expires), username)
   }
 
-  public static init = (): Session =>
+  public static init = (username: string): Session =>
     new Session(
       crypto.randomBytes(16).toString('base64'),
-      new Date(new Date().getTime() + 7200000) // why
+      new Date(new Date().getTime() + 7200000), // why
+      username
     )
 }
 
-const getSessions = async (): Promise<Session[]> => {
-  try {
-    return (await fs.readFile(sessionListPath, { encoding: 'utf-8' }))
-      .split('\n')
-      .filter(s => s.length > 0)
-      .map(s => Session.parse(s))
-  } catch {
-    return []
+const cleanupSessions = (): void => {
+  sessions = sessions.filter(s => s.expires >= new Date())
+}
+
+export const createSession = (username: string): Session => {
+  const session = Session.init(username)
+  sessions.push(session)
+
+  // await cleanupSessions()
+  return session
+}
+
+export const destroySession = (token?: SessionToken): void => {
+  sessions.find(s => s.token === token)?.setExpiry(new Date(0))
+  cleanupSessions()
+}
+
+/**
+ * returns a new session if the current one is still valid, or null if it isn't
+ */
+export const validateSession = (token?: SessionToken): Session | null => {
+  const validSession = sessions.find(
+    s => s.token === token && s.expires >= new Date()
+  )
+
+  if (validSession) {
+    const newSession = validSession.extend()
+    sessions = sessions.map(oldSession =>
+      oldSession.token === token ? newSession : oldSession
+    )
+
+    return newSession
+  } else {
+    cleanupSessions()
+    return null
   }
 }
 
-const writeSessions = async (sessions: Session[]): Promise<void> => {
-  await fs.writeFile(
-    sessionListPath,
-    sessions.reduce((acc, cur) => acc + cur.toString(), ''),
-    { encoding: 'utf-8' }
+/**
+ * writes the current session list first to a temporary file,
+ * then to the final path if it has not changed in the meantime
+ *
+ * the session list on disk is not actively used, it only exists
+ * for monitoring purposes
+ */
+const writeOutSessions = async (): Promise<void> => {
+  const sessionListDir = dirname(sessionListPath)
+  const sessionListFilename = basename(sessionListPath)
+
+  const tmpFilePath = pathJoin(
+    sessionListDir,
+    '/.tmp_' + crypto.randomBytes(4).toString('hex') + '_' + sessionListFilename
+  )
+
+  try {
+    await fs.writeFile(
+      tmpFilePath,
+      sessions.map(session => session.toString()).join('\n'),
+      { encoding: 'utf-8' }
+    )
+
+    if (
+      (await fs.stat(sessionListPath).catch(() => ({ ctimeMs: 0 }))).ctimeMs <
+      (await fs.stat(tmpFilePath)).ctimeMs
+    ) {
+      await fs.rename(tmpFilePath, sessionListPath)
+    }
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+const periodicallyWriteOut = async (): Promise<void> => {
+  writeOutSessions().finally(() =>
+    setTimeout(() => {
+      void periodicallyWriteOut()
+    }, 30000)
   )
 }
-
-export const cleanupSessions = async (): Promise<void> => {
-  const validSessions = (await getSessions()).filter(
-    s => s.expires >= new Date()
-  )
-
-  await writeSessions(validSessions)
-}
-
-export const createSession = async (): Promise<Session> => {
-  const sess = Session.init()
-  await fs.appendFile(sessionListPath, sess.toString(), { encoding: 'utf-8' })
-
-  // await cleanupSessions()
-  return sess
-}
-
-export const destroySession = async (id: string): Promise<void> => {
-  const validSessions = (await getSessions()).filter(s => s.id !== id)
-
-  await writeSessions(validSessions)
-  await cleanupSessions()
-}
-
-export const isSessionValid = async (id: string): Promise<boolean> => {
-  return (
-    (await getSessions()).find(s => s.id === id && s.expires >= new Date()) !=
-    null
-  )
-}
+void periodicallyWriteOut()

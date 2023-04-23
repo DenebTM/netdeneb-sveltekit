@@ -4,7 +4,7 @@ import { filesPublicBasePath, excludeFiles } from '$lib/config'
 import { join as pathJoin } from 'path'
 import { promises as fs, constants as fsConstants } from 'fs'
 import crypto from 'crypto'
-import { isSessionValid } from '$lib/js/session'
+import { validateSession } from '$lib/js/session'
 
 const readDir = async (path: string): Promise<FileDirList> => {
   let error
@@ -59,7 +59,7 @@ export const load: PageServerLoad = async ({
   locals: { token },
   params: { path },
 }) => {
-  if (path.startsWith('/Users') && !(await isSessionValid(token))) {
+  if (path.startsWith('/Users') && validateSession(token) === null) {
     throw redirect(
       307,
       `/login?redirect=${encodeURIComponent('/files' + path)}`
