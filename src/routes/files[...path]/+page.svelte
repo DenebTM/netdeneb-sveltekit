@@ -178,6 +178,7 @@
 
   .dd-icon {
     display: inline-block;
+    vertical-align: text-bottom;
     transition: transform 0.2s;
   }
   .dd-icon.collapsed {
