@@ -8,6 +8,7 @@ services:
       - ./files:/files:ro
       - ./art:/art:ro
       - ./thumbs:/thumbs
+    pid: 'host'
 
   netdeneb-proxy:
     image: nginx:latest
