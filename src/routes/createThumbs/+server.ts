@@ -1,7 +1,7 @@
 import { json as json$1 } from '@sveltejs/kit'
 import type { RequestHandler } from '@sveltejs/kit'
 import { join as pathJoin, parse as parsePath } from 'path'
-import { filesBase } from '$lib/config'
+import { filesPublicBasePath } from '$lib/config'
 import gm from 'gm'
 import crypto from 'crypto'
 
@@ -10,7 +10,7 @@ export const POST: RequestHandler = async ({ request }) => {
   const thumbFileNames: Record<string, string> = {}
   try {
     paths = ((await request.json()) as string[]).map(p =>
-      pathJoin(filesBase, p)
+      pathJoin(filesPublicBasePath, p)
     )
     console.log('generating', thumbFileNames)
     await Promise.all(

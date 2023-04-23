@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { PageData } from './$types'
-  import { goto } from '$app/navigation'
   import { page } from '$app/stores'
   import { slide } from 'svelte/transition'
   import { sitename } from '$lib/js/globals'
@@ -12,6 +11,7 @@
 
   import folderIcon from '/src/assets/icons/folder.svg'
   import { extIcons } from '$lib/js/fileTypes'
+  import { filesPublicBasePath } from '$lib/config'
 
   const getIcon = (filename: string) => {
     const ext = filename.split('.').pop()?.toLowerCase() || 'default'
@@ -81,11 +81,13 @@
   let dirsCollapsed = false
   const toggleDirs = () => (dirsCollapsed = !dirsCollapsed)
 
+  const upPath = '.'
+  $: pathTo = (file: string) => `${filesPublicBasePath}${current}/${file}`
+
   $: fileListMeta =
     fileList.length > 0 ? 'Contents: ' + fileList.join(', ') : '(no files)'
   $: if (fileListMeta.length > 145)
     fileListMeta = fileListMeta.slice(0, 137) + '...'
-  $: upPath = '/ftpdir' + current.replace(/\/[^\/]*$/, '')
 </script>
 
 <svelte:head>
@@ -115,7 +117,7 @@
     <section class="file-list dirs" transition:slide|local={{ duration: 150 }}>
       {#each dirList as dir}
         <div class="margin-box">
-          <a class="file box click-depress" href={`/ftpdir${current}/${dir}`}>
+          <a class="file box click-depress" href={pathTo(dir)}>
             <div>
               <img src={folderIcon} alt="folder icon" />
               <p>{dir}</p>
@@ -131,11 +133,11 @@
   <section class="file-list files">
     {#each fileList as file}
       <div class="margin-box">
-        <a class="file box click-depress" href={`/files${current}/${file}`}>
+        <a class="file box click-depress" href={pathTo(file)}>
           <div>
             <img
               src={imageSources[file]}
-              class={isImage(file) && thumbsLoaded[file] == true ? 'thumb' : ''}
+              class={isImage(file) && thumbsLoaded[file] ? 'thumb' : ''}
               alt="file icon"
             />
             <p>{file}</p>

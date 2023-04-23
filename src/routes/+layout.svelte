@@ -12,7 +12,7 @@
   beforeNavigate(nav => {
     if (
       !(
-        nav.to?.url.pathname.startsWith('/files') ||
+        nav.to?.url.pathname.startsWith('/getfile') ||
         nav.to?.url.host != nav.from?.url.host ||
         nav.to?.url.pathname == nav.from?.url.pathname
       )

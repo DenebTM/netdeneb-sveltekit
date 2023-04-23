@@ -1,7 +1,7 @@
-const navItems: Record<string, any> = {
+export const navItems: Record<string, any> = {
   Home: '/',
   'Art gallery': '/art',
-  'Public files': '/ftpdir',
+  'Open Directory': '/files',
   Nextcloud: 'https://cloud.netdeneb.com/',
   Screemail: 'https://mail.screee.ee/',
   Other: {
@@ -10,12 +10,12 @@ const navItems: Record<string, any> = {
     'Source code': 'https://github.com/DenebTM/netdeneb',
   },
 }
-export { navItems }
 
-export const artPrivateBase = '/art'
-export const artPublicBase = '/art'
+export const artLocalBasePath = '/art'
+export const artPublicBasePath = '/art'
 
-export const filesBase = '/files'
+export const filesLocalBasePath = '/files'
+export const filesPublicBasePath = '/files'
 export const excludeFiles = ['Thumbs.db']
 
 export const sessionListPath = '/sessions.txt'

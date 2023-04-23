@@ -27,6 +27,7 @@
     "@typescript-eslint/return-await": ["error", "never"],
     "@typescript-eslint/no-throw-literal": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
-    "@typescript-eslint/no-extra-parens": "error"
+    "@typescript-eslint/no-extra-parens": "error",
+    "@typescript-eslint/space-before-function-paren": "off"
   }
 }

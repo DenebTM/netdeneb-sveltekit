@@ -5,7 +5,7 @@ import crypto from 'crypto'
 export class Session {
   public id: string
   public expires: Date
-  constructor (id: string, expires: Date) {
+  constructor(id: string, expires: Date) {
     this.id = id
     this.expires = expires
   }
@@ -67,5 +67,8 @@ export const destroySession = async (id: string): Promise<void> => {
 }
 
 export const isSessionValid = async (id: string): Promise<boolean> => {
-  return ((await getSessions()).find(s => s.id === id && s.expires >= new Date()) != null)
+  return (
+    (await getSessions()).find(s => s.id === id && s.expires >= new Date()) !=
+    null
+  )
 }

@@ -2,10 +2,10 @@ import type { PageServerLoad } from './$types'
 import { error } from '@sveltejs/kit'
 import { promises as fs } from 'fs'
 import { join as pathJoin } from 'path'
-import { artPublicBase, artPrivateBase } from '$lib/config'
+import { artPublicBasePath, artLocalBasePath } from '$lib/config'
 
 export const load: PageServerLoad = async () => {
-  const fileListPath = pathJoin(artPrivateBase, 'files.json')
+  const fileListPath = pathJoin(artLocalBasePath, 'files.json')
 
   let fileList
   try {
@@ -19,8 +19,8 @@ export const load: PageServerLoad = async () => {
   return {
     imgList: fileList.map(i =>
       Object.assign(i, {
-        fileName: `${artPublicBase}/${i.fileName}`,
-        full: `/art/${i.full}`,
+        fileName: pathJoin(artPublicBasePath, i.fileName),
+        full: pathJoin(artPublicBasePath, i.full),
       })
     ),
   }

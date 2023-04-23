@@ -9,6 +9,7 @@
   import { page } from '$app/stores'
   import { afterNavigate } from '$app/navigation'
   import { browser } from '$app/environment'
+  import { artPublicBasePath } from '$lib/config'
 
   export let imgList: ArtList
   export let gap = 10
@@ -126,7 +127,7 @@
   {#if modalImg}
     <a
       class="btn modal-close fixed-color"
-      href="/art"
+      href={artPublicBasePath}
       transition:fade={{ duration: 100 }}
     >
       <Fa icon={faClose} scale="1.25" class="fixed-color" />
@@ -137,7 +138,7 @@
       style={modalStyle}
     >
       <div class="modal-row image">
-        <a href="/art" data-sveltekit-noscroll tabindex="-1">
+        <a href={artPublicBasePath} data-sveltekit-noscroll tabindex="-1">
           <img
             src={modalImg?.fileName}
             alt={modalImg?.artistLink}
