@@ -19,4 +19,5 @@ export const filesPublicBasePath = '/getfile'
 export const excludeFiles = ['Thumbs.db']
 
 export const sessionListPath = '/sessions.txt'
+export const userListPath = '/users.json'
 export const socialsPath = '/socials.json'

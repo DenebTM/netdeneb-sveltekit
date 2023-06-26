@@ -1,6 +1,5 @@
 import { socialsPath } from '~/config'
 import type { PageServerLoad } from './$types'
-
 import { promises as fs } from 'fs'
 
 export const load = (async () => {

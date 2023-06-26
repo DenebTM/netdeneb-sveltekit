@@ -1,7 +1,8 @@
 import type { PageServerLoad } from './$types'
-import users from '~/users.json'
 import { createSession, validateSession } from '~/util/session'
 import { redirect, error, type Actions } from '@sveltejs/kit'
+import { promises as fs } from 'fs'
+import { userListPath } from '~/config'
 
 // TODO: redirect here maybe?
 export const load: PageServerLoad = async ({ locals: { token } }) => ({
@@ -10,6 +11,12 @@ export const load: PageServerLoad = async ({ locals: { token } }) => ({
 
 export const actions: Actions = {
   default: async ({ request, cookies, url }) => {
+    const users: Record<string, string> = JSON.parse(
+      (
+        await fs.readFile(userListPath).catch(() => Buffer.from('[]'))
+      ).toString()
+    )
+
     const creds: {
       username?: keyof typeof users | ''
       password?: string | undefined

@@ -10,5 +10,4 @@ node_modules
 **/*.jpg
 **/*.webp
 **/*.svg
-users.json
 package-lock.json
