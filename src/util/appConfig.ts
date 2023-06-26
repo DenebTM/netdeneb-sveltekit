@@ -13,7 +13,7 @@ export const navItems: Record<string, any> = {
   },
 }
 
-const configPath = import.meta.env.CONFIG_PATH || './config.json'
+const configPath = import.meta.env.VITE_CONFIG_PATH || './config.json'
 
 export const defaultConfig: AppConfig = {
   artLocalBasePath: './art',
