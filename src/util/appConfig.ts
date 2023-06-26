@@ -1,18 +1,5 @@
 import fs from 'node:fs/promises'
 
-export const navItems: Record<string, any> = {
-  Home: '/',
-  'Art gallery': '/art',
-  'Open Directory': '/files',
-  Nextcloud: 'https://cloud.netdeneb.com/',
-  Screemail: 'https://mail.screee.ee/',
-  Other: {
-    'Best website (archived)': '/other/yiff.toys',
-    AAAAAA: '/leggy',
-    'Source code': 'https://github.com/DenebTM/netdeneb',
-  },
-}
-
 const configPath = (): string =>
   import.meta.env.VITE_CONFIG_PATH || './config.json'
 

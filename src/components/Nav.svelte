@@ -3,7 +3,18 @@
   import { clickOutside } from '~/util/clickOutside'
   import { page } from '$app/stores'
 
-  import { navItems } from '~/util/appConfig'
+  const navItems: Record<string, any> = {
+    Home: '/',
+    'Art gallery': '/art',
+    'Open Directory': '/files',
+    Nextcloud: 'https://cloud.netdeneb.com/',
+    Screemail: 'https://mail.screee.ee/',
+    Other: {
+      'Best website (archived)': '/other/yiff.toys',
+      AAAAAA: '/leggy',
+      'Source code': 'https://github.com/DenebTM/netdeneb',
+    },
+  }
 
   if ($page.data.hasValidToken) navItems['Other']['Logout'] = '/logout'
   else delete navItems['Other']['Logout']
