@@ -4,9 +4,8 @@
   import { page } from '$app/stores'
   import { afterNavigate } from '$app/navigation'
   import { browser } from '$app/environment'
-  import { defaultConfig } from '~/util/appConfig'
 
-  export let artPublicBasePath: string = defaultConfig.artPublicBasePath
+  export let artPublicBasePath: string = '/art'
 
   export let imgList: ArtList
   export let gap = 10
