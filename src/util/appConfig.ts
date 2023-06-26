@@ -1,6 +1,6 @@
-import { promises as fs } from 'fs'
+import fs from 'node:fs/promises'
 
-export const navItems = {
+export const navItems: Record<string, any> = {
   Home: '/',
   'Art gallery': '/art',
   'Open Directory': '/files',
@@ -11,7 +11,7 @@ export const navItems = {
     AAAAAA: '/leggy',
     'Source code': 'https://github.com/DenebTM/netdeneb',
   },
-} satisfies Record<string, string | Record<string, string>>
+}
 
 const configPath = import.meta.env.CONFIG_PATH || './config.json'
 

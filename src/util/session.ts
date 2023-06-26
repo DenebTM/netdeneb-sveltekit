@@ -1,7 +1,7 @@
-import { promises as fs } from 'fs'
-import crypto from 'crypto'
+import fs from 'node:fs/promises'
+import crypto from 'node:crypto'
 import type { CookieSerializeOptions } from 'cookie'
-import { basename, dirname, join as pathJoin } from 'path'
+import { basename, dirname, join as pathJoin } from 'node:path'
 import { sessionCookieName } from './globals'
 import { getConfig } from './appConfig'
 

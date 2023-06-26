@@ -1,7 +1,7 @@
 import type { PageServerLoad } from './$types'
 import { createSession, validateSession } from '~/util/session'
 import { redirect, error, type Actions } from '@sveltejs/kit'
-import { promises as fs } from 'fs'
+import fs from 'node:fs/promises'
 import { getConfig } from '~/util/appConfig'
 
 // TODO: redirect here maybe?

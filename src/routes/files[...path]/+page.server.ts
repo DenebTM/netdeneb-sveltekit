@@ -1,8 +1,9 @@
 import type { PageServerLoad } from './$types'
 import { error, redirect } from '@sveltejs/kit'
-import { join as pathJoin } from 'path'
-import { promises as fs, constants as fsConstants } from 'fs'
-import crypto from 'crypto'
+import { join as pathJoin } from 'node:path'
+import { constants as fsConstants } from 'node:fs'
+import fs from 'node:fs/promises'
+import crypto from 'node:crypto'
 import { validateSession } from '~/util/session'
 import { getConfig } from '~/util/appConfig'
 
@@ -61,6 +62,8 @@ export const load: PageServerLoad = async ({
   locals: { token },
   params: { path },
 }) => {
+  const { filesPublicBasePath } = await getConfig()
+
   if (path.startsWith('/Users') && validateSession(token) === null) {
     throw redirect(
       307,
@@ -72,5 +75,5 @@ export const load: PageServerLoad = async ({
 
   if (err) throw error(500, err)
 
-  return { dirList, fileList, availableThumbs }
+  return { dirList, fileList, availableThumbs, filesPublicBasePath }
 }

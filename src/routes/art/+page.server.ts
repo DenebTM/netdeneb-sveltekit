@@ -1,7 +1,7 @@
 import type { PageServerLoad } from './$types'
 import { error } from '@sveltejs/kit'
-import { promises as fs } from 'fs'
-import { join as pathJoin } from 'path'
+import fs from 'node:fs/promises'
+import { join as pathJoin } from 'node:path'
 import { getConfig } from '~/util/appConfig'
 
 export const load: PageServerLoad = async () => {

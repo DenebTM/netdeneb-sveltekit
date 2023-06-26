@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types'
-import { promises as fs } from 'fs'
+import fs from 'node:fs/promises'
 import { getConfig } from '~/util/appConfig'
 
 export const load = (async () => {

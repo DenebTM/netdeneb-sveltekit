@@ -8,7 +8,6 @@
 
   import folderIcon from '/src/assets/icons/folder.svg'
   import { extIcons } from '~/util/fileTypes'
-  import { filesPublicBasePath } from '~/util/appConfig'
 
   const getIcon = (filename: string) => {
     const ext = filename.split('.').pop()?.toLowerCase() || 'default'
@@ -16,7 +15,7 @@
   }
 
   export let data: PageData
-  $: ({ dirList, fileList, availableThumbs } = data)
+  $: ({ dirList, fileList, availableThumbs, filesPublicBasePath } = data)
 
   const thumbsLoaded: Record<string, boolean> = {}
   const updateImageSources = (fl: Array<string>) => {

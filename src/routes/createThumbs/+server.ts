@@ -1,8 +1,8 @@
 import { json as json$1 } from '@sveltejs/kit'
 import type { RequestHandler } from '@sveltejs/kit'
-import { join as pathJoin, parse as parsePath } from 'path'
+import { join as pathJoin, parse as parsePath } from 'node:path'
 import gm from 'gm'
-import crypto from 'crypto'
+import crypto from 'node:crypto'
 import { getConfig } from '~/util/appConfig'
 
 export const POST: RequestHandler = async ({ request }) => {
