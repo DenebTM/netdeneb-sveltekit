@@ -13,7 +13,8 @@ export const navItems: Record<string, any> = {
   },
 }
 
-const configPath = import.meta.env.VITE_CONFIG_PATH || './config.json'
+const configPath = (): string =>
+  import.meta.env.VITE_CONFIG_PATH || './config.json'
 
 export const defaultConfig: AppConfig = {
   artLocalBasePath: './art',
@@ -30,7 +31,7 @@ export const defaultConfig: AppConfig = {
 
 export const getConfig = async (): Promise<AppConfig> => {
   try {
-    return JSON.parse((await fs.readFile(configPath)).toString()) as AppConfig
+    return JSON.parse((await fs.readFile(configPath())).toString()) as AppConfig
   } catch (err) {
     return defaultConfig
   }
