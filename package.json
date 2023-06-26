@@ -31,7 +31,6 @@
     "@sveltejs/kit": "^1.20.5",
     "boxicons": "^2.1.4",
     "cookie": "^0.5.0",
-    "flag-icons": "^6.7.0",
     "gm": "^1.25.0",
     "svelte": "^3.59.2",
     "svelte-preprocess": "^4.10.7"

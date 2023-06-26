@@ -19,9 +19,8 @@
     />
     <h1>Hi!</h1>
     <p>
-      I'm Deneb, a maned wolf and hobbyist developer from&nbsp; <span
-        class="fi fi-at"
-      />&nbsp;Austria, currently studying comp-sci in Innsbruck.
+      I'm Deneb, a maned wolf and hobbyist developer from Austria, currently
+      studying comp-sci in Innsbruck.
     </p>
     <p>
       This is mainly a place for me to put my personal pet projects, but you'll
