@@ -1,6 +1,9 @@
 <script lang="ts">
-  import Social from '$lib/components/Social.svelte'
+  import Socials from '$lib/components/Socials.svelte'
   import { sitename } from '$lib/js/globals'
+  import type { PageServerData } from './$types'
+
+  export let data: PageServerData
 </script>
 
 <svelte:head>
@@ -25,8 +28,10 @@
       also find my ref and other art I've received here. Still under
       construction, so check back later for more!
     </p>
-    <hr />
-    <Social />
+    {#if data.socials.length > 0}
+      <hr />
+      <Socials links={data.socials} />
+    {/if}
   </section>
 </div>
 

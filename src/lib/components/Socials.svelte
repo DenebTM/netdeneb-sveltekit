@@ -1,41 +1,5 @@
 <script lang="ts">
-  const links = [
-    {
-      icon: 'discord-alt',
-      href: 'https://discord.com/users/300930171123531777',
-      text: 'Deneb#0721',
-    },
-    {
-      icon: 'telegram',
-      href: 'https://telegram.dog/DenebTM',
-      text: '@DenebTM',
-    },
-    {
-      icon: 'mastodon',
-      href: 'https://wetdry.world/@Deneb',
-      text: '@Deneb@wetdry.world',
-    },
-    {
-      icon: 'twitter',
-      href: 'https://twitter.com/DenebTM',
-      text: '@DenebTM',
-    },
-    {
-      icon: 'reddit',
-      href: 'https://reddit.com/u/VeloxH',
-      text: 'u/VeloxH',
-    },
-    {
-      icon: 'github',
-      href: 'https://github.com/DenebTM',
-      text: 'DenebTM',
-    },
-    {
-      icon: 'steam',
-      href: 'https://steamcommunity.com/id/DenebTM',
-      text: 'DenebTM',
-    },
-  ]
+  export let links: SociaList
 </script>
 
 <p style="margin: 20px 0 10px 0">Feel free to bark at me on:</p>

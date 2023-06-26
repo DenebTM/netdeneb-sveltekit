@@ -18,6 +18,13 @@ declare global {
     error: string | undefined
   }
 
+  interface SocialItem {
+    icon: string
+    href: string
+    text: string
+  }
+  type SociaList = SocialItem[]
+
   // See https://kit.svelte.dev/docs/types#app
   // for information about these interfaces
   // and what to do when importing types
