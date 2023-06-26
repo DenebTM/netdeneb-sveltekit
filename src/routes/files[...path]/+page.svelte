@@ -8,7 +8,7 @@
 
   import folderIcon from '/src/assets/icons/folder.svg'
   import { extIcons } from '~/util/fileTypes'
-  import { filesPublicBasePath } from '~/config'
+  import { filesPublicBasePath } from '~/util/appConfig'
 
   const getIcon = (filename: string) => {
     const ext = filename.split('.').pop()?.toLowerCase() || 'default'

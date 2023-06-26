@@ -1,9 +1,9 @@
 import { promises as fs } from 'fs'
 import crypto from 'crypto'
-import { sessionListPath } from '~/config'
 import type { CookieSerializeOptions } from 'cookie'
 import { basename, dirname, join as pathJoin } from 'path'
 import { sessionCookieName } from './globals'
+import { getConfig } from './appConfig'
 
 export type SessionToken = string
 
@@ -99,12 +99,14 @@ export const validateSession = (token?: SessionToken): Session | null => {
  * for monitoring purposes
  */
 const writeOutSessions = async (): Promise<void> => {
+  const { sessionListPath } = await getConfig()
+
   const sessionListDir = dirname(sessionListPath)
   const sessionListFilename = basename(sessionListPath)
 
   const tmpFilePath = pathJoin(
     sessionListDir,
-    '/.tmp_' + crypto.randomBytes(4).toString('hex') + '_' + sessionListFilename
+    '.tmp_' + crypto.randomBytes(4).toString('hex') + '_' + sessionListFilename
   )
 
   try {

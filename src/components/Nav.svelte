@@ -3,7 +3,7 @@
   import { clickOutside } from '~/util/clickOutside'
   import { page } from '$app/stores'
 
-  import { navItems } from '~/config'
+  import { navItems } from '~/util/appConfig'
 
   if ($page.data.hasValidToken) navItems['Other']['Logout'] = '/logout'
   else delete navItems['Other']['Logout']

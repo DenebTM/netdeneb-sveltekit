@@ -2,9 +2,11 @@ import type { PageServerLoad } from './$types'
 import { error } from '@sveltejs/kit'
 import { promises as fs } from 'fs'
 import { join as pathJoin } from 'path'
-import { artPublicBasePath, artLocalBasePath } from '~/config'
+import { getConfig } from '~/util/appConfig'
 
 export const load: PageServerLoad = async () => {
+  const { artPublicBasePath, artLocalBasePath } = await getConfig()
+
   const fileListPath = pathJoin(artLocalBasePath, 'files.json')
 
   let fileList
@@ -17,6 +19,7 @@ export const load: PageServerLoad = async () => {
   }
 
   return {
+    artPublicBasePath,
     imgList: fileList.map(i =>
       Object.assign(i, {
         fileName: pathJoin(artPublicBasePath, i.fileName),

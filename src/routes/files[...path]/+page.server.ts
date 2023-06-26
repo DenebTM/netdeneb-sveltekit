@@ -1,12 +1,14 @@
 import type { PageServerLoad } from './$types'
 import { error, redirect } from '@sveltejs/kit'
-import { excludeFiles, filesLocalBasePath } from '~/config'
 import { join as pathJoin } from 'path'
 import { promises as fs, constants as fsConstants } from 'fs'
 import crypto from 'crypto'
 import { validateSession } from '~/util/session'
+import { getConfig } from '~/util/appConfig'
 
 const readDir = async (path: string): Promise<FileDirList> => {
+  const { filesLocalBasePath, excludeFiles } = await getConfig()
+
   let error
   try {
     path = pathJoin(filesLocalBasePath, path)

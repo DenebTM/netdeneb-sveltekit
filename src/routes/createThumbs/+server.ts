@@ -1,11 +1,13 @@
 import { json as json$1 } from '@sveltejs/kit'
 import type { RequestHandler } from '@sveltejs/kit'
 import { join as pathJoin, parse as parsePath } from 'path'
-import { filesPublicBasePath } from '~/config'
 import gm from 'gm'
 import crypto from 'crypto'
+import { getConfig } from '~/util/appConfig'
 
 export const POST: RequestHandler = async ({ request }) => {
+  const { filesPublicBasePath } = await getConfig()
+
   let paths: string[]
   const thumbFileNames: Record<string, string> = {}
   try {

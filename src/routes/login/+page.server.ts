@@ -2,7 +2,7 @@ import type { PageServerLoad } from './$types'
 import { createSession, validateSession } from '~/util/session'
 import { redirect, error, type Actions } from '@sveltejs/kit'
 import { promises as fs } from 'fs'
-import { userListPath } from '~/config'
+import { getConfig } from '~/util/appConfig'
 
 // TODO: redirect here maybe?
 export const load: PageServerLoad = async ({ locals: { token } }) => ({
@@ -11,6 +11,8 @@ export const load: PageServerLoad = async ({ locals: { token } }) => ({
 
 export const actions: Actions = {
   default: async ({ request, cookies, url }) => {
+    const { userListPath } = await getConfig()
+
     const users: Record<string, string> = JSON.parse(
       (
         await fs.readFile(userListPath).catch(() => Buffer.from('[]'))
