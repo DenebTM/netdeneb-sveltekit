@@ -1,4 +1,4 @@
-export const navItems: Record<string, any> = {
+export const navItems = {
   Home: '/',
   'Art gallery': '/art',
   'Open Directory': '/files',
@@ -9,7 +9,7 @@ export const navItems: Record<string, any> = {
     AAAAAA: '/leggy',
     'Source code': 'https://github.com/DenebTM/netdeneb',
   },
-}
+} satisfies Record<string, string | Record<string, string>>
 
 export const artLocalBasePath = '/art'
 export const artPublicBasePath = '/art'

@@ -3,7 +3,7 @@ import { validateSession } from '~/util/session'
 import type { LayoutServerLoad } from './$types'
 import cookie from 'cookie'
 
-export const load: LayoutServerLoad = async ({ request }) => {
+export const load = (async ({ request }) => {
   const { [sessionCookieName]: token } = cookie.parse(
     request.headers.get('cookie') ?? `${sessionCookieName}=`
   )
@@ -11,4 +11,4 @@ export const load: LayoutServerLoad = async ({ request }) => {
   return {
     hasValidToken: validateSession(token) !== null,
   }
-}
+}) satisfies LayoutServerLoad
