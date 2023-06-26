@@ -13,7 +13,7 @@ export const navItems = {
   },
 } satisfies Record<string, string | Record<string, string>>
 
-const configPath = './config.json'
+const configPath = import.meta.env.CONFIG_PATH || './config.json'
 
 export const defaultConfig: AppConfig = {
   artLocalBasePath: './art',
