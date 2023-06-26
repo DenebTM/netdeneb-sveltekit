@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { PageData } from './$types'
-  import { sitename } from '$lib/js/globals'
-  import Gallery from '$lib/components/Gallery.svelte'
+  import { sitename } from '~/util/globals'
+  import Gallery from '~/components/Gallery.svelte'
 
   export let data: PageData
   $: ({ imgList } = data)

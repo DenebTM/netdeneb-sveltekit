@@ -2,7 +2,7 @@
   import { page } from '$app/stores'
   import { browser } from '$app/environment'
   import { goto } from '$app/navigation'
-  import { sitename } from '$lib/js/globals'
+  import { sitename } from '~/util/globals'
 
   $: if ($page.data.hasValidToken && browser) goto(redirect)
 

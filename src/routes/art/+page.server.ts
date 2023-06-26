@@ -2,7 +2,7 @@ import type { PageServerLoad } from './$types'
 import { error } from '@sveltejs/kit'
 import { promises as fs } from 'fs'
 import { join as pathJoin } from 'path'
-import { artPublicBasePath, artLocalBasePath } from '$lib/config'
+import { artPublicBasePath, artLocalBasePath } from '~/config'
 
 export const load: PageServerLoad = async () => {
   const fileListPath = pathJoin(artLocalBasePath, 'files.json')

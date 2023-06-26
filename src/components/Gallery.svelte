@@ -1,10 +1,10 @@
 <script lang="ts">
   import { fade } from 'svelte/transition'
-  import { disableScroll, enableScroll } from '$lib/js/tools'
+  import { disableScroll, enableScroll } from '~/util/tools'
   import { page } from '$app/stores'
   import { afterNavigate } from '$app/navigation'
   import { browser } from '$app/environment'
-  import { artPublicBasePath } from '$lib/config'
+  import { artPublicBasePath } from '~/config'
 
   export let imgList: ArtList
   export let gap = 10

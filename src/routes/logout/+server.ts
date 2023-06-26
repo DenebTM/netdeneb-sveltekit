@@ -1,7 +1,7 @@
 import type { RequestHandler } from './$types'
-import { destroySession } from '$lib/js/session'
+import { destroySession } from '~/util/session'
 import cookie from 'cookie'
-import { sessionCookieName } from '$lib/js/globals'
+import { sessionCookieName } from '~/util/globals'
 
 export const GET: RequestHandler = async ({ locals: { token } }) => {
   if (token !== '') destroySession(token)

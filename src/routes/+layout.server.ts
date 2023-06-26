@@ -1,5 +1,5 @@
-import { sessionCookieName } from '$lib/js/globals'
-import { validateSession } from '$lib/js/session'
+import { sessionCookieName } from '~/util/globals'
+import { validateSession } from '~/util/session'
 import type { LayoutServerLoad } from './$types'
 import cookie from 'cookie'
 

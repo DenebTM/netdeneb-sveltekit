@@ -1,9 +1,9 @@
 <script lang="ts">
-  import NavDropdown from '$lib/components/NavDropdown.svelte'
-  import { clickOutside } from '$lib/js/clickOutside'
+  import NavDropdown from '~/components/NavDropdown.svelte'
+  import { clickOutside } from '~/util/clickOutside'
   import { page } from '$app/stores'
 
-  import { navItems } from '$lib/config'
+  import { navItems } from '~/config'
 
   if ($page.data.hasValidToken) navItems['Other']['Logout'] = '/logout'
   else delete navItems['Other']['Logout']

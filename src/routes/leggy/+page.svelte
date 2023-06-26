@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { sitename } from '$lib/js/globals'
+  import { sitename } from '~/util/globals'
 </script>
 
 <svelte:head>

@@ -2,13 +2,13 @@
   import type { PageData } from './$types'
   import { page } from '$app/stores'
   import { slide } from 'svelte/transition'
-  import { sitename } from '$lib/js/globals'
+  import { sitename } from '~/util/globals'
   import { browser } from '$app/environment'
   import { afterUpdate } from 'svelte'
 
   import folderIcon from '/src/assets/icons/folder.svg'
-  import { extIcons } from '$lib/js/fileTypes'
-  import { filesPublicBasePath } from '$lib/config'
+  import { extIcons } from '~/util/fileTypes'
+  import { filesPublicBasePath } from '~/config'
 
   const getIcon = (filename: string) => {
     const ext = filename.split('.').pop()?.toLowerCase() || 'default'

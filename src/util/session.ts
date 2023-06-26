@@ -1,6 +1,6 @@
 import { promises as fs } from 'fs'
 import crypto from 'crypto'
-import { sessionListPath } from '$lib/config'
+import { sessionListPath } from '~/config'
 import type { CookieSerializeOptions } from 'cookie'
 import { basename, dirname, join as pathJoin } from 'path'
 import { sessionCookieName } from './globals'

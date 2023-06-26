@@ -1,11 +1,11 @@
 <script lang="ts">
-  import '$lib/js/styles'
+  import '~/util/styles'
 
-  import { sitename } from '$lib/js/globals'
+  import { sitename } from '~/util/globals'
   import { afterNavigate, beforeNavigate } from '$app/navigation'
 
-  import Nav from '$lib/components/Nav.svelte'
-  import { enableScroll } from '$lib/js/tools'
+  import Nav from '~/components/Nav.svelte'
+  import { enableScroll } from '~/util/tools'
   import { onMount } from 'svelte'
 
   let animate: boolean | undefined = true

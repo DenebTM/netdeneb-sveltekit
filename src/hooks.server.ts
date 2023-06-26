@@ -1,4 +1,4 @@
-import { sessionCookieName } from '$lib/js/globals'
+import { sessionCookieName } from '~/util/globals'
 import type { Handle } from '@sveltejs/kit'
 import cookie from 'cookie'
 

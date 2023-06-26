@@ -1,6 +1,6 @@
 import type { PageServerLoad } from './$types'
-import users from '$lib/users.json'
-import { createSession, validateSession } from '$lib/js/session'
+import users from '~/users.json'
+import { createSession, validateSession } from '~/util/session'
 import { redirect, error, type Actions } from '@sveltejs/kit'
 
 // TODO: redirect here maybe?

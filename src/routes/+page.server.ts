@@ -1,4 +1,4 @@
-import { socialsPath } from '$lib/config'
+import { socialsPath } from '~/config'
 import type { PageServerLoad } from './$types'
 
 import { promises as fs } from 'fs'

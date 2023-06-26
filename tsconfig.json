@@ -13,12 +13,6 @@
     "ignoreDeprecations": "5.0", // remove this once https://github.com/sveltejs/kit/issues/8650 is resolved
 
 		"paths": {
-			"$lib": [
-				"./src/lib"
-			],
-			"$lib/*": [
-				"./src/lib/*"
-			],
 			"~": [
 				"./src"
 			],

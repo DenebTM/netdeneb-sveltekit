@@ -1,6 +1,6 @@
 <script lang="ts">
-  import Socials from '$lib/components/Socials.svelte'
-  import { sitename } from '$lib/js/globals'
+  import Socials from '~/components/Socials.svelte'
+  import { sitename } from '~/util/globals'
   import type { PageServerData } from './$types'
 
   export let data: PageServerData
