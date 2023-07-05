@@ -5,7 +5,7 @@
 <p style="margin: 20px 0 10px 0">Feel free to bark at me on:</p>
 <div style="text-align: left; width: fit-content; margin: 0 auto">
   {#each links as { icon, href, text }}
-    <a class="click-depress" {href}>
+    <a class="click-depress" rel="me" {href}>
       <p>
         <i>
           <i
