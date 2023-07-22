@@ -21,6 +21,10 @@
   --switch-color: var(--primary-inverse);
   --switch-checked-background-color: var(--primary);
 
+  --page-background-size: cover;
+  --page-background-attachment: fixed;
+  --page-background-posx: 50%;
+  --page-background-posy: 50%;
   --page-background: url('/img/bg.webp');
   --page-background-blur: url('/img/bg-blur.webp'); /* fuck you phones */
 

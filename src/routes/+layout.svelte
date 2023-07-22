@@ -55,10 +55,11 @@
     z-index: -1;
 
     background-attachment: fixed;
-    background-position-x: 20%;
-    background-size: cover;
+    background-attachment: var(--page-background-attachment);
+    background-position-x: var(--page-background-posx);
+    background-position-y: var(--page-background-posy);
+    background-size: var(--page-background-size);
     /* filter: blur(5px); fuck you phones */
-    background-image: var(--page-background-blur);
   }
   div.content {
     text-align: center;

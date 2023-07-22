@@ -7,9 +7,10 @@ html {
 }
 body {
   background: var(--page-background);
-  background-attachment: fixed;
-  background-position-x: 20%;
-  background-size: cover;
+  background-attachment: var(--page-background-attachment);
+  background-position-x: var(--page-background-posx);
+  background-position-y: var(--page-background-posy);
+  background-size: var(--page-background-size);
 }
 
 a {
