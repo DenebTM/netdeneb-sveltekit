@@ -8,22 +8,21 @@
   import { enableScroll } from '~/util/tools'
   import { onMount } from 'svelte'
 
-  let animate: boolean | undefined = true
+  let animateTransition: boolean | undefined = true
   beforeNavigate(nav => {
     if (
       !(
-        nav.to?.url.pathname.startsWith('/getfile') ||
         nav.to?.url.host != nav.from?.url.host ||
         nav.to?.url.pathname == nav.from?.url.pathname
       )
     )
-      animate = undefined
+      animateTransition = undefined
   })
   afterNavigate(() => {
-    animate = true
+    animateTransition = true
     enableScroll()
   })
-  onMount(() => (animate = true))
+  onMount(() => (animateTransition = true))
 </script>
 
 <svelte:head>
@@ -39,7 +38,7 @@
 <div class="content">
   <div class="bg-blur" />
   <Nav />
-  <main {animate}>
+  <main animate={animateTransition}>
     <slot />
   </main>
 </div>

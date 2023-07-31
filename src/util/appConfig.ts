@@ -17,10 +17,23 @@ export const defaultConfig: AppConfig = {
   socialsPath: './socials.json',
 }
 
+let config: AppConfig = defaultConfig
+let configLastRead = new Date(0)
+
 export const getConfig = async (): Promise<AppConfig> => {
-  try {
-    return JSON.parse((await fs.readFile(configPath())).toString()) as AppConfig
-  } catch (err) {
-    return defaultConfig
+  const now = new Date()
+  const diffSeconds = now.getSeconds() - configLastRead.getSeconds()
+
+  if (diffSeconds >= 60) {
+    try {
+      config = JSON.parse(
+        (await fs.readFile(configPath())).toString()
+      ) as AppConfig
+      configLastRead = now
+    } catch (err: any) {
+      console.error('Error reading config:', err)
+    }
   }
+
+  return config
 }
