@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises'
 import { env } from '$env/dynamic/private'
 
+// eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
 const configPath = (): string => env.APP_CONFIG_PATH || './config.json'
 
 export const defaultConfig: AppConfig = {
