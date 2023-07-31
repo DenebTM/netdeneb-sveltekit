@@ -22,7 +22,7 @@ let configLastRead = new Date(0)
 
 export const getConfig = async (): Promise<AppConfig> => {
   const now = new Date()
-  const diffSeconds = now.getSeconds() - configLastRead.getSeconds()
+  const diffSeconds = (now.getTime() - configLastRead.getTime()) / 1000
 
   if (diffSeconds >= 60) {
     try {
