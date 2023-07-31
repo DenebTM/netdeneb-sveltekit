@@ -133,7 +133,7 @@
   <section class="file-list files">
     {#each fileList as file}
       <div class="margin-box">
-        <a class="file box click-depress" href={pathToFile(file)}>
+        <a class="file box click-depress" href={pathToFile(file)} data-sveltekit-reload>
           <div>
             <img
               src={imageSources[file]}

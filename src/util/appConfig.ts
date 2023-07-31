@@ -9,7 +9,7 @@ export const defaultConfig: AppConfig = {
   artPublicBasePath: '/art',
 
   filesLocalBasePath: './files',
-  filesPublicBasePath: '/getfile',
+  filesPublicBasePath: '/files',
   excludeFiles: ['Thumbs.db'],
 
   sessionListPath: './sessions.txt',
