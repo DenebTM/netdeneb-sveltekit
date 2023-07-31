@@ -6,7 +6,7 @@
   const navItems: Record<string, any> = {
     Home: '/',
     'Art gallery': '/art',
-    'Open Directory': '/files',
+    'Files': '/files',
     Nextcloud: 'https://cloud.netdeneb.com/',
     Screemail: 'https://mail.screee.ee/',
     Other: {
