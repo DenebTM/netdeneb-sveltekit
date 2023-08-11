@@ -10,7 +10,7 @@
     href = target
   } else {
     href = target.href
-    external = true
+    external = target.external || undefined
   }
 </script>
 
