@@ -36,6 +36,7 @@ declare global {
     sessionListPath: string
     userListPath: string
     socialsPath: string
+    navPath: string
   }
 
   // See https://kit.svelte.dev/docs/types#app

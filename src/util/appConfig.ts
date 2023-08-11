@@ -15,6 +15,7 @@ export const defaultConfig: AppConfig = {
   sessionListPath: './sessions.txt',
   userListPath: './users.json',
   socialsPath: './socials.json',
+  navPath: './nav.json',
 }
 
 let config: AppConfig = defaultConfig

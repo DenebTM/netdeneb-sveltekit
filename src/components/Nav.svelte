@@ -3,21 +3,15 @@
   import { clickOutside } from '~/util/clickOutside'
   import { page } from '$app/stores'
 
-  const navItems: Record<string, any> = {
-    Home: '/',
-    'Art gallery': '/art',
-    'Files': '/files',
-    Nextcloud: 'https://cloud.netdeneb.com/',
-    Screemail: 'https://mail.screee.ee/',
-    Other: {
-      'Best website (archived)': '/other/yiff.toys',
-      AAAAAA: '/leggy',
-      'Source code': 'https://github.com/DenebTM/netdeneb',
-    },
-  }
+  let items = $page.data.navItems
 
-  if ($page.data.hasValidToken) navItems['Other']['Logout'] = '/logout'
-  else delete navItems['Other']['Logout']
+  if (items['Other']) {
+    if ($page.data.hasValidToken) items['Other']['Logout'] = '/logout'
+    else delete items['Other']['Logout']
+  } else {
+    if ($page.data.hasValidToken) items['Logout'] = '/logout'
+    else delete items['Logout']
+  }
 
   let open = false // only for visuals at this point
   const closeNav = () => (open = false)
@@ -38,7 +32,7 @@
     bind:checked={open}
   />
   <ul>
-    {#each Object.entries(navItems) as [name, href], i}
+    {#each Object.entries(items) as [name, href], i}
       {#if typeof href === 'string'}
         <li class="click-depress" style={`animation-delay: ${(i + 1) * 75}ms`}>
           <a {href} on:click={closeNav}>{name}</a>
