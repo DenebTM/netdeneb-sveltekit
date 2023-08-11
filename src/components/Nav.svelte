@@ -2,8 +2,9 @@
   import NavDropdown from '~/components/NavDropdown.svelte'
   import { clickOutside } from '~/util/clickOutside'
   import { page } from '$app/stores'
+  import NavLink from './NavLink.svelte'
 
-  let navItems = $page.data.navItems
+  let navItems: Record<string, any> = $page.data.navItems
 
   if (navItems['Other']) {
     if ($page.data.hasValidToken) navItems['Other']['Logout'] = '/logout'
@@ -32,15 +33,13 @@
     bind:checked={open}
   />
   <ul>
-    {#each Object.entries(navItems) as [name, href], i}
-      {#if typeof href === 'string'}
-        <li class="click-depress" style={`animation-delay: ${(i + 1) * 75}ms`}>
-          <a {href} on:click={closeNav}>{name}</a>
-        </li>
+    {#each Object.entries(navItems) as [name, target], i}
+      {#if typeof target === 'string' || 'external' in target}
+        <NavLink {name} {target} index={i} onClick={closeNav} />
       {:else}
         <NavDropdown
           {name}
-          entries={href}
+          entries={target}
           delay={(i + 1) * 75}
           on:navigate={closeNav}
         />
