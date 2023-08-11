@@ -1,6 +1,7 @@
 <script lang="ts">
   import { clickOutside } from '~/util/clickOutside'
   import { createEventDispatcher } from 'svelte'
+  import NavLink from './NavLink.svelte'
 
   export let name: string
   export let entries: Record<string, any> = {}
@@ -24,6 +25,7 @@
   {open}
   style={`animation-delay: ${delay}ms`}
 >
+  <!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
   <label
     for="dropdown-isopen"
     role="button"
@@ -39,23 +41,22 @@
 
   <div>
     <ul>
-      {#each Object.entries(entries) as [name, href], i}
-        <li
-          class="click-depress"
-          on:click={e => {
+      {#each Object.entries(entries) as [name, target], i}
+        <NavLink
+          {name}
+          {target}
+          index={i}
+          onClick={e => {
             closeDropdown()
             dispatch('navigate', e)
           }}
-          style={`animation-delay: ${(i + 1) * 0.075}s`}
-        >
-          <a {href}>{name}</a>
-        </li>
+        />
       {/each}
     </ul>
   </div>
 </li>
 
-<style>
+<style global>
   .dropdown {
     position: relative;
     transition: 0.2s;

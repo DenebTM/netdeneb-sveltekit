@@ -1,7 +1,7 @@
 <script lang="ts">
   export let name: string
   export let target: string | { href: string; external: boolean }
-  export let onClick: () => void
+  export let onClick: (e?: MouseEvent) => void
   export let index: number
 
   let href: string = ''
