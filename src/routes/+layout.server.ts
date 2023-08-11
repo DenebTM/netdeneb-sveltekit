@@ -1,4 +1,4 @@
-import { fs } from 'node:fs/promises'
+import fs from 'node:fs/promises'
 import { sessionCookieName } from '~/util/globals'
 import { validateSession } from '~/util/session'
 import type { LayoutServerLoad } from './$types'
