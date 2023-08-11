@@ -3,14 +3,14 @@
   import { clickOutside } from '~/util/clickOutside'
   import { page } from '$app/stores'
 
-  let items = $page.data.navItems
+  let navItems = $page.data.navItems
 
-  if (items['Other']) {
-    if ($page.data.hasValidToken) items['Other']['Logout'] = '/logout'
-    else delete items['Other']['Logout']
+  if (navItems['Other']) {
+    if ($page.data.hasValidToken) navItems['Other']['Logout'] = '/logout'
+    else delete navItems['Other']['Logout']
   } else {
-    if ($page.data.hasValidToken) items['Logout'] = '/logout'
-    else delete items['Logout']
+    if ($page.data.hasValidToken) navItems['Logout'] = '/logout'
+    else delete navItems['Logout']
   }
 
   let open = false // only for visuals at this point
@@ -32,7 +32,7 @@
     bind:checked={open}
   />
   <ul>
-    {#each Object.entries(items) as [name, href], i}
+    {#each Object.entries(navItems) as [name, href], i}
       {#if typeof href === 'string'}
         <li class="click-depress" style={`animation-delay: ${(i + 1) * 75}ms`}>
           <a {href} on:click={closeNav}>{name}</a>
