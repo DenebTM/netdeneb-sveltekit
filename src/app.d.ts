@@ -6,10 +6,12 @@ declare global {
     full: string
     description: string
     artistLink: string
-    width: string
-    height: string
   }
-  type ArtList = ArtItem[]
+  interface ArtItemWithDims extends ArtItem {
+    width: number
+    height: number
+  }
+  type ArtList = ArtItemWithDims[]
 
   interface FileDirList {
     dirList: string[]

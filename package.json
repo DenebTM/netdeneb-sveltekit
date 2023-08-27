@@ -33,6 +33,7 @@
     "boxicons": "^2.1.4",
     "cookie": "^0.5.0",
     "gm": "^1.25.0",
+    "image-size": "^1.0.2",
     "mime-types": "^2.1.35",
     "svelte": "^3.59.2",
     "svelte-preprocess": "^4.10.7"

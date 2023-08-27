@@ -3,6 +3,7 @@ import { error } from '@sveltejs/kit'
 import fs from 'node:fs/promises'
 import { join as pathJoin } from 'node:path'
 import { getConfig } from '~/util/appConfig'
+import dimensions from 'image-size'
 
 export const load: PageServerLoad = async () => {
   const { artPublicBasePath, artLocalBasePath } = await getConfig()
@@ -20,11 +21,20 @@ export const load: PageServerLoad = async () => {
 
   return {
     artPublicBasePath,
-    imgList: fileList.map(i =>
-      Object.assign(i, {
-        fileName: pathJoin(artPublicBasePath, i.fileName),
-        full: pathJoin(artPublicBasePath, i.full),
-      })
-    ),
+    imgList: fileList
+      .map(i =>
+        Object.assign(i, {
+          fileName: pathJoin(artPublicBasePath, i.fileName),
+          full: pathJoin(artPublicBasePath, i.full),
+        })
+      )
+      .map((i: ArtItem): ArtItemWithDims => {
+        const dims = dimensions(i.full)
+        return {
+          ...i,
+          width: dims.width ?? 0,
+          height: dims.height ?? 0,
+        }
+      }),
   }
 }
