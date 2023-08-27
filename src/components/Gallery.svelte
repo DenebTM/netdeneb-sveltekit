@@ -76,6 +76,7 @@
 <svelte:window bind:innerHeight />
 <svelte:head>
   {#if modalImg}
+    <meta property="twitter:image" content={$page.url.origin + modalImg.full} />
     <meta property="og:image" content={$page.url.origin + modalImg.full} />
     <meta property="og:title" content={modalImg.description} />
     <meta property="og:image:width" content={modalImg.width} />
