@@ -219,17 +219,23 @@
   .modal-close {
     color: white !important;
   }
-  .modal-row img {
-    object-fit: contain;
-    width: 100%;
-    height: calc(100vh - 80px);
+  .modal-row.image a {
+    height: 100%;
     cursor: zoom-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
-  .modal-row span {
-    line-height: 80px;
+  .modal-row.image img {
+    object-fit: scale-down;
+    max-height: 100%;
+    max-width: 100%;
   }
   .modal-row.details {
     background: rgba(0, 0, 0, 0.95);
+  }
+  .modal-row.details span {
+    line-height: 80px;
   }
 
   .btn {
