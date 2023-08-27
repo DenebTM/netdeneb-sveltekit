@@ -88,7 +88,7 @@
     tabindex={modalImg ? -1 : undefined}
     style="display: block"
     style:width={columnCount > 2 ? '70%' : '100%'}
-    href="?img=ref"
+    href={`?img=${titleImage?.id}`}
     role="button"
     data-sveltekit-noscroll
   >
@@ -105,7 +105,7 @@
             class="gallery-img"
             class:gallery-hover={hover}
             tabindex={modalImg ? -1 : undefined}
-            href={`?img=${galleryImages.indexOf(img) + 1}`}
+            href={`?img=${img.id}`}
             role="button"
             data-sveltekit-noscroll
           >
