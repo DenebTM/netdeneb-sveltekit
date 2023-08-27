@@ -4,7 +4,6 @@
   import { page } from '$app/stores'
   import { afterNavigate } from '$app/navigation'
   import { browser } from '$app/environment'
-  import mime from 'mime-types'
 
   export let artPublicBasePath: string = '/art'
 
@@ -34,7 +33,7 @@
 
   let modalImg = parseURLImg($page.url.search)
   const switchFullImage = () => {
-    function showModal(img?: ArtItem) {
+    function showModal(img?: ArtItemWithMetadata) {
       if (img) modalImg = img
       disableScroll()
     }
@@ -80,12 +79,9 @@
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="og:title" content={modalImg.description} />
     <meta property="og:image" content={$page.url.origin + modalImg.full} />
-    <meta
-      property="og:image:type"
-      content={mime.lookup(modalImg.full) || 'image/jpeg'}
-    />
-    <meta property="og:image:width" content={modalImg.width} />
-    <meta property="og:image:height" content={modalImg.height} />
+    <meta property="og:image:type" content={modalImg.mime} />
+    <meta property="og:image:width" content={modalImg.width.toString()} />
+    <meta property="og:image:height" content={modalImg.height.toString()} />
   {:else}
     <meta name="description" content="My ref, and more" />
   {/if}

@@ -7,11 +7,12 @@ declare global {
     description: string
     artistLink: string
   }
-  interface ArtItemWithDims extends ArtItem {
+  interface ArtItemWithMetadata extends ArtItem {
     width: number
     height: number
+    mime: string
   }
-  type ArtList = ArtItemWithDims[]
+  type ArtList = ArtItemWithMetadata[]
 
   interface FileDirList {
     dirList: string[]
