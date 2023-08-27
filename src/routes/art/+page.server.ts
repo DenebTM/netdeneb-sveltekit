@@ -22,19 +22,18 @@ export const load: PageServerLoad = async () => {
   return {
     artPublicBasePath,
     imgList: fileList
-      .map(i =>
-        Object.assign(i, {
-          fileName: pathJoin(artPublicBasePath, i.fileName),
-          full: pathJoin(artPublicBasePath, i.full),
-        })
-      )
       .map((i: ArtItem): ArtItemWithDims => {
-        const dims = dimensions(i.full)
+        const dims = dimensions(`${artLocalBasePath}/${i.full}`)
         return {
           ...i,
           width: dims.width ?? 0,
           height: dims.height ?? 0,
         }
-      }),
+      })
+      .map(i => ({
+        ...i,
+        fileName: pathJoin(artPublicBasePath, i.fileName),
+        full: pathJoin(artPublicBasePath, i.full),
+      })),
   }
 }
