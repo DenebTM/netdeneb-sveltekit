@@ -120,6 +120,10 @@
     <a
       class="btn modal-close fixed-color"
       href={artPublicBasePath}
+      on:click={e => {
+        history.back()
+        e.preventDefault()
+      }}
       transition:fade={{ duration: 100 }}
     >
       <i class="bx bx-md bx-x fixed-color" />
@@ -130,7 +134,15 @@
       style={modalStyle}
     >
       <div class="modal-row image">
-        <a href={artPublicBasePath} data-sveltekit-noscroll tabindex="-1">
+        <a
+          href={artPublicBasePath}
+          on:click={e => {
+            history.back()
+            e.preventDefault()
+          }}
+          data-sveltekit-noscroll
+          tabindex="-1"
+        >
           <img
             src={modalImg?.fileName}
             alt={modalImg?.artistLink}
