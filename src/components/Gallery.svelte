@@ -3,7 +3,6 @@
   import { disableScroll, enableScroll } from '~/util/tools'
   import { page } from '$app/stores'
   import { afterNavigate } from '$app/navigation'
-  import { browser } from '$app/environment'
 
   export let artPublicBasePath: string = '/art'
 
@@ -130,11 +129,7 @@
           data-sveltekit-noscroll
           tabindex="-1"
         >
-          <img
-            src={modalImg?.fileName}
-            alt={modalImg?.artistLink}
-            style:height={browser ? '100%' : ''}
-          />
+          <img src={modalImg?.fileName} alt={modalImg?.artistLink} />
         </a>
       </div>
       <div class="modal-row details">
@@ -207,7 +202,7 @@
     color: white !important;
   }
   .modal-row.image a {
-    height: 100%;
+    height: calc(100vh - 80px);
     cursor: zoom-out;
     display: flex;
     flex-direction: column;
