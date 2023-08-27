@@ -26,19 +26,10 @@
   }
 
   let modalImg = parseURLImg($page.url.search)
-  const switchFullImage = () => {
-    function showModal(img?: ArtItemWithMetadata) {
-      if (img) modalImg = img
-      disableScroll()
-    }
-    function hideModal() {
-      modalImg = undefined
-      enableScroll()
-    }
-
-    const img = parseURLImg($page.url.search)
-    if (!img) hideModal()
-    else showModal(img)
+  const changeModalImage = () => {
+    modalImg = parseURLImg($page.url.search)
+    if (modalImg) disableScroll()
+    else enableScroll()
   }
 
   const updateGallery = (colCount: number) => {
@@ -64,7 +55,7 @@
   $: updateGallery(columnCount)
   $: gridStyle = `grid-template-columns: repeat(${columnCount}, 1fr); --gap: ${gap}px; gap: var(--gap)`
 
-  afterNavigate(switchFullImage)
+  afterNavigate(changeModalImage)
 </script>
 
 <svelte:window bind:innerHeight />
@@ -88,6 +79,7 @@
     tabindex={modalImg ? -1 : undefined}
     style="display: block"
     style:width={columnCount > 2 ? '70%' : '100%'}
+    data-sveltekit-replacestate
     href={`?img=${titleImage?.id}`}
     role="button"
     data-sveltekit-noscroll
@@ -105,6 +97,7 @@
             class="gallery-img"
             class:gallery-hover={hover}
             tabindex={modalImg ? -1 : undefined}
+            data-sveltekit-replacestate
             href={`?img=${img.id}`}
             role="button"
             data-sveltekit-noscroll
@@ -119,11 +112,8 @@
   {#if modalImg}
     <a
       class="btn modal-close fixed-color"
+      data-sveltekit-replacestate
       href={artPublicBasePath}
-      on:click={e => {
-        history.back()
-        e.preventDefault()
-      }}
       transition:fade={{ duration: 100 }}
     >
       <i class="bx bx-md bx-x fixed-color" />
@@ -135,11 +125,8 @@
     >
       <div class="modal-row image">
         <a
+          data-sveltekit-replacestate
           href={artPublicBasePath}
-          on:click={e => {
-            history.back()
-            e.preventDefault()
-          }}
           data-sveltekit-noscroll
           tabindex="-1"
         >
