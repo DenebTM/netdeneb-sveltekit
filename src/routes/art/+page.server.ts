@@ -23,19 +23,19 @@ export const load: PageServerLoad = async () => {
   return {
     artPublicBasePath,
     imgList: fileList
-      .map((i: ArtItem): ArtItemWithMetadata => {
-        const dims = dimensions(`${artLocalBasePath}/${i.full}`)
+      .map((item: ArtItem): ArtItemWithMetadata => {
+        const dims = dimensions(`${artLocalBasePath}/${item.full}`)
         return {
-          ...i,
+          ...item,
           width: dims.width ?? 0,
           height: dims.height ?? 0,
-          mime: mime.lookup(i.full) || 'image/jpeg',
+          mime: mime.lookup(item.full) || 'image/jpeg',
         }
       })
-      .map(i => ({
-        ...i,
-        fileName: pathJoin(artPublicBasePath, i.fileName),
-        full: pathJoin(artPublicBasePath, i.full),
+      .map(item => ({
+        ...item,
+        fileName: pathJoin(artPublicBasePath, item.fileName),
+        full: pathJoin(artPublicBasePath, item.full),
       })),
   }
 }

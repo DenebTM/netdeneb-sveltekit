@@ -2,6 +2,7 @@ import 'svelte'
 
 declare global {
   interface ArtItem {
+    id: string
     fileName: string
     full: string
     description: string

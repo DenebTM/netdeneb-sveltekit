@@ -19,16 +19,10 @@
   let columns: Array<ArtList> = []
 
   const parseURLImg = (search?: string) => {
-    let img = search?.substring(search?.indexOf('img=') + 4)
-    if (img?.includes('&')) img = img.slice(0, img.indexOf('&'))
+    let imgId = search?.substring(search?.indexOf('img=') + 4)
+    if (imgId?.includes('&')) imgId = imgId.slice(0, imgId.indexOf('&'))
 
-    if (img == 'ref') return titleImage
-
-    const idx = parseInt(img ?? '')
-    if (!isNaN(idx) && idx >= 1 && idx <= galleryImages.length)
-      return galleryImages[idx - 1]
-
-    return undefined
+    return imgList.find(item => item.id === imgId)
   }
 
   let modalImg = parseURLImg($page.url.search)
