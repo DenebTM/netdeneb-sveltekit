@@ -4,11 +4,11 @@
   import Gallery from '~/components/Gallery.svelte'
 
   export let data: PageData
-  $: ({ imgList, artPublicBasePath } = data)
+  $: ({ imgList, artBaseURL } = data)
 </script>
 
 <svelte:head>
   <title>{`${sitename} - Art gallery`}</title>
 </svelte:head>
 
-<Gallery {imgList} {artPublicBasePath} />
+<Gallery {imgList} {artBaseURL} />

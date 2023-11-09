@@ -15,7 +15,7 @@
   }
 
   export let data: PageData
-  $: ({ dirList, fileList, availableThumbs, filesPublicBasePath } = data)
+  $: ({ dirList, fileList, availableThumbs, filesBaseURL } = data)
 
   const thumbsLoaded: Record<string, boolean> = {}
   const updateImageSources = (fl: Array<string>) => {
@@ -82,7 +82,7 @@
     $page.route.id?.substring(0, $page.route.id.indexOf('[')) +
     current +
     `/${file}`
-  $: pathToFile = (file: string) => filesPublicBasePath + current + `/${file}`
+  $: pathToFile = (file: string) => filesBaseURL + current + `/${file}`
 
   $: fileListMeta =
     fileList.length > 0 ? 'Contents: ' + fileList.join(', ') : '(no files)'
@@ -133,7 +133,11 @@
   <section class="file-list files">
     {#each fileList as file}
       <div class="margin-box">
-        <a class="file box click-depress" href={pathToFile(file)} data-sveltekit-reload>
+        <a
+          class="file box click-depress"
+          href={pathToFile(file)}
+          data-sveltekit-reload
+        >
           <div>
             <img
               src={imageSources[file]}

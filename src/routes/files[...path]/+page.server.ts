@@ -8,11 +8,11 @@ import { validateSession } from '~/util/session'
 import { getConfig } from '~/util/appConfig'
 
 const readDir = async (path: string): Promise<FileDirList> => {
-  const { filesLocalBasePath, excludeFiles } = await getConfig()
+  const { filesBasePath, excludeFiles } = await getConfig()
 
   let error
   try {
-    path = pathJoin(filesLocalBasePath, path)
+    path = pathJoin(filesBasePath, path)
     const list = (await fs.readdir(path, { withFileTypes: true })).filter(
       de => !de.name.startsWith('.') && !excludeFiles.includes(de.name)
     )
@@ -62,7 +62,7 @@ export const load: PageServerLoad = async ({
   locals: { token },
   params: { path },
 }) => {
-  const { filesPublicBasePath } = await getConfig()
+  const { filesBaseURL } = await getConfig()
 
   if (path.startsWith('/Users') && validateSession(token) === null) {
     throw redirect(
@@ -75,5 +75,5 @@ export const load: PageServerLoad = async ({
 
   if (err) throw error(500, err)
 
-  return { dirList, fileList, availableThumbs, filesPublicBasePath }
+  return { dirList, fileList, availableThumbs, filesBaseURL }
 }

@@ -4,7 +4,7 @@
   import { page } from '$app/stores'
   import { afterNavigate } from '$app/navigation'
 
-  export let artPublicBasePath: string = '/art'
+  export let artBaseURL: string = '/art'
 
   export let imgList: ArtList
   export let gap = 10
@@ -112,7 +112,7 @@
     <a
       class="btn modal-close fixed-color"
       data-sveltekit-replacestate
-      href={artPublicBasePath}
+      href={artBaseURL}
       transition:fade={{ duration: 100 }}
     >
       <i class="bx bx-md bx-x fixed-color" />
@@ -125,7 +125,7 @@
       <div class="modal-row image">
         <a
           data-sveltekit-replacestate
-          href={artPublicBasePath}
+          href={artBaseURL}
           data-sveltekit-noscroll
           tabindex="-1"
         >

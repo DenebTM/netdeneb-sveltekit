@@ -1,25 +1,25 @@
-:80 {
+:3100 {
+  root * .
   encode gzip zstd
 
-  root * /caddy
-
+  # use caddy file browser for /files
   handle /files* {
     file_server browse
   }
-
   basicauth /files/priv* {
     # <username> <`caddy hash-password`>
-  }
-
-  @serve {
-    path /img/* /art/* /thumbs/*
-  }
-  handle @serve {
-    file_server
   }
 
   redir /ftpfile /files{uri}
   redir /getfile /files{uri}
 
-  reverse_proxy localhost:3000
+  # serve existing files in /img, /art and /thumbs
+  file_server
+
+  # forward other requests to reverse proxy
+  @notStatic not {
+    file
+    path /img/* /art/* /thumbs/* /favicon.ico /robots.txt
+  }
+  reverse_proxy @notStatic localhost:3000
 }

@@ -5,11 +5,13 @@ import { env } from '$env/dynamic/private'
 const configPath = (): string => env.APP_CONFIG_PATH || './config.json'
 
 export const defaultConfig: AppConfig = {
-  artLocalBasePath: './art',
-  artPublicBasePath: '/art',
+  artBasePath: './art',
+  artBaseURL: '/art',
 
-  filesLocalBasePath: './files',
-  filesPublicBasePath: '/files',
+  filesBasePath: './files',
+  filesBaseURL: '/files',
+  thumbsBasePath: './thumbs',
+  thumbsBaseURL: '/thumbs',
   excludeFiles: ['Thumbs.db'],
 
   sessionListPath: './sessions.txt',

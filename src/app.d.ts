@@ -30,11 +30,13 @@ declare global {
   type SociaList = SocialItem[]
 
   interface AppConfig {
-    artLocalBasePath: string
-    artPublicBasePath: string
+    artBasePath: string
+    artBaseURL: string
 
-    filesLocalBasePath: string
-    filesPublicBasePath: string
+    filesBasePath: string
+    filesBaseURL: string
+    thumbsBasePath: string
+    thumbsBaseURL: string
     excludeFiles: string[]
 
     sessionListPath: string

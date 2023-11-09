@@ -7,9 +7,9 @@ import mime from 'mime-types'
 import dimensions from 'image-size'
 
 export const load: PageServerLoad = async () => {
-  const { artPublicBasePath, artLocalBasePath } = await getConfig()
+  const { artBaseURL, artBasePath } = await getConfig()
 
-  const fileListPath = pathJoin(artLocalBasePath, 'files.json')
+  const fileListPath = pathJoin(artBasePath, 'files.json')
 
   let fileList
   try {
@@ -21,10 +21,10 @@ export const load: PageServerLoad = async () => {
   }
 
   return {
-    artPublicBasePath,
+    artBaseURL,
     imgList: fileList
       .map((item: ArtItem): ArtItemWithMetadata => {
-        const dims = dimensions(`${artLocalBasePath}/${item.full}`)
+        const dims = dimensions(`${artBasePath}/${item.full}`)
         return {
           ...item,
           width: dims.width ?? 0,
@@ -34,8 +34,8 @@ export const load: PageServerLoad = async () => {
       })
       .map(item => ({
         ...item,
-        fileName: pathJoin(artPublicBasePath, item.fileName),
-        full: pathJoin(artPublicBasePath, item.full),
+        fileName: pathJoin(artBaseURL, item.fileName),
+        full: pathJoin(artBaseURL, item.full),
       })),
   }
 }
