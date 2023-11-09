@@ -2,7 +2,7 @@ FROM alpine:edge
 ENV NODE_ENV=production
 
 RUN apk update
-RUN apk add nodejs caddy graphicsmagick
+RUN apk add nodejs npm caddy graphicsmagick
 
 RUN mkdir /app
 WORKDIR /app
