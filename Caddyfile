@@ -1,7 +1,7 @@
 :80 {
   encode gzip zstd
 
-  root * /caddy
+  root * /
 
   handle /files* {
     file_server browse
