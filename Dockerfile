@@ -2,8 +2,7 @@ FROM node:current-alpine
 ENV NODE_ENV=production
 
 RUN apk update
-RUN apk add caddy
-# RUN apk add graphicsmagick
+RUN apk add caddy graphicsmagick
 
 RUN mkdir /app
 WORKDIR /app
