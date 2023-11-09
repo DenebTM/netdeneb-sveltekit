@@ -10,6 +10,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY src ./src
+COPY static ./static
 COPY *.js *.ts tsconfig.json ./
 RUN npx svelte-kit sync
 RUN npm run build
