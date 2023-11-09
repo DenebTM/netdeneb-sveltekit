@@ -1,8 +1,5 @@
-FROM alpine:edge
+FROM node:current-alpine as build-image
 ENV NODE_ENV=production
-
-RUN apk update
-RUN apk add nodejs npm caddy graphicsmagick
 
 RUN mkdir /app
 WORKDIR /app
@@ -13,6 +10,13 @@ COPY static ./static
 COPY *.js *.ts tsconfig.json ./
 RUN npx svelte-kit sync
 RUN npm run build
+
+FROM alpine:edge
+ENV NODE_ENV=production
+COPY --from=build-image /app/build /app/build
+
+RUN apk update
+RUN apk add nodejs caddy graphicsmagick
 
 RUN mkdir /caddy
 WORKDIR /caddy
