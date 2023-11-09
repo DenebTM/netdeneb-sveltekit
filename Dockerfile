@@ -9,7 +9,9 @@ RUN mkdir /app
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
-COPY src *.js *.ts tsconfig.json ./
+COPY src ./src
+COPY *.js *.ts tsconfig.json ./
+RUN npx svelte-kit sync
 RUN npm run build
 
 RUN mkdir /caddy
