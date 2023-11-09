@@ -1,0 +1,13 @@
+:80 {
+  encode gzip zstd
+
+  basicauth /files/priv/* {
+    # <username> <`caddy hash-password`>
+  }
+
+  handle /files/* {
+    file_server browse
+  }
+
+  reverse_proxy localhost:3000
+}

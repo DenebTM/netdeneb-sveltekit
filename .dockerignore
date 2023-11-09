@@ -1,0 +1,14 @@
+node_modules
+.svelte-kit
+build
+
+.prettierrc
+.npmrc
+*.service
+*.json
+!package*.json
+
+README*
+files
+art
+*.txt

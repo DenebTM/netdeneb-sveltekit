@@ -1,0 +1,21 @@
+[Unit]
+Description=Netdeneb.com (Docker)
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+WorkingDirectory=/srv/netdeneb
+ExecStart=/usr/bin/docker run --name netdeneb \
+            -p 3000:80 \
+            -v /srv/netdeneb/config.json:/nav.json:ro \
+            -v /srv/netdeneb/config.json:/config.json:ro \
+            -v /srv/netdeneb/config.json:/socials.json:ro \
+            -v /srv/netdeneb/art:/art/ro \
+            -v /srv/netdeneb/files:/files:ro \
+            -v /srv/netdeneb/thumbs:/thumbs \
+            netdeneb:latest
+ExecStop=docker stop netdeneb
+
+[Install]
+WantedBy=default.target
