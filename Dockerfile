@@ -26,7 +26,8 @@ COPY Caddyfile /etc/caddy/
 COPY start.sh /
 RUN chmod +x /start.sh
 
-COPY --from=build-image /app/build /app/build
+COPY --from=build-image /app/build /app/package.json /app/build
+COPY --from=build-image /app/node_modules /app/node_modules
 
 EXPOSE 80
 CMD [ "/start.sh" ]
