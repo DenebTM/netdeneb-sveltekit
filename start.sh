@@ -1,4 +1,9 @@
 #!/bin/sh
 cd /
 caddy run --config /Caddyfile &
-node /app/build/index.js
+
+cd /app
+node build/index.js &
+
+wait -n
+exit $?
