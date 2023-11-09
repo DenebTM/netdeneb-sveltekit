@@ -34,7 +34,7 @@ export const getConfig = async (): Promise<AppConfig> => {
       ) as AppConfig
       configLastRead = now
     } catch (err: any) {
-      console.error('Error reading config:', err)
+      if (env.APP_CONFIG_PATH) console.error('Error reading config:', err)
     }
   }
 

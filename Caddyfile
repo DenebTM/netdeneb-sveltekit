@@ -1,4 +1,4 @@
-:3100 {
+:80 {
   root * .
   encode gzip zstd
 
