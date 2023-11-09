@@ -9,13 +9,9 @@ export const defaultConfig: AppConfig = {
   artBaseURL: '/art',
 
   filesBasePath: './files',
-  filesBaseURL: '/files',
   thumbsBasePath: './thumbs',
   thumbsBaseURL: '/thumbs',
-  excludeFiles: ['Thumbs.db'],
 
-  sessionListPath: './sessions.txt',
-  userListPath: './users.json',
   socialsPath: './socials.json',
   navPath: './nav.json',
 }

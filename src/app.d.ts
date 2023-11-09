@@ -34,13 +34,9 @@ declare global {
     artBaseURL: string
 
     filesBasePath: string
-    filesBaseURL: string
     thumbsBasePath: string
     thumbsBaseURL: string
-    excludeFiles: string[]
 
-    sessionListPath: string
-    userListPath: string
     socialsPath: string
     navPath: string
   }

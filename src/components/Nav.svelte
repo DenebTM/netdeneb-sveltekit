@@ -6,14 +6,6 @@
 
   let navItems: Record<string, any> = $page.data.navItems
 
-  if (navItems['Other']) {
-    if ($page.data.hasValidToken) navItems['Other']['Logout'] = '/logout'
-    else delete navItems['Other']['Logout']
-  } else {
-    if ($page.data.hasValidToken) navItems['Logout'] = '/logout'
-    else delete navItems['Logout']
-  }
-
   let open = false // only for visuals at this point
   const closeNav = () => (open = false)
 
