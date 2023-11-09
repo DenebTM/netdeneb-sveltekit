@@ -4,7 +4,9 @@
 
   # use caddy file browser for /files
   handle /files* {
-    file_server browse
+    file_server {
+      browse /caddy/browse-thumbs.html
+    }
   }
   basicauth /files/priv* {
     # <username> <`caddy hash-password`>

@@ -1,0 +1,4 @@
+16c16
+< 		<img loading="lazy" src="{{html .Name}}">
+---
+> 		<img loading="lazy" src="{{html cat "/thumbs" (trimPrefix "/files" .Tpl.Path) "/" .Name}}">
