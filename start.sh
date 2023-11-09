@@ -1,6 +1,5 @@
 #!/bin/sh
-cd /
-caddy run --config /Caddyfile &
+caddy run --config /etc/caddy/Caddyfile &
 
 cd /app
 node build/index.js &

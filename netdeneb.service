@@ -6,13 +6,13 @@ After=docker.service
 [Service]
 Restart=always
 WorkingDirectory=/srv/netdeneb
-ExecStart=/usr/bin/docker run --rm --name netdeneb \
+ExecStart=/usr/bin/docker run --init --rm --name netdeneb \
             -p 3000:80 \
             -e APP_CONFIG_PATH=/config.json \
             -v /srv/netdeneb/config.json:/config.json:ro \
             -v /srv/netdeneb/nav.json:/nav.json:ro \
             -v /srv/netdeneb/socials.json:/socials.json:ro \
-            -v /srv/netdeneb/img:/img/ro \
+            -v /srv/netdeneb/img:/img:ro \
             -v /srv/netdeneb/art:/art:ro \
             -v /srv/netdeneb/files:/files:ro \
             -v /srv/netdeneb/thumbs:/thumbs \

@@ -1,7 +1,7 @@
 :80 {
   encode gzip zstd
 
-  root * /
+  root * /caddy
 
   handle /files* {
     file_server browse
@@ -12,7 +12,7 @@
   }
 
   @serve {
-    path /img/* /thumbs/* /art/*
+    path /img/* /art/* /thumbs/*
   }
   handle @serve {
     file_server
