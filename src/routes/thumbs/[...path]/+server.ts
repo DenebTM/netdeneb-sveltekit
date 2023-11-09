@@ -23,7 +23,7 @@ export const GET: RequestHandler = async ({ params: { path } }) => {
   // create path to new thumbnail if it does not exist
   const thumbDirName = dirname(thumbFileName)
   if (!exists(thumbDirName)) {
-    await fs.mkdir(thumbDirName)
+    await fs.mkdir(thumbDirName, { recursive: true })
   }
 
   // generate new thumbnail if one does not already exist
