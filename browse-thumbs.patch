@@ -4,3 +4,7 @@
 > 		<img loading="lazy" src="{{html cat "/thumbs" (trimPrefix "/files" .Tpl.Path) "/" .Name}}">
 621a622
 >     aspect-ratio: 1/1;
+822c822
+< 					<a href="{{html .URL}}" title='{{html (.HumanModTime "January 2, 2006 at 15:04:05")}}'>
+---
+> 					<a href="{{html .URL}}?layout=grid" title='{{html (.HumanModTime "January 2, 2006 at 15:04:05")}}'>
