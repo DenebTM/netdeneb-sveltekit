@@ -25,7 +25,7 @@ RUN ln -s /files . && \
 COPY browse-thumbs.patch .
 RUN caddy file-server export-template > /caddy/browse-thumbs.html && \
     patch browse-thumbs.html browse-thumbs.patch && \
-    rm browse-thumbs.patch browse-thumbs.html.orig
+    rm -f browse-thumbs.patch browse-thumbs.html.orig
 
 COPY Caddyfile /etc/caddy/
 
