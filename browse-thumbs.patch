@@ -1,4 +1,6 @@
-16c16
+24c24
 < 		<img loading="lazy" src="{{html .Name}}">
 ---
 > 		<img loading="lazy" src="{{html cat "/thumbs" (trimPrefix "/files" .Tpl.Path) "/" .Name}}">
+621a622
+>     aspect-ratio: 1/1;
