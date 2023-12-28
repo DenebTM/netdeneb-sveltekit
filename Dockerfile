@@ -1,7 +1,4 @@
 FROM node:current-alpine as build-image
-ENV NODE_ENV=production
-
-RUN mkdir /app
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
@@ -9,6 +6,12 @@ COPY src ./src
 COPY static ./static
 COPY *.js *.ts tsconfig.json ./
 RUN npm run build
+
+FROM node:current-alpine as prod-modules
+ENV NODE_ENV=production
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
 
 FROM alpine:edge
 ENV NODE_ENV=production
@@ -33,7 +36,7 @@ COPY start.sh /
 RUN chmod +x /start.sh
 
 COPY --from=build-image /app/build /app/package.json /app/build
-COPY --from=build-image /app/node_modules /app/node_modules
+COPY --from=prod-modules /app/node_modules /app/node_modules
 
 EXPOSE 80
 CMD [ "/start.sh" ]
