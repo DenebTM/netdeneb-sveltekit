@@ -8,7 +8,7 @@ RUN npm install
 COPY src ./src
 COPY static ./static
 COPY *.js *.ts tsconfig.json ./
-RUN npx svelte-kit sync && npm run build
+RUN npm run build
 
 FROM alpine:edge
 ENV NODE_ENV=production
