@@ -143,8 +143,6 @@
 </div>
 
 <style>
-  * {
-  }
   .gallery-title {
     margin: 0 auto 15px auto;
   }
