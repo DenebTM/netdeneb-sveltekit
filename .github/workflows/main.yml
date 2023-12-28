@@ -1,7 +1,7 @@
 name: remote ssh command
 on:
  push:
-    tags: ['*']
+    branches: ['main']
 jobs:
   update:
     name: Update website
@@ -14,4 +14,4 @@ jobs:
         port: ${{ secrets.SSH_PORT }}
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_KEY }}
-        script: whoami
+        script: touch balls
