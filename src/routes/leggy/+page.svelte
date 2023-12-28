@@ -16,5 +16,6 @@
   img {
     width: 100%;
     max-width: 800px;
+    border-radius: var(--border-radius);
   }
 </style>

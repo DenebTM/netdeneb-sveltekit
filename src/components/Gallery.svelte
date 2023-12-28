@@ -164,9 +164,12 @@
   .gallery-img * {
     cursor: zoom-in;
   }
-  a.gallery-img {
+  .gallery-img {
     display: block;
     line-height: 0;
+  }
+  .gallery-img img {
+    border-radius: var(--border-radius);
   }
   .gallery-hover {
     transition: 0.2s;
