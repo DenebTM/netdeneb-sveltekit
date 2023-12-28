@@ -6,6 +6,12 @@ export default defineConfig({
   plugins: [sveltekit()],
   server: {
     port: 3000,
+    fs: {
+      allow: [
+        'img',
+        'art',
+      ],
+    },
   },
   preview: {
     port: 3000,
