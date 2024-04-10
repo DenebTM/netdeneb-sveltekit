@@ -17,3 +17,7 @@ node_modules
 *.json
 !package.json
 .eslintrc.json
+
+caddy-auth.conf
+/static
+!/static/favicon.ico

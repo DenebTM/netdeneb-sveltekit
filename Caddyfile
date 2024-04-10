@@ -1,5 +1,5 @@
 :80 {
-  root * .
+  root * /caddy/static
   encode gzip zstd
 
   # use caddy file browser for /files
@@ -8,20 +8,19 @@
       browse /caddy/browse-thumbs.html
     }
   }
-  basicauth /files/priv* {
-    # <username> <`caddy hash-password`>
-  }
+
+  import /etc/caddy/caddy-auth.conf
 
   redir /ftpfile /files{uri}
   redir /getfile /files{uri}
 
-  # serve existing files in /img, /art and /thumbs
-  file_server
+  route {
+    # serve existing files in /img, /art and /thumbs
+    file_server {
+      pass_thru
+    }
 
-  # forward other requests to node app
-  @notStatic not {
-    file
-    path /img/* /art/* /thumbs/* /favicon.ico /robots.txt
+    # pass everything else to reverse proxy
+    reverse_proxy localhost:3000
   }
-  reverse_proxy @notStatic localhost:3000
 }

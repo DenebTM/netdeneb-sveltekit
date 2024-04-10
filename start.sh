@@ -2,7 +2,7 @@
 caddy run --config /etc/caddy/Caddyfile &
 
 cd /app
-node build/index.js &
+node /app/build/index.js &
 
 wait -n
 exit $?
