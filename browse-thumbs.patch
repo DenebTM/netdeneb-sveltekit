@@ -1,14 +1,14 @@
 24c24
 < 		<img loading="lazy" src="{{html .Name}}">
 ---
-> 		<img loading="lazy" src="{{html cat "/thumbs" (trimPrefix "/files" .Tpl.Path) "/" .Name}}">
+> 		<img loading="lazy" src="{{html cat "/thumbs" (trimPrefix "/files" .Tpl.Path) "/" (.Name | replace "#" "%23" | replace "?" "%3F")}}">
 621a622
 >     aspect-ratio: 1/1;
-779c779
+779c780
 < 					{{range $i, $crumb := .Breadcrumbs}}<a href="{{html $crumb.Link}}">{{html $crumb.Text}}</a>{{if ne $i 0}}/{{end}}{{end}}
 ---
 > 					{{range $i, $crumb := .Breadcrumbs}}<a href="{{html $crumb.Link}}?layout=grid">{{html $crumb.Text}}</a>{{if ne $i 0}}/{{end}}{{end}}
-822c822
+822c823
 < 					<a href="{{html .URL}}" title='{{html (.HumanModTime "January 2, 2006 at 15:04:05")}}'>
 ---
 > 					<a href="{{html .URL}}?layout=grid" title='{{html (.HumanModTime "January 2, 2006 at 15:04:05")}}'>

@@ -1,6 +1,6 @@
 import { error, redirect } from '@sveltejs/kit'
 import type { RequestHandler } from '@sveltejs/kit'
-import { join as pathJoin, dirname, extname } from 'node:path'
+import { join as pathJoin, sep as pathSep, dirname, extname } from 'node:path'
 import { promises as fs, existsSync as exists } from 'node:fs'
 import gm from 'gm'
 import { getConfig } from '~/util/appConfig'
@@ -23,6 +23,8 @@ export const GET: RequestHandler = async ({ params: { path } }) => {
     throw error(400, 'Missing file name')
   }
 
+  console.log(path)
+
   if (!validExtensions.includes(extname(path))) {
     throw error(400, 'Not an image file')
   }
@@ -30,6 +32,7 @@ export const GET: RequestHandler = async ({ params: { path } }) => {
   const { thumbsBasePath, thumbsBaseURL, filesBasePath } = await getConfig()
 
   const imgFileName = pathJoin(filesBasePath, path)
+  // console.log(imgFileName)
   if (!exists(imgFileName)) {
     throw error(400, 'Source file does not exist')
   }
@@ -38,7 +41,10 @@ export const GET: RequestHandler = async ({ params: { path } }) => {
   const thumbFileName = `${pathJoin(thumbsBasePath, path)}${
     extname(imgFileName) !== '.gif' ? '.webp' : ''
   }`
-  const thumbURL = encodeURI(`${pathJoin(thumbsBaseURL, path)}.webp`)
+  const thumbURL = `${pathJoin(thumbsBaseURL, path)}.webp`
+    .split(pathSep)
+    .map(c => encodeURIComponent(c))
+    .join('/')
 
   // create path to new thumbnail if it does not exist
   const thumbDirName = dirname(thumbFileName)
@@ -74,5 +80,5 @@ export const GET: RequestHandler = async ({ params: { path } }) => {
   }
 
   // redirect to new or existing thumbnail
-  throw redirect(307, thumbURL)
+  throw redirect(308, thumbURL)
 }
