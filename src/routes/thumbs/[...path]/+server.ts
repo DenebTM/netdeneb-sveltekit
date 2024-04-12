@@ -23,8 +23,6 @@ export const GET: RequestHandler = async ({ params: { path } }) => {
     throw error(400, 'Missing file name')
   }
 
-  console.log(path)
-
   if (!validExtensions.includes(extname(path))) {
     throw error(400, 'Not an image file')
   }
