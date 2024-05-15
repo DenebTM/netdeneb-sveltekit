@@ -9,7 +9,7 @@
       <p>
         <i>
           <i
-            class={`bx bx-sm bxl-${icon}`}
+            class={`bx bx-sm ${icon}`}
             style="display: inline-block !important; vertical-align: text-top"
           /></i
         >
