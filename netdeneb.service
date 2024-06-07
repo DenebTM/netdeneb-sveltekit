@@ -14,7 +14,7 @@ ExecStart=/usr/bin/docker run --init --rm --name netdeneb \
             -v /srv/netdeneb/config:/config \
             -v /srv/netdeneb/static:/caddy/static \
             -v /srv/netdeneb/files:/caddy/static/files:ro \
-            netdeneb:latest
+            ghcr.io/denebtm/netdeneb:latest
 ExecStop=/usr/bin/docker stop netdeneb
 
 [Install]
