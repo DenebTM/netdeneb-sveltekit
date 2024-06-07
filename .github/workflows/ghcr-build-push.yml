@@ -29,19 +29,19 @@ jobs:
       id: meta
       uses: docker/metadata-action@v5.5.1
       with:
-        images: ghcr.io/netdeneb
+        images: ghcr.io/DenebTM/netdeneb
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v5.3.0
       with:
         context: .
         push: true
-        tags: ${{ steps.meta.outputs.tags }}
+        tags: latest
         labels: ${{ steps.meta.outputs.labels }}
 
     - name: Generate artifact attestation
       uses: actions/attest-build-provenance@v1
       with:
-        subject-name: ghcr.io/netdeneb
+        subject-name: ghcr.io/DenebTM/netdeneb
         subject-digest: ${{ steps.push.outputs.digest }}
         push-to-registry: true
