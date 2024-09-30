@@ -21,3 +21,5 @@ node_modules
 caddy-auth.conf
 /static
 !/static/favicon.ico
+
+browse-thumbs.html
