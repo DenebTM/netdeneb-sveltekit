@@ -15,13 +15,6 @@ declare global {
   }
   type ArtList = ArtItemWithMetadata[]
 
-  interface FileDirList {
-    dirList: string[]
-    fileList: string[]
-    availableThumbs: Record<string, string>
-    error: string | undefined
-  }
-
   interface SocialItem {
     icon: string
     href: string
