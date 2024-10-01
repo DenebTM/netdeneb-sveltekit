@@ -3,6 +3,7 @@
   import { clickOutside } from '~/util/clickOutside'
   import { page } from '$app/stores'
   import NavLink from './NavLink.svelte'
+  import HamburgerButton from './HamburgerButton.svelte'
 
   let navItems: Record<string, any> = $page.data.navItems
 
@@ -16,7 +17,7 @@
 
 <nav use:clickOutside={closeNav} {open}>
   <label for="nav-isopen" class="open-nav">
-    <i class="bx bx-md bx-chevron-down dd-icon" />
+    <HamburgerButton {open} />
   </label>
   <input
     type="checkbox"
@@ -72,7 +73,9 @@
     float: left;
     border-radius: var(--border-radius);
 
-    animation: nav-flyin 0.2s, fadein 0.2s both;
+    animation:
+      nav-flyin 0.2s,
+      fadein 0.2s both;
   }
 
   nav li {
@@ -120,7 +123,7 @@
     transform: translateY(2px);
   }
 
-  @media only screen and (min-width: 691px) {
+  @media only screen and not (max-width: 690px) {
     .open-nav {
       display: none;
     }
@@ -138,7 +141,7 @@
 
     .open-nav {
       position: absolute;
-      top: 15px;
+      top: 20px;
       right: 20px;
     }
     nav {
@@ -146,7 +149,7 @@
     }
     nav > ul {
       position: absolute;
-      top: 50px;
+      top: 55px;
       right: 10px;
       min-width: 200px;
       margin-top: 0;
@@ -154,7 +157,9 @@
       box-shadow: 0 0 3px 3px var(--shadow-color);
       z-index: 100;
 
-      animation: nav-flyin 0.2s, fadein 0.2s both;
+      animation:
+        nav-flyin 0.2s,
+        fadein 0.2s both;
     }
     nav > ul > li {
       float: none;
