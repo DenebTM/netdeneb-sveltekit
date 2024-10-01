@@ -26,7 +26,7 @@ a.inline-link:hover {
   text-decoration: underline;
 }
 
-i.inline-logo {
+i.inline-icon {
   display: inline-block !important;
   vertical-align: text-top;
 }

@@ -28,7 +28,7 @@
     engineer. I have a few projects on <a
       class="inline-link"
       href="https://github.com/DenebTM"
-      ><i class="bx bx-sm bxl-github inline-logo" /> Github</a
+      ><i class="inline-icon bx bx-sm bxl-github" /> Github</a
     >, and I run my own Nextcloud instance and email server, both of which are
     linked above (under "Other").
   </p>

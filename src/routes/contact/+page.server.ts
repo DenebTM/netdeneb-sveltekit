@@ -5,18 +5,14 @@ import { getConfig } from '~/util/appConfig'
 export const load = (async () => {
   const { infoJsonPath } = await getConfig()
 
-  // TODO: un-hardcode this
-  const birthDate = Date.UTC(2000, 11, 22)
-  const age = new Date(Date.now() - birthDate).getFullYear() - 1970
-
   try {
-    const { socials, titleImage }: InfoJson = JSON.parse(
+    const { socials }: InfoJson = JSON.parse(
       (await fs.readFile(infoJsonPath)).toString()
     )
 
-    return { socials, titleImage, age }
+    return { socials }
   } catch (err) {
     console.error(err)
-    return { socials: [], titleImage: null, age }
+    return { socials: [] }
   }
 }) satisfies PageServerLoad

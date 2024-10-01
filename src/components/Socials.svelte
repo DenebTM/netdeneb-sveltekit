@@ -9,7 +9,7 @@
   {#each links as { icon, href, text }}
     <a class="click-depress" rel="me" {href}>
       <p>
-        <i class={`bx bx-sm ${icon} inline-logo`} />
+        <i class={`inline-icon bx bx-sm ${icon}`} />
         <span>{text}</span>
       </p>
     </a>
@@ -44,7 +44,7 @@
 
   div {
     display: flex;
-    gap: 10px;
+    gap: 5px 10px;
     justify-content: center;
     max-width: 410px;
     flex-wrap: wrap;

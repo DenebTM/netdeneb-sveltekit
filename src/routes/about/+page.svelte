@@ -1,5 +1,8 @@
 <script lang="ts">
   import { sitename } from '~/util/globals'
+  import type { PageServerData } from './$types'
+
+  export let data: PageServerData
 </script>
 
 <svelte:head>
@@ -14,10 +17,10 @@
   <p>
     My name (at least online) is deneb. My pronouns are they/them, and I am
     somewhere on the aromantic and asexual spectrum.<br />
-    I live in Austria — Innsbruck to be precise — and I am currently in my final
-    semester studying computer science (as of 2024-10). I am just working on my bachelor's
-    thesis at this point, and looking to become a backend/systems engineer in the
-    near future.
+    I live in Austria — Innsbruck to be precise — I'm {data.age} years old, and currently
+    in my 7th and hopefully final semester studying computer science (as of 2024-10).
+    I am just working on my bachelor's thesis at this point, and looking to become
+    a <nobr>backend/systems</nobr> engineer in the near future.
   </p>
   <h4>floof</h4>
   <p>
@@ -56,7 +59,7 @@
   <strong><code>TODO #1</code>:</strong> One of these days I'll get around to
   creating a projects page. For now, look at my
   <a class="inline-link" href="https://github.com/DenebTM"
-    ><i class="bx bx-sm bxl-github inline-logo"></i> Github</a
+    ><i class="inline-icon bx bx-sm bxl-github"></i> Github</a
   >!<br />
   <strong><code>TODO #2</code>:</strong> Document my network setup somewhere<br
   />
@@ -69,7 +72,7 @@
   This website was built by myself with
   <a class="inline-link" href="https://kit.svelte.dev/">SvelteKit</a>.
   <a class="inline-link" href="https://boxicons.com/">BoxIcons</a>
-  is used for all non-unicode icons, buttons.<br />
+  is used for all non-unicode icons, e.g. on buttons.<br />
   The full source code is publicly available on Github,
   <a class="inline-link" href="https://github.com/DenebTM/netdeneb">here!</a>
 </section>

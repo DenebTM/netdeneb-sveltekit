@@ -5,17 +5,16 @@
   --shadow-color-dark: rgba(0, 0, 0, 0.3);
   --shadow-color-light: rgba(0, 0, 0, 0.1);
   --background-color-dark: rgba(0, 0, 0, 0.75);
+  --background-color-light: rgba(255, 255, 255, 0.9);
   --text-color-dark: white;
-  --text-color-dark-inverted: black;
-
-  --background-color-light: rgba(255, 255, 255, 0.75);
   --text-color-light: black;
+  --text-color-dark-inverted: black;
   --text-color-light-inverted: white;
 
   --primary-dark: #ee3a7c;
-  --primary-light: #ee3a7c;
+  --primary-light: #ff005d;
   --primary-hover-dark: #f36297;
-  --primary-hover-light: #f36297;
+  --primary-hover-light: #ff3881;
   --primary-active: #72153a;
   --primary-inverse: #fff;
 
