@@ -12,10 +12,13 @@
   --text-color-light: black;
   --text-color-light-inverted: white;
 
-  --primary: #d81b60;
-  --primary-hover: #e72f73;
+  --primary-dark: #ee3a7c;
+  --primary-light: #ee3a7c;
+  --primary-hover-dark: #f36297;
+  --primary-hover-light: #f36297;
   --primary-active: #72153a;
   --primary-inverse: #fff;
+
   --form-element-active-border-color: var(--primary);
   --form-element-focus-color: var(--primary-focus);
   --switch-color: var(--primary-inverse);
@@ -26,7 +29,7 @@
   --page-background-posx: 50%;
   --page-background-posy: 50%;
   --page-background: url('/img/bg.webp');
-  --page-background-blur: url('/img/bg-blur.webp'); /* fuck you phones */
+  --page-background-blur: url('/img/bg-blur.webp'); /* css gaussian blur is slow on mobile */
 
   --background-hover: rgba(255, 255, 255, 0.4);
   --background-active: rgba(255, 255, 255, 0.3);
@@ -34,6 +37,8 @@
 
 /* Dark colour scheme (default) */
 :root {
+  --primary: var(--primary-dark);
+  --primary-hover: var(--primary-hover-dark);
   --primary-focus: rgba(216, 27, 96, 0.25);
 
   --background-color: var(--background-color-dark);
@@ -45,6 +50,8 @@
 /* Light colour scheme (set by browser) */
 @media only screen and (prefers-color-scheme: light) {
   :root {
+    --primary: var(--primary-light);
+    --primary-hover: var(--primary-hover-light);
     --primary-focus: rgba(216, 27, 96, 0.125);
 
     --background-color: var(--background-color-light);

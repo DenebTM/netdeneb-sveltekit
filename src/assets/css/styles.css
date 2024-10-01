@@ -18,6 +18,19 @@ a {
   transition: 0.125s ease-in-out;
 }
 
+a.inline-link {
+  color: var(--primary);
+}
+a.inline-link:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+i.inline-logo {
+  display: inline-block !important;
+  vertical-align: text-top;
+}
+
 :root * {
   box-sizing: border-box;
   color: var(--text-color);

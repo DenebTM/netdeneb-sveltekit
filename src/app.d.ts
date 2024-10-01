@@ -22,6 +22,14 @@ declare global {
   }
   type SociaList = SocialItem[]
 
+  interface InfoJson {
+    titleImage: {
+      path: string
+      description: string
+    }
+    socials: SociaList
+  }
+
   interface AppConfig {
     artBasePath: string
     artBaseURL: string
@@ -30,7 +38,7 @@ declare global {
     thumbsBasePath: string
     thumbsBaseURL: string
 
-    socialsPath: string
+    infoJsonPath: string
     navPath: string
   }
 

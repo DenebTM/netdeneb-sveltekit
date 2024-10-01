@@ -1,0 +1,21 @@
+{
+  "Home": "/",
+  "About": "/about",
+  "Art gallery": "/art",
+  "AAAAAA": "/leggy",
+  "Files": "/files",
+  "Other": {
+    "Best website (archived)": {
+      "href": "/files/yiff.toys/",
+      "external": true
+    },
+    "Nextcloud": {
+      "href": "https://cloud.netdeneb.com/",
+      "external": true
+    },
+    "Screemail": {
+      "href": "https://mail.screee.ee/",
+      "external": true
+    }
+  }
+}

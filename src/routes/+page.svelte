@@ -11,28 +11,41 @@
 </svelte:head>
 
 <section id="blurb">
-  <img
-    id="me"
-    src="/img/deneb1.webp"
-    alt="Art of Deneb, by twitter.com/FluffySakora"
-  />
+  <img id="me" src={data.titleImage?.path} alt={data.titleImage?.description} />
   <h1>Hi!</h1>
   <p>
-    I'm Deneb, a maned wolf and hobbyist developer from Austria, currently
-    studying comp-sci in Innsbruck.
-  </p>
-  <p>
-    This is mainly a place for me to put my personal pet projects, but you'll
-    also find my ref and other art I've received here. Still under construction,
-    so check back later for more!
+    I'm <strong title="all-lowercase, please">deneb</strong>, a {data.age}-year
+    old
+    <a class="inline-link" href="https://en.wikipedia.org/wiki/Maned Wolf"
+      >maned wolf</a
+    > from Austria, currently studying computer science (BSc) in Innsbruck.
   </p>
 </section>
-{#if data.socials.length > 0}
-  <hr />
-  <section id="socials">
-    <Socials links={data.socials} />
-  </section>
-{/if}
+
+<section>
+  <p>
+    I consider myself a hobbyist developer and hobbyist network/systems
+    engineer. I have a few projects on <a
+      class="inline-link"
+      href="https://github.com/DenebTM"
+      ><i class="bx bx-sm bxl-github inline-logo" /> Github</a
+    >, and I run my own Nextcloud instance and email server, both of which are
+    linked above (under "Other").
+  </p>
+  <p>
+    If you're looking for my reference sheet, go <a
+      class="inline-link"
+      href="/art?img=ref">here!</a
+    >
+    <br />
+    Or find more info on my <a class="inline-link" href="/about">About</a> page :3
+  </p>
+</section>
+
+<hr />
+<section id="socials">
+  <Socials links={data.socials} />
+</section>
 
 <style>
   #me {

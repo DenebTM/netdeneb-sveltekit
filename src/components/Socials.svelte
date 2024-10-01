@@ -2,17 +2,14 @@
   export let links: SociaList
 </script>
 
-<p style="margin: 20px 0 10px 0">Feel free to bark at me on:</p>
+<p style="margin: 20px 0 10px 0; font-weight: bold;">
+  Feel free to bark at me on:
+</p>
 <div style="text-align: left; width: fit-content; margin: 0 auto">
   {#each links as { icon, href, text }}
     <a class="click-depress" rel="me" {href}>
       <p>
-        <i>
-          <i
-            class={`bx bx-sm ${icon}`}
-            style="display: inline-block !important; vertical-align: text-top"
-          /></i
-        >
+        <i class={`bx bx-sm ${icon} inline-logo`} />
         <span>{text}</span>
       </p>
     </a>

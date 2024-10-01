@@ -15,6 +15,7 @@ node_modules
 
 *.txt
 *.json
+!nav.json
 !package.json
 .eslintrc.json
 

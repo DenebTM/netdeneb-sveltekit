@@ -12,7 +12,7 @@ export const defaultConfig: AppConfig = {
   thumbsBasePath: './thumbs',
   thumbsBaseURL: '/thumbs',
 
-  socialsPath: './socials.json',
+  infoJsonPath: './info.json',
   navPath: './nav.json',
 }
 
