@@ -55,6 +55,7 @@ declare global {
     interface HTMLAttributes {
       animate?: BoolString
       open?: boolean
+      isCurrent?: boolean
     }
     interface Headers {
       cookie: Record<string, string>

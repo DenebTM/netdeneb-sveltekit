@@ -28,7 +28,13 @@
   <ul>
     {#each Object.entries(navItems) as [name, target], i}
       {#if typeof target === 'string' || 'external' in target}
-        <NavLink {name} {target} index={i} onClick={closeNav} />
+        <NavLink
+          isCurrent={$page.url.pathname == target}
+          {name}
+          {target}
+          index={i}
+          onClick={closeNav}
+        />
       {:else}
         <NavDropdown
           {name}
@@ -76,6 +82,10 @@
     animation:
       nav-flyin 0.2s,
       fadein 0.2s both;
+  }
+
+  nav > ul > li[isCurrent='true'] {
+    font-weight: bold;
   }
 
   nav li {

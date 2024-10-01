@@ -4,6 +4,8 @@
   export let onClick: (e?: MouseEvent) => void
   export let index: number
 
+  export let isCurrent: boolean
+
   let href: string = ''
   let external: true | undefined = undefined
   if (typeof target === 'string') {
@@ -14,6 +16,10 @@
   }
 </script>
 
-<li class="click-depress" style={`animation-delay: ${(index + 1) * 75}ms`}>
+<li
+  {isCurrent}
+  class="click-depress"
+  style={`animation-delay: ${(index + 1) * 75}ms`}
+>
   <a {href} on:click={onClick} data-sveltekit-reload={external}>{name}</a>
 </li>
