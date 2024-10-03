@@ -102,10 +102,6 @@
     left: 50%;
     padding-top: 10px;
     z-index: 1;
-
-    animation:
-      dropdown-flyin 0.2s,
-      fadein 0.2s both;
   }
 
   .dropdown ul {
@@ -119,10 +115,8 @@
   }
   .dropdown li {
     display: block;
-    animation:
-      nav-flyin 0.2s,
-      fadein 0.2s both;
   }
+
   .dropdown li:first-child,
   .dropdown li:first-child a {
     border-top-left-radius: var(--border-radius);
@@ -140,26 +134,46 @@
     display: block;
   }
 
-  @media only screen and (min-width: 691px) {
+  @media not (max-width: 744px) {
     .dropdown > div {
       transform: translate(-50%, 0);
     }
+
+    .dropdown ul {
+      backdrop-filter: blur(3px);
+    }
+
+    @media not (prefers-reduced-motion) {
+      .dropdown > div {
+        animation:
+          dropdown-flyin 0.2s,
+          fadein 0.2s both;
+      }
+    }
   }
-  @media only screen and (max-width: 690px) {
+
+  @media (max-width: 744px) {
     .dropdown > div {
       position: absolute;
       left: 0;
       right: 0;
       padding-top: 10px;
+    }
 
-      animation:
-        dropdown-flyin-mobile 0.2s,
-        fadein 0.2s forwards;
+    @media not (prefers-reduced-motion) {
+      .dropdown > div {
+        animation:
+          dropdown-flyin-mobile 0.2s,
+          fadein 0.2s forwards;
+      }
     }
   }
-  @media only screen and (min-width: 691px) {
-    .dropdown ul {
-      backdrop-filter: blur(3px);
+
+  @media not (prefers-reduced-motion) {
+    .dropdown li {
+      animation:
+        nav-flyin 0.2s,
+        fadein 0.2s both;
     }
   }
 </style>

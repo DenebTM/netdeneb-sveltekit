@@ -86,7 +86,6 @@
     text-shadow: 0 0 5px black;
     font-weight: bold;
     text-decoration: none;
-    transition: margin 0.3s;
   }
   .site-name:hover {
     text-decoration: underline;
@@ -108,15 +107,22 @@
       opacity: 1;
     }
   }
-  main[animate] {
-    animation:
-      flyin 0.3s,
-      fadein 0.3s forwards;
-    opacity: 0;
-    transform: none;
+
+  @media not (prefers-reduced-motion) {
+    main[animate] {
+      animation:
+        flyin 0.3s,
+        fadein 0.3s forwards;
+      opacity: 0;
+      transform: none;
+    }
+
+    .site-name {
+      transition: margin 0.3s;
+    }
   }
 
-  @media only screen and (max-width: 744px) {
+  @media (max-width: 744px) {
     .title {
       margin-top: 0.5em;
     }
@@ -124,6 +130,7 @@
     .page-title {
       margin-right: 44px;
       text-align: left;
+      word-wrap: break-word;
     }
   }
 </style>

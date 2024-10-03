@@ -35,10 +35,6 @@
     bottom: 0;
   }
 
-  .open-nav-line {
-    transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-  }
-
   .open-nav-button[open='true'] .open-nav-line.top {
     transform: translateY(12px) rotate(-45deg);
   }
@@ -48,5 +44,11 @@
   }
   .open-nav-button[open='true'] .open-nav-line.bot {
     transform: translateY(-8px) rotate(45deg);
+  }
+
+  @media not (prefers-reduced-motion) {
+    .open-nav-line {
+      transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
   }
 </style>

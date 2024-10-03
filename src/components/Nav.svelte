@@ -81,10 +81,14 @@
   nav > ul > li {
     float: left;
     border-radius: var(--border-radius);
+  }
 
-    animation:
-      nav-flyin 0.2s,
-      fadein 0.2s both;
+  @media not (prefers-reduced-motion) {
+    nav > ul > li {
+      animation:
+        nav-flyin 0.2s,
+        fadein 0.2s both;
+    }
   }
 
   nav > ul > li[isCurrent='true'] {
@@ -142,7 +146,7 @@
   }
 
   /* TODO: don't hardcode this width....... how tho */
-  @media only screen and not (max-width: 744px) {
+  @media not (max-width: 744px) {
     nav .open-nav {
       display: none;
     }
@@ -153,7 +157,7 @@
       margin-right: 5px;
     }
   }
-  @media only screen and (max-width: 744px) {
+  @media (max-width: 744px) {
     #nav-isopen:not(:checked) ~ #nav-items {
       display: none;
     }
@@ -170,10 +174,6 @@
       background-color: var(--background-color);
       box-shadow: 0 0 3px 3px var(--shadow-color);
       z-index: 100;
-
-      animation:
-        nav-flyin 0.2s,
-        fadein 0.2s both;
     }
     nav > ul > li {
       float: none;
@@ -186,6 +186,22 @@
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
       border-bottom: 1px solid var(--primary);
+    }
+
+    @media not (prefers-reduced-motion) {
+      nav > ul {
+        animation:
+          nav-flyin 0.2s,
+          fadein 0.2s both;
+      }
+    }
+  }
+
+  @media not (prefers-reduced-motion) {
+    nav > ul > li {
+      animation:
+        nav-flyin 0.2s,
+        fadein 0.2s both;
     }
   }
 </style>
