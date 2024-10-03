@@ -59,7 +59,7 @@
   <strong><code>TODO #1</code>:</strong> One of these days I'll get around to
   creating a projects page. For now, look at my
   <a class="inline-link" href="https://github.com/DenebTM"
-    ><i class="inline-icon bx bx-sm bxl-github"></i> Github</a
+    ><i class="inline-icon bx bx-sm bxl-github" />&nbsp;Github</a
   >!<br />
   <strong><code>TODO #2</code>:</strong> Document my network setup somewhere<br
   />

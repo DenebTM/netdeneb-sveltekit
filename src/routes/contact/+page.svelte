@@ -15,7 +15,7 @@
 <p>
   You may contact me via email:
   <a href="mailto:deneb@screee.ee" class="inline-link"
-    ><i class="inline-icon bx bx-sm bx-envelope"></i> deneb@screee.ee</a
+    ><i class="inline-icon bx bx-sm bx-envelope" />&nbsp;deneb@screee.ee</a
   >. Please direct any professional inquiries there, and there only.
 </p>
 
