@@ -1,6 +1,7 @@
 <script lang="ts">
   import { clickOutside } from '~/util/clickOutside'
   import { createEventDispatcher } from 'svelte'
+  import { page } from '$app/stores'
   import NavLink from './NavLink.svelte'
 
   export let name: string
@@ -39,6 +40,7 @@
     <ul>
       {#each Object.entries(entries) as [name, target], i}
         <NavLink
+          isCurrent={$page.url.pathname == target}
           {name}
           {target}
           index={i}
