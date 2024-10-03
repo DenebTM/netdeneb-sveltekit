@@ -7,24 +7,32 @@
 
   let navItems: Record<string, any> = $page.data.navItems
 
-  let open = false // only for visuals at this point
+  let open = false // for visuals and accessibility
   const closeNav = () => (open = false)
 
-  $: innerWidth = 720
+  let innerWidth: number
 </script>
 
 <svelte:window bind:innerWidth />
 
 <nav use:clickOutside={closeNav} {open}>
-  <label for="nav-isopen" class="open-nav">
+  <!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
+  <label
+    for="nav-isopen"
+    class="open-nav"
+    role="button"
+    tabindex="0"
+    on:keypress={e => e.key == 'Enter' && (open = !open)}>
     <HamburgerButton {open} />
   </label>
   <input
     type="checkbox"
     id="nav-isopen"
     style="display: none"
+    aria-controls="nav-items"
+    aria-expanded={open || innerWidth >= 744}
     bind:checked={open} />
-  <ul>
+  <ul id="nav-items">
     {#each Object.entries(navItems) as [name, target], i}
       {#if typeof target === 'string' || 'external' in target}
         <NavLink
@@ -133,8 +141,9 @@
     transform: translateY(2px);
   }
 
+  /* TODO: don't hardcode this width....... how tho */
   @media only screen and not (max-width: 744px) {
-    .open-nav {
+    nav .open-nav {
       display: none;
     }
     nav {
@@ -144,9 +153,8 @@
       margin-right: 5px;
     }
   }
-  /* todo: don't hardcode this width....... how tho */
   @media only screen and (max-width: 744px) {
-    #nav-isopen:not(:checked) ~ ul {
+    #nav-isopen:not(:checked) ~ #nav-items {
       display: none;
     }
 

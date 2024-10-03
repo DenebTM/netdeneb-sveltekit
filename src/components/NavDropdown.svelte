@@ -8,16 +8,21 @@
   export let entries: Record<string, any> = {}
   export let delay = 0
 
-  let open = false // only for visuals at this point
+  let open = false // for visuals and accessibility
   const closeDropdown = () => (open = false)
+
+  const randId = Math.floor(Math.random() * 10000)
 
   const dispatch = createEventDispatcher()
 </script>
 
 <input
   type="checkbox"
-  id="dropdown-isopen"
+  id={`dropdown-isopen-${randId}`}
+  class="dropdown-checkbox"
   style="display: none"
+  aria-controls={`dropdown-isopen-${randId}`}
+  aria-expanded={open}
   bind:checked={open} />
 <li
   class="click-depress dropdown"
@@ -26,7 +31,7 @@
   style={`animation-delay: ${delay}ms`}>
   <!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
   <label
-    for="dropdown-isopen"
+    for={`dropdown-isopen-${randId}`}
     role="button"
     tabindex="0"
     on:keypress={e => e.key == 'Enter' && (open = !open)}>
@@ -37,7 +42,7 @@
   </label>
 
   <div>
-    <ul>
+    <ul id={`dropdown-items-${randId}`}>
       {#each Object.entries(entries) as [name, target], i}
         <NavLink
           isCurrent={$page.url.pathname == target}
@@ -67,10 +72,10 @@
   }
 
   /* holy shit I hate CSS so much */
-  #dropdown-isopen:checked ~ .dropdown {
+  .dropdown-checkbox:checked ~ .dropdown {
     z-index: 1;
   }
-  #dropdown-isopen:not(:checked) ~ .dropdown > div {
+  .dropdown-checkbox:not(:checked) ~ .dropdown > div {
     display: none;
   }
 
