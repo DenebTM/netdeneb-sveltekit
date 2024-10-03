@@ -46,8 +46,6 @@
 
 <style global>
   nav {
-    --border-radius: 5px;
-
     text-align: center;
     border-bottom: 1px solid var(--primary);
     line-height: 0;

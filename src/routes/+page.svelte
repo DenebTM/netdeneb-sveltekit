@@ -49,6 +49,6 @@
 <style>
   #me {
     width: 160px;
-    border-radius: 120px;
+    border-radius: 500%;
   }
 </style>

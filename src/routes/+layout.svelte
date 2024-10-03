@@ -49,7 +49,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    border-radius: 10px;
+    border-radius: calc(2 * var(--border-radius));
     z-index: -1;
 
     background-attachment: fixed;
@@ -57,13 +57,13 @@
     background-position-x: var(--page-background-posx);
     background-position-y: var(--page-background-posy);
     background-size: var(--page-background-size);
-    /* filter: blur(5px); fuck you phones */
+    /* filter: blur(5px); /* css gaussian blur is slow on mobile */
   }
   div.content-box {
     text-align: center;
     max-width: 1024px;
     margin: 0 auto;
-    border-radius: 10px;
+    border-radius: calc(2 * var(--border-radius));
     padding: 0 20px 20px 20px;
     position: relative;
     min-height: 500px;
