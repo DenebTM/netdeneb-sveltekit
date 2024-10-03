@@ -105,7 +105,8 @@
 
   nav a,
   nav label:not(.open-nav) {
-    text-decoration: none;
+    color: var(--text-color) !important;
+    text-decoration: none !important;
 
     padding: 10px 20px;
     display: block;

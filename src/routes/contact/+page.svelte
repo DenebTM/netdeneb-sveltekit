@@ -15,7 +15,7 @@
 <section id="email">
   <p>
     You may contact me via
-    <a href="mailto:deneb@screee.ee" class="inline-link">
+    <a href="mailto:deneb@screee.ee">
       <i class="inline-icon bx bx-sm bx-envelope" />&nbsp;<span>Email:</span
       >&nbsp;deneb@screee.ee
     </a><br />
@@ -28,7 +28,7 @@
   <ul>
     {#each data.socials as { platform, icon, href, text }}
       <li>
-        <a class="inline-link" rel="me" {href}>
+        <a rel="me" {href}>
           <i class={`inline-icon bx bx-sm ${icon}`} />&nbsp;<span
             >{platform}:</span>
           {text}

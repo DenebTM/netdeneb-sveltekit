@@ -199,6 +199,7 @@
     color: white !important;
   }
   .modal-row.image a {
+    text-decoration: none !important;
     height: calc(100vh - 80px);
     cursor: zoom-out;
     display: flex;
@@ -215,6 +216,10 @@
   }
   .modal-row.details span {
     line-height: 80px;
+  }
+
+  a {
+    text-decoration: none;
   }
 
   .btn {
