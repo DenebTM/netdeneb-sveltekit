@@ -14,9 +14,10 @@
 
 <section id="email">
   <p>
-    You may contact me via email:
+    You may contact me via
     <a href="mailto:deneb@screee.ee" class="inline-link">
-      <i class="inline-icon bx bx-sm bx-envelope" />&nbsp;deneb@screee.ee
+      <i class="inline-icon bx bx-sm bx-envelope" />&nbsp;<span>Email:</span
+      >&nbsp;deneb@screee.ee
     </a><br />
     Please direct any professional inquiries there, and there only.
   </p>
@@ -25,11 +26,12 @@
 <section id="socials">
   <p>Additionally, I am available on the following platforms:</p>
   <ul>
-    {#each data.socials as { icon, href, text }}
+    {#each data.socials as { platform, icon, href, text }}
       <li>
         <a class="inline-link" rel="me" {href}>
-          <i class={`inline-icon bx bx-sm ${icon}`} />
-          <span>{text}</span>
+          <i class={`inline-icon bx bx-sm ${icon}`} />&nbsp;<span
+            >{platform}:</span>
+          {text}
         </a>
       </li>
     {/each}
@@ -48,7 +50,7 @@
     margin-bottom: 0.75em;
   }
 
-  a span:hover {
+  a:hover {
     font-weight: 600;
   }
 </style>

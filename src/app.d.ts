@@ -16,6 +16,8 @@ declare global {
   type ArtList = ArtItemWithMetadata[]
 
   interface SocialItem {
+    platform: string
+    showPlatformAlways?: boolean
     icon: string
     href: string
     text: string
