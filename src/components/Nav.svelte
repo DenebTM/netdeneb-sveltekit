@@ -82,7 +82,7 @@
   }
 
   nav > ul > li[isCurrent='true'] {
-    font-weight: bold;
+    background-color: var(--background-active);
   }
 
   nav li {
