@@ -11,6 +11,8 @@
   <title>{`${sitename} - Art gallery`}</title>
 </svelte:head>
 
-<h2>My character reference and commissions i got so far!</h2>
+<h2 class="page-title">Commissions i got so far!</h2>
 
-<Gallery {imgList} {artBaseURL} />
+<div class="page-content">
+  <Gallery {imgList} {artBaseURL} />
+</div>

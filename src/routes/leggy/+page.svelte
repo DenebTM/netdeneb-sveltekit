@@ -7,10 +7,13 @@
   <meta name="description" content="AAAAAAAAAAAAAAAAAAAAAAAA" />
 </svelte:head>
 
-<h3>AAAAAAAAAAAAAAAAAAAAAAAA</h3>
-<a href="https://www.deviantart.com/hotnstock/art/Maned-Wolf-Stock-5-389799428">
-  <img src="/img/screm.webp" alt="a maned wolf screaming (probably)" />
-</a>
+<h2 class="page-title">AAAAAAAAAAAAAAAAAAAAAAAA</h2>
+<div class="page-content">
+  <a
+    href="https://www.deviantart.com/hotnstock/art/Maned-Wolf-Stock-5-389799428">
+    <img src="/img/screm.webp" alt="a maned wolf screaming (probably)" />
+  </a>
+</div>
 
 <style>
   img {

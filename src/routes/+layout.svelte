@@ -31,10 +31,10 @@
 
 <a
   href="/"
-  class="title fixed-color"
+  class="site-name fixed-color"
   tabindex="-1"
   style="color: white !important">{sitename}</a>
-<div class="content">
+<div class="content-box">
   <div class="bg-blur" />
   <Nav />
   <main animate={animateTransition}>
@@ -59,7 +59,7 @@
     background-size: var(--page-background-size);
     /* filter: blur(5px); fuck you phones */
   }
-  div.content {
+  div.content-box {
     text-align: center;
     max-width: 1024px;
     margin: 0 auto;
@@ -75,7 +75,7 @@
     transition: background-color 0.15s;
   }
 
-  .title {
+  .site-name {
     display: block;
     width: fit-content;
     text-align: center;
@@ -88,7 +88,7 @@
     text-decoration: none;
     transition: margin 0.3s;
   }
-  .title:hover {
+  .site-name:hover {
     text-decoration: underline;
   }
 
@@ -116,9 +116,14 @@
     transform: none;
   }
 
-  @media only screen and (max-width: 690px) {
+  @media only screen and (max-width: 744px) {
     .title {
       margin-top: 0.5em;
+    }
+
+    .page-title {
+      margin-right: 44px;
+      text-align: left;
     }
   }
 </style>

@@ -2,19 +2,21 @@
   export let open = false
 </script>
 
-<div class="button" {open}>
-  <div class="line top"></div>
-  <div class="line mid"></div>
-  <div class="line bot"></div>
+<div class="open-nav-button" {open}>
+  <div class="open-nav-line top"></div>
+  <div class="open-nav-line mid"></div>
+  <div class="open-nav-line bot"></div>
 </div>
 
 <style>
-  div {
+  .open-nav-button {
     width: 30px;
     height: 24px;
+
+    position: relative;
   }
 
-  div.line {
+  .open-nav-line {
     background: var(--text-color);
     width: 100%;
     height: 4px;
@@ -22,29 +24,29 @@
     position: absolute;
     left: 0;
   }
-  div.line.top {
+  .open-nav-line.top {
     top: 0;
   }
-  div.line.mid {
+  .open-nav-line.mid {
     top: 50%;
     transform: translateY(-50%);
   }
-  div.line.bot {
+  .open-nav-line.bot {
     bottom: 0;
   }
 
-  div.line {
+  .open-nav-line {
     transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
 
-  div[open='true'] div.line.top {
+  .open-nav-button[open='true'] .open-nav-line.top {
     transform: translateY(12px) rotate(-45deg);
   }
-  div[open='true'] div.line.mid {
+  .open-nav-button[open='true'] .open-nav-line.mid {
     width: 0;
     transform: translateX(15px);
   }
-  div[open='true'] div.line.bot {
+  .open-nav-button[open='true'] .open-nav-line.bot {
     transform: translateY(-8px) rotate(45deg);
   }
 </style>

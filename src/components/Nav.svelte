@@ -123,6 +123,10 @@
   }
 
   .open-nav {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
     cursor: pointer;
     transition: 0.1s;
     z-index: 100;
@@ -131,7 +135,7 @@
     transform: translateY(2px);
   }
 
-  @media only screen and not (max-width: 690px) {
+  @media only screen and not (max-width: 744px) {
     .open-nav {
       display: none;
     }
@@ -142,16 +146,12 @@
       margin-right: 5px;
     }
   }
-  @media only screen and (max-width: 690px) {
+  /* todo: don't hardcode this width....... how tho */
+  @media only screen and (max-width: 744px) {
     #nav-isopen:not(:checked) ~ ul {
       display: none;
     }
 
-    .open-nav {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-    }
     nav {
       border-bottom: none;
     }

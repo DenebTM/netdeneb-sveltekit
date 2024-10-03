@@ -10,33 +10,35 @@
   <meta name="description" content="Socials and contact details" />
 </svelte:head>
 
-<h2>Yap at me!</h2>
+<h2 class="page-title">Yap at me!</h2>
 
-<section id="email">
-  <p>
-    You may contact me via
-    <a href="mailto:deneb@screee.ee">
-      <i class="inline-icon bx bx-sm bx-envelope" />&nbsp;<span>Email:</span
-      >&nbsp;deneb@screee.ee
-    </a><br />
-    Please direct any professional inquiries there, and there only.
-  </p>
-</section>
+<div class="page-content">
+  <section id="email">
+    <p>
+      You may contact me via
+      <a href="mailto:deneb@screee.ee">
+        <i class="inline-icon bx bx-sm bx-envelope" />&nbsp;<span>Email:</span
+        >&nbsp;deneb@screee.ee
+      </a><br />
+      Please direct any professional inquiries there, and there only.
+    </p>
+  </section>
 
-<section id="socials">
-  <p>Additionally, I am available on the following platforms:</p>
-  <ul>
-    {#each data.socials as { platform, icon, href, text }}
-      <li>
-        <a rel="me" {href}>
-          <i class={`inline-icon bx bx-sm ${icon}`} />&nbsp;<span
-            >{platform}:</span>
-          {text}
-        </a>
-      </li>
-    {/each}
-  </ul>
-</section>
+  <section id="socials">
+    <p>Additionally, I am available on the following platforms:</p>
+    <ul>
+      {#each data.socials as { platform, icon, href, text }}
+        <li>
+          <a rel="me" {href}>
+            <i class={`inline-icon bx bx-sm ${icon}`} />&nbsp;<span
+              >{platform}:</span>
+            {text}
+          </a>
+        </li>
+      {/each}
+    </ul>
+  </section>
+</div>
 
 <style>
   section {
