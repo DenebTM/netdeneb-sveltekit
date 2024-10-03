@@ -9,7 +9,7 @@
   "arrowParens": "avoid",
   "quoteProps": "preserve",
   "svelteSortOrder": "scripts-options-markup-styles",
-  "svelteBracketNewLine": true,
   "svelteAllowShorthand": true,
-  "svelteIndentScriptAndStyle": true
+  "svelteIndentScriptAndStyle": true,
+  "bracketSameLine": true
 }

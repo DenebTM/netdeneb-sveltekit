@@ -17,26 +17,22 @@
   type="checkbox"
   id="dropdown-isopen"
   style="display: none"
-  bind:checked={open}
-/>
+  bind:checked={open} />
 <li
   class="click-depress dropdown"
   use:clickOutside={closeDropdown}
   {open}
-  style={`animation-delay: ${delay}ms`}
->
+  style={`animation-delay: ${delay}ms`}>
   <!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
   <label
     for="dropdown-isopen"
     role="button"
     tabindex="0"
-    on:keypress={e => e.key == 'Enter' && (open = !open)}
-  >
+    on:keypress={e => e.key == 'Enter' && (open = !open)}>
     <span>{name}</span>
     <i
       class="bx bx-caret-down dd-icon"
-      style="display: inline-block !important; font-size: 0.9rem"
-    />
+      style="display: inline-block !important; font-size: 0.9rem" />
   </label>
 
   <div>
@@ -49,8 +45,7 @@
           onClick={e => {
             closeDropdown()
             dispatch('navigate', e)
-          }}
-        />
+          }} />
       {/each}
     </ul>
   </div>
@@ -101,7 +96,9 @@
     padding-top: 10px;
     z-index: 1;
 
-    animation: dropdown-flyin 0.2s, fadein 0.2s both;
+    animation:
+      dropdown-flyin 0.2s,
+      fadein 0.2s both;
   }
 
   .dropdown ul {
@@ -115,7 +112,9 @@
   }
   .dropdown li {
     display: block;
-    animation: nav-flyin 0.2s, fadein 0.2s both;
+    animation:
+      nav-flyin 0.2s,
+      fadein 0.2s both;
   }
   .dropdown li:first-child,
   .dropdown li:first-child a {
@@ -146,7 +145,9 @@
       right: 0;
       padding-top: 10px;
 
-      animation: dropdown-flyin-mobile 0.2s, fadein 0.2s forwards;
+      animation:
+        dropdown-flyin-mobile 0.2s,
+        fadein 0.2s forwards;
     }
   }
   @media only screen and (min-width: 691px) {

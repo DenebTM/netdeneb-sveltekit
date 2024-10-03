@@ -17,8 +17,8 @@
     I'm <strong title="all-lowercase, please">deneb</strong>, a {data.age}-year
     old
     <a class="inline-link" href="https://en.wikipedia.org/wiki/Maned Wolf"
-      >maned wolf</a
-    > from Austria, currently studying computer science (BSc) in Innsbruck.
+      >maned wolf</a> from Austria, currently studying computer science (BSc) in
+    Innsbruck.
   </p>
 </section>
 
@@ -35,8 +35,7 @@
   <p>
     If you're looking for my reference sheet, go <a
       class="inline-link"
-      href="/art?img=ref">here!</a
-    >
+      href="/art?img=ref">here!</a>
     <br />
     Or find more info on my <a class="inline-link" href="/about">About</a> page :3
   </p>

@@ -19,7 +19,6 @@
 <li
   {isCurrent}
   class="click-depress"
-  style={`animation-delay: ${(index + 1) * 75}ms`}
->
+  style={`animation-delay: ${(index + 1) * 75}ms`}>
   <a {href} on:click={onClick} data-sveltekit-reload={external}>{name}</a>
 </li>

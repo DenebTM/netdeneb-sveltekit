@@ -81,12 +81,10 @@
     data-sveltekit-replacestate
     href={`?img=${titleImage?.id}`}
     role="button"
-    data-sveltekit-noscroll
-  >
+    data-sveltekit-noscroll>
     <img src={titleImage?.fileName} alt={titleImage?.description} />
     <span style="display: block; width: 100%; line-height: 1.5"
-      >{titleImage?.description}</span
-    >
+      >{titleImage?.description}</span>
   </a>
   <div class="gallery-columns" style={gridStyle}>
     {#each columns as col}
@@ -99,8 +97,7 @@
             data-sveltekit-replacestate
             href={`?img=${img.id}`}
             role="button"
-            data-sveltekit-noscroll
-          >
+            data-sveltekit-noscroll>
             <img src={img.fileName} alt={img.description} />
           </a>
         {/each}
@@ -113,22 +110,19 @@
       class="btn modal-close fixed-color"
       data-sveltekit-replacestate
       href={artBaseURL}
-      transition:fade={{ duration: 100 }}
-    >
+      transition:fade={{ duration: 100 }}>
       <i class="bx bx-md bx-x fixed-color" />
     </a>
     <div
       class="gallery-modal"
       transition:fade={{ duration: 100 }}
-      style={modalStyle}
-    >
+      style={modalStyle}>
       <div class="modal-row image">
         <a
           data-sveltekit-replacestate
           href={artBaseURL}
           data-sveltekit-noscroll
-          tabindex="-1"
-        >
+          tabindex="-1">
           <img src={modalImg?.fileName} alt={modalImg?.artistLink} />
         </a>
       </div>

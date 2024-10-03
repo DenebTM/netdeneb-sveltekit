@@ -7,10 +7,7 @@ export default defineConfig({
   server: {
     port: 3000,
     fs: {
-      allow: [
-        'img',
-        'art',
-      ],
+      allow: ['img', 'art'],
     },
   },
   preview: {

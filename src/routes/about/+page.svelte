@@ -28,8 +28,7 @@
     appreciation for visual art depicting animals (<a
       class="inline-link"
       href="https://en.wiktionary.org/wiki/anthropomorphic#Adjective"
-      >anthropomorphic</a
-    >
+      >anthropomorphic</a>
     or otherwise) and the community of artists that has developed around it.
     <strong>deneb</strong> is my fursona, and on occasion I throw some money the
     way of artists to get them drawn in their style. Have a look at the
@@ -61,10 +60,8 @@
   <a class="inline-link" href="https://github.com/DenebTM"
     ><i class="inline-icon bx bx-sm bxl-github" />&nbsp;Github</a
   >!<br />
-  <strong><code>TODO #2</code>:</strong> Document my network setup somewhere<br
-  />
-  <strong><code>TODO #3</code>:</strong> Expand on the retrocomputing stuff<br
-  />
+  <strong><code>TODO #2</code>:</strong> Document my network setup somewhere<br />
+  <strong><code>TODO #3</code>:</strong> Expand on the retrocomputing stuff<br />
 </section>
 
 <section id="this-website">

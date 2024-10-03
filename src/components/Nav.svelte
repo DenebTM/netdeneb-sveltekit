@@ -23,8 +23,7 @@
     type="checkbox"
     id="nav-isopen"
     style="display: none"
-    bind:checked={open}
-  />
+    bind:checked={open} />
   <ul>
     {#each Object.entries(navItems) as [name, target], i}
       {#if typeof target === 'string' || 'external' in target}
@@ -33,15 +32,13 @@
           {name}
           {target}
           index={i}
-          onClick={closeNav}
-        />
+          onClick={closeNav} />
       {:else}
         <NavDropdown
           {name}
           entries={target}
           delay={(i + 1) * 75}
-          on:navigate={closeNav}
-        />
+          on:navigate={closeNav} />
       {/if}
     {/each}
   </ul>

@@ -33,8 +33,7 @@
   href="/"
   class="title fixed-color"
   tabindex="-1"
-  style="color: white !important">{sitename}</a
->
+  style="color: white !important">{sitename}</a>
 <div class="content">
   <div class="bg-blur" />
   <Nav />
@@ -110,7 +109,9 @@
     }
   }
   main[animate] {
-    animation: flyin 0.3s, fadein 0.3s forwards;
+    animation:
+      flyin 0.3s,
+      fadein 0.3s forwards;
     opacity: 0;
     transform: none;
   }
