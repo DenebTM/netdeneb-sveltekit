@@ -12,12 +12,15 @@
 
 <h2>Yap at me!</h2>
 
-<p>
-  You may contact me via email:
-  <a href="mailto:deneb@screee.ee" class="inline-link"
-    ><i class="inline-icon bx bx-sm bx-envelope" />&nbsp;deneb@screee.ee</a
-  >. Please direct any professional inquiries there, and there only.
-</p>
+<section id="email">
+  <p>
+    You may contact me via email:
+    <a href="mailto:deneb@screee.ee" class="inline-link">
+      <i class="inline-icon bx bx-sm bx-envelope" />&nbsp;deneb@screee.ee
+    </a><br />
+    Please direct any professional inquiries there, and there only.
+  </p>
+</section>
 
 <section id="socials">
   <p>Additionally, I am available on the following platforms:</p>
@@ -34,10 +37,8 @@
 </section>
 
 <style>
-  #socials {
+  section {
     text-align: left;
-    width: fit-content;
-    margin: 0 auto;
   }
   ul {
     padding-left: 1em;
