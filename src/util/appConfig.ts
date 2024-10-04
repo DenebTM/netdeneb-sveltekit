@@ -5,6 +5,15 @@ import { env } from '$env/dynamic/private'
 const configPath = (): string => env.APP_CONFIG_PATH || './config/config.json'
 
 export const defaultConfig: AppConfig = {
+  siteMetadata: {
+    name: 'netdeneb.com',
+    description: "deneb's homepage",
+    titleImage: {
+      'path': '/img/deneb1.webp',
+      'description': 'art of deneb, by twitter.com/FluffySakora',
+    },
+  },
+
   artBasePath: './art',
   artBaseURL: '/art',
 

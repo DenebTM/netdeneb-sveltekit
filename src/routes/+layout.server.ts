@@ -3,7 +3,7 @@ import type { LayoutServerLoad } from './$types'
 import { getConfig } from '~/util/appConfig'
 
 export const load = (async ({ request }) => {
-  const { navPath } = await getConfig()
+  const { navPath, siteMetadata } = await getConfig()
 
   let navItems: Record<string, any> = {
     'Home': '/',
@@ -14,5 +14,5 @@ export const load = (async ({ request }) => {
     navItems = JSON.parse((await fs.readFile(navPath)).toString())
   } catch (err) {}
 
-  return { navItems }
+  return { navItems, siteMetadata }
 }) satisfies LayoutServerLoad

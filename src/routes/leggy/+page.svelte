@@ -1,10 +1,13 @@
 <script lang="ts">
-  import { sitename } from '~/util/globals'
+  import { page } from '$app/stores'
+  const { name: sitename }: SiteMetadata = $page.data.siteMetadata
 </script>
 
 <svelte:head>
   <title>{`${sitename} - AAAAAA`}</title>
+  <meta property="og:title" content="Leggy scream" />
   <meta name="description" content="AAAAAAAAAAAAAAAAAAAAAAAA" />
+  <meta property="og:description" content="AAAAAAAAAAAAAAAAAAAAAAAA" />
 </svelte:head>
 
 <h2 class="page-title">AAAAAAAAAAAAAAAAAAAAAAAA</h2>

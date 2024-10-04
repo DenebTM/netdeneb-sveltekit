@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { sitename } from '~/util/globals'
   import { page } from '$app/stores'
+  const { name: sitename }: SiteMetadata = $page.data.siteMetadata
 </script>
 
 <svelte:head>

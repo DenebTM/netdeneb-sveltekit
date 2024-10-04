@@ -1,21 +1,26 @@
 <script lang="ts">
   import Socials from '~/components/Socials.svelte'
-  import { sitename } from '~/util/globals'
   import type { PageServerData } from './$types'
+
+  import { page } from '$app/stores'
+  const siteMetadata: SiteMetadata = $page.data.siteMetadata
 
   export let data: PageServerData
 </script>
 
 <svelte:head>
-  <title>{sitename}</title>
+  <meta property="og:title" content={siteMetadata.description} />
+  <meta
+    property="og:description"
+    content="the home of deneb, the maney themself" />
 </svelte:head>
 
 <div class="page-content">
   <section id="blurb">
     <img
       id="me"
-      src={data.titleImage?.path}
-      alt={data.titleImage?.description} />
+      src={siteMetadata.titleImage?.path}
+      alt={siteMetadata.titleImage?.description} />
     <h1>Hi!</h1>
     <p>
       I'm <strong title="all-lowercase, please">deneb</strong>, a {data.age}-year

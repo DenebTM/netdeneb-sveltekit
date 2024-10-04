@@ -32,7 +32,18 @@ declare global {
     socials: SociaList
   }
 
+  interface SiteMetadata {
+    name: string
+    description: string
+    titleImage: {
+      path: string
+      description: string
+    }
+  }
+
   interface AppConfig {
+    siteMetadata: SiteMetadata
+
     artBasePath: string
     artBaseURL: string
 

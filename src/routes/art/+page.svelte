@@ -1,7 +1,9 @@
 <script lang="ts">
   import type { PageData } from './$types'
-  import { sitename } from '~/util/globals'
   import Gallery from '~/components/Gallery.svelte'
+
+  import { page } from '$app/stores'
+  const { name: sitename }: SiteMetadata = $page.data.siteMetadata
 
   export let data: PageData
   $: ({ imgList, artBaseURL } = data)

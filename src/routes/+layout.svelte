@@ -1,12 +1,14 @@
 <script lang="ts">
   import '~/util/styles'
 
-  import { sitename } from '~/util/globals'
   import { afterNavigate, beforeNavigate } from '$app/navigation'
 
   import Nav from '~/components/Nav.svelte'
   import { enableScroll } from '~/util/tools'
   import { onMount } from 'svelte'
+
+  import { page } from '$app/stores'
+  const siteMetadata: SiteMetadata = $page.data.siteMetadata
 
   let animateTransition: boolean | undefined = true
   beforeNavigate(nav => {
@@ -26,14 +28,19 @@
 </script>
 
 <svelte:head>
-  <title>{sitename}</title>
+  <title>{siteMetadata.name}</title>
+
+  <!-- TODO: un-hardcode this -->
+  <meta name="theme-color" content="#ee3a7c" />
+  <meta property="og:image" content={siteMetadata.titleImage?.path} />
+  <meta property="og:site_name" content={siteMetadata.name} />
 </svelte:head>
 
 <a
   href="/"
   class="site-name fixed-color"
   tabindex="-1"
-  style="color: white !important">{sitename}</a>
+  style="color: white !important">{siteMetadata.name}</a>
 <div class="content-box">
   <div class="bg-blur" />
   <Nav />

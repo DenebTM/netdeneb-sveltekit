@@ -1,13 +1,17 @@
 <script lang="ts">
-  import { sitename } from '~/util/globals'
   import type { PageServerData } from './$types'
+
+  import { page } from '$app/stores'
+  const { name: sitename }: SiteMetadata = $page.data.siteMetadata
 
   export let data: PageServerData
 </script>
 
 <svelte:head>
   <title>{`${sitename} - Contact`}</title>
-  <meta name="description" content="Socials and contact details" />
+  <meta property="og:title" content="Contact" />
+  <meta name="description" content="How to contact the mane" />
+  <meta property="og:description" content="How to contact the mane" />
 </svelte:head>
 
 <h2 class="page-title">Yap at me!</h2>
