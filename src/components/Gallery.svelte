@@ -1,8 +1,10 @@
 <script lang="ts">
   import { fade } from 'svelte/transition'
   import { disableScroll, enableScroll } from '~/util/tools'
-  import { page } from '$app/stores'
   import { afterNavigate } from '$app/navigation'
+
+  import { page } from '$app/stores'
+  const siteMetadata: SiteMetadata = $page.data.siteMetadata
 
   export let artBaseURL: string = '/art'
 
@@ -67,7 +69,10 @@
     <meta property="og:image:width" content={modalImg.width.toString()} />
     <meta property="og:image:height" content={modalImg.height.toString()} />
   {:else}
-    <meta name="description" content="My ref, and more" />
+    <meta name="og:title" content="Art gallery" />
+    <meta property="og:image" content={siteMetadata.titleImage?.path} />
+    <meta name="og:description" content="My ref, and other commissions I got" />
+    <meta name="description" content="My ref, and other commissions I got" />
   {/if}
 </svelte:head>
 

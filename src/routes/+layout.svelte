@@ -32,7 +32,6 @@
 
   <!-- TODO: un-hardcode this -->
   <meta name="theme-color" content="#ee3a7c" />
-  <meta property="og:image" content={siteMetadata.titleImage?.path} />
   <meta property="og:site_name" content={siteMetadata.name} />
 </svelte:head>
 

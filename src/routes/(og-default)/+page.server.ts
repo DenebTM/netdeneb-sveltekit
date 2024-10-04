@@ -1,4 +1,4 @@
-import type { PageServerLoad } from './$types'
+import type { PageServerLoad } from '../$types'
 import fs from 'node:fs/promises'
 import { getConfig } from '~/util/appConfig'
 
