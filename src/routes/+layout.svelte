@@ -52,6 +52,7 @@
     border-radius: calc(2 * var(--border-radius));
     z-index: -1;
 
+    background-image: var(--page-background-blur);
     background-attachment: fixed;
     background-attachment: var(--page-background-attachment);
     background-position-x: var(--page-background-posx);
