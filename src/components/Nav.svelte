@@ -139,7 +139,7 @@
 
     cursor: pointer;
     transition: 0.1s;
-    z-index: 100;
+    z-index: 1;
   }
   .open-nav:active {
     transform: translateY(2px);
@@ -173,7 +173,7 @@
       margin-top: 0;
       background-color: var(--background-color);
       box-shadow: 0 0 3px 3px var(--shadow-color);
-      z-index: 100;
+      z-index: 1;
     }
     nav > ul > li {
       float: none;

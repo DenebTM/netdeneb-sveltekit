@@ -16,3 +16,10 @@
 <div class="page-content">
   <Gallery {imgList} {artBaseURL} />
 </div>
+
+<style global>
+  /* ugly fix for hamburger button overlapping gallery-modal */
+  :has(div.gallery-modal) .open-nav {
+    z-index: 0;
+  }
+</style>

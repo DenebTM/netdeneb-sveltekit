@@ -174,12 +174,12 @@
   .gallery-hover:focus-visible {
     filter: none;
     transform: scale(1.03);
-    z-index: 99;
+    z-index: 1;
     background-color: unset;
   }
   .gallery-modal {
     position: fixed;
-    z-index: 100;
+    z-index: 2;
     top: 0;
     left: 0;
     width: 100%;
@@ -192,7 +192,7 @@
     position: fixed;
     top: 20px;
     right: 20px;
-    z-index: 101;
+    z-index: 3;
   }
   .modal-row *,
   .modal-close {
