@@ -1,21 +1,24 @@
 [Unit]
-Description=Netdeneb.com (Docker)
-Requires=docker.service
-After=docker.service
+Description=Personal website
 
 [Service]
-Restart=always
+Restart=on-failure
 WorkingDirectory=/srv/netdeneb
-ExecStart=/usr/bin/docker run --init --rm --name netdeneb \
-            -p 3000:80 \
-            -e APP_CONFIG_PATH=/config/config.json \
-            -v /srv/netdeneb/Caddyfile:/etc/caddy/Caddyfile:ro \
-            -v /srv/netdeneb/caddy-auth.conf:/etc/caddy/caddy-auth.conf:ro \
-            -v /srv/netdeneb/config:/config \
-            -v /srv/netdeneb/static:/caddy/static \
-            -v /srv/netdeneb/files:/caddy/static/files:ro \
-            ghcr.io/denebtm/netdeneb:latest
-ExecStop=/usr/bin/docker stop netdeneb
+ExecStart=/usr/bin/podman run --name netdeneb \
+	-d --rm --replace \
+	--sdnotify=conmon \
+	--init \
+	-p 3000:80 \
+	-e APP_CONFIG_PATH=/config/config.json \
+	-v /srv/netdeneb/Caddyfile:/etc/caddy/Caddyfile:ro \
+	-v /srv/netdeneb/caddy-auth.conf:/etc/caddy/caddy-auth.conf:ro \
+	-v /srv/netdeneb/config:/config \
+	-v /srv/netdeneb/static:/caddy/static \
+	-v /srv/netdeneb/files:/caddy/static/files:ro \
+	ghcr.io/denebtm/netdeneb:latest
+ExecStop=/usr/bin/podman stop netdeneb
+Type=notify
+NotifyAccess=all
 
 [Install]
 WantedBy=default.target
