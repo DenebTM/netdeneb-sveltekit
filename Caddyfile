@@ -1,12 +1,28 @@
+{
+  auto_https off
+}
+
+(thefiles) {
+  file_server {
+    browse /caddy/browse-thumbs.html
+  }
+}
+
+http://files.netdeneb.com {
+  root * /caddy/static/files
+  encode gzip zstd
+
+  import thefiles
+}
+
 :80 {
   root * /caddy/static
   encode gzip zstd
 
   # use caddy file browser for /files
-  handle /files* {
-    file_server {
-      browse /caddy/browse-thumbs.html
-    }
+  redir /files /files/
+  handle /files/* {
+    import thefiles
   }
 
   import /etc/caddy/caddy-auth.conf
