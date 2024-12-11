@@ -1,12 +1,16 @@
-31a32
-> 		<img loading="lazy" src="{{cat "/thumbs" (trimPrefix "/files" .Tpl.Path) "/" (.Name | pathEscape)}}">
-632a634
-> 	aspect-ratio: 1/1;
-790c792
+24c24
+< 		<img loading="lazy" src="{{.Name | pathEscape}}">
+---
+> 		<img loading="lazy" src="{{html cat "/thumbs" (trimPrefix "/files" .Tpl.Path) "/" (.Name | pathEscape)}}">
+779c779,783
 < 					{{range $i, $crumb := .Breadcrumbs}}<a href="{{html $crumb.Link}}">{{html $crumb.Text}}</a>{{if ne $i 0}}/{{end}}{{end}}
 ---
-> 					{{range $i, $crumb := .Breadcrumbs}}<a href="{{html $crumb.Link}}?layout=grid">{{html $crumb.Text}}</a>{{if ne $i 0}}/{{end}}{{end}}
-836c838
+>           {{- if eq .Layout "grid"}}
+>             {{range $i, $crumb := .Breadcrumbs}}<a href="{{html $crumb.Link}}?layout=grid">{{html $crumb.Text}}</a>{{if ne $i 0}}/{{end}}{{end}}
+>           {{- else}}
+>             {{range $i, $crumb := .Breadcrumbs}}<a href="{{html $crumb.Link}}">{{html $crumb.Text}}</a>{{if ne $i 0}}/{{end}}{{end}}
+>           {{- end}}
+825c829
 < 					<a href="{{html .URL}}" title='{{html (.HumanModTime "January 2, 2006 at 15:04:05")}}'>
 ---
 > 					<a href="{{html .URL}}?layout=grid" title='{{html (.HumanModTime "January 2, 2006 at 15:04:05")}}'>
