@@ -38,12 +38,9 @@
       <p>
         You may contact me via
         <a rel="me" href="mailto:deneb@screee.ee">
-          <span
-            ><i class="inline-icon bx bx-sm bx-envelope" />&nbsp;<span
-              >Email:</span
-            >&nbsp;deneb@screee.ee
-          </span></a
-        ><br />
+          <i class="inline-icon bx bx-sm bx-envelope" />&nbsp;<span>Email:</span
+          >&nbsp;deneb@screee.ee
+        </a><br />
         Please direct any professional inquiries there, and there only.
       </p>
     </section>
