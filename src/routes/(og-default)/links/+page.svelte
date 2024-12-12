@@ -38,9 +38,12 @@
       <p>
         You may contact me via
         <a rel="me" href="mailto:deneb@screee.ee">
-          <i class="inline-icon bx bx-sm bx-envelope" />&nbsp;<span>Email:</span
-          >&nbsp;deneb@screee.ee
-        </a><br />
+          <span
+            ><i class="inline-icon bx bx-sm bx-envelope" />&nbsp;<span
+              >Email:</span
+            >&nbsp;deneb@screee.ee
+          </span></a
+        ><br />
         Please direct any professional inquiries there, and there only.
       </p>
     </section>
@@ -128,9 +131,14 @@
   ul {
     padding-left: 1em;
   }
+
   #socials li {
     list-style-type: none;
     margin-bottom: 0.75em;
+  }
+
+  a[rel='me'] {
+    white-space: nowrap;
   }
   a[rel='me']:hover {
     font-weight: 600;
