@@ -1,4 +1,5 @@
 <script lang="ts">
+  import WikiLink from '~/components/WikiLink.svelte'
   import type { PageServerData } from './$types'
 
   import { page } from '$app/stores'
@@ -32,7 +33,7 @@
     <section id="email">
       <p>
         You may contact me via
-        <a href="mailto:deneb@screee.ee">
+        <a rel="me" href="mailto:deneb@screee.ee">
           <i class="inline-icon bx bx-sm bx-envelope" />&nbsp;<span>Email:</span
           >&nbsp;deneb@screee.ee
         </a><br />
@@ -66,8 +67,7 @@
         </li>
         <li>
           <a href="https://it-syndikat.org/">IT-Syndikat</a>
-          — <a href="https://en.wikipedia.org/wiki/Hackerspace">Hackerspace</a> in
-          Innsbruck
+          — <WikiLink page="Hackerspace" /> in Innsbruck
         </li>
         <li>
           <a href="https://slowroads.io/">slow roads</a>
@@ -128,8 +128,7 @@
     list-style-type: none;
     margin-bottom: 0.75em;
   }
-
-  a:hover {
+  a[rel='me']:hover {
     font-weight: 600;
   }
 </style>

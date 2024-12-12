@@ -1,5 +1,6 @@
 <script lang="ts">
   import Socials from '~/components/Socials.svelte'
+  import WikiLink from '~/components/WikiLink.svelte'
   import type { PageServerData } from './$types'
 
   import { page } from '$app/stores'
@@ -24,8 +25,8 @@
     <h1>Hi!</h1>
     <p>
       I'm <strong title="all-lowercase, please">deneb</strong>, a {data.age}-year
-      old <a href="https://en.wikipedia.org/wiki/Maned Wolf">maned wolf</a> from
-      Austria, currently studying computer science (BSc) in Innsbruck.
+      old <WikiLink page="maned wolf" /> from Austria, currently studying computer
+      science (BSc) in Innsbruck.
     </p>
   </section>
 
