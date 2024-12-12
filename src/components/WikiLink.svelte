@@ -1,8 +1,12 @@
 <script lang="ts">
   export let page: string
+  export let site: 'wikipedia' | 'wiktionary' = 'wikipedia'
+  export let section: string | null = null
 </script>
 
-<a class="wiki-link" href={`https://en.wikipedia.org/wiki/${page}`}>
+<a
+  class="wiki-link"
+  href={`https://en.${site}.org/wiki/${page}${section ? '#' + section : ''}`}>
   <i class="inline-icon bx bxl-wikipedia" />{page}&nbsp;
 </a>
 

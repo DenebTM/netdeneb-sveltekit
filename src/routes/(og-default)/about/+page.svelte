@@ -1,4 +1,5 @@
 <script lang="ts">
+  import WikiLink from '~/components/WikiLink.svelte'
   import type { PageServerData } from './$types'
   import { page } from '$app/stores'
   const { name: sitename }: SiteMetadata = $page.data.siteMetadata
@@ -29,11 +30,11 @@
     <h4>floof</h4>
     <p>
       In case you're unaware, I'm a furry. This means, tl;dr, that I have a deep
-      appreciation for visual art depicting animals (<a
-        href="https://en.wiktionary.org/wiki/anthropomorphic#Adjective"
-        >anthropomorphic</a>
-      or otherwise) and the community of artists and like-minded people that has
-      developed around it.
+      appreciation for visual art depicting animals (<WikiLink
+        page="anthropomorphic"
+        section="Adjective"
+        site="wiktionary" /> or otherwise) and the community of artists and like-minded
+      people that has developed around it.
       <strong title="all-lowercase, please">deneb</strong> is my fursona, and on
       occasion I throw some money the way of artists to get them drawn in their
       style. Have a look at the
