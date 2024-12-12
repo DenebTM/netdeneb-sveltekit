@@ -59,8 +59,8 @@
       Active Directory (which I had running in the background until 2023!) and
       associated services, though most of my knowledge does centre around modern
       Linux and Docker. Besides this website with its handful of
-      <a href="/files">odd files </a> available for your perusal, I self-host a few
-      services:
+      <a href="/files">odd files </a> available for your perusal, I self-host most
+      of my stuff, including:
     </p>
     <ul>
       <li>
@@ -74,6 +74,10 @@
         also, a Matrix homeserver! <em>conduwuit</em> to be specific, but will
         probably migrate to
         <a href="https://or.computer.surgery/matrix/grapevine">Grapevine</a> soon
+      </li>
+      <li>
+        <a class="strong" href="https://leggi.es/">leggi.es</a> — nothing yet, but
+        quite possibly where this website will be moving :3
       </li>
       <li>
         <a class="strong" href="https://mail.screee.ee/">mail.screee.ee</a>
