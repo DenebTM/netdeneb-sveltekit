@@ -2,17 +2,36 @@
   auto_https off
 }
 
+(thestatic) {
+  root /caddy/static
+
+  # serve existing files in /img, /art and /thumbs
+  file_server {
+    pass_thru
+  }
+
+  # pass everything else to reverse proxy
+  reverse_proxy localhost:3000
+}
+
 (thefiles) {
+  root /caddy/static/files
+
+  import /etc/caddy/caddy-auth.conf
+
   file_server {
     browse /caddy/browse-thumbs.html
   }
 }
 
 http://files.netdeneb.com {
-  root * /caddy/static/files
   encode gzip zstd
 
   import thefiles
+
+  route /thumbs/* {
+    import thestatic
+  }
 }
 
 :80 {
@@ -21,22 +40,14 @@ http://files.netdeneb.com {
 
   # use caddy file browser for /files
   redir /files /files/
-  handle /files/* {
+  handle_path /files/* {
     import thefiles
   }
-
-  import /etc/caddy/caddy-auth.conf
 
   redir /ftpfile /files{uri}
   redir /getfile /files{uri}
 
   route {
-    # serve existing files in /img, /art and /thumbs
-    file_server {
-      pass_thru
-    }
-
-    # pass everything else to reverse proxy
-    reverse_proxy localhost:3000
+    import thestatic
   }
 }
