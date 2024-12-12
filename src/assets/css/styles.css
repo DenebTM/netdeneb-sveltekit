@@ -18,6 +18,9 @@ a:hover {
   color: var(--primary-hover);
   text-decoration: underline;
 }
+a:active {
+  color: var(--primary-active);
+}
 
 i.inline-icon {
   display: inline-block !important;

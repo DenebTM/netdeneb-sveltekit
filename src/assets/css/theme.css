@@ -15,7 +15,8 @@
   --primary-light: #ff005d;
   --primary-hover-dark: #f36297;
   --primary-hover-light: #ff3881;
-  --primary-active: #72153a;
+  --primary-active-dark: #f786af;
+  --primary-active-light: #e21560;
   --primary-inverse: #fff;
 
   --form-element-active-border-color: var(--primary);
@@ -41,6 +42,7 @@
 :root {
   --primary: var(--primary-dark);
   --primary-hover: var(--primary-hover-dark);
+  --primary-active: var(--primary-active-dark);
   --primary-focus: rgba(216, 27, 96, 0.25);
 
   --background-color: var(--background-color-dark);
@@ -54,6 +56,7 @@
   :root {
     --primary: var(--primary-light);
     --primary-hover: var(--primary-hover-light);
+    --primary-active: var(--primary-active-light);
     --primary-focus: rgba(216, 27, 96, 0.125);
 
     --background-color: var(--background-color-light);
