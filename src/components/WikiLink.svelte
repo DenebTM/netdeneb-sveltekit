@@ -7,8 +7,8 @@
 <a
   class="wiki-link"
   href={`https://en.${site}.org/wiki/${page}${section ? '#' + section : ''}`}>
-  <i class="inline-icon bx bxl-wikipedia" />{page}&nbsp;
-</a>
+  <i class="inline-icon bx bxl-wikipedia" />{page}
+</a>&nbsp;
 
 <style global>
   a.wiki-link {
