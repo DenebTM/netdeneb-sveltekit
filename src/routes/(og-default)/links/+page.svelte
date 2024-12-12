@@ -22,10 +22,14 @@
 </script>
 
 <svelte:head>
-  <title>{`${sitename} - Contact`}</title>
-  <meta property="og:title" content="Contact" />
-  <meta name="description" content="How to contact the mane" />
-  <meta property="og:description" content="How to contact the mane" />
+  <title>{`${sitename} - Links`}</title>
+  <meta property="og:title" content="Links" />
+  <meta
+    name="description"
+    content="The mane's socials, friends, and other things" />
+  <meta
+    property="og:description"
+    content="The mane's socials, friends, and other things" />
 </svelte:head>
 <div class="page-content">
   <div class="page-column">
