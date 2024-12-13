@@ -181,6 +181,10 @@
     display: inline-block;
   }
 
+  #friends ul {
+    margin-bottom: 0;
+  }
+
   a[rel='me'] {
     white-space: nowrap;
   }
