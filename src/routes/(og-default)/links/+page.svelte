@@ -11,82 +11,101 @@
     {
       domain: 'yummy.cricket',
       button: 'niss.png',
+      alt: 'niss',
     },
     {
       domain: 'gry.sh',
       button: null,
+      alt: 'greyhash',
     },
     {
       domain: 'nilsding.org',
       button: null,
+      alt: 'jyrki',
     },
     {
       domain: 'eeep.ee',
       button: null,
+      alt: 'chfour',
     },
     {
       domain: 'm.furrypri.de',
       button: null,
+      alt: 'm',
     },
     {
       domain: 'ashiecorner.xyz',
       button: 'ashie.gif',
+      alt: 'ashie',
     },
     {
       domain: 'zencorner.xyz',
       button: 'zenith.gif',
+      alt: 'zenith',
     },
     {
       domain: 'sterophonick.github.io',
       button: 'atapi.gif',
+      alt: 'atapi',
     },
     {
       domain: 'pivotman319-owo.github.io',
       button: 'pivotman.png',
+      alt: 'pivotman',
     },
     {
       domain: 'kaleidosium.my.id',
       button: 'kaleidosium.png',
+      alt: 'kaleidosium',
     },
     {
       domain: 'ayetsg.com',
       button: 'ayetsg.png',
+      alt: 'ayetsg',
     },
     {
       domain: 'j4.lc',
       button: 'jae.avif',
+      alt: 'jae',
     },
     {
       domain: 'zenthefox.online',
       button: 'zenthefox.gif',
+      alt: 'zen',
     },
     {
       domain: 'aquamarine.gay',
       button: 'aquamarine.png',
+      alt: 'aquamarine',
     },
     {
       domain: 'bee.movie',
       button: 'june.png',
+      alt: 'june',
     },
     {
       domain: 'maidado.xyz',
       button: null,
+      alt: 'maidado',
     },
     {
       domain: 'foxboy.dev',
       button: null,
+      alt: 'ry755',
     },
     {
       domain: 'foxgirl.dev',
       button: null,
+      alt: 'luavixen',
     },
     {
       domain: 'freeplay.floof.company',
       button: 'freeplay.gif',
+      alt: 'freeplay',
     },
-  ].map(({ domain, button }) => {
+  ].map(({ domain, button, alt }) => {
     button = button ? `/img/8831/${button}` : null
-    return { domain, button }
+    return { domain, button, alt }
   })
 </script>
 
@@ -211,10 +230,10 @@
   <section id="friends">
     <h2>Friends' websites!</h2>
     <ul class="bulletless inline-list">
-      {#each friendlinks as { domain, button }}
+      {#each friendlinks as { domain, button, alt }}
         <li>
           <a class="button-link" href={`https://${domain}`}>
-            <img src={button} alt={domain} />
+            <img src={button} {alt} />
           </a>
         </li>
       {/each}
