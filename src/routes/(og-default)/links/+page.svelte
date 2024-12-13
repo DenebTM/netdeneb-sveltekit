@@ -9,12 +9,52 @@
 
   const friendlinks = [
     {
+      domain: 'yummy.cricket',
+      button: 'niss.png',
+    },
+    {
+      domain: 'gry.sh',
+      button: null,
+    },
+    {
+      domain: 'nilsding.org',
+      button: null,
+    },
+    {
+      domain: 'eeep.ee',
+      button: null,
+    },
+    {
+      domain: 'm.furrypri.de',
+      button: null,
+    },
+    {
+      domain: 'ashiecorner.xyz',
+      button: 'ashie.gif',
+    },
+    {
+      domain: 'zencorner.xyz',
+      button: 'zenith.gif',
+    },
+    {
       domain: 'sterophonick.github.io',
       button: 'atapi.gif',
     },
     {
+      domain: 'pivotman319-owo.github.io',
+      button: 'pivotman.png',
+    },
+    {
       domain: 'kaleidosium.my.id',
       button: 'kaleidosium.png',
+    },
+    {
+      domain: 'ayetsg.com',
+      button: 'ayetsg.png',
+    },
+    {
+      domain: 'j4.lc',
+      button: 'jae.avif',
     },
     {
       domain: 'zenthefox.online',
@@ -25,28 +65,12 @@
       button: 'aquamarine.png',
     },
     {
-      domain: 'ashiecorner.xyz',
-      button: 'ashie.gif',
-    },
-    {
-      domain: 'yummy.cricket',
-      button: 'niss.png',
-    },
-    {
-      domain: 'zencorner.xyz',
-      button: 'zenith.gif',
-    },
-    {
-      domain: 'm.furrypri.de',
-      button: null,
+      domain: 'bee.movie',
+      button: 'june.png',
     },
     {
       domain: 'maidado.xyz',
       button: null,
-    },
-    {
-      domain: 'ayetsg.com',
-      button: 'ayetsg.png',
     },
     {
       domain: 'foxboy.dev',
@@ -57,20 +81,8 @@
       button: null,
     },
     {
-      domain: 'bee.movie',
-      button: 'june.png',
-    },
-    {
-      domain: 'eeep.ee',
-      button: null,
-    },
-    {
-      domain: 'gry.sh',
-      button: null,
-    },
-    {
-      domain: 'j4.lc',
-      button: 'jae.avif',
+      domain: 'freeplay.floof.company',
+      button: 'freeplay.gif',
     },
   ]
 </script>
@@ -194,7 +206,7 @@
   </div>
 
   <section id="friends">
-    <h2>Friends' websites</h2>
+    <h2>Friends' websites!</h2>
     <ul class="bulletless inline-list">
       {#each friendlinks as { domain, button }}
         <li>
