@@ -9,4 +9,7 @@ export const handleError: HandleServerError = async ({
   const href_path = event.url.href.replace(event.url.origin, '')
 
   console.error(`SvelteKit error: ${status} ${message} (path: '${href_path}')`)
+  if (status == 500) {
+    console.error(error)
+  }
 }
