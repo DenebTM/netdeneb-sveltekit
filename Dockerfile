@@ -1,6 +1,6 @@
 FROM node:current-alpine as build-image
 WORKDIR /app
-COPY package*.json ./
+COPY package.json ./
 RUN npm install
 COPY src ./src
 COPY *.js *.ts tsconfig.json ./
@@ -9,7 +9,7 @@ RUN npm run build
 FROM node:current-alpine as prod-modules
 ENV NODE_ENV=production
 WORKDIR /app
-COPY package*.json ./
+COPY package.json ./
 RUN npm install
 
 FROM alpine:edge
