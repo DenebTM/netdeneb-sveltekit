@@ -194,6 +194,7 @@
   }
   .button-link img {
     display: inline-block;
+    vertical-align: top;
     image-rendering: pixelated;
     position: relative;
   }
