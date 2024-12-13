@@ -10,7 +10,6 @@ ExecStart=/usr/bin/podman run --name netdeneb \
 	--init \
 	-p 3000:80 \
 	-e APP_CONFIG_PATH=/config/config.json \
-	-v /srv/netdeneb/Caddyfile:/etc/caddy/Caddyfile:ro \
 	-v /srv/netdeneb/caddy-auth.conf:/etc/caddy/caddy-auth.conf:ro \
 	-v /srv/netdeneb/config:/config \
 	-v /srv/netdeneb/static:/caddy/static \
@@ -19,6 +18,7 @@ ExecStart=/usr/bin/podman run --name netdeneb \
 ExecStop=/usr/bin/podman stop netdeneb
 Type=notify
 NotifyAccess=all
+Delegate=yes
 
 [Install]
 WantedBy=default.target
