@@ -8,18 +8,72 @@
   export let data: PageServerData
 
   const friendlinks = [
-    'sterophonick.github.io',
-    'aquamarine.gay',
-    'ashiecorner.xyz',
-    'yummy.cricket',
-    'zencorner.xyz',
-    'm.furrypri.de',
-    'maidado.xyz',
-    'foxboy.dev',
-    'foxgirl.dev',
-    'eeep.ee',
-    'gry.sh',
-    'j4.lc',
+    {
+      domain: 'sterophonick.github.io',
+      button: 'https://sterophonick.github.io/assets/img/home/web_button.gif',
+    },
+    {
+      domain: 'kaleidosium.my.id',
+      button: 'https://sterophonick.github.io/assets/img/home/web_button.gif',
+    },
+    {
+      domain: 'zenthefox.online',
+      button: 'https://zenthefox.online/img/button/zennow.gif',
+    },
+    {
+      domain: 'aquamarine.gay',
+      button:
+        'https://aquamarine.gay/assets/img/web-buttons/aquamarines-aquarium-web-button.png',
+    },
+    {
+      domain: 'ashiecorner.xyz',
+      button: 'https://ashiecorner.xyz/img/ashiebutton.gif',
+    },
+    {
+      domain: 'yummy.cricket',
+      button: 'https://yummy.cricket/8831.png',
+    },
+    {
+      domain: 'zencorner.xyz',
+      button: 'https://zencorner.xyz/img/zencorner-classic.gif',
+    },
+    {
+      domain: 'm.furrypri.de',
+      button: null,
+    },
+    {
+      domain: 'maidado.xyz',
+      button: null,
+    },
+    {
+      domain: 'ayetsg.com',
+      button: null,
+      // button: https://sterophonick.github.io/assets/img/home/88_ayetsg.png
+    },
+    {
+      domain: 'foxboy.dev',
+      button: null,
+    },
+    {
+      domain: 'foxgirl.dev',
+      button: null,
+    },
+    {
+      domain: 'bee.movie',
+      button: 'https://bee.movie/beebadge.png',
+    },
+    {
+      domain: 'eeep.ee',
+      button: null,
+    },
+    {
+      domain: 'gry.sh',
+      button: null,
+    },
+    {
+      domain: 'j4.lc',
+      button: 'https://j4.lc/button.avif',
+    },
   ]
 </script>
 
@@ -121,13 +175,17 @@
             >PHP: a fractal of bad design</a>
           — must-read blog post
         </li>
+        <li>
+          <a href="https://freeplay.floof.company/">freeplay</a>
+          — fox on the internet, css wizard
+        </li>
       </ul>
     </section>
 
     <section id="friends">
       <h2>Friends' websites</h2>
       <ul>
-        {#each friendlinks as domain}
+        {#each friendlinks as { domain }}
           <li><a href={`https://${domain}`}>{domain}</a></li>
         {/each}
       </ul>
