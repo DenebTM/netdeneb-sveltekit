@@ -2,11 +2,14 @@
 Description=Personal website
 
 [Service]
+User=netdeneb
 Restart=on-failure
 WorkingDirectory=/srv/netdeneb
 ExecStart=/usr/bin/podman run --name netdeneb \
 	-d --rm --replace \
 	--sdnotify=conmon \
+  --cgroups=no-conmon \
+  --label "io.containers.autoupdate=registry" \
 	--init \
 	-p 3000:80 \
 	-e APP_CONFIG_PATH=/config/config.json \
@@ -19,6 +22,7 @@ ExecStop=/usr/bin/podman stop netdeneb
 Type=notify
 NotifyAccess=all
 Delegate=yes
+Environment=PODMAN_SYSTEMD_UNIT=%n
 
 [Install]
 WantedBy=default.target
