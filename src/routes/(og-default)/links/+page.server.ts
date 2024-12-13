@@ -18,7 +18,6 @@ export const load = (async () => {
 
   try {
     friendlinks = JSON.parse((await fs.readFile(friendlinksPath)).toString())
-    console.log(friendlinks)
 
     friendlinks = friendlinks.map(({ domain, button, alt }) => {
       button = button !== null ? `/img/8831/${button}` : null
