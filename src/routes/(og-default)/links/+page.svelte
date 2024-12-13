@@ -131,7 +131,7 @@
     <ul class="bulletless inline-list">
       {#each data.friendlinks as { domain, button, alt }}
         <li>
-          <a class="button-link" href={`https://${domain}`}>
+          <a class="button-link click-depress" href={`https://${domain}`}>
             <img src={button} {alt} />
           </a>
         </li>
@@ -211,5 +211,25 @@
     top: 0;
     left: 0;
     border: 1px solid var(--primary);
+  }
+
+  @keyframes rotato {
+    from {
+      filter: hue-rotate(0);
+    }
+
+    50% {
+      filter: hue-rotate(180deg);
+    }
+
+    to {
+      filter: hue-rotate(360deg);
+    }
+  }
+
+  @media not (prefers-reduced-motion) {
+    .button-link:hover {
+      animation: rotato 1s infinite linear;
+    }
   }
 </style>
