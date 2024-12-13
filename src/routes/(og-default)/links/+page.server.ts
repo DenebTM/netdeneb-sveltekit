@@ -3,16 +3,30 @@ import fs from 'node:fs/promises'
 import { getConfig } from '~/util/appConfig'
 
 export const load = (async () => {
-  const { infoJsonPath } = await getConfig()
+  const { infoJsonPath, friendlinksPath } = await getConfig()
+
+  let socials: SociaList = []
+  let friendlinks: FriendLink[] = []
 
   try {
-    const { socials }: InfoJson = JSON.parse(
+    let {} = ({ socials } = JSON.parse(
       (await fs.readFile(infoJsonPath)).toString()
-    )
-
-    return { socials }
+    ))
   } catch (err) {
     console.error(err)
-    return { socials: [] }
   }
+
+  try {
+    friendlinks = JSON.parse((await fs.readFile(friendlinksPath)).toString())
+    console.log(friendlinks)
+
+    friendlinks = friendlinks.map(({ domain, button, alt }) => {
+      button = button !== null ? `/img/8831/${button}` : null
+      return { domain, button, alt }
+    })
+  } catch (err) {
+    console.error(err)
+  }
+
+  return { socials, friendlinks }
 }) satisfies PageServerLoad

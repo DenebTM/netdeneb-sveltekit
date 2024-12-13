@@ -32,6 +32,12 @@ declare global {
     socials: SociaList
   }
 
+  interface FriendLink {
+    domain: string
+    button: string | null
+    alt: string
+  }
+
   interface SiteMetadata {
     name: string
     description: string
@@ -53,6 +59,7 @@ declare global {
 
     infoJsonPath: string
     navPath: string
+    friendlinksPath: string
   }
 
   // See https://kit.svelte.dev/docs/types#app
