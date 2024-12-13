@@ -11,7 +11,9 @@
     'sterophonick.github.io',
     'aquamarine.gay',
     'ashiecorner.xyz',
+    'yummy.cricket',
     'zencorner.xyz',
+    'm.furrypri.de',
     'maidado.xyz',
     'foxboy.dev',
     'foxgirl.dev',
@@ -63,7 +65,7 @@
 
   <div class="page-column">
     <section id="cool-stuff">
-      <h2>Et cetera</h2>
+      <h2>Things you should see</h2>
       <ul>
         <li>
           <a href="https://screee.ee/">screee.ee</a>
@@ -80,6 +82,23 @@
         <li>
           <a href="https://cyberchef.com/">CyberChef</a>
           — encode/decode most (text) formats
+        </li>
+        <li>
+          <a href="https://www.arcticpolygon.com/">Arctic Polygon</a>
+          — cute little webcomic with foxes
+        </li>
+        <li>
+          <a href="https://scp-wiki.wikidot.com/scp-2521">●●|●●●●●|●●|●</a>
+          — in case you somehow haven't seen it
+        </li>
+        <li>
+          <a href="https://computernewb.com/vncresolver/">VNC Resolver</a>
+          — secure your VNC server or end up here
+        </li>
+        <li>
+          <a href="https://eev.ee/blog/2012/04/09/php-a-fractal-of-bad-design/"
+            >PHP: a fractal of bad design</a>
+          — must-read blog post
         </li>
       </ul>
     </section>
