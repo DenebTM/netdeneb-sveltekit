@@ -53,7 +53,7 @@
     <div class="page-column">
       <section id="cool-stuff">
         <h2>Things On The Web</h2>
-        <ul class="bulletless">
+        <ul>
           <li>
             <a href="https://it-syndikat.org/">IT-Syndikat</a>
             — <WikiLink page="Hackerspace" /> in Innsbruck
@@ -101,7 +101,7 @@
           <li>
             <a href="https://old.reddit.com/r/opendirectories/"
               >r/opendirectories</a>
-            — unsecured HTTP file servers
+            — unsecured HTTP directory listings
           </li>
           <li>
             <a
@@ -110,8 +110,8 @@
             — must-read blog post
           </li>
           <li>
-            <a href="https://freeplay.floof.company/">freeplay</a>
-            — fox on the internet, css wizard
+            <a href="https://fursona.gmem.ca/">Fursona Lookup</a>
+            — try <code>netdeneb.com</code> :3
           </li>
         </ul>
       </section>
