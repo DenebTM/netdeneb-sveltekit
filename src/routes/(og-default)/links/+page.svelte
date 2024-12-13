@@ -65,19 +65,23 @@
 
   <div class="page-column">
     <section id="cool-stuff">
-      <h2>Things you should see</h2>
+      <h2>Things On The Web</h2>
       <ul>
-        <li>
-          <a href="https://screee.ee/">screee.ee</a>
-          — fencs :&gt;
-        </li>
         <li>
           <a href="https://it-syndikat.org/">IT-Syndikat</a>
           — <WikiLink page="Hackerspace" /> in Innsbruck
         </li>
         <li>
-          <a href="https://slowroads.io/">slow roads</a>
-          — chill driving vibes
+          <a href="https://bahn.expert/">bahn.expert</a>
+          — real-time train info, DB and others
+        </li>
+        <li>
+          <a href="https://traewelling.de/">Träwelling</a>
+          — log and share your train journeys
+        </li>
+        <li>
+          <a href="https://travelynx.de/">Travelynx</a>
+          — log your train journeys more privately
         </li>
         <li>
           <a href="https://cyberchef.com/">CyberChef</a>
@@ -88,12 +92,29 @@
           — cute little webcomic with foxes
         </li>
         <li>
+          <a href="https://screee.ee/">screee.ee</a>
+          — fencs :&gt;
+        </li>
+        <li>
+          <a href="https://bigrat.monster/">bigrat.monster</a>
+          — yeah
+        </li>
+        <li>
+          <a href="https://slowroads.io/">slow roads</a>
+          — chill driving vibes
+        </li>
+        <li>
           <a href="https://scp-wiki.wikidot.com/scp-2521">●●|●●●●●|●●|●</a>
           — in case you somehow haven't seen it
         </li>
         <li>
           <a href="https://computernewb.com/vncresolver/">VNC Resolver</a>
           — secure your VNC server or end up here
+        </li>
+        <li>
+          <a href="https://old.reddit.com/r/opendirectories/"
+            >r/opendirectories</a>
+          — unsecured HTTP file servers
         </li>
         <li>
           <a href="https://eev.ee/blog/2012/04/09/php-a-fractal-of-bad-design/"
