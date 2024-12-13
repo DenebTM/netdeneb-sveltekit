@@ -84,7 +84,10 @@
       domain: 'freeplay.floof.company',
       button: 'freeplay.gif',
     },
-  ]
+  ].map(({ domain, button }) => {
+    button = button ? `/img/8831/${button}` : null
+    return { domain, button }
+  })
 </script>
 
 <svelte:head>
@@ -211,11 +214,7 @@
       {#each friendlinks as { domain, button }}
         <li>
           <a class="button-link" href={`https://${domain}`}>
-            {#if button}
-              <img src={`/img/8831/${button}`} alt={domain} />
-            {:else}
-              <span>{domain}</span>
-            {/if}
+            <img src={button} alt={domain} />
           </a>
         </li>
       {/each}
@@ -275,32 +274,24 @@
     display: block;
     margin: 0 0 4px 4px;
   }
-
-  .button-link > :first-child {
+  .button-link img {
     display: inline-block;
+    image-rendering: pixelated;
+    position: relative;
   }
-  .button-link > :first-child,
+  .button-link img,
   .button-link img::before {
     width: 88px;
     height: 31px;
     text-align: center;
     overflow: hidden;
   }
-  .button-link img {
-    image-rendering: pixelated;
-    position: relative;
-  }
-
   .button-link img::before {
     content: '';
     box-sizing: border-box;
     position: absolute;
     top: 0;
     left: 0;
-  }
-
-  .button-link span,
-  .button-link img::before {
     border: 1px solid var(--primary);
   }
 </style>
