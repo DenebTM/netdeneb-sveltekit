@@ -1,0 +1,18 @@
+{
+  "siteMetadata": {
+    "name": "netdeneb.com",
+    "description": "deneb's homepage",
+    "titleImage": {
+      "path": "/img/deneb1.webp",
+      "description": "art of deneb, by twitter.com/FluffySakora"
+    }
+  },
+  "artBasePath": "./static/art",
+  "artBaseURL": "/art",
+  "filesBasePath": "./static/files",
+  "thumbsBasePath": "./static/thumbs",
+  "thumbsBaseURL": "/thumbs",
+  "infoJsonPath": "./config/info.json",
+  "navPath": "./config/nav.json",
+  "friendlinksPath": "./config/friendlinks.json"
+}

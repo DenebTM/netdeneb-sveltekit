@@ -4,10 +4,10 @@
   "Links": "/links",
   "Art gallery": "/art",
   "AAAAAA": "/leggy",
-  "Files": "/files",
+  "Files": "//files.netdeneb.com",
   "Other": {
     "Best website (archived)": {
-      "href": "/files/yiff.toys/",
+      "href": "//files.netdeneb.com/yiff.toys/",
       "external": true
     },
     "Nextcloud": {

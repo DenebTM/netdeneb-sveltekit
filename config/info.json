@@ -1,0 +1,43 @@
+{
+    "socials": [
+        {
+            "platform": "Fediverse",
+            "showPlatformAlways": false,
+            "icon": "bxl-mastodon",
+            "href": "https://wetdry.world/@deneb",
+            "text": "@deneb@wetdry.world"
+        },
+        {
+            "platform": "Signal",
+            "showPlatformAlways": true,
+            "icon": "bx-message-dots",
+            "href": "https://signal.org",
+            "text": "deneb.64"
+        },
+        {
+            "platform": "Matrix",
+            "showPlatformAlways": true,
+            "icon": "bx-message-dots",
+            "href": "https://matrix.org",
+            "text": "@deneb:screee.ee"
+        },
+        {
+            "platform": "Discord",
+            "icon": "bxl-discord-alt",
+            "href": "https://discord.com/users/300930171123531777",
+            "text": "deneb_tm"
+        },
+        {
+            "platform": "Telegram",
+            "icon": "bxl-telegram",
+            "href": "https://telegram.dog/deneb_tm",
+            "text": "@deneb_tm"
+        },
+        {
+            "platform": "Steam",
+            "icon": "bxl-steam",
+            "href": "https://steamcommunity.com/id/deneb_tm",
+            "text": "deneb_tm"
+        }
+    ]
+}
