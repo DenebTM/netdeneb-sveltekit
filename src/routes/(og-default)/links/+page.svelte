@@ -10,33 +10,31 @@
   const friendlinks = [
     {
       domain: 'sterophonick.github.io',
-      button: 'https://sterophonick.github.io/assets/img/home/web_button.gif',
+      button: 'atapi.gif',
     },
     {
       domain: 'kaleidosium.my.id',
-      button: null,
-      // button: https://sterophonick.github.io/assets/img/home/88_dania.png
+      button: 'kaleidosium.png',
     },
     {
       domain: 'zenthefox.online',
-      button: 'https://zenthefox.online/img/button/zennow.gif',
+      button: 'zenthefox.gif',
     },
     {
       domain: 'aquamarine.gay',
-      button:
-        'https://aquamarine.gay/assets/img/web-buttons/aquamarines-aquarium-web-button.png',
+      button: 'aquamarine.png',
     },
     {
       domain: 'ashiecorner.xyz',
-      button: 'https://ashiecorner.xyz/img/ashiebutton.gif',
+      button: 'ashie.gif',
     },
     {
       domain: 'yummy.cricket',
-      button: 'https://yummy.cricket/8831.png',
+      button: 'niss.png',
     },
     {
       domain: 'zencorner.xyz',
-      button: 'https://zencorner.xyz/img/zencorner-classic.gif',
+      button: 'zenith.gif',
     },
     {
       domain: 'm.furrypri.de',
@@ -48,8 +46,7 @@
     },
     {
       domain: 'ayetsg.com',
-      button: null,
-      // button: https://sterophonick.github.io/assets/img/home/88_ayetsg.png
+      button: 'ayetsg.png',
     },
     {
       domain: 'foxboy.dev',
@@ -61,7 +58,7 @@
     },
     {
       domain: 'bee.movie',
-      button: 'https://bee.movie/beebadge.png',
+      button: 'june.png',
     },
     {
       domain: 'eeep.ee',
@@ -73,7 +70,7 @@
     },
     {
       domain: 'j4.lc',
-      button: 'https://j4.lc/button.avif',
+      button: 'jae.avif',
     },
   ]
 </script>
@@ -203,7 +200,7 @@
         <li>
           <a class="button-link" href={`https://${domain}`}>
             {#if button}
-              <img src={button} alt={domain} />
+              <img src={`/img/8831/${button}`} alt={domain} />
             {:else}
               <span>{domain}</span>
             {/if}
@@ -262,19 +259,36 @@
     font-weight: 600;
   }
 
+  .button-link {
+    display: block;
+    margin: 0 0 4px 4px;
+  }
+
   .button-link > :first-child {
     display: inline-block;
+  }
+  .button-link > :first-child,
+  .button-link img::before {
     width: 88px;
     height: 31px;
-    margin: 0 0 4px 4px;
     text-align: center;
     overflow: hidden;
   }
   .button-link img {
     image-rendering: pixelated;
+    position: relative;
   }
-  .button-link span {
-    color: inherit;
+
+  .button-link img::before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .button-link span,
+  .button-link img::before {
     border: 1px solid var(--primary);
   }
 </style>
