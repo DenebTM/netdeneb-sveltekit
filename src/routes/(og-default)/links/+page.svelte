@@ -45,6 +45,7 @@
               <a rel="me" {href}>
                 <i class={`inline-icon bx bx-sm ${icon}`}></i>&nbsp;<span
                   >{platform}:</span>
+                <!-- eslint-disable-next-line svelte/no-at-html-tags -- i control this HTML -->
                 {@html text}
               </a>
             </li>

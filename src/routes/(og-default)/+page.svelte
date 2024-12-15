@@ -80,6 +80,7 @@
       site, whichever works best.
     </p>
     <p>
+      <!-- eslint-disable-next-line svelte/no-at-html-tags -- i control this HTML -->
       {@html buttonHtml}
     </p>
     <p>want more buttons? go <a href="/links#friends">here</a>!</p>

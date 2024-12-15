@@ -15,6 +15,7 @@
       <p>
         <i class={`inline-icon bx bx-sm ${icon}`}></i>
         <span>
+          <!-- eslint-disable-next-line svelte/no-at-html-tags -- i control this HTML -->
           {#if showPlatformAlways}{platform}:&nbsp;{/if}{@html text}
         </span>
       </p>
