@@ -18,13 +18,15 @@
   let animateTransition: boolean | undefined = $state(true)
   // eslint-disable-next-line complexity -- wdym "too complex"????
   beforeNavigate(nav => {
-    // do not animate when leaving the site
-    if (nav.to?.url.host !== nav.from?.url.host) {
-      animateTransition = undefined
-    }
-    // ... nor if the user clicked the page they're already on
-    if (nav.to?.url.pathname === nav.from?.url.pathname) {
-      animateTransition = undefined
+    /* animateTransition must first be set to `undefined`, then `true` in order
+     * for the flyin animation to replay */
+
+    // only animate when not leaving the site
+    if (nav.to?.url.host === nav.from?.url.host) {
+      // ... and if the new page isn't the one the user is already on
+      if (nav.to?.url.pathname !== nav.from?.url.pathname) {
+        animateTransition = undefined
+      }
     }
   })
   afterNavigate(() => {
@@ -103,23 +105,6 @@
   }
   .site-name:hover {
     text-decoration: underline;
-  }
-
-  @keyframes flyin {
-    from {
-      transform: translateY(20px);
-    }
-    to {
-      transform: none;
-    }
-  }
-  @keyframes fadein {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
   }
 
   @media not (prefers-reduced-motion) {

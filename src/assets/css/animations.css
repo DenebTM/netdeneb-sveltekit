@@ -1,0 +1,52 @@
+@keyframes flyin {
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes nav-flyin {
+  from {
+    transform: translateY(-10px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes dropdown-flyin {
+  from {
+    transform: translate(-50%, -20px);
+  }
+  to {
+    transform: translate(-50%, 0);
+  }
+}
+@keyframes dropdown-flyin-mobile {
+  from {
+    transform: translate(0, -20px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes rotato {
+  from {
+    filter: hue-rotate(0);
+  }
+
+  to {
+    filter: hue-rotate(360deg);
+  }
+}

@@ -81,23 +81,6 @@
     display: none;
   }
 
-  @keyframes dropdown-flyin {
-    from {
-      transform: translate(-50%, -20px);
-    }
-    to {
-      transform: translate(-50%, 0);
-    }
-  }
-  @keyframes dropdown-flyin-mobile {
-    from {
-      transform: translate(0, -20px);
-    }
-    to {
-      transform: none;
-    }
-  }
-
   .dropdown > div {
     position: absolute;
     top: 100%;

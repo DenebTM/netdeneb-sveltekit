@@ -71,15 +71,6 @@
     z-index: 1;
   }
 
-  @keyframes nav-flyin {
-    from {
-      transform: translateY(-10px);
-    }
-    to {
-      transform: none;
-    }
-  }
-
   nav > ul > :global(li) {
     float: left;
     border-radius: var(--border-radius);
