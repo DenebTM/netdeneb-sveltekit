@@ -15,14 +15,14 @@
     "alt": "jyrki"
   },
   {
-    "domain": "eeep.ee",
-    "button": null,
-    "alt": "chfour"
-  },
-  {
     "domain": "m.furrypri.de",
     "button": null,
     "alt": "m"
+  },
+  {
+    "domain": "eeep.ee",
+    "button": null,
+    "alt": "chfour"
   },
   {
     "domain": "ashiecorner.xyz",
@@ -88,6 +88,11 @@
     "domain": "foxgirl.dev",
     "button": null,
     "alt": "luavixen"
+  },
+  {
+    "domain": "hexaitos.com",
+    "button": "hexaitos.png",
+    "alt": "hexaitos"
   },
   {
     "domain": "freeplay.floof.company",
