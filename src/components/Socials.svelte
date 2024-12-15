@@ -10,8 +10,9 @@
     <a class="click-depress" rel="me" {href}>
       <p>
         <i class={`inline-icon bx bx-sm ${icon}`} />
-        <span
-          >{#if showPlatformAlways}{platform}:&nbsp;{/if}{text}</span>
+        <span>
+          {#if showPlatformAlways}{platform}:&nbsp;{/if}{@html text}
+        </span>
       </p>
     </a>
   {/each}
