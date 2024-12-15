@@ -11,9 +11,6 @@
   const buttonAStyle = 'display: inline-block'
   const buttonImgStyle =
     'width: 88px; height: 31px; image-rendering: pixelated; vertical-align: top'
-  let classless = (node: HTMLElement) => {
-    node.attributes.removeNamedItem('class')
-  }
 </script>
 
 <svelte:head>
@@ -65,17 +62,15 @@
       site, whichever works best.
     </p>
     <p>
-      <a use:classless style={buttonAStyle} href="https://{siteMetadata.name}/">
+      <a style={buttonAStyle} href="https://{siteMetadata.name}/">
         <img
-          use:classless
           class={null}
           style={buttonImgStyle}
           src="https://{siteMetadata.name}/img/8831/deneb_rainbow.gif"
           alt="CGA text mode style button for {siteMetadata.name}" />
       </a>
-      <a use:classless style={buttonAStyle} href="https://{siteMetadata.name}/">
+      <a style={buttonAStyle} href="https://{siteMetadata.name}/">
         <img
-          use:classless
           style={buttonImgStyle}
           src="https://{siteMetadata.name}/img/8831/deneb_amber.gif"
           alt="Amber CRT style button for {siteMetadata.name}" />
