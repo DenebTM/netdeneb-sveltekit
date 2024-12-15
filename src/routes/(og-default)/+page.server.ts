@@ -10,9 +10,14 @@ export const load = (async () => {
   const age = new Date(Date.now() - birthDate).getFullYear() - 1970
 
   try {
-    const { socials, titleImage }: InfoJson = JSON.parse(
+    let { socials, titleImage }: InfoJson = JSON.parse(
       (await fs.readFile(infoJsonPath)).toString()
     )
+
+    socials = socials.map(social => {
+      social.text = social.text.replace('\u200b', '<wbr />')
+      return social
+    })
 
     return { socials, titleImage, age }
   } catch (err) {

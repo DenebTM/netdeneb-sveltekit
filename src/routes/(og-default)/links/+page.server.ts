@@ -12,6 +12,11 @@ export const load = (async () => {
     let {} = ({ socials } = JSON.parse(
       (await fs.readFile(infoJsonPath)).toString()
     ))
+
+    socials = socials.map(social => {
+      social.text = social.text.replace('\u200b', '<wbr />')
+      return social
+    })
   } catch (err) {
     console.error(err)
   }

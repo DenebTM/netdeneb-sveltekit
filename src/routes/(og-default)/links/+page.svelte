@@ -26,9 +26,8 @@
         <p>
           You may contact me via
           <a rel="me" href="mailto:deneb@screee.ee">
-            <i class="inline-icon bx bx-sm bx-envelope" />&nbsp;<span
-              >Email:</span
-            >&nbsp;deneb@screee.ee
+            <i class="inline-icon bx bx-sm bx-envelope" />&nbsp;Email:
+            deneb@screee.ee
           </a><br />
           Please direct any professional inquiries there, and there only.
         </p>
@@ -42,7 +41,7 @@
               <a rel="me" {href}>
                 <i class={`inline-icon bx bx-sm ${icon}`} />&nbsp;<span
                   >{platform}:</span>
-                {text}
+                {@html text}
               </a>
             </li>
           {/each}
@@ -185,9 +184,6 @@
     margin-bottom: 0;
   }
 
-  a[rel='me'] {
-    white-space: nowrap;
-  }
   a[rel='me']:hover {
     font-weight: 600;
   }
