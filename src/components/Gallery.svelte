@@ -117,6 +117,7 @@
 
   {#if modalImg}
     <a
+      aria-label="close full image view"
       class="btn modal-close fixed-color"
       data-sveltekit-replacestate
       href={artBaseURL}
@@ -138,7 +139,11 @@
       </div>
       <div class="modal-row details">
         <span>{modalImg?.description}</span>
-        <a class="btn" role="button" href={modalImg?.artistLink}>
+        <a
+          aria-label="open artist's page"
+          class="btn"
+          role="button"
+          href={modalImg?.artistLink}>
           <i class="bx bx-sm bx-link-external fixed-color"></i>
         </a>
       </div>
