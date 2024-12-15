@@ -21,7 +21,8 @@
     <img
       id="me"
       src={siteMetadata.titleImage?.path}
-      alt={siteMetadata.titleImage?.description} />
+      alt={siteMetadata.titleImage?.description}
+      title={siteMetadata.titleImage?.description} />
     <h1>Hi!</h1>
     <p>
       I'm <strong title="all-lowercase, please">deneb</strong>, a {data.age}-year
