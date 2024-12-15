@@ -7,6 +7,13 @@
   const siteMetadata: SiteMetadata = $page.data.siteMetadata
 
   export let data: PageServerData
+
+  const buttonAStyle = 'display: inline-block'
+  const buttonImgStyle =
+    'width: 88px; height: 31px; image-rendering: pixelated; vertical-align: top'
+  let classless = (node: HTMLElement) => {
+    node.attributes.removeNamedItem('class')
+  }
 </script>
 
 <svelte:head>
@@ -47,6 +54,32 @@
         >here!</a
       ><br />
       Or find more info on my <a href="/about">About</a> page :3
+    </p>
+  </section>
+
+  <hr />
+  <section id="buttons">
+    <p>
+      <span style="font-weight: bold">Buttons!</span><br />
+      You may hotlink these (copy the source code), or just copy the files to your
+      site, whichever works best.
+    </p>
+    <p>
+      <a use:classless style={buttonAStyle} href="https://{siteMetadata.name}/">
+        <img
+          use:classless
+          class={null}
+          style={buttonImgStyle}
+          src="https://{siteMetadata.name}/img/8831/deneb_rainbow.gif"
+          alt="CGA text mode style button for netdeneb.com" />
+      </a>
+      <a use:classless style={buttonAStyle} href="https://{siteMetadata.name}/">
+        <img
+          use:classless
+          style={buttonImgStyle}
+          src="https://{siteMetadata.name}/img/8831/deneb_amber.gif"
+          alt="Amber CRT style button for netdeneb.com" />
+      </a>
     </p>
   </section>
 
