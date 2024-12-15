@@ -71,14 +71,14 @@
           class={null}
           style={buttonImgStyle}
           src="https://{siteMetadata.name}/img/8831/deneb_rainbow.gif"
-          alt="CGA text mode style button for netdeneb.com" />
+          alt="CGA text mode style button for {siteMetadata.name}" />
       </a>
       <a use:classless style={buttonAStyle} href="https://{siteMetadata.name}/">
         <img
           use:classless
           style={buttonImgStyle}
           src="https://{siteMetadata.name}/img/8831/deneb_amber.gif"
-          alt="Amber CRT style button for netdeneb.com" />
+          alt="Amber CRT style button for {siteMetadata.name}" />
       </a>
     </p>
     <p>want more buttons? go <a href="/links#friends">here</a>!</p>
