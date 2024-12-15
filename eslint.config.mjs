@@ -9,7 +9,7 @@ import globals from 'globals'
 import * as svelteParser from 'svelte-eslint-parser'
 import * as typescriptParser from '@typescript-eslint/parser'
 
-export default [
+export default plugin_typescript.config(
   {
     ignores: ['.svelte-kit/*', 'build/*', 'config/*'],
   },
@@ -17,15 +17,15 @@ export default [
   config_love,
   config_prettier,
 
-  ...plugin_typescript.configs.recommended,
-  ...plugin_svelte.configs['flat/recommended'],
-
   {
+    extends: [
+      plugin_typescript.configs.recommended,
+      plugin_svelte.configs['flat/recommended'],
+    ],
+
     plugins: {
       '@stylistic/ts': plugin_stylistic,
     },
-
-    files: ['**/*.svelte'],
 
     languageOptions: {
       globals: {
@@ -52,6 +52,8 @@ export default [
 
       '@typescript-eslint/no-throw-literal': 'off',
       '@typescript-eslint/strict-boolean-expressions': 'off',
+      '@typescript-eslint/no-unsafe-type-assertion': 'off',
+      '@typescript-eslint/no-magic-numbers': 'off',
 
       '@stylistic/ts/comma-dangle': [
         'error',
@@ -68,5 +70,5 @@ export default [
     },
   },
 
-  plugin_prettier_recommended,
-]
+  plugin_prettier_recommended
+)
