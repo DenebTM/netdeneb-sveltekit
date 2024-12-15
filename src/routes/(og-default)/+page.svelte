@@ -11,6 +11,20 @@
   const buttonAStyle = 'display: inline-block'
   const buttonImgStyle =
     'width: 88px; height: 31px; image-rendering: pixelated; vertical-align: top'
+  const buttonHtml = `
+    <a style="${buttonAStyle}" href="https://${siteMetadata.name}/">
+      <img
+        style="${buttonImgStyle}"
+        src="https://${siteMetadata.name}/img/8831/deneb_rainbow.gif"
+        alt="CGA text mode style button for ${siteMetadata.name}" />
+    </a>
+    <a style="${buttonAStyle}" href="https://${siteMetadata.name}/">
+      <img
+        style="${buttonImgStyle}"
+        src="https://${siteMetadata.name}/img/8831/deneb_amber.gif"
+        alt="Amber CRT style button for ${siteMetadata.name}" />
+    </a>
+  `
 </script>
 
 <svelte:head>
@@ -62,19 +76,7 @@
       site, whichever works best.
     </p>
     <p>
-      <a style={buttonAStyle} href="https://{siteMetadata.name}/">
-        <img
-          class={null}
-          style={buttonImgStyle}
-          src="https://{siteMetadata.name}/img/8831/deneb_rainbow.gif"
-          alt="CGA text mode style button for {siteMetadata.name}" />
-      </a>
-      <a style={buttonAStyle} href="https://{siteMetadata.name}/">
-        <img
-          style={buttonImgStyle}
-          src="https://{siteMetadata.name}/img/8831/deneb_amber.gif"
-          alt="Amber CRT style button for {siteMetadata.name}" />
-      </a>
+      {@html buttonHtml}
     </p>
     <p>want more buttons? go <a href="/links#friends">here</a>!</p>
   </section>
@@ -85,7 +87,7 @@
   </section>
 </div>
 
-<style global>
+<style>
   #me {
     width: 160px;
     border-radius: 500%;
@@ -102,16 +104,16 @@
   }
 
   @media not (prefers-reduced-motion) {
-    #buttons a:hover {
+    #buttons :global(a:hover) {
       animation: rotato 1s infinite linear;
     }
   }
 
-  #buttons :not(:last-child) a {
+  #buttons :global(:not(:last-child) a) {
     transition: 0.125s ease-in-out;
   }
 
-  #buttons :not(:last-child) a:active {
+  #buttons :global(:not(:last-child) a:active) {
     transform: translateY(2px) !important;
   }
 </style>
