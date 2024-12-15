@@ -1,5 +1,4 @@
 import config_love from 'eslint-config-love'
-import config_prettier from 'eslint-config-prettier'
 import plugin_svelte from 'eslint-plugin-svelte'
 import plugin_prettier_recommended from 'eslint-plugin-prettier/recommended'
 import plugin_typescript from 'typescript-eslint'
@@ -15,7 +14,7 @@ export default plugin_typescript.config(
   },
 
   config_love,
-  config_prettier,
+  plugin_prettier_recommended,
 
   {
     extends: [

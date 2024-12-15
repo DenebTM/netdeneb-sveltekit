@@ -14,6 +14,7 @@
     "src",
     "vite.config.ts",
     ".svelte-kit/ambient.d.ts",
-    "eslint.config.mjs"
+    "eslint.config.mjs",
+    "svelte.config.js"
   ]
 }
