@@ -3,7 +3,7 @@
     open?: boolean
   }
 
-  let { open = false }: Props = $props()
+  const { open = false }: Props = $props()
 </script>
 
 <div class="open-nav-button" {open}>

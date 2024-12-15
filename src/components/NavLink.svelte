@@ -7,7 +7,7 @@
     isCurrent: boolean
   }
 
-  let { name, target, onClick, index, isCurrent }: Props = $props()
+  const { name, target, onClick, index, isCurrent }: Props = $props()
 
   let href: string = $state('')
   let external: true | undefined = $state(undefined)

@@ -3,7 +3,7 @@
     links: SociaList
   }
 
-  let { links }: Props = $props()
+  const { links }: Props = $props()
 </script>
 
 <p style="margin: 20px 0 10px 0; font-weight: bold;">

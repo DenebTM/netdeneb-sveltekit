@@ -22,7 +22,7 @@ export const load = (async () => {
   }
 
   try {
-    let friendlinks_in: typeof friendlinks = JSON.parse(
+    const friendlinks_in: typeof friendlinks = JSON.parse(
       (await fs.readFile(friendlinksPath)).toString()
     )
 

@@ -12,15 +12,15 @@
     children?: import('svelte').Snippet
   }
 
-  let { children }: Props = $props()
+  const { children }: Props = $props()
   const siteMetadata: SiteMetadata = $page.data.siteMetadata
 
   let animateTransition: boolean | undefined = $state(true)
   beforeNavigate(nav => {
     if (
       !(
-        nav.to?.url.host != nav.from?.url.host ||
-        nav.to?.url.pathname == nav.from?.url.pathname
+        nav.to?.url.host !== nav.from?.url.host ||
+        nav.to?.url.pathname === nav.from?.url.pathname
       )
     )
       animateTransition = undefined
@@ -29,7 +29,7 @@
     animateTransition = true
     enableScroll()
   })
-  onMount(() => (animateTransition = true))
+  onMount(() => animateTransition = true)
 </script>
 
 <svelte:head>

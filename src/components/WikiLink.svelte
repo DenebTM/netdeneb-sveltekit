@@ -5,7 +5,7 @@
     section?: string | null
   }
 
-  let { page, site = 'wikipedia', section = null }: Props = $props()
+  const { page, site = 'wikipedia', section = null }: Props = $props()
 </script>
 
 <a

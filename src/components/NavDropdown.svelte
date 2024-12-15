@@ -10,10 +10,10 @@
     delay?: number
   }
 
-  let { name, entries = {}, delay = 0 }: Props = $props()
+  const { name, entries = {}, delay = 0 }: Props = $props()
 
   let open = $state(false) // for visuals and accessibility
-  const closeDropdown = () => (open = false)
+  const closeDropdown = () => open = false
 
   const randId = Math.floor(Math.random() * 10000)
 
@@ -38,7 +38,7 @@
     for={`dropdown-isopen-${randId}`}
     role="button"
     tabindex="0"
-    onkeypress={e => e.key == 'Enter' && (open = !open)}>
+    onkeypress={e => e.key === 'Enter' && (open = !open)}>
     <span>{name}</span>
     <i
       class="bx bx-caret-down dd-icon"
@@ -49,7 +49,7 @@
     <ul id={`dropdown-items-${randId}`}>
       {#each Object.entries(entries) as [name, target], i}
         <NavLink
-          isCurrent={$page.url.pathname == target}
+          isCurrent={$page.url.pathname === target}
           {name}
           {target}
           index={i}

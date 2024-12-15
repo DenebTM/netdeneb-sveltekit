@@ -6,14 +6,14 @@
     children?: import('svelte').Snippet
   }
 
-  let { children }: Props = $props()
+  const { children }: Props = $props()
   const siteMetadata: SiteMetadata = $page.data.siteMetadata
 </script>
 
 <svelte:head>
   <title>{siteMetadata.name}</title>
 
-  <meta property="og:image" content={siteMetadata.titleImage?.path} />
+  <meta property="og:image" content={siteMetadata.titleImage.path} />
 </svelte:head>
 
 {@render children?.()}

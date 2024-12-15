@@ -9,8 +9,8 @@
     data: PageData
   }
 
-  let { data }: Props = $props()
-  let { imgList, artBaseURL } = $derived(data)
+  const { data }: Props = $props()
+  const { imgList, artBaseURL } = $derived(data)
 </script>
 
 <svelte:head>

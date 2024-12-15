@@ -13,17 +13,22 @@
     hover?: boolean
   }
 
-  let { artBaseURL = '/art', imgList, gap = 10, hover = true }: Props = $props()
+  const {
+    artBaseURL = '/art',
+    imgList,
+    gap = 10,
+    hover = true,
+  }: Props = $props()
 
   const titleImage = imgList[0]
   const galleryImages = imgList.slice(1)
 
-  let maxColWidth = 250
+  const maxColWidth = 250
   let galleryWidth = $state(750)
-  let columns: Array<ArtList> = $state([])
+  let columns: ArtList[] = $state([])
 
   const parseURLImg = (search?: string) => {
-    let imgId = search?.substring(search?.indexOf('img=') + 4)
+    let imgId = search?.substring(search.indexOf('img=') + 4)
     if (imgId?.includes('&')) imgId = imgId.slice(0, imgId.indexOf('&'))
 
     return imgList.find(item => item.id === imgId)
@@ -39,12 +44,12 @@
   const updateGallery = (colCount: number) => {
     if (colCount == 0) return
 
-    let newColumns: Array<ArtList> = Array(colCount)
+    const newColumns: ArtList[] = Array(colCount)
       .fill([])
       .map(() => [])
 
     let col = 0
-    for (let img of galleryImages) {
+    for (const img of galleryImages) {
       newColumns[col].push(img)
       col = (col + 1) % colCount
     }
@@ -53,11 +58,13 @@
   }
 
   let innerHeight = $state(0)
-  let modalStyle = $derived(`grid-template-rows: ${innerHeight - 80}px 1fr;`)
+  const modalStyle = $derived(`grid-template-rows: ${innerHeight - 80}px 1fr;`)
 
-  let columnCount = $derived(Math.floor(galleryWidth / maxColWidth))
-  $effect(() => updateGallery(columnCount))
-  let gridStyle = $derived(
+  const columnCount = $derived(Math.floor(galleryWidth / maxColWidth))
+  $effect(() => {
+    updateGallery(columnCount)
+  })
+  const gridStyle = $derived(
     `grid-template-columns: repeat(${columnCount}, 1fr); --gap: ${gap}px; gap: var(--gap)`
   )
 
@@ -75,7 +82,7 @@
     <meta property="og:image:height" content={modalImg.height.toString()} />
   {:else}
     <meta name="og:title" content="Art gallery" />
-    <meta property="og:image" content={siteMetadata.titleImage?.path} />
+    <meta property="og:image" content={siteMetadata.titleImage.path} />
     <meta name="og:description" content="My ref, and other commissions I got" />
     <meta name="description" content="My ref, and other commissions I got" />
   {/if}
@@ -89,12 +96,12 @@
     style="display: block"
     style:width={columnCount > 2 ? '70%' : '100%'}
     data-sveltekit-replacestate
-    href={`?img=${titleImage?.id}`}
+    href={`?img=${titleImage.id}`}
     role="button"
     data-sveltekit-noscroll>
-    <img src={titleImage?.fileName} alt={titleImage?.description} />
+    <img src={titleImage.fileName} alt={titleImage.description} />
     <span style="display: block; width: 100%; line-height: 1.5"
-      >{titleImage?.description}</span>
+      >{titleImage.description}</span>
   </a>
   <div class="gallery-columns" style={gridStyle}>
     {#each columns as col}
@@ -134,16 +141,16 @@
           href={artBaseURL}
           data-sveltekit-noscroll
           tabindex="-1">
-          <img src={modalImg?.fileName} alt={modalImg?.artistLink} />
+          <img src={modalImg.fileName} alt={modalImg.artistLink} />
         </a>
       </div>
       <div class="modal-row details">
-        <span>{modalImg?.description}</span>
+        <span>{modalImg.description}</span>
         <a
           aria-label="open artist's page"
           class="btn"
           role="button"
-          href={modalImg?.artistLink}>
+          href={modalImg.artistLink}>
           <i class="bx bx-sm bx-link-external fixed-color"></i>
         </a>
       </div>

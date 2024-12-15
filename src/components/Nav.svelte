@@ -5,10 +5,10 @@
   import NavLink from './NavLink.svelte'
   import HamburgerButton from './HamburgerButton.svelte'
 
-  let navItems: Record<string, any> = $page.data.navItems
+  const navItems: Record<string, any> = $page.data.navItems
 
   let open = $state(false) // for visuals and accessibility
-  const closeNav = () => (open = false)
+  const closeNav = () => open = false
 
   let innerWidth: number = $state(0)
 </script>
