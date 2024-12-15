@@ -1,28 +1,8 @@
 [
   {
-    "domain": "yummy.cricket",
-    "button": "niss.png",
-    "alt": "niss"
-  },
-  {
-    "domain": "gry.sh",
-    "button": null,
-    "alt": "greyhash"
-  },
-  {
-    "domain": "nilsding.org",
-    "button": null,
-    "alt": "jyrki"
-  },
-  {
-    "domain": "m.furrypri.de",
-    "button": null,
-    "alt": "m"
-  },
-  {
-    "domain": "eeep.ee",
-    "button": null,
-    "alt": "chfour"
+    "domain": "aquamarine.gay",
+    "button": "aquamarine.png",
+    "alt": "aquamarine"
   },
   {
     "domain": "ashiecorner.xyz",
@@ -30,44 +10,9 @@
     "alt": "ashie"
   },
   {
-    "domain": "zencorner.xyz",
-    "button": "zenith.gif",
-    "alt": "zenith"
-  },
-  {
-    "domain": "sterophonick.github.io",
-    "button": "atapi.gif",
-    "alt": "atapi"
-  },
-  {
-    "domain": "pivotman319-owo.github.io",
-    "button": "pivotman.png",
-    "alt": "pivotman"
-  },
-  {
-    "domain": "kaleidosium.my.id",
-    "button": "kaleidosium.png",
-    "alt": "kaleidosium"
-  },
-  {
     "domain": "ayetsg.com",
     "button": "ayetsg.png",
     "alt": "ayetsg"
-  },
-  {
-    "domain": "j4.lc",
-    "button": "jae.avif",
-    "alt": "jae"
-  },
-  {
-    "domain": "zenthefox.online",
-    "button": "zenthefox.gif",
-    "alt": "zen"
-  },
-  {
-    "domain": "aquamarine.gay",
-    "button": "aquamarine.png",
-    "alt": "aquamarine"
   },
   {
     "domain": "bee.movie",
@@ -75,9 +20,9 @@
     "alt": "june"
   },
   {
-    "domain": "maidado.xyz",
+    "domain": "eeep.ee",
     "button": null,
-    "alt": "maidado"
+    "alt": "chfour"
   },
   {
     "domain": "foxboy.dev",
@@ -90,13 +35,68 @@
     "alt": "luavixen"
   },
   {
+    "domain": "freeplay.floof.company",
+    "button": "freeplay.gif",
+    "alt": "freeplay"
+  },
+  {
+    "domain": "gry.sh",
+    "button": null,
+    "alt": "greyhash"
+  },
+  {
     "domain": "hexaitos.com",
     "button": "hexaitos.png",
     "alt": "hexaitos"
   },
   {
-    "domain": "freeplay.floof.company",
-    "button": "freeplay.gif",
-    "alt": "freeplay"
+    "domain": "j4.lc",
+    "button": "jae.avif",
+    "alt": "jae"
+  },
+  {
+    "domain": "kaleidosium.my.id",
+    "button": "kaleidosium.png",
+    "alt": "kaleidosium"
+  },
+  {
+    "domain": "m.furrypri.de",
+    "button": null,
+    "alt": "m"
+  },
+  {
+    "domain": "maidado.xyz",
+    "button": null,
+    "alt": "maidado"
+  },
+  {
+    "domain": "nilsding.org",
+    "button": null,
+    "alt": "jyrki"
+  },
+  {
+    "domain": "pivotman319-owo.github.io",
+    "button": "pivotman.png",
+    "alt": "pivotman"
+  },
+  {
+    "domain": "sterophonick.github.io",
+    "button": "atapi.gif",
+    "alt": "atapi"
+  },
+  {
+    "domain": "yummy.cricket",
+    "button": "niss.png",
+    "alt": "niss"
+  },
+  {
+    "domain": "zencorner.xyz",
+    "button": "zenith.gif",
+    "alt": "zenith"
+  },
+  {
+    "domain": "zenthefox.online",
+    "button": "zenthefox.gif",
+    "alt": "zen"
   }
 ]
