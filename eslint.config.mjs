@@ -63,7 +63,7 @@ export default plugin_typescript.config(
           functions: 'never',
         },
       ],
-      '@stylistic/ts/no-extra-parens': 'error',
+      '@stylistic/ts/no-extra-parens': 'off',
       '@stylistic/ts/space-before-function-paren': 'off',
     },
   },
