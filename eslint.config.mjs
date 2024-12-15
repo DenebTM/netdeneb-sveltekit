@@ -1,38 +1,46 @@
-import svelte3 from 'eslint-plugin-svelte3'
-import prettier from 'eslint-plugin-prettier'
+import config_love from 'eslint-config-love'
+import config_prettier from 'eslint-config-prettier'
+import plugin_svelte from 'eslint-plugin-svelte'
+import plugin_prettier_recommended from 'eslint-plugin-prettier/recommended'
+import plugin_typescript from 'typescript-eslint'
+import plugin_stylistic from '@stylistic/eslint-plugin-ts'
 import globals from 'globals'
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
-import js from '@eslint/js'
-import { FlatCompat } from '@eslint/eslintrc'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
-})
+import * as svelteParser from 'svelte-eslint-parser'
+import * as typescriptParser from '@typescript-eslint/parser'
 
 export default [
-  ...compat.extends('standard-with-typescript'),
+  {
+    ignores: ['.svelte-kit/*', 'build/*', 'config/*'],
+  },
+
+  config_love,
+  config_prettier,
+
+  ...plugin_typescript.configs.recommended,
+  ...plugin_svelte.configs['flat/recommended'],
+
   {
     plugins: {
-      svelte3,
-      prettier,
+      '@stylistic/ts': plugin_stylistic,
     },
+
+    files: ['**/*.svelte'],
 
     languageOptions: {
       globals: {
         ...globals.browser,
       },
 
+      parser: svelteParser,
+      parserOptions: {
+        parser: typescriptParser,
+        project: './path/to/your/tsconfig.json',
+        extraFileExtensions: ['.svelte'],
+      },
+
       ecmaVersion: 'latest',
       sourceType: 'module',
-
-      parserOptions: {
-        project: 'tsconfig.json',
-      },
     },
 
     rules: {
@@ -42,7 +50,10 @@ export default [
       'comma-dangle': 'off',
       'quote-props': 'off',
 
-      '@typescript-eslint/comma-dangle': [
+      '@typescript-eslint/no-throw-literal': 'off',
+      '@typescript-eslint/strict-boolean-expressions': 'off',
+
+      '@stylistic/ts/comma-dangle': [
         'error',
         {
           arrays: 'always-multiline',
@@ -52,11 +63,10 @@ export default [
           functions: 'never',
         },
       ],
-
-      '@typescript-eslint/no-throw-literal': 'off',
-      '@typescript-eslint/strict-boolean-expressions': 'off',
-      '@typescript-eslint/no-extra-parens': 'error',
-      '@typescript-eslint/space-before-function-paren': 'off',
+      '@stylistic/ts/no-extra-parens': 'error',
+      '@stylistic/ts/space-before-function-paren': 'off',
     },
   },
+
+  plugin_prettier_recommended,
 ]
