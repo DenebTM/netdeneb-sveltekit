@@ -114,3 +114,13 @@ button:active,
   align-items: center;
   justify-content: center;
 }
+
+@keyframes rotato {
+  from {
+    filter: hue-rotate(0);
+  }
+
+  to {
+    filter: hue-rotate(360deg);
+  }
+}

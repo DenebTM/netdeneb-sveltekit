@@ -93,16 +93,6 @@
     border-radius: 500%;
   }
 
-  @keyframes rotato {
-    from {
-      filter: hue-rotate(0);
-    }
-
-    to {
-      filter: hue-rotate(360deg);
-    }
-  }
-
   @media not (prefers-reduced-motion) {
     #buttons :global(a:hover) {
       animation: rotato 1s infinite linear;

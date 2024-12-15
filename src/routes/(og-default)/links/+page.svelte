@@ -214,16 +214,6 @@
     border: 1px solid var(--primary);
   }
 
-  @keyframes rotato {
-    from {
-      filter: hue-rotate(0);
-    }
-
-    to {
-      filter: hue-rotate(360deg);
-    }
-  }
-
   @media not (prefers-reduced-motion) {
     .button-link:hover {
       animation: rotato 1s infinite linear;
