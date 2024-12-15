@@ -18,16 +18,12 @@ const validExtensions = [
   '.svg',
 ]
 
-export const GET: RequestHandler = async ({ params: { path } }) => {
-  if (!path) {
-    throw error(400, 'Missing file name')
-  }
-
+const getSourceFilename = async (path: string): Promise<string> => {
   if (!validExtensions.includes(extname(path).toLowerCase())) {
     throw error(400, 'Not an image file')
   }
 
-  const { thumbsBasePath, thumbsBaseURL, filesBasePath } = await getConfig()
+  const { filesBasePath } = await getConfig()
 
   const imgFileName = pathJoin(filesBasePath, path)
   // console.log(imgFileName)
@@ -35,43 +31,70 @@ export const GET: RequestHandler = async ({ params: { path } }) => {
     throw error(400, 'Source file does not exist')
   }
 
-  // copy GIFs instead of generating a thumbnail
-  const thumbFileName = `${pathJoin(thumbsBasePath, path)}${
-    extname(imgFileName) !== '.gif' ? '.webp' : ''
+  return imgFileName
+}
+
+const getThumbName = async (
+  sourceFilename: string,
+  path: string
+): Promise<{ thumbFilename: string; thumbURL: string }> => {
+  const { thumbsBasePath, thumbsBaseURL } = await getConfig()
+
+  const thumbFilename = `${pathJoin(thumbsBasePath, path)}${
+    extname(sourceFilename) !== '.gif' ? '.webp' : ''
   }`
   const thumbURL = `${pathJoin(thumbsBaseURL, path)}.webp`
     .split(pathSep)
     .map(c => encodeURIComponent(c))
     .join('/')
 
-  // create path to new thumbnail if it does not exist
-  const thumbDirName = dirname(thumbFileName)
-  if (!exists(thumbDirName)) {
-    await fs.mkdir(thumbDirName, { recursive: true })
+  return {
+    thumbFilename,
+    thumbURL,
+  }
+}
+
+const createThumb = async (
+  sourceFilename: string,
+  thumbFilename: string
+): Promise<void> => {
+  switch (extname(sourceFilename)) {
+    // copy GIFs instead of generating a thumbnail
+    case '.gif':
+      await fs.copyFile(sourceFilename, thumbFilename)
+      break
+
+    default:
+      console.log(`generating thumbnail for ${sourceFilename}`)
+      gm(sourceFilename)
+        .resize(512, 512, '^')
+        .gravity('Center')
+        .extent(512, 512)
+        .write(thumbFilename, async error => {
+          if (error != null) {
+            console.error(error)
+            return await Promise.reject(error)
+          }
+        })
+  }
+}
+
+export const GET: RequestHandler = async ({ params: { path } }) => {
+  if (!path) {
+    throw error(400, 'Missing file name')
+  }
+
+  const sourceFilename = await getSourceFilename(path)
+
+  const { thumbFilename, thumbURL } = await getThumbName(sourceFilename, path)
+  if (!exists(dirname(thumbFilename))) {
+    await fs.mkdir(dirname(thumbFilename), { recursive: true })
   }
 
   // generate new thumbnail if one does not already exist
-  if (!exists(thumbFileName)) {
+  if (!exists(thumbFilename)) {
     try {
-      if (extname(imgFileName) === '.gif') {
-        await fs.copyFile(imgFileName, thumbFileName)
-      } else {
-        await new Promise((resolve, reject) => {
-          console.log(`generating thumbnail for ${imgFileName}`)
-          gm(imgFileName)
-            .resize(512, 512, '^')
-            .gravity('Center')
-            .extent(512, 512)
-            .write(thumbFileName, error => {
-              if (error != null) {
-                console.error(error)
-                reject(error)
-              }
-
-              resolve(thumbFileName)
-            })
-        })
-      }
+      await createThumb(sourceFilename, thumbFilename)
     } catch (err) {
       throw error(500, String(err))
     }
