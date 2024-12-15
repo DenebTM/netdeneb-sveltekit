@@ -5,8 +5,12 @@
   import { page } from '$app/stores'
   const { name: sitename }: SiteMetadata = $page.data.siteMetadata
 
-  export let data: PageData
-  $: ({ imgList, artBaseURL } = data)
+  interface Props {
+    data: PageData
+  }
+
+  let { data }: Props = $props()
+  let { imgList, artBaseURL } = $derived(data)
 </script>
 
 <svelte:head>
@@ -21,7 +25,7 @@
 
 <style global>
   /* ugly fix for hamburger button overlapping gallery-modal */
-  :has(div.gallery-modal) .open-nav {
+  :has(:global(div.gallery-modal)) .open-nav {
     z-index: 0;
   }
 </style>

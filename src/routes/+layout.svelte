@@ -8,9 +8,14 @@
   import { onMount } from 'svelte'
 
   import { page } from '$app/stores'
+  interface Props {
+    children?: import('svelte').Snippet
+  }
+
+  let { children }: Props = $props()
   const siteMetadata: SiteMetadata = $page.data.siteMetadata
 
-  let animateTransition: boolean | undefined = true
+  let animateTransition: boolean | undefined = $state(true)
   beforeNavigate(nav => {
     if (
       !(
@@ -41,10 +46,10 @@
   tabindex="-1"
   style="color: white !important">{siteMetadata.name}</a>
 <div class="content-box">
-  <div class="bg-blur" />
+  <div class="bg-blur"></div>
   <Nav />
   <main animate={animateTransition}>
-    <slot />
+    {@render children?.()}
   </main>
 </div>
 

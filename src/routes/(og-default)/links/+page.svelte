@@ -5,7 +5,11 @@
   import { page } from '$app/stores'
   const { name: sitename }: SiteMetadata = $page.data.siteMetadata
 
-  export let data: PageServerData
+  interface Props {
+    data: PageServerData
+  }
+
+  let { data }: Props = $props()
 </script>
 
 <svelte:head>
@@ -26,7 +30,7 @@
         <p>
           You may contact me via
           <a rel="me" href="mailto:deneb@screee.ee">
-            <i class="inline-icon bx bx-sm bx-envelope" />&nbsp;Email:
+            <i class="inline-icon bx bx-sm bx-envelope"></i>&nbsp;Email:
             deneb@screee.ee
           </a><br />
           Please direct any professional inquiries there, and there only.
@@ -39,7 +43,7 @@
           {#each data.socials as { platform, icon, href, text }}
             <li>
               <a rel="me" {href}>
-                <i class={`inline-icon bx bx-sm ${icon}`} />&nbsp;<span
+                <i class={`inline-icon bx bx-sm ${icon}`}></i>&nbsp;<span
                   >{platform}:</span>
                 {@html text}
               </a>

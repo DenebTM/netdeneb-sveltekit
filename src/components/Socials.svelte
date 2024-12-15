@@ -1,5 +1,9 @@
 <script lang="ts">
-  export let links: SociaList
+  interface Props {
+    links: SociaList
+  }
+
+  let { links }: Props = $props()
 </script>
 
 <p style="margin: 20px 0 10px 0; font-weight: bold;">
@@ -9,7 +13,7 @@
   {#each links as { platform, showPlatformAlways, icon, href, text }}
     <a class="click-depress" rel="me" {href}>
       <p>
-        <i class={`inline-icon bx bx-sm ${icon}`} />
+        <i class={`inline-icon bx bx-sm ${icon}`}></i>
         <span>
           {#if showPlatformAlways}{platform}:&nbsp;{/if}{@html text}
         </span>

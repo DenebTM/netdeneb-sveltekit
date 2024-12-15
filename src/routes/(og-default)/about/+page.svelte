@@ -4,7 +4,11 @@
   import { page } from '$app/stores'
   const { name: sitename }: SiteMetadata = $page.data.siteMetadata
 
-  export let data: PageServerData
+  interface Props {
+    data: PageServerData
+  }
+
+  let { data }: Props = $props()
 </script>
 
 <svelte:head>
@@ -104,7 +108,7 @@
     <strong><code>TODO #1</code>:</strong> One of these days I'll get around to
     creating a projects page. For now, look at my
     <a href="https://github.com/DenebTM"
-      ><i class="inline-icon bx bx-sm bxl-github" />&nbsp;Github</a
+      ><i class="inline-icon bx bx-sm bxl-github"></i>&nbsp;Github</a
     >!<br />
     <strong><code>TODO #2</code>:</strong> Document my network setup somewhere<br />
     <strong><code>TODO #3</code>:</strong> Expand on the retrocomputing stuff<br />

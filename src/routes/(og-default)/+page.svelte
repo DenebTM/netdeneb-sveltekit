@@ -6,7 +6,11 @@
   import { page } from '$app/stores'
   const siteMetadata: SiteMetadata = $page.data.siteMetadata
 
-  export let data: PageServerData
+  interface Props {
+    data: PageServerData
+  }
+
+  let { data }: Props = $props()
 
   const buttonAStyle = 'display: inline-block'
   const buttonImgStyle =
@@ -56,7 +60,7 @@
     <p>
       I consider myself a hobbyist developer and hobbyist network/systems
       engineer. I have a few projects on <a href="https://github.com/DenebTM"
-        ><i class="inline-icon bx bx-sm bxl-github" />&nbsp;Github</a
+        ><i class="inline-icon bx bx-sm bxl-github"></i>&nbsp;Github</a
       >, and I run my own Nextcloud instance and email server, both of which are
       linked above (under "Other").
     </p>

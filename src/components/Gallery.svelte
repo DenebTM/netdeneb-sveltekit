@@ -6,18 +6,21 @@
   import { page } from '$app/stores'
   const siteMetadata: SiteMetadata = $page.data.siteMetadata
 
-  export let artBaseURL: string = '/art'
+  interface Props {
+    artBaseURL?: string
+    imgList: ArtList
+    gap?: number
+    hover?: boolean
+  }
 
-  export let imgList: ArtList
-  export let gap = 10
-  export let hover = true
+  let { artBaseURL = '/art', imgList, gap = 10, hover = true }: Props = $props()
 
   const titleImage = imgList[0]
   const galleryImages = imgList.slice(1)
 
   let maxColWidth = 250
-  let galleryWidth = 750
-  let columns: Array<ArtList> = []
+  let galleryWidth = $state(750)
+  let columns: Array<ArtList> = $state([])
 
   const parseURLImg = (search?: string) => {
     let imgId = search?.substring(search?.indexOf('img=') + 4)
@@ -26,7 +29,7 @@
     return imgList.find(item => item.id === imgId)
   }
 
-  let modalImg = parseURLImg($page.url.search)
+  let modalImg = $state(parseURLImg($page.url.search))
   const changeModalImage = () => {
     modalImg = parseURLImg($page.url.search)
     if (modalImg) disableScroll()
@@ -49,12 +52,14 @@
     columns = newColumns
   }
 
-  let innerHeight = 0
-  $: modalStyle = `grid-template-rows: ${innerHeight - 80}px 1fr;`
+  let innerHeight = $state(0)
+  let modalStyle = $derived(`grid-template-rows: ${innerHeight - 80}px 1fr;`)
 
-  $: columnCount = Math.floor(galleryWidth / maxColWidth)
-  $: updateGallery(columnCount)
-  $: gridStyle = `grid-template-columns: repeat(${columnCount}, 1fr); --gap: ${gap}px; gap: var(--gap)`
+  let columnCount = $derived(Math.floor(galleryWidth / maxColWidth))
+  $effect(() => updateGallery(columnCount))
+  let gridStyle = $derived(
+    `grid-template-columns: repeat(${columnCount}, 1fr); --gap: ${gap}px; gap: var(--gap)`
+  )
 
   afterNavigate(changeModalImage)
 </script>
@@ -116,7 +121,7 @@
       data-sveltekit-replacestate
       href={artBaseURL}
       transition:fade={{ duration: 100 }}>
-      <i class="bx bx-md bx-x fixed-color" />
+      <i class="bx bx-md bx-x fixed-color"></i>
     </a>
     <div
       class="gallery-modal"
@@ -134,7 +139,7 @@
       <div class="modal-row details">
         <span>{modalImg?.description}</span>
         <a class="btn" role="button" href={modalImg?.artistLink}>
-          <i class="bx bx-sm bx-link-external fixed-color" />
+          <i class="bx bx-sm bx-link-external fixed-color"></i>
         </a>
       </div>
     </div>

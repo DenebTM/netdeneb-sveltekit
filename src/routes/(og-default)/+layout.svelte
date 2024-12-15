@@ -2,6 +2,11 @@
   import '~/util/styles'
 
   import { page } from '$app/stores'
+  interface Props {
+    children?: import('svelte').Snippet
+  }
+
+  let { children }: Props = $props()
   const siteMetadata: SiteMetadata = $page.data.siteMetadata
 </script>
 
@@ -11,4 +16,4 @@
   <meta property="og:image" content={siteMetadata.titleImage?.path} />
 </svelte:head>
 
-<slot />
+{@render children?.()}

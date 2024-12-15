@@ -7,22 +7,22 @@
 
   let navItems: Record<string, any> = $page.data.navItems
 
-  let open = false // for visuals and accessibility
+  let open = $state(false) // for visuals and accessibility
   const closeNav = () => (open = false)
 
-  let innerWidth: number
+  let innerWidth: number = $state()
 </script>
 
 <svelte:window bind:innerWidth />
 
 <nav use:clickOutside={closeNav} {open}>
-  <!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
+  <!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
   <label
     for="nav-isopen"
     class="open-nav"
     role="button"
     tabindex="0"
-    on:keypress={e => e.key == 'Enter' && (open = !open)}>
+    onkeypress={e => e.key == 'Enter' && (open = !open)}>
     <HamburgerButton {open} />
   </label>
   <input

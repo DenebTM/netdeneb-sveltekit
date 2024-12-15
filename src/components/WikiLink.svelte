@@ -1,13 +1,17 @@
 <script lang="ts">
-  export let page: string
-  export let site: 'wikipedia' | 'wiktionary' = 'wikipedia'
-  export let section: string | null = null
+  interface Props {
+    page: string
+    site?: 'wikipedia' | 'wiktionary'
+    section?: string | null
+  }
+
+  let { page, site = 'wikipedia', section = null }: Props = $props()
 </script>
 
 <a
   class="wiki-link"
   href={`https://en.${site}.org/wiki/${page}${section ? '#' + section : ''}`}>
-  <i class="inline-icon bx bxl-wikipedia" />{page}
+  <i class="inline-icon bx bxl-wikipedia"></i>{page}
 </a>&nbsp;
 
 <style global>

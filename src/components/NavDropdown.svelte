@@ -4,11 +4,15 @@
   import { page } from '$app/stores'
   import NavLink from './NavLink.svelte'
 
-  export let name: string
-  export let entries: Record<string, any> = {}
-  export let delay = 0
+  interface Props {
+    name: string
+    entries?: Record<string, any>
+    delay?: number
+  }
 
-  let open = false // for visuals and accessibility
+  let { name, entries = {}, delay = 0 }: Props = $props()
+
+  let open = $state(false) // for visuals and accessibility
   const closeDropdown = () => (open = false)
 
   const randId = Math.floor(Math.random() * 10000)
@@ -29,16 +33,16 @@
   use:clickOutside={closeDropdown}
   {open}
   style={`animation-delay: ${delay}ms`}>
-  <!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
+  <!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
   <label
     for={`dropdown-isopen-${randId}`}
     role="button"
     tabindex="0"
-    on:keypress={e => e.key == 'Enter' && (open = !open)}>
+    onkeypress={e => e.key == 'Enter' && (open = !open)}>
     <span>{name}</span>
     <i
       class="bx bx-caret-down dd-icon"
-      style="display: inline-block !important; font-size: 0.9rem" />
+      style="display: inline-block !important; font-size: 0.9rem"></i>
   </label>
 
   <div>

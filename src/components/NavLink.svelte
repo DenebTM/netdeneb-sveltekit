@@ -1,13 +1,16 @@
 <script lang="ts">
-  export let name: string
-  export let target: string | { href: string; external: boolean }
-  export let onClick: (e?: MouseEvent) => void
-  export let index: number
+  interface Props {
+    name: string
+    target: string | { href: string; external: boolean }
+    onClick: (e?: MouseEvent) => void
+    index: number
+    isCurrent: boolean
+  }
 
-  export let isCurrent: boolean
+  let { name, target, onClick, index, isCurrent }: Props = $props()
 
-  let href: string = ''
-  let external: true | undefined = undefined
+  let href: string = $state('')
+  let external: true | undefined = $state(undefined)
   if (typeof target === 'string') {
     href = target
   } else {
@@ -20,5 +23,5 @@
   {isCurrent}
   class="click-depress"
   style={`animation-delay: ${(index + 1) * 75}ms`}>
-  <a {href} on:click={onClick} data-sveltekit-reload={external}>{name}</a>
+  <a {href} onclick={onClick} data-sveltekit-reload={external}>{name}</a>
 </li>
