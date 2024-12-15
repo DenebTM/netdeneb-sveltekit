@@ -9,9 +9,9 @@ export const load = (async () => {
   let friendlinks: FriendLink[] = []
 
   try {
-    let {} = ({ socials } = JSON.parse(
+    ;({ socials } = JSON.parse(
       (await fs.readFile(infoJsonPath)).toString()
-    ))
+    ) as InfoJson)
 
     socials = socials.map(social => {
       social.text = social.text.replace('\u200b', '<wbr />')
@@ -22,15 +22,15 @@ export const load = (async () => {
   }
 
   try {
-    const friendlinks_in: typeof friendlinks = JSON.parse(
+    const friendlinksIn = JSON.parse(
       (await fs.readFile(friendlinksPath)).toString()
-    )
+    ) as typeof friendlinks
 
     // shuffle the buttons
     friendlinks = []
-    while (friendlinks_in.length > 0) {
-      const index = Math.floor(Math.random() * friendlinks_in.length)
-      friendlinks.unshift(...friendlinks_in.splice(index, 1))
+    while (friendlinksIn.length > 0) {
+      const index = Math.floor(Math.random() * friendlinksIn.length)
+      friendlinks.unshift(...friendlinksIn.splice(index, 1))
     }
 
     friendlinks = friendlinks.map(({ domain, button, alt }) => {
