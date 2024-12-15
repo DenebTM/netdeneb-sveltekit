@@ -18,14 +18,16 @@
   } = $page
 
   let animateTransition: boolean | undefined = $state(true)
+  // eslint-disable-next-line complexity -- wdym "too complex"????
   beforeNavigate(nav => {
-    if (
-      !(
-        nav.to?.url.host !== nav.from?.url.host ||
-        nav.to?.url.pathname === nav.from?.url.pathname
-      )
-    )
+    // do not animate when leaving the site
+    if (nav.to?.url.host !== nav.from?.url.host) {
       animateTransition = undefined
+    }
+    // ... nor if the user clicked the page they're already on
+    if (nav.to?.url.pathname === nav.from?.url.pathname) {
+      animateTransition = undefined
+    }
   })
   afterNavigate(() => {
     animateTransition = true
@@ -55,7 +57,7 @@
   </main>
 </div>
 
-<style global>
+<style>
   div.bg-blur {
     position: absolute;
     top: 0;
@@ -133,18 +135,6 @@
 
     .site-name {
       transition: margin 0.3s;
-    }
-  }
-
-  @media (max-width: 744px) {
-    .title {
-      margin-top: 0.5em;
-    }
-
-    .page-title {
-      margin-right: 44px;
-      text-align: left;
-      word-wrap: break-word;
     }
   }
 </style>
