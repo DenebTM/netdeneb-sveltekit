@@ -10,7 +10,7 @@
   let open = $state(false) // for visuals and accessibility
   const closeNav = () => (open = false)
 
-  let innerWidth: number = $state()
+  let innerWidth: number = $state(0)
 </script>
 
 <svelte:window bind:innerWidth />
