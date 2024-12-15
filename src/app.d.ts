@@ -1,7 +1,7 @@
 import 'svelte'
 
 declare global {
-  type NavItem = string | Record<string, string>
+  type NavItem = string | { href: string; external: boolean }
   type Navigation = Record<string, NavItem>
 
   interface ArtItem {
@@ -77,7 +77,7 @@ declare global {
   declare namespace svelteHTML {
     interface HTMLAttributes {
       animate?: BoolString
-      open?: boolean
+      isopen?: boolean
       isCurrent?: boolean
     }
     interface Headers {
@@ -85,3 +85,5 @@ declare global {
     }
   }
 }
+
+export {}

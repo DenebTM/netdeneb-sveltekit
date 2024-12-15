@@ -1,7 +1,7 @@
 <script lang="ts">
   interface Props {
     name: string
-    target: string | { href: string; external: boolean }
+    target: NavItem
     onClick: (e?: MouseEvent) => void
     index: number
     isCurrent: boolean
@@ -16,5 +16,6 @@
   {isCurrent}
   class="click-depress"
   style={`animation-delay: ${(index + 1) * 75}ms`}>
+  <!-- eslint-disable-next-line @typescript-eslint/no-deprecated -- erroneous warning -->
   <a {href} onclick={onClick} data-sveltekit-reload={external}>{name}</a>
 </li>

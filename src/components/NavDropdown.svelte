@@ -1,23 +1,21 @@
 <script lang="ts">
   import { clickOutside } from '~/util/clickOutside'
-  import { createEventDispatcher } from 'svelte'
   import { page } from '$app/stores'
   import NavLink from './NavLink.svelte'
 
   interface Props {
     name: string
-    entries?: Record<string, any>
+    entries?: Navigation
     delay?: number
+    onNavigate: (e?: MouseEvent) => void
   }
 
-  const { name, entries = {}, delay = 0 }: Props = $props()
+  const { name, entries = {}, delay = 0, onNavigate }: Props = $props()
 
-  let open = $state(false) // for visuals and accessibility
-  const closeDropdown = () => (open = false)
+  let isopen = $state(false) // for visuals and accessibility
+  const closeDropdown = (): boolean => (isopen = false)
 
   const randId = Math.floor(Math.random() * 10000)
-
-  const dispatch = createEventDispatcher()
 </script>
 
 <input
@@ -26,19 +24,19 @@
   class="dropdown-checkbox"
   style="display: none"
   aria-controls={`dropdown-isopen-${randId}`}
-  aria-expanded={open}
-  bind:checked={open} />
+  aria-expanded={isopen}
+  bind:checked={isopen} />
 <li
   class="click-depress dropdown"
   use:clickOutside={closeDropdown}
-  {open}
+  {isopen}
   style={`animation-delay: ${delay}ms`}>
   <!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
   <label
     for={`dropdown-isopen-${randId}`}
     role="button"
     tabindex="0"
-    onkeypress={e => e.key === 'Enter' && (open = !open)}>
+    onkeypress={e => e.key === 'Enter' && (isopen = !isopen)}>
     <span>{name}</span>
     <i
       class="bx bx-caret-down dd-icon"
@@ -53,25 +51,25 @@
           {name}
           {target}
           index={i}
-          onClick={e => {
+          onClick={(e?: MouseEvent) => {
             closeDropdown()
-            dispatch('navigate', e)
+            onNavigate(e)
           }} />
       {/each}
     </ul>
   </div>
 </li>
 
-<style global>
+<style>
   .dropdown {
     position: relative;
     transition: 0.2s;
   }
-  .dropdown[open='true'] {
+  .dropdown[isopen='true'] {
     background-color: var(--background-active);
   }
 
-  .dropdown[open='true']:active {
+  .dropdown[isopen='true']:active {
     transform: none !important;
   }
 
@@ -117,24 +115,25 @@
     border-radius: var(--border-radius);
     margin: 0 auto;
   }
-  .dropdown li {
+
+  .dropdown :global(li) {
     display: block;
   }
 
-  .dropdown li:first-child,
-  .dropdown li:first-child a {
+  .dropdown :global(li:first-child),
+  .dropdown :global(li:first-child a) {
     border-top-left-radius: var(--border-radius);
     border-top-right-radius: var(--border-radius);
   }
-  .dropdown li:last-child,
-  .dropdown li:last-child a {
+  .dropdown :global(li:last-child),
+  .dropdown :global(li:last-child a) {
     border-bottom-left-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
   }
-  .dropdown li:not(:last-child) {
+  .dropdown :global(li:not(:last-child)) {
     border-bottom: 1px solid var(--primary);
   }
-  .dropdown li a {
+  .dropdown :global(li a) {
     display: block;
   }
 
@@ -174,7 +173,7 @@
   }
 
   @media not (prefers-reduced-motion) {
-    .dropdown li {
+    .dropdown :global(li) {
       animation:
         nav-flyin 0.2s,
         fadein 0.2s both;

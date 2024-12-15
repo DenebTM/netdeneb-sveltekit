@@ -5,38 +5,38 @@
   import NavLink from './NavLink.svelte'
   import HamburgerButton from './HamburgerButton.svelte'
 
-  const navItems: Record<string, any> = $page.data.navItems
+  const navItems = $page.data.navItems as Navigation
 
-  let open = $state(false) // for visuals and accessibility
-  const closeNav = () => (open = false)
+  let isopen = $state(false) // for visuals and accessibility
+  const closeNav = (): boolean => (isopen = false)
 
   let innerWidth: number = $state(0)
 </script>
 
 <svelte:window bind:innerWidth />
 
-<nav use:clickOutside={closeNav} {open}>
+<nav use:clickOutside={closeNav} {isopen}>
   <!-- svelte-ignore a11y_no_noninteractive_element_to_interactive_role -->
   <label
     for="nav-isopen"
     class="open-nav"
     role="button"
     tabindex="0"
-    onkeypress={e => e.key == 'Enter' && (open = !open)}>
-    <HamburgerButton {open} />
+    onkeypress={e => e.key === 'Enter' && (isopen = !isopen)}>
+    <HamburgerButton {isopen} />
   </label>
   <input
     type="checkbox"
     id="nav-isopen"
     style="display: none"
     aria-controls="nav-items"
-    aria-expanded={open || innerWidth >= 744}
-    bind:checked={open} />
+    aria-expanded={isopen || innerWidth >= 744}
+    bind:checked={isopen} />
   <ul id="nav-items">
     {#each Object.entries(navItems) as [name, target], i}
       {#if typeof target === 'string' || 'external' in target}
         <NavLink
-          isCurrent={$page.url.pathname == target}
+          isCurrent={$page.url.pathname === target}
           {name}
           {target}
           index={i}
@@ -46,13 +46,13 @@
           {name}
           entries={target}
           delay={(i + 1) * 75}
-          on:navigate={closeNav} />
+          onNavigate={closeNav} />
       {/if}
     {/each}
   </ul>
 </nav>
 
-<style global>
+<style>
   nav {
     text-align: center;
     border-bottom: 1px solid var(--primary);
@@ -60,7 +60,7 @@
     margin-bottom: 20px;
   }
 
-  nav ul {
+  nav :global(ul) {
     list-style: none;
     display: inline-block;
     padding: 0;
@@ -78,43 +78,43 @@
     }
   }
 
-  nav > ul > li {
+  nav > ul > :global(li) {
     float: left;
     border-radius: var(--border-radius);
   }
 
   @media not (prefers-reduced-motion) {
-    nav > ul > li {
+    nav > ul > :global(li) {
       animation:
         nav-flyin 0.2s,
         fadein 0.2s both;
     }
   }
 
-  nav > ul > li[isCurrent='true'] {
+  nav > ul > :global(li[isCurrent='true']) {
     background-color: var(--background-active);
   }
 
-  nav li {
+  nav :global(li) {
     user-select: none;
   }
 
-  nav li:hover {
+  nav :global(li:hover) {
     cursor: pointer;
     background-color: var(--background-hover);
   }
 
-  nav li:active {
+  nav :global(li:active) {
     background-color: var(--background-active);
   }
 
-  nav > ul > li > a,
-  nav > ul > li > label {
+  nav > ul > :global(li > a),
+  nav > ul > :global(li > label) {
     border-radius: var(--border-radius);
   }
 
-  nav a,
-  nav label:not(.open-nav) {
+  nav :global(a),
+  nav :global(label:not(.open-nav)) {
     color: var(--text-color) !important;
     text-decoration: none !important;
 
@@ -123,12 +123,12 @@
     cursor: pointer;
   }
 
-  nav .dd-icon {
+  nav :global(.dd-icon) {
     transition: transform 0.2s ease-in-out;
   }
 
-  [open='true'] > label > .dd-icon,
-  [open='true'] > a > .dd-icon {
+  [isopen='true'] > :global(label > .dd-icon),
+  [isopen='true'] > :global(a > .dd-icon) {
     transform: rotate(180deg);
   }
 
@@ -153,7 +153,7 @@
     nav {
       min-height: calc((1em * 1.5) + 53px);
     }
-    nav > ul > li:not(:last-child) {
+    nav > :global(ul > li:not(:last-child)) {
       margin-right: 5px;
     }
   }
@@ -175,14 +175,14 @@
       box-shadow: 0 0 3px 3px var(--shadow-color);
       z-index: 1;
     }
-    nav > ul > li {
+    nav > ul > :global(li) {
       float: none;
     }
-    nav > ul > li:not(:first-child) {
+    nav > ul > :global(li:not(:first-child)) {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
     }
-    nav > ul > li:not(:last-child) {
+    nav > ul > :global(li:not(:last-child)) {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
       border-bottom: 1px solid var(--primary);
@@ -198,7 +198,7 @@
   }
 
   @media not (prefers-reduced-motion) {
-    nav > ul > li {
+    nav > ul > :global(li) {
       animation:
         nav-flyin 0.2s,
         fadein 0.2s both;

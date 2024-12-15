@@ -1,12 +1,12 @@
 <script lang="ts">
   interface Props {
-    open?: boolean
+    isopen?: boolean
   }
 
-  const { open = false }: Props = $props()
+  const { isopen = false }: Props = $props()
 </script>
 
-<div class="open-nav-button" {open}>
+<div class="open-nav-button" {isopen}>
   <div class="open-nav-line top"></div>
   <div class="open-nav-line mid"></div>
   <div class="open-nav-line bot"></div>
@@ -39,14 +39,14 @@
     bottom: 0;
   }
 
-  .open-nav-button[open='true'] .open-nav-line.top {
+  .open-nav-button[isopen='true'] .open-nav-line.top {
     transform: translateY(12px) rotate(-45deg);
   }
-  .open-nav-button[open='true'] .open-nav-line.mid {
+  .open-nav-button[isopen='true'] .open-nav-line.mid {
     width: 0;
     transform: translateX(15px);
   }
-  .open-nav-button[open='true'] .open-nav-line.bot {
+  .open-nav-button[isopen='true'] .open-nav-line.bot {
     transform: translateY(-8px) rotate(45deg);
   }
 
