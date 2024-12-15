@@ -11,5 +11,6 @@
   "svelteSortOrder": "scripts-options-markup-styles",
   "svelteAllowShorthand": true,
   "svelteIndentScriptAndStyle": true,
-  "bracketSameLine": true
+  "bracketSameLine": true,
+  "plugins": ["prettier-plugin-svelte"]
 }
