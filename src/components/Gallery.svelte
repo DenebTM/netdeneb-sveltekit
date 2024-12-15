@@ -22,14 +22,13 @@
     hover = true,
   }: Props = $props()
 
-  const titleImage = imgList[0]
-  const galleryImages = imgList.slice(1)
+  const [titleImage, ...galleryImages] = imgList
 
   const maxColWidth = 250
   let galleryWidth = $state(750)
   let columns: ArtList[] = $state([])
 
-  const parseURLImg = (search?: string) => {
+  const parseURLImg = (search?: string): ArtItemWithMetadata | undefined => {
     let imgId = search?.substring(search.indexOf('img=') + 4)
     if (imgId?.includes('&')) imgId = imgId.slice(0, imgId.indexOf('&'))
 
@@ -37,13 +36,13 @@
   }
 
   let modalImg = $state(parseURLImg($page.url.search))
-  const changeModalImage = () => {
+  const changeModalImage = (): void => {
     modalImg = parseURLImg($page.url.search)
     if (modalImg) disableScroll()
     else enableScroll()
   }
 
-  const updateGallery = (colCount: number) => {
+  const updateGallery = (colCount: number): void => {
     if (colCount === 0) return
 
     const newColumns: ArtList[] = Array(colCount)
