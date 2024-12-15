@@ -12,6 +12,9 @@
 <svelte:head>
   <meta property="og:title" content={siteMetadata.description} />
   <meta
+    property="description"
+    content="the home of deneb, the maney themself" />
+  <meta
     property="og:description"
     content="the home of deneb, the maney themself" />
 </svelte:head>
