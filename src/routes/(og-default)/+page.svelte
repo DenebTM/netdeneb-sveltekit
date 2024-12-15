@@ -81,6 +81,7 @@
           alt="Amber CRT style button for netdeneb.com" />
       </a>
     </p>
+    <p>want more buttons? go <a href="/links#friends">here</a>!</p>
   </section>
 
   <hr />
@@ -89,9 +90,37 @@
   </section>
 </div>
 
-<style>
+<style global>
   #me {
     width: 160px;
     border-radius: 500%;
+  }
+
+  @keyframes rotato {
+    from {
+      filter: hue-rotate(0);
+    }
+
+    50% {
+      filter: hue-rotate(180deg);
+    }
+
+    to {
+      filter: hue-rotate(360deg);
+    }
+  }
+
+  @media not (prefers-reduced-motion) {
+    #buttons a:hover {
+      animation: rotato 1s infinite linear;
+    }
+  }
+
+  #buttons :not(:last-child) a {
+    transition: 0.125s ease-in-out;
+  }
+
+  #buttons :not(:last-child) a:active {
+    transform: translateY(2px) !important;
   }
 </style>
