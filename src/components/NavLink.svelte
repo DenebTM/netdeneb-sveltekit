@@ -8,15 +8,8 @@
   }
 
   const { name, target, onClick, index, isCurrent }: Props = $props()
-
-  let href: string = $state('')
-  let external: true | undefined = $state(undefined)
-  if (typeof target === 'string') {
-    href = target
-  } else {
-    href = target.href
-    external = target.external || undefined
-  }
+  const { href, external } =
+    typeof target === 'string' ? { href: target, external: false } : target
 </script>
 
 <li
