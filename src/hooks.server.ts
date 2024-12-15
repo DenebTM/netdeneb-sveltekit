@@ -1,15 +1,15 @@
 import type { HandleServerError } from '@sveltejs/kit'
 
-export const handleError: HandleServerError = async ({
+export const handleError: HandleServerError = ({
   error,
   event,
   status,
   message,
 }) => {
-  const href_path = event.url.href.replace(event.url.origin, '')
+  const hrefPath = event.url.href.replace(event.url.origin, '')
 
-  console.error(`SvelteKit error: ${status} ${message} (path: '${href_path}')`)
-  if (status == 500) {
+  console.error(`SvelteKit error: ${status} ${message} (path: '${hrefPath}')`)
+  if (status === 500) {
     console.error(error)
   }
 }

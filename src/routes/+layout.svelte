@@ -29,7 +29,7 @@
     animateTransition = true
     enableScroll()
   })
-  onMount(() => animateTransition = true)
+  onMount(() => (animateTransition = true))
 </script>
 
 <svelte:head>

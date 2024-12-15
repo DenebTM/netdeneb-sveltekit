@@ -1,7 +1,11 @@
 import fs from 'node:fs/promises'
 import { env } from '$env/dynamic/private'
 
-// eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+/* eslint-disable-next-line
+   @typescript-eslint/prefer-nullish-coalescing
+   ---
+   if the envar is present but empty, it should be ignored
+*/
 const configPath = (): string => env.APP_CONFIG_PATH || './config/config.json'
 
 export const defaultConfig: AppConfig = {
@@ -39,7 +43,7 @@ export const getConfig = async (): Promise<AppConfig> => {
         (await fs.readFile(configPath())).toString()
       ) as AppConfig
       configLastRead = now
-    } catch (err: any) {
+    } catch (err) {
       if (env.APP_CONFIG_PATH) console.error('Error reading config:', err)
     }
   }

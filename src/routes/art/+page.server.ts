@@ -11,7 +11,7 @@ export const load: PageServerLoad = async () => {
 
   const fileListPath = pathJoin(artBasePath, 'files.json')
 
-  let fileList
+  let fileList: ArtList = []
   try {
     fileList = JSON.parse(
       await fs.readFile(fileListPath, { encoding: 'utf-8' })

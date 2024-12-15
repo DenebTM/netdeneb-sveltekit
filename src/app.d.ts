@@ -1,6 +1,9 @@
 import 'svelte'
 
 declare global {
+  type NavItem = string | Record<string, string>
+  type Navigation = Record<string, NavItem>
+
   interface ArtItem {
     id: string
     fileName: string

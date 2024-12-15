@@ -13,7 +13,7 @@
   const { name, entries = {}, delay = 0 }: Props = $props()
 
   let open = $state(false) // for visuals and accessibility
-  const closeDropdown = () => open = false
+  const closeDropdown = () => (open = false)
 
   const randId = Math.floor(Math.random() * 10000)
 
