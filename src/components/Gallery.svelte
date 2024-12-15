@@ -4,7 +4,9 @@
   import { afterNavigate } from '$app/navigation'
 
   import { page } from '$app/stores'
-  const siteMetadata: SiteMetadata = $page.data.siteMetadata
+  const {
+    data: { siteMetadata },
+  } = $page
 
   interface Props {
     artBaseURL?: string
@@ -42,7 +44,7 @@
   }
 
   const updateGallery = (colCount: number) => {
-    if (colCount == 0) return
+    if (colCount === 0) return
 
     const newColumns: ArtList[] = Array(colCount)
       .fill([])

@@ -5,7 +5,9 @@
   import NavLink from './NavLink.svelte'
   import HamburgerButton from './HamburgerButton.svelte'
 
-  const navItems = $page.data.navItems as Navigation
+  const {
+    data: { navItems },
+  } = $page
 
   let isopen = $state(false) // for visuals and accessibility
   const closeNav = (): boolean => (isopen = false)

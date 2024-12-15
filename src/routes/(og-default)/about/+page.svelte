@@ -2,7 +2,9 @@
   import WikiLink from '~/components/WikiLink.svelte'
   import type { PageServerData } from './$types'
   import { page } from '$app/stores'
-  const { name: sitename }: SiteMetadata = $page.data.siteMetadata
+  const {
+    data: { siteMetadata },
+  } = $page
 
   interface Props {
     data: PageServerData
@@ -12,7 +14,7 @@
 </script>
 
 <svelte:head>
-  <title>{`${sitename} - About`}</title>
+  <title>{`${siteMetadata.name} - About`}</title>
   <meta property="og:title" content="About" />
   <meta name="description" content="More info about the mane" />
   <meta property="og:description" content="More info about the mane" />

@@ -13,7 +13,9 @@
   }
 
   const { children }: Props = $props()
-  const siteMetadata: SiteMetadata = $page.data.siteMetadata
+  const {
+    data: { siteMetadata },
+  } = $page
 
   let animateTransition: boolean | undefined = $state(true)
   beforeNavigate(nav => {

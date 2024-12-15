@@ -1,10 +1,12 @@
 <script lang="ts">
   import { page } from '$app/stores'
-  const { name: sitename }: SiteMetadata = $page.data.siteMetadata
+  const {
+    data: { siteMetadata },
+  } = $page
 </script>
 
 <svelte:head>
-  <title>{`${sitename} - Error`}</title>
+  <title>{`${siteMetadata.name} - Error`}</title>
 </svelte:head>
 
 <h1>{$page.status}</h1>

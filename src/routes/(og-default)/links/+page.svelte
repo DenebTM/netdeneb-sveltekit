@@ -3,7 +3,9 @@
   import type { PageServerData } from './$types'
 
   import { page } from '$app/stores'
-  const { name: sitename }: SiteMetadata = $page.data.siteMetadata
+  const {
+    data: { siteMetadata },
+  } = $page
 
   interface Props {
     data: PageServerData
@@ -13,7 +15,7 @@
 </script>
 
 <svelte:head>
-  <title>{`${sitename} - Links`}</title>
+  <title>{`${siteMetadata.name} - Links`}</title>
   <meta property="og:title" content="Links" />
   <meta
     name="description"

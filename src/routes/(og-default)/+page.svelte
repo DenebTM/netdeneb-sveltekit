@@ -4,7 +4,9 @@
   import type { PageServerData } from './$types'
 
   import { page } from '$app/stores'
-  const siteMetadata: SiteMetadata = $page.data.siteMetadata
+  const {
+    data: { siteMetadata },
+  } = $page
 
   interface Props {
     data: PageServerData

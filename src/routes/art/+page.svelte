@@ -3,7 +3,9 @@
   import Gallery from '~/components/Gallery.svelte'
 
   import { page } from '$app/stores'
-  const { name: sitename }: SiteMetadata = $page.data.siteMetadata
+  const {
+    data: { siteMetadata },
+  } = $page
 
   interface Props {
     data: PageData
@@ -14,7 +16,7 @@
 </script>
 
 <svelte:head>
-  <title>{`${sitename} - Art gallery`}</title>
+  <title>{`${siteMetadata.name} - Art gallery`}</title>
 </svelte:head>
 
 <h2 class="page-title">Commissions i got so far!</h2>
