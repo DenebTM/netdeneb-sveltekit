@@ -1,9 +1,10 @@
 <script lang="ts">
   import '~/util/styles'
-
+  import type { Snippet } from 'svelte'
   import { page } from '$app/stores'
+
   interface Props {
-    children?: import('svelte').Snippet
+    children?: Snippet
   }
 
   const { children }: Props = $props()

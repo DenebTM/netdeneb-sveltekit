@@ -1,15 +1,13 @@
 <script lang="ts">
   import '~/util/styles'
-
-  import { afterNavigate, beforeNavigate } from '$app/navigation'
-
+  import { onMount, type Snippet } from 'svelte'
   import Nav from '~/components/Nav.svelte'
   import { enableScroll } from '~/util/tools'
-  import { onMount } from 'svelte'
-
   import { page } from '$app/stores'
+  import { afterNavigate, beforeNavigate } from '$app/navigation'
+
   interface Props {
-    children?: import('svelte').Snippet
+    children?: Snippet
   }
 
   const { children }: Props = $props()
