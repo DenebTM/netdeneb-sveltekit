@@ -223,10 +223,6 @@
       filter: hue-rotate(0);
     }
 
-    50% {
-      filter: hue-rotate(180deg);
-    }
-
     to {
       filter: hue-rotate(360deg);
     }
