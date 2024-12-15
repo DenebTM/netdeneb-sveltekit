@@ -49,7 +49,6 @@ export default plugin_typescript.config(
       'comma-dangle': 'off',
       'quote-props': 'off',
 
-      '@typescript-eslint/no-throw-literal': 'off',
       '@typescript-eslint/strict-boolean-expressions': 'off',
       '@typescript-eslint/no-unsafe-type-assertion': 'off',
       '@typescript-eslint/no-magic-numbers': 'off',
@@ -66,6 +65,13 @@ export default plugin_typescript.config(
       ],
       '@stylistic/ts/no-extra-parens': 'error',
       '@stylistic/ts/space-before-function-paren': 'off',
+    },
+  },
+
+  {
+    files: ['**/+*server.ts'],
+    rules: {
+      '@typescript-eslint/only-throw-error': 'off',
     },
   },
 
