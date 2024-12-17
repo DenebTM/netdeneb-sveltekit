@@ -40,6 +40,11 @@
     "alt": "freeplay"
   },
   {
+    "domain": "gabrielhuber.at",
+    "button": null,
+    "alt": "zen"
+  },
+  {
     "domain": "gry.sh",
     "button": null,
     "alt": "greyhash"
@@ -60,6 +65,11 @@
     "alt": "kaleidosium"
   },
   {
+    "domain": "luciaa.at",
+    "button": null,
+    "alt": "lucia"
+  },
+  {
     "domain": "m.furrypri.de",
     "button": null,
     "alt": "m"
@@ -73,6 +83,11 @@
     "domain": "nilsding.org",
     "button": null,
     "alt": "jyrki"
+  },
+  {
+    "domain": "ohaa.xyz",
+    "button": null,
+    "alt": "zen"
   },
   {
     "domain": "pivotman319-owo.github.io",
