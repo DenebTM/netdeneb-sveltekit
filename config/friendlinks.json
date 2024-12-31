@@ -66,7 +66,7 @@
   },
   {
     "domain": "luciaa.at",
-    "button": null,
+    "button": "luciaa.png",
     "alt": "schlecknits"
   },
   {
@@ -88,6 +88,11 @@
     "domain": "ohaa.xyz",
     "button": null,
     "alt": "zen"
+  },
+  {
+    "domain": "padlet.com/parkercc",
+    "button": "parkercc.gif",
+    "alt": "parkercc"
   },
   {
     "domain": "pivotman319-owo.github.io",
