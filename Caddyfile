@@ -1,5 +1,6 @@
 (logformat) {
   log {
+    output stdout
     format console
   }
 }
@@ -25,6 +26,7 @@
 
   import /etc/caddy/caddy-auth.conf
 
+  templates
   file_server {
     browse /caddy/browse-thumbs.html
   }

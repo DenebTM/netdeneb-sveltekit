@@ -8,17 +8,23 @@ WorkingDirectory=/srv/netdeneb
 ExecStart=/usr/bin/podman run --name netdeneb \
 	-d --rm --replace \
 	--sdnotify=conmon \
-  --cgroups=no-conmon \
-  --label "io.containers.autoupdate=registry" \
+	--cgroups=no-conmon \
+	--label "io.containers.autoupdate=registry" \
 	--init \
 	-p 3000:80 \
 	-e APP_CONFIG_PATH=/config/config.json \
+	-v /srv/netdeneb/Caddyfile:/etc/caddy/Caddyfile:ro \
 	-v /srv/netdeneb/caddy-auth.conf:/etc/caddy/caddy-auth.conf:ro \
 	-v /srv/netdeneb/config:/config \
+	-v /srv/netdeneb/git:/git \
 	-v /srv/netdeneb/static:/caddy/static \
 	-v /srv/netdeneb/files:/caddy/static/files:ro \
 	ghcr.io/denebtm/netdeneb:latest
 ExecStop=/usr/bin/podman stop netdeneb
+
+ExecStartPre=-/usr/bin/podman system migrate
+ExecStopPost=-/usr/bin/podman rm -f netdeneb
+
 Type=notify
 NotifyAccess=all
 Delegate=yes
