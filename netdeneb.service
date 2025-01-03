@@ -10,7 +10,6 @@ ExecStart=/usr/bin/podman run --name netdeneb \
 	--sdnotify=conmon \
 	--cgroups=no-conmon \
 	--label "io.containers.autoupdate=registry" \
-	--init \
 	-p 3000:80 \
 	-e APP_CONFIG_PATH=/config/config.json \
 	-v /srv/netdeneb/Caddyfile:/etc/caddy/Caddyfile:ro \
