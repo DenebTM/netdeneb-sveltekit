@@ -6,9 +6,7 @@
   const { links }: Props = $props()
 </script>
 
-<p style="margin: 20px 0 10px 0; font-weight: bold;">
-  Feel free to bark at me on:
-</p>
+<p class="bold" style="margin: 20px 0 10px 0">Feel free to bark at me on:</p>
 <div style="text-align: left; width: fit-content; margin: 0 auto">
   {#each links as { platform, showPlatformAlways, icon, href, text }}
     <a class="click-depress" rel="me" {href}>

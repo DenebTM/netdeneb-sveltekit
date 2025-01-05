@@ -70,29 +70,29 @@
     </p>
     <ul>
       <li>
-        <a class="strong" href="https://cloud.netdeneb.com/"
+        <a class="bold" href="https://cloud.netdeneb.com/"
           >cloud.netdeneb.com</a> — my own Nextcloud instance, since Google killed
         off unlimited Photos storage in 2020
       </li>
       <li>
-        <a class="strong" href="https://screee.ee/">screee.ee</a> — fencs :&gt;
+        <a class="bold" href="https://screee.ee/">screee.ee</a> — fencs :&gt;
         <br />
         also, a Matrix homeserver! <em>conduwuit</em> to be specific, but will
         probably migrate to
         <a href="https://or.computer.surgery/matrix/grapevine">Grapevine</a> soon
       </li>
       <li>
-        <a class="strong" href="https://leggi.es/">leggi.es</a> — nothing yet, but
+        <a class="bold" href="https://leggi.es/">leggi.es</a> — nothing yet, but
         quite possibly where this website will be moving :3
       </li>
       <li>
-        <a class="strong" href="https://mail.screee.ee/">mail.screee.ee</a>
+        <a class="bold" href="https://mail.screee.ee/">mail.screee.ee</a>
         — an email server powered by
         <a href="https://mailcow.email/">Mailcow</a>
         <br />
       </li>
       <li>
-        <a class="strong" href="https://vault.screee.ee/">vault.screee.ee</a>
+        <a class="bold" href="https://vault.screee.ee/">vault.screee.ee</a>
         — a
         <a href="https://github.com/dani-garcia/vaultwarden">Vaultwarden</a> instance,
         aka. Bitwarden but entirely free
@@ -107,13 +107,13 @@
       <li><strong>languages</strong> — mostly the germanic ones</li>
     </ul>
 
-    <strong><code>TODO #1</code>:</strong> One of these days I'll get around to
+    <code class="bold">TODO #1:</code> One of these days I'll get around to
     creating a projects page. For now, look at my
     <a href="https://github.com/DenebTM"
       ><i class="inline-icon bx bx-sm bxl-github"></i>&nbsp;Github</a
     >!<br />
-    <strong><code>TODO #2</code>:</strong> Document my network setup somewhere<br />
-    <strong><code>TODO #3</code>:</strong> Expand on the retrocomputing stuff<br />
+    <code class="bold">TODO #2:</code> Document my network setup somewhere<br />
+    <code class="bold">TODO #3:</code> Expand on the retrocomputing stuff<br />
   </section>
 
   <section id="this-website">
@@ -144,9 +144,5 @@
 
   code {
     font-size: 1.25em;
-  }
-
-  .strong {
-    font-weight: bold;
   }
 </style>
