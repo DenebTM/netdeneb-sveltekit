@@ -35,8 +35,10 @@
   const splashes_dot_txt = [
     'awawawawa',
     'kjslflksdjf',
-    'bites you',
+    '*bites u*',
     'arf !!',
+    'aaaaaawrrufff',
+    'roark',
     'ROARK',
     'beep?',
   ]
@@ -158,6 +160,13 @@
     text-align: left;
   }
 
+  .blurb .blurb-left > * {
+    --transform-initial: 80px;
+  }
+  .blurb .blurb-right > * {
+    --transform-initial: -80px;
+  }
+
   .nb-pride {
     display: inline;
     vertical-align: middle;
@@ -166,7 +175,7 @@
     border-radius: 5px;
   }
 
-  @media (max-width: 744px) {
+  @media (max-width: 540px) {
     .blurb {
       grid-template-columns: max-content 1fr;
     }
@@ -179,6 +188,10 @@
       grid-column: 2;
       grid-row: 1;
       justify-content: end;
+    }
+
+    .blurb .blurb-left > * {
+      --transform-initial: -80px;
     }
 
     .blurb .blurb-right {
@@ -205,18 +218,6 @@
     .blurb .blurb-right > * {
       animation: 0.35s sideslide calc(0.15s + var(--delay)) forwards;
       opacity: 0;
-    }
-    .blurb .blurb-left > * {
-      --transform-initial: 80px;
-    }
-    .blurb .blurb-right > * {
-      --transform-initial: -80px;
-    }
-
-    @media (max-width: 744px) {
-      .blurb .blurb-left > * {
-        --transform-initial: -80px;
-      }
     }
 
     #buttons :global(a:hover) {
