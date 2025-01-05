@@ -32,7 +32,7 @@
   }
 }
 
-http://files.netdeneb.com {
+http://files.leggi.es {
   encode gzip zstd
 
   import logformat
