@@ -31,6 +31,15 @@
         alt="Amber CRT style button for ${siteMetadata.name}" />
     </a>
   `
+
+  const splashes_dot_txt = [
+    'awawawawa',
+    'kjslflksdjf',
+    'bites you',
+    'arf !!',
+    'ROARK',
+    'beep?',
+  ]
 </script>
 
 <svelte:head>
@@ -44,12 +53,34 @@
 </svelte:head>
 
 <div class="page-content">
-  <section id="blurb">
-    <img
-      id="me"
-      src={siteMetadata.titleImage.path}
-      alt={siteMetadata.titleImage.description}
-      title={siteMetadata.titleImage.description} />
+  <section>
+    <div class="blurb">
+      <img
+        class="blurb-center"
+        src={siteMetadata.titleImage.path}
+        alt={siteMetadata.titleImage.description}
+        title={siteMetadata.titleImage.description} />
+
+      <div class="blurb-left">
+        <strong style="--delay: 0.0s" title="all-lowercase, please"
+          >deneb</strong>
+        <span style="--delay: 0.1s">maned wolf</span>
+        <a style="--delay: 0.2s" href="/art?img=ref">ref sheet</a>
+      </div>
+      <div class="blurb-right">
+        <span style="--delay: 0.15s">age {data.age}</span>
+        <span style="--delay: 0.25s">
+          <img class="nb-pride" src="/img/nb.svg" alt="non-binary pride flag" />
+          they/them
+        </span>
+        <span style="--delay: 0.35s"
+          >{splashes_dot_txt[
+            Math.floor(Math.random() * splashes_dot_txt.length)
+          ]}</span>
+      </div>
+      <!-- TODO: make this dynamic -->
+    </div>
+
     <h1>Hi!</h1>
     <p>
       I'm <strong title="all-lowercase, please">deneb</strong>, a {data.age}-year
@@ -67,10 +98,7 @@
       linked above (under "Other").
     </p>
     <p>
-      If you're looking for my reference sheet, go <a href="/art?img=ref"
-        >here!</a
-      ><br />
-      Or find more info on my <a href="/about">About</a> page :3
+      Find more info on my <a href="/about">About</a> page!
     </p>
   </section>
 
@@ -79,7 +107,7 @@
     <p>
       <span style="font-weight: bold">Buttons!</span><br />
       You may hotlink these (copy the source code), or just copy the files to your
-      site, whichever works best.
+      site, whichever you prefer :3
     </p>
     <p>
       <!-- eslint-disable-next-line svelte/no-at-html-tags -- i control this HTML -->
@@ -95,12 +123,102 @@
 </div>
 
 <style>
-  #me {
-    width: 160px;
-    border-radius: 500%;
+  .blurb {
+    font-size: 1.125em;
+  }
+
+  .blurb {
+    display: grid;
+    column-gap: 1rem;
+    grid-template-columns: 1fr max-content 1fr;
+    grid-template-rows: max-content;
+  }
+  .blurb > * {
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .blurb img.blurb-center {
+    --size: 160px;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+  }
+  .blurb .blurb-left {
+    grid-column: 1;
+    text-align: right;
+  }
+  .blurb .blurb-center {
+    grid-column: 2;
+    z-index: 1;
+  }
+  .blurb .blurb-right {
+    grid-column: 3;
+    text-align: left;
+  }
+
+  .nb-pride {
+    display: inline;
+    vertical-align: middle;
+    height: 1em;
+    border: 1px solid var(--text-color);
+    border-radius: 5px;
+  }
+
+  @media (max-width: 744px) {
+    .blurb {
+      grid-template-columns: max-content 1fr;
+    }
+    .blurb .blurb-center {
+      grid-column: 1;
+      grid-row: span 2;
+    }
+    .blurb .blurb-left {
+      text-align: left;
+      grid-column: 2;
+      grid-row: 1;
+      justify-content: end;
+    }
+
+    .blurb .blurb-right {
+      grid-column: 2;
+      grid-row: 2;
+      justify-content: start;
+    }
+  }
+
+  @keyframes sideslide {
+    from {
+      opacity: 0;
+      transform: translateX(var(--transform-initial));
+    }
+
+    to {
+      opacity: 1;
+      transform: 0;
+    }
   }
 
   @media not (prefers-reduced-motion) {
+    .blurb .blurb-left > *,
+    .blurb .blurb-right > * {
+      animation: 0.35s sideslide calc(0.15s + var(--delay)) forwards;
+      opacity: 0;
+    }
+    .blurb .blurb-left > * {
+      --transform-initial: 80px;
+    }
+    .blurb .blurb-right > * {
+      --transform-initial: -80px;
+    }
+
+    @media (max-width: 744px) {
+      .blurb .blurb-left > * {
+        --transform-initial: -80px;
+      }
+    }
+
     #buttons :global(a:hover) {
       animation: rotato 1s infinite linear;
     }
