@@ -10,11 +10,26 @@
     data: { siteMetadata },
   } = page
 
-  const buttonLists = [
+  const shuffleButtons = (arrayIn: ButtonData[]): ButtonData[] => {
+    let arrayTmp = [...arrayIn]
+    let arrayOut: ButtonData[] = []
+    while (arrayTmp.length > 0) {
+      const index = Math.floor(Math.random() * arrayTmp.length)
+      arrayOut.unshift(...arrayTmp.splice(index, 1))
+    }
+
+    return arrayOut
+  }
+
+  let buttonLists: { title: string; buttons: ButtonData[] }[] = [
     { title: "Friends' websites", buttons: buttons.webFriends },
     { title: 'Other cool websites', buttons: buttons.webMisc },
     { title: 'Miscellaneous', buttons: buttons.general },
   ]
+
+  buttonLists.forEach(a => {
+    a.buttons = shuffleButtons(a.buttons)
+  })
 </script>
 
 <svelte:head>
