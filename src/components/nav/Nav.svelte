@@ -1,7 +1,7 @@
 <script lang="ts">
   import NavDropdown from './NavDropdown.svelte'
   import { clickOutside } from '~/util/clickOutside'
-  import { page } from '$app/stores'
+  import { page } from '$app/state'
   import NavLink from './NavLink.svelte'
   import HamburgerButton from './HamburgerButton.svelte'
 
@@ -40,7 +40,7 @@
     {#each Object.entries(items) as [name, target], i}
       {#if typeof target === 'string' || 'external' in target}
         <NavLink
-          isCurrent={$page.url.pathname === target}
+          isCurrent={page.url.pathname === target}
           {name}
           {target}
           index={i}

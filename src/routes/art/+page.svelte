@@ -2,10 +2,10 @@
   import type { PageData } from './$types'
   import Gallery from '~/components/Gallery.svelte'
 
-  import { page } from '$app/stores'
+  import { page } from '$app/state'
   const {
     data: { siteMetadata },
-  } = $page
+  } = page
 
   interface Props {
     data: PageData

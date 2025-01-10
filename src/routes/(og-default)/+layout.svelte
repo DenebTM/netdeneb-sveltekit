@@ -1,7 +1,7 @@
 <script lang="ts">
   import '~/util/styles'
   import type { Snippet } from 'svelte'
-  import { page } from '$app/stores'
+  import { page } from '$app/state'
 
   interface Props {
     children?: Snippet
@@ -10,7 +10,7 @@
   const { children }: Props = $props()
   const {
     data: { siteMetadata },
-  } = $page
+  } = page
 </script>
 
 <svelte:head>

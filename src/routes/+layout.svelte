@@ -3,7 +3,7 @@
   import { onMount, type Snippet } from 'svelte'
   import Nav from '~/components/nav/Nav.svelte'
   import { enableScroll } from '~/util/tools'
-  import { page } from '$app/stores'
+  import { page } from '$app/state'
   import { afterNavigate, beforeNavigate } from '$app/navigation'
 
   import navItems from './navItems.json'
@@ -16,7 +16,7 @@
 
   const {
     data: { siteMetadata },
-  } = $page
+  } = page
 
   let animateTransition: boolean | undefined = $state(true)
   // eslint-disable-next-line complexity -- wdym "too complex"????

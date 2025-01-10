@@ -1,6 +1,6 @@
 <script lang="ts">
   import { clickOutside } from '~/util/clickOutside'
-  import { page } from '$app/stores'
+  import { page } from '$app/state'
   import NavLink from './NavLink.svelte'
 
   interface Props {
@@ -47,7 +47,7 @@
     <ul id={`dropdown-items-${randId}`}>
       {#each Object.entries(entries) as [name, target], i}
         <NavLink
-          isCurrent={$page.url.pathname === target}
+          isCurrent={page.url.pathname === target}
           {name}
           {target}
           index={i}

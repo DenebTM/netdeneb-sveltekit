@@ -3,10 +3,10 @@
   import { disableScroll, enableScroll } from '~/util/tools'
   import { afterNavigate } from '$app/navigation'
 
-  import { page } from '$app/stores'
+  import { page } from '$app/state'
   const {
     data: { siteMetadata },
-  } = $page
+  } = page
 
   interface Props {
     artBaseURL?: string
@@ -35,9 +35,9 @@
     return imgList.find(item => item.id === imgId)
   }
 
-  let modalImg = $state(parseURLImg($page.url.search))
+  let modalImg = $state(parseURLImg(page.url.search))
   const changeModalImage = (): void => {
-    modalImg = parseURLImg($page.url.search)
+    modalImg = parseURLImg(page.url.search)
     if (modalImg) disableScroll()
     else enableScroll()
   }
@@ -77,7 +77,7 @@
   {#if modalImg}
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="og:title" content={modalImg.description} />
-    <meta property="og:image" content={$page.url.origin + modalImg.full} />
+    <meta property="og:image" content={page.url.origin + modalImg.full} />
     <meta property="og:image:type" content={modalImg.mime} />
     <meta property="og:image:width" content={modalImg.width.toString()} />
     <meta property="og:image:height" content={modalImg.height.toString()} />

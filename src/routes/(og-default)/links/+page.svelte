@@ -5,10 +5,10 @@
   import buttons from './buttons.json'
   import { socials } from '../info.json'
 
-  import { page } from '$app/stores'
+  import { page } from '$app/state'
   const {
     data: { siteMetadata },
-  } = $page
+  } = page
 
   const buttonLists = [
     { title: "Friends' websites", buttons: buttons.webFriends },

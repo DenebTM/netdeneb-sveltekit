@@ -5,10 +5,10 @@
   import splashes_dot_txt from './splashes.json'
   import { socials } from './info.json'
 
-  import { page } from '$app/stores'
+  import { page } from '$app/state'
   const {
     data: { siteMetadata },
-  } = $page
+  } = page
 
   interface Props {
     data: PageServerData
