@@ -2,12 +2,12 @@ import type { PageServerLoad } from './$types'
 import { error } from '@sveltejs/kit'
 import fs from 'node:fs/promises'
 import { join as pathJoin } from 'node:path'
-import { getConfig } from '~/util/appConfig'
+import { appConfig } from '~/util/appConfig'
 import mime from 'mime-types'
 import dimensions from 'image-size'
 
 export const load: PageServerLoad = async () => {
-  const { artBaseURL, artBasePath } = await getConfig()
+  const { artBaseURL, artBasePath } = appConfig
 
   const fileListPath = pathJoin(artBasePath, 'files.json')
 

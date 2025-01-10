@@ -9,40 +9,19 @@ import { env } from '$env/dynamic/private'
 const configPath = (): string => env.APP_CONFIG_PATH || './config/config.json'
 
 export const defaultConfig: AppConfig = {
-  siteMetadata: {
-    name: 'leggi.es',
-    description: "deneb's homepage",
-    titleImage: {
-      'path': '/img/deneb1.webp',
-      'description': 'art of deneb, by twitter.com/FluffySakora',
-    },
-  },
-
   artBasePath: './art',
   artBaseURL: '/art',
-
   filesBasePath: './files',
   thumbsBasePath: './thumbs',
   thumbsBaseURL: '/thumbs',
 }
 
-let config: AppConfig = defaultConfig
-let configLastRead = new Date(0)
+export let appConfig: AppConfig = defaultConfig
 
-export const getConfig = async (): Promise<AppConfig> => {
-  const now = new Date()
-  const diffSeconds = (now.getTime() - configLastRead.getTime()) / 1000
-
-  if (diffSeconds >= 60) {
-    try {
-      config = JSON.parse(
-        (await fs.readFile(configPath())).toString()
-      ) as AppConfig
-      configLastRead = now
-    } catch (err) {
-      if (env.APP_CONFIG_PATH) console.error('Error reading config:', err)
-    }
-  }
-
-  return config
+try {
+  appConfig = JSON.parse(
+    (await fs.readFile(configPath())).toString()
+  ) as AppConfig
+} catch (err) {
+  if (env.APP_CONFIG_PATH) console.error('Error reading config:', err)
 }

@@ -55,8 +55,6 @@ declare global {
   }
 
   interface AppConfig {
-    siteMetadata: SiteMetadata
-
     artBasePath: string
     artBaseURL: string
 

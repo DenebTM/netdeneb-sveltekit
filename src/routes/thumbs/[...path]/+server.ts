@@ -3,7 +3,7 @@ import type { RequestHandler } from '@sveltejs/kit'
 import { join as pathJoin, sep as pathSep, dirname, extname } from 'node:path'
 import { promises as fs, existsSync as exists } from 'node:fs'
 import gm from 'gm'
-import { getConfig } from '~/util/appConfig'
+import { appConfig } from '~/util/appConfig'
 
 const validExtensions = [
   '.jpg',
@@ -18,12 +18,12 @@ const validExtensions = [
   '.svg',
 ]
 
-const getSourceFilename = async (path: string): Promise<string> => {
+const getSourceFilename = (path: string): string => {
   if (!validExtensions.includes(extname(path).toLowerCase())) {
     throw error(400, 'Not an image file')
   }
 
-  const { filesBasePath } = await getConfig()
+  const { filesBasePath } = appConfig
 
   const imgFileName = pathJoin(filesBasePath, path)
   // console.log(imgFileName)
@@ -34,11 +34,11 @@ const getSourceFilename = async (path: string): Promise<string> => {
   return imgFileName
 }
 
-const getThumbName = async (
+const getThumbName = (
   sourceFilename: string,
   path: string
-): Promise<{ thumbFilename: string; thumbURL: string }> => {
-  const { thumbsBasePath, thumbsBaseURL } = await getConfig()
+): { thumbFilename: string; thumbURL: string } => {
+  const { thumbsBasePath, thumbsBaseURL } = appConfig
 
   const thumbFilename = `${pathJoin(thumbsBasePath, path)}${
     extname(sourceFilename) !== '.gif' ? '.webp' : ''
@@ -84,9 +84,9 @@ export const GET: RequestHandler = async ({ params: { path } }) => {
     throw error(400, 'Missing file name')
   }
 
-  const sourceFilename = await getSourceFilename(path)
+  const sourceFilename = getSourceFilename(path)
 
-  const { thumbFilename, thumbURL } = await getThumbName(sourceFilename, path)
+  const { thumbFilename, thumbURL } = getThumbName(sourceFilename, path)
   if (!exists(dirname(thumbFilename))) {
     await fs.mkdir(dirname(thumbFilename), { recursive: true })
   }
