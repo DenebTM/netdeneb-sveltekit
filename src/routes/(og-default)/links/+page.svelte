@@ -138,6 +138,10 @@
             <a href="https://fursona.gmem.ca/">Fursona Lookup</a>
             — try <code>netdeneb.com</code> :3
           </li>
+          <li>
+            <a href="https://falstad.com/circuit/">CircuitJS</a>
+            — electronic circuit simulator
+          </li>
         </ul>
       </section>
 
