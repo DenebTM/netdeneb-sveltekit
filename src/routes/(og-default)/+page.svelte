@@ -1,20 +1,15 @@
 <script lang="ts">
   import Socials from '~/components/Socials.svelte'
   import WikiLink from '~/components/WikiLink.svelte'
-  import type { PageServerData } from './$types'
   import splashes_dot_txt from './splashes.json'
-  import { socials } from './info.json'
+  import { socials, birthday } from './info.json'
 
   import { page } from '$app/state'
   const {
     data: { siteMetadata },
   } = page
 
-  interface Props {
-    data: PageServerData
-  }
-
-  const { data }: Props = $props()
+  const age = new Date(Date.now() - Date.parse(birthday)).getFullYear() - 1970
 
   const buttonAStyle = 'display: inline-block'
   const buttonImgStyle =
@@ -61,7 +56,7 @@
         <a style="--delay: 0.2s" href="/art?img=ref">ref sheet</a>
       </div>
       <div class="blurb-right">
-        <span style="--delay: 0.15s">age {data.age}</span>
+        <span style="--delay: 0.15s">age {age}</span>
         <span style="--delay: 0.25s">
           <img class="nb-pride" src="/img/nb.svg" alt="non-binary pride flag" />
           they/them
@@ -76,9 +71,9 @@
 
     <h1>Hi!</h1>
     <p>
-      I'm <strong title="all-lowercase, please">deneb</strong>, a {data.age}-year
-      old <WikiLink page="maned wolf" /> from Austria, currently studying computer
-      science (BSc) in Innsbruck.
+      I'm <strong title="all-lowercase, please">deneb</strong>, a {age}-year old <WikiLink
+        page="maned wolf" /> from Austria, currently studying computer science (BSc)
+      in Innsbruck.
     </p>
   </section>
 

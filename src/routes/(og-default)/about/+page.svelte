@@ -1,16 +1,12 @@
 <script lang="ts">
   import WikiLink from '~/components/WikiLink.svelte'
-  import type { PageServerData } from './$types'
   import { page } from '$app/state'
+  import { birthday } from '../info.json'
   const {
     data: { siteMetadata },
   } = page
 
-  interface Props {
-    data: PageServerData
-  }
-
-  const { data }: Props = $props()
+  const age = new Date(Date.now() - Date.parse(birthday)).getFullYear() - 1970
 </script>
 
 <svelte:head>
@@ -28,10 +24,10 @@
     <p>
       My name (at least online) is deneb. My pronouns are they/them, and I am
       somewhere on the aromantic and asexual spectrum.<br />
-      I live in Austria — Innsbruck to be precise — I'm {data.age} years old, and
-      currently in my 7th and hopefully final semester studying computer science
-      (as of 2024-10). I am just working on my bachelor's thesis at this point, and
-      looking to become a <nobr>backend/systems</nobr> engineer in the near future.
+      I live in Austria — Innsbruck to be precise — I'm {age} years old, and currently
+      in my 7th and hopefully final semester studying computer science (as of 2024-10).
+      I am just working on my bachelor's thesis at this point, and looking to become
+      a <nobr>backend/systems</nobr> engineer in the near future.
     </p>
     <h4>floof</h4>
     <p>
