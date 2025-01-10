@@ -3,6 +3,7 @@
   import type { PageServerData } from './$types'
 
   import { page } from '$app/stores'
+  import Button from './Button.svelte'
   const {
     data: { siteMetadata },
   } = $page
@@ -12,6 +13,12 @@
   }
 
   const { data }: Props = $props()
+
+  const buttonLists = [
+    { title: "Friends' websites", buttons: data.buttons.webFriends },
+    { title: 'Other cool websites', buttons: data.buttons.webMisc },
+    { title: 'Miscellaneous', buttons: data.buttons.general },
+  ]
 </script>
 
 <svelte:head>
@@ -132,17 +139,17 @@
     </div>
   </div>
 
-  <section id="friends">
-    <h2>Friends' websites!</h2>
-    <ul class="bulletless inline-list">
-      {#each data.friendlinks as { domain, button, alt }}
-        <li>
-          <a class="button-link click-depress" href={`https://${domain}`}>
-            <img src={button} {alt} />
-          </a>
-        </li>
-      {/each}
-    </ul>
+  <section id="buttons">
+    {#each buttonLists as { title, buttons }}
+      <h2>{title}</h2>
+      <ul class="bulletless inline-list">
+        {#each buttons as button}
+          <li>
+            <Button {button} />
+          </li>
+        {/each}
+      </ul>
+    {/each}
   </section>
 </div>
 
@@ -187,43 +194,11 @@
     display: inline-block;
   }
 
-  #friends ul {
+  #buttons ul {
     margin-bottom: 0;
   }
 
   a[rel='me']:hover {
     font-weight: 600;
-  }
-
-  .button-link {
-    display: block;
-    margin: 0 0 4px 4px;
-  }
-  .button-link img {
-    display: inline-block;
-    vertical-align: top;
-    image-rendering: pixelated;
-    position: relative;
-  }
-  .button-link img,
-  .button-link img::before {
-    width: 88px;
-    height: 31px;
-    text-align: center;
-    overflow: hidden;
-  }
-  .button-link img::before {
-    content: '';
-    box-sizing: border-box;
-    position: absolute;
-    top: 0;
-    left: 0;
-    border: 1px solid var(--primary);
-  }
-
-  @media not (prefers-reduced-motion) {
-    .button-link:hover {
-      animation: rotato 1s infinite linear;
-    }
   }
 </style>

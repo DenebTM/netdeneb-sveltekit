@@ -2,11 +2,27 @@ import type { PageServerLoad } from './$types'
 import fs from 'node:fs/promises'
 import { getConfig } from '~/util/appConfig'
 
+const shuffleButtons = (
+  buttons: Buttons,
+  buttonsIn: Buttons,
+  key: keyof Buttons
+): void => {
+  buttons[key] = []
+  while (buttonsIn[key].length > 0) {
+    const index = Math.floor(Math.random() * buttonsIn[key].length)
+    buttons[key].unshift(...buttonsIn[key].splice(index, 1))
+  }
+}
+
 export const load = (async () => {
-  const { infoJsonPath, friendlinksPath } = await getConfig()
+  const { infoJsonPath, buttonsPath } = await getConfig()
 
   let socials: SociaList = []
-  let friendlinks: FriendLink[] = []
+  const buttons: Buttons = {
+    general: [],
+    webFriends: [],
+    webMisc: [],
+  }
 
   try {
     ;({ socials } = JSON.parse(
@@ -22,24 +38,19 @@ export const load = (async () => {
   }
 
   try {
-    const friendlinksIn = JSON.parse(
-      (await fs.readFile(friendlinksPath)).toString()
-    ) as typeof friendlinks
+    const buttonsIn = JSON.parse(
+      (await fs.readFile(buttonsPath)).toString()
+    ) as typeof buttons
 
     // shuffle the buttons
-    friendlinks = []
-    while (friendlinksIn.length > 0) {
-      const index = Math.floor(Math.random() * friendlinksIn.length)
-      friendlinks.unshift(...friendlinksIn.splice(index, 1))
+    for (const key in buttons) {
+      if (Object.hasOwn(buttons, key)) {
+        shuffleButtons(buttons, buttonsIn, key as keyof Buttons)
+      }
     }
-
-    friendlinks = friendlinks.map(({ domain, button, alt }) => {
-      button = button !== null ? `/img/8831/${button}` : null
-      return { domain, button, alt }
-    })
   } catch (err) {
     console.error(err)
   }
 
-  return { socials, friendlinks }
+  return { socials, buttons }
 }) satisfies PageServerLoad

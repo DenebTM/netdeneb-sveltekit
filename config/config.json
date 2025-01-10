@@ -14,5 +14,5 @@
   "thumbsBaseURL": "/thumbs",
   "infoJsonPath": "./config/info.json",
   "navPath": "./config/nav.json",
-  "friendlinksPath": "./config/friendlinks.json"
+  "buttonsPath": "./config/buttons.json"
 }

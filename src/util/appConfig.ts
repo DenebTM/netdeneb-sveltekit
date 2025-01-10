@@ -27,7 +27,7 @@ export const defaultConfig: AppConfig = {
 
   infoJsonPath: './config/info.json',
   navPath: './config/nav.json',
-  friendlinksPath: './config/friendlinks.json',
+  buttonsPath: './config/friendlinks.json',
 }
 
 let config: AppConfig = defaultConfig
