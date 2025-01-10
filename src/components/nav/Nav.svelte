@@ -40,7 +40,7 @@
     {#each items as item, i}
       {#if 'href' in item}
         <NavLink
-          isCurrent={page.url.pathname === item.title}
+          isCurrent={page.url.pathname === item.href}
           target={item}
           index={i}
           onClick={closeNav} />
