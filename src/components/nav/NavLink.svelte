@@ -1,15 +1,13 @@
 <script lang="ts">
   interface Props {
-    name: string
-    target: NavItem
+    target: NavTarget
     onClick: (e?: MouseEvent) => void
     index: number
     isCurrent: boolean
   }
 
-  const { name, target, onClick, index, isCurrent }: Props = $props()
-  const { href, external } =
-    typeof target === 'string' ? { href: target, external: false } : target
+  const { target, onClick, index, isCurrent }: Props = $props()
+  const { title, href, external } = target
 </script>
 
 <li
@@ -17,5 +15,5 @@
   class="click-depress"
   style={`animation-delay: ${(index + 1) * 75}ms`}>
   <!-- eslint-disable-next-line @typescript-eslint/no-deprecated -- erroneous warning -->
-  <a {href} onclick={onClick} data-sveltekit-reload={external}>{name}</a>
+  <a {href} onclick={onClick} data-sveltekit-reload={external}>{title}</a>
 </li>

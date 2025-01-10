@@ -1,22 +1,47 @@
-{
-  "Home": "/",
-  "About": "/about",
-  "Links": "/links",
-  "Art gallery": "/art",
-  "AAAAAA": "/leggy",
-  "Files": "//files.leggi.es",
-  "Other": {
-    "Best website (archived)": {
-      "href": "//files.leggi.es/yiff.toys/",
-      "external": true
-    },
-    "Nextcloud": {
-      "href": "https://cloud.netdeneb.com/",
-      "external": true
-    },
-    "Screemail": {
-      "href": "https://mail.screee.ee/",
-      "external": true
-    }
+[
+  {
+    "title": "Home",
+    "href": "/"
+  },
+  {
+    "title": "About",
+    "href": "/about"
+  },
+  {
+    "title": "Links",
+    "href": "/links"
+  },
+  {
+    "title": "Art gallery",
+    "href": "/art"
+  },
+  {
+    "title": "AAAAAA",
+    "href": "/leggy"
+  },
+  {
+    "title": "Files",
+    "href": "//files.leggi.es",
+    "external": true
+  },
+  {
+    "title": "Other",
+    "items": [
+      {
+        "title": "Best website (archived)",
+        "href": "//files.leggi.es/yiff.toys/",
+        "external": true
+      },
+      {
+        "title": "Nextcloud",
+        "href": "https://cloud.netdeneb.com/",
+        "external": true
+      },
+      {
+        "title": "Screemail",
+        "href": "https://mail.screee.ee/",
+        "external": true
+      }
+    ]
   }
-}
+]

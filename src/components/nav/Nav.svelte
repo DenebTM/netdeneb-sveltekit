@@ -37,18 +37,18 @@
     aria-expanded={isopen || innerWidth >= 744}
     bind:checked={isopen} />
   <ul id="nav-items">
-    {#each Object.entries(items) as [name, target], i}
-      {#if typeof target === 'string' || 'external' in target}
+    {#each items as item, i}
+      {#if 'href' in item}
         <NavLink
-          isCurrent={page.url.pathname === target}
-          {name}
-          {target}
+          isCurrent={page.url.pathname === item.title}
+          target={item}
           index={i}
           onClick={closeNav} />
       {:else}
+        {@const { title, items } = item}
         <NavDropdown
-          {name}
-          entries={target}
+          {title}
+          {items}
           delay={(i + 1) * 75}
           onNavigate={closeNav} />
       {/if}

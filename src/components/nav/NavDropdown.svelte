@@ -4,13 +4,13 @@
   import NavLink from './NavLink.svelte'
 
   interface Props {
-    name: string
-    entries?: Navigation
+    title: string
+    items: NavTarget[]
     delay?: number
     onNavigate: (e?: MouseEvent) => void
   }
 
-  const { name, entries = {}, delay = 0, onNavigate }: Props = $props()
+  const { title, items: targets, delay = 0, onNavigate }: Props = $props()
 
   let isopen = $state(false) // for visuals and accessibility
   const closeDropdown = (): boolean => (isopen = false)
@@ -37,7 +37,7 @@
     role="button"
     tabindex="0"
     onkeypress={e => e.key === 'Enter' && (isopen = !isopen)}>
-    <span>{name}</span>
+    <span>{title}</span>
     <i
       class="bx bx-caret-down dd-icon"
       style="display: inline-block !important; font-size: 0.9rem"></i>
@@ -45,10 +45,9 @@
 
   <div>
     <ul id={`dropdown-items-${randId}`}>
-      {#each Object.entries(entries) as [name, target], i}
+      {#each targets as target, i}
         <NavLink
-          isCurrent={page.url.pathname === target}
-          {name}
+          isCurrent={page.url.pathname === target.href}
           {target}
           index={i}
           onClick={(e?: MouseEvent) => {

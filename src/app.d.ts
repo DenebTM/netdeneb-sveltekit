@@ -1,10 +1,18 @@
 import 'svelte'
 
 declare global {
-  type NavItem = string | { href: string; external: boolean }
-  // TODO: fix this type
-  // type Navigation = Record<string, NavItem | Record<string, NavItem>>
-  type Navigation = Record<string, NavItem>
+  interface NavItemBase {
+    title: string
+  }
+  interface NavTarget extends NavItemBase {
+    href: string
+    external?: boolean
+  }
+  interface NavDropdown extends NavItemBase {
+    items: NavTarget[]
+  }
+  type NavItem = NavTarget | NavDropdown
+  type Navigation = NavItem[]
 
   interface ArtItem {
     id: string
