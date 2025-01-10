@@ -6,6 +6,7 @@
   import { socials } from '../info.json'
 
   import { page } from '$app/state'
+  import { onMount } from 'svelte'
   const {
     data: { siteMetadata },
   } = page
@@ -21,16 +22,17 @@
     return arrayOut
   }
 
-  let buttonLists: { title: string; buttons: ButtonData[] }[] = [
+  let buttonLists: { title: string; buttons: ButtonData[] }[] = $state([
     { title: "Friends' websites", buttons: buttons.webFriends },
     { title: 'Other cool websites', buttons: buttons.webMisc },
     { title: 'Miscellaneous', buttons: buttons.general },
-  ]
+  ])
 
-  // this is kind of bad for hydration but anyway
-  buttonLists.forEach(a => {
-    a.buttons = shuffleButtons(a.buttons)
-  })
+  onMount(() =>
+    buttonLists.forEach(a => {
+      a.buttons = shuffleButtons(a.buttons)
+    })
+  )
 </script>
 
 <svelte:head>
