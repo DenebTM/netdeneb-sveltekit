@@ -1,13 +1,15 @@
 <script lang="ts">
-  import NavDropdown from '~/components/NavDropdown.svelte'
+  import NavDropdown from './NavDropdown.svelte'
   import { clickOutside } from '~/util/clickOutside'
   import { page } from '$app/stores'
   import NavLink from './NavLink.svelte'
   import HamburgerButton from './HamburgerButton.svelte'
 
-  const {
-    data: { navItems },
-  } = $page
+  interface Props {
+    items: Navigation
+  }
+
+  const { items }: Props = $props()
 
   let isopen = $state(false) // for visuals and accessibility
   const closeNav = (): boolean => (isopen = false)
@@ -35,7 +37,7 @@
     aria-expanded={isopen || innerWidth >= 744}
     bind:checked={isopen} />
   <ul id="nav-items">
-    {#each Object.entries(navItems) as [name, target], i}
+    {#each Object.entries(items) as [name, target], i}
       {#if typeof target === 'string' || 'external' in target}
         <NavLink
           isCurrent={$page.url.pathname === target}

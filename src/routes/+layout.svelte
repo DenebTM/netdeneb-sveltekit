@@ -1,16 +1,19 @@
 <script lang="ts">
   import '~/util/styles'
   import { onMount, type Snippet } from 'svelte'
-  import Nav from '~/components/Nav.svelte'
+  import Nav from '~/components/nav/Nav.svelte'
   import { enableScroll } from '~/util/tools'
   import { page } from '$app/stores'
   import { afterNavigate, beforeNavigate } from '$app/navigation'
+
+  import navItems from './navItems.json'
 
   interface Props {
     children?: Snippet
   }
 
   const { children }: Props = $props()
+
   const {
     data: { siteMetadata },
   } = $page
@@ -51,7 +54,7 @@
   style="color: white !important">{siteMetadata.name}</a>
 <div class="content-box">
   <div class="bg-blur"></div>
-  <Nav />
+  <Nav items={navItems} />
   <main animate={animateTransition}>
     {@render children?.()}
   </main>

@@ -1,23 +1,19 @@
 <script lang="ts">
   import WikiLink from '~/components/WikiLink.svelte'
-  import type { PageServerData } from './$types'
+  import Button from './Button.svelte'
+
+  import buttons from './buttons.json'
+  import { socials } from '../info.json'
 
   import { page } from '$app/stores'
-  import Button from './Button.svelte'
   const {
     data: { siteMetadata },
   } = $page
 
-  interface Props {
-    data: PageServerData
-  }
-
-  const { data }: Props = $props()
-
   const buttonLists = [
-    { title: "Friends' websites", buttons: data.buttons.webFriends },
-    { title: 'Other cool websites', buttons: data.buttons.webMisc },
-    { title: 'Miscellaneous', buttons: data.buttons.general },
+    { title: "Friends' websites", buttons: buttons.webFriends },
+    { title: 'Other cool websites', buttons: buttons.webMisc },
+    { title: 'Miscellaneous', buttons: buttons.general },
   ]
 </script>
 
@@ -49,7 +45,7 @@
       <section id="socials">
         <p>You can also find me on these platforms:</p>
         <ul class="bulletless spaced">
-          {#each data.socials as { platform, icon, href, text }}
+          {#each socials as { platform, icon, href, text }}
             <li>
               <a rel="me" {href}>
                 <i class={`inline-icon bx bx-sm ${icon}`}></i>&nbsp;<span

@@ -24,10 +24,6 @@ export const defaultConfig: AppConfig = {
   filesBasePath: './files',
   thumbsBasePath: './thumbs',
   thumbsBaseURL: '/thumbs',
-
-  infoJsonPath: './config/info.json',
-  navPath: './config/nav.json',
-  buttonsPath: './config/friendlinks.json',
 }
 
 let config: AppConfig = defaultConfig

@@ -2,6 +2,8 @@ import 'svelte'
 
 declare global {
   type NavItem = string | { href: string; external: boolean }
+  // TODO: fix this type
+  // type Navigation = Record<string, NavItem | Record<string, NavItem>>
   type Navigation = Record<string, NavItem>
 
   interface ArtItem {
@@ -28,10 +30,6 @@ declare global {
   type SociaList = SocialItem[]
 
   interface InfoJson {
-    titleImage: {
-      path: string
-      description: string
-    }
     socials: SociaList
   }
 
@@ -65,10 +63,6 @@ declare global {
     filesBasePath: string
     thumbsBasePath: string
     thumbsBaseURL: string
-
-    infoJsonPath: string
-    navPath: string
-    buttonsPath: string
   }
 
   // See https://kit.svelte.dev/docs/types#app
@@ -77,7 +71,6 @@ declare global {
   declare namespace App {
     interface PageData {
       siteMetadata: SiteMetadata
-      navItems: Navigation
     }
   }
 

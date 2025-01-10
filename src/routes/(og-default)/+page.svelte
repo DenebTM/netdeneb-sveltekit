@@ -2,6 +2,8 @@
   import Socials from '~/components/Socials.svelte'
   import WikiLink from '~/components/WikiLink.svelte'
   import type { PageServerData } from './$types'
+  import splashes_dot_txt from './splashes.json'
+  import { socials } from './info.json'
 
   import { page } from '$app/stores'
   const {
@@ -31,17 +33,6 @@
         alt="Amber CRT style button for ${siteMetadata.name}" />
     </a>
   `
-
-  const splashes_dot_txt = [
-    'awawawawa',
-    'kjslflksdjf',
-    '*bites u*',
-    'arf !!',
-    'aaaaaawrrufff',
-    'roark',
-    'ROARK',
-    'beep?',
-  ]
 </script>
 
 <svelte:head>
@@ -120,7 +111,7 @@
 
   <hr />
   <section id="socials">
-    <Socials links={data.socials} />
+    <Socials links={socials} />
   </section>
 </div>
 
