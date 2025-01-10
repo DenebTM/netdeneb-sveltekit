@@ -27,6 +27,7 @@
     { title: 'Miscellaneous', buttons: buttons.general },
   ]
 
+  // this is kind of bad for hydration but anyway
   buttonLists.forEach(a => {
     a.buttons = shuffleButtons(a.buttons)
   })
