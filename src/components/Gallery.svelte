@@ -146,14 +146,16 @@
         </a>
       </div>
       <div class="modal-row details">
-        <span>{modalImg.description}</span>
-        <a
-          aria-label="open artist's page"
-          class="btn"
-          role="button"
-          href={modalImg.artistLink}>
-          <i class="bx bx-sm bx-link-external fixed-color"></i>
-        </a>
+        <div class="description-wrapper">
+          <span>{modalImg.description}</span>
+          <a
+            aria-label="open artist's page"
+            class="btn"
+            role="button"
+            href={modalImg.artistLink}>
+            <i class="bx bx-sm bx-link-external fixed-color"></i>
+          </a>
+        </div>
       </div>
     </div>
   {/if}
@@ -241,8 +243,27 @@
     line-height: 80px;
   }
 
+  .description-wrapper {
+    width: 100vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10px;
+  }
+  .description-wrapper > :first-child {
+    flex-shrink: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .description-wrapper > :last-child {
+    flex-shrink: 0;
+  }
+
   a {
-    text-decoration: none;
+    text-decoration: none !important;
   }
 
   .btn {
