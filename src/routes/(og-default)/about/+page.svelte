@@ -40,9 +40,8 @@
       <strong title="all-lowercase, please">deneb</strong> is my fursona, and on
       occasion I throw some money the way of artists to get them drawn in their
       style. Have a look at the
-      <strong><a href="/art">Art gallery</a></strong>, because displaying the
-      commissions I get is honestly my website's primary purpose at this point
-      :3
+      <a class="bold" href="/art">Art gallery</a> — displaying the commissions I
+      get is honestly my website's primary purpose at this point :3
     </p>
   </section>
 
@@ -100,10 +99,14 @@
 
     <p>Other things I find fascinating include, but are not limited to:</p>
     <ul>
-      <li><strong>digital electronics</strong> — because software is a pain</li>
-      <li><strong>retrocomputing</strong> — limitations are fun</li>
-      <li><strong>trains</strong> — being on them, talking about them</li>
-      <li><strong>languages</strong> — mostly the germanic ones</li>
+      <li>
+        <span class="bold">digital electronics</span> — because software is a pain
+      </li>
+      <li><span class="bold">retrocomputing</span> — limitations are fun</li>
+      <li>
+        <span class="bold">trains</span> — being on them, talking about them
+      </li>
+      <li><span class="bold">languages</span> — mostly the germanic ones</li>
     </ul>
 
     <code class="bold">TODO #1:</code> One of these days I'll get around to
