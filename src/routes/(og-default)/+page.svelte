@@ -50,10 +50,13 @@
         title={siteMetadata.titleImage.description} />
 
       <div class="blurb-left">
-        <strong style="--delay: 0.0s" title="all-lowercase, please"
-          >deneb</strong>
+        <span style="--delay: 0.0s">
+          <strong title="all-lowercase, please">deneb</strong>
+        </span>
         <span style="--delay: 0.1s">maned wolf</span>
-        <a style="--delay: 0.2s" href="/art?img=ref">ref sheet</a>
+        <span style="--delay: 0.2s">
+          <a href="/art?img=ref">ref sheet</a>
+        </span>
       </div>
       <div class="blurb-right">
         <span style="--delay: 0.15s">age {age}</span>
