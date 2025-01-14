@@ -90,32 +90,36 @@
 </svelte:head>
 
 <div class="gallery" bind:clientWidth={galleryWidth}>
+  <!-- sorting of a/figure is inverted here because i want the whole figcaption
+  to be clickable -->
   <a
     href={`?img=${titleImage.id}`}
-    class="gallery-title gallery-img"
-    class:gallery-hover={hover}
-    tabindex={modalImg ? -1 : undefined}
-    style="display: block"
-    style:width={columnCount > 2 ? '70%' : '100%'}
     data-sveltekit-replacestate
-    data-sveltekit-noscroll>
-    <img src={titleImage.fileName} alt={titleImage.description} />
-    <span style="display: block; width: 100%; line-height: 1.5"
-      >{titleImage.description}</span>
+    data-sveltekit-noscroll
+    tabindex={modalImg ? -1 : undefined}>
+    <figure
+      class="gallery-img gallery-title"
+      class:gallery-hover={hover}
+      style:width={columnCount > 2 ? '70%' : '100%'}>
+      <img src={titleImage.fileName} alt={titleImage.description} />
+      <figcaption style="line-height: 1.5">
+        {titleImage.description}
+      </figcaption>
+    </figure>
   </a>
   <div class="gallery-columns" style={gridStyle}>
     {#each columns as col}
-      <div class="column">
+      <div class="gallery-column">
         {#each col as img, i}
-          <a
-            href={`?img=${img.id}`}
-            class="gallery-img"
-            class:gallery-hover={hover}
-            tabindex={modalImg ? -1 : undefined}
-            data-sveltekit-replacestate
-            data-sveltekit-noscroll>
-            <img src={img.fileName} alt={img.description} />
-          </a>
+          <figure class="gallery-img" class:gallery-hover={hover}>
+            <a
+              href={`?img=${img.id}`}
+              data-sveltekit-replacestate
+              data-sveltekit-noscroll
+              tabindex={modalImg ? -1 : undefined}>
+              <img src={img.fileName} alt={img.description} />
+            </a>
+          </figure>
         {/each}
       </div>
     {/each}
@@ -160,21 +164,14 @@
 </div>
 
 <style>
-  .gallery-title {
-    margin: 0 auto 15px auto;
-  }
   .gallery-columns {
     display: grid;
   }
-  .column {
+  .gallery-column {
     display: flex;
     flex-direction: column;
   }
-  .gallery-title img,
-  .column img {
-    width: 100%;
-  }
-  .column .gallery-img:not(:last-child) img {
+  .gallery-column .gallery-img:not(:last-child) img {
     margin-bottom: var(--gap);
   }
   .gallery-img,
@@ -184,9 +181,14 @@
   .gallery-img {
     display: block;
     line-height: 0;
+    margin: 0;
+  }
+  .gallery-img.gallery-title {
+    margin: 0 auto 15px auto;
   }
   .gallery-img img {
     border-radius: var(--border-radius);
+    width: 100%;
   }
   .gallery-hover {
     transition: 0.2s;
