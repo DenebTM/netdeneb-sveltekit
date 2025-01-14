@@ -197,12 +197,17 @@
   }
   .gallery-hover {
     transition: 0.2s;
-    filter: brightness(90%);
     position: relative;
+    filter: none;
   }
+
+  .gallery:has(.gallery-hover:hover) .gallery-hover:not(:hover) {
+    filter: brightness(75%);
+  }
+
   .gallery-hover:hover,
   .gallery-hover:focus-visible {
-    filter: none;
+    filter: drop-shadow(0 0 5px var(--primary));
     transform: scale(1.03);
     z-index: 1;
     background-color: unset;
