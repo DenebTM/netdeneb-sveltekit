@@ -106,10 +106,6 @@
             — cute little webcomic with foxes
           </li>
           <li>
-            <a href="https://screee.ee/">screee.ee</a>
-            — fencs :&gt;
-          </li>
-          <li>
             <a href="https://bigrat.monster/">bigrat.monster</a>
             — yeah
           </li>
@@ -143,6 +139,10 @@
           <li>
             <a href="https://falstad.com/circuit/">CircuitJS</a>
             — electronic circuit simulator
+          </li>
+          <li>
+            <a href="https://genders.wtf/">genders.wtf</a>,
+            <a href="https://badkeming.com/">badkeming.com</a>
           </li>
         </ul>
       </section>
