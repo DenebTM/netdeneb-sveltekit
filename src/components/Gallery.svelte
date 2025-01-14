@@ -62,6 +62,11 @@
   const modalStyle = $derived(`grid-template-rows: ${innerHeight - 80}px 1fr;`)
 
   const columnCount = $derived(Math.floor(galleryWidth / maxColWidth))
+
+  // initial column count for non-js rendering
+  updateGallery(3)
+
+  // dynamically update column count
   $effect(() => {
     updateGallery(columnCount)
   })
