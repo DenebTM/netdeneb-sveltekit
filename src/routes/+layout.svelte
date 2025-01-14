@@ -19,20 +19,16 @@
   } = page
 
   let animateTransition: boolean | undefined = $state(true)
-  // eslint-disable-next-line complexity -- wdym "too complex"????
   beforeNavigate(nav => {
     /* animateTransition must first be set to `undefined`, then `true` in order
      * for the flyin animation to replay */
 
-    // only animate when not leaving the site
-    if (nav.to?.url.host === nav.from?.url.host) {
-      // ... and if the new page isn't the one the user is already on
-      if (nav.to?.url.pathname !== nav.from?.url.pathname) {
-        animateTransition = undefined
-      }
+    // only animate if the new page isn't the one the user is already on
+    if (nav.to?.route.id !== nav.from?.route.id) {
+      animateTransition = undefined
     }
   })
-  afterNavigate(() => {
+  afterNavigate(nav => {
     animateTransition = true
     enableScroll()
   })
