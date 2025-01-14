@@ -15,5 +15,12 @@
   class="click-depress"
   style={`animation-delay: ${(index + 1) * 75}ms`}>
   <!-- eslint-disable-next-line @typescript-eslint/no-deprecated -- erroneous warning -->
-  <a {href} onclick={onClick} data-sveltekit-reload={external}>{title}</a>
+  <a
+    {href}
+    onclick={onClick}
+    rel={external ? 'external' : undefined}
+    data-sveltekit-preload-code="hover"
+    data-sveltekit-preload-data="hover">
+    {title}
+  </a>
 </li>
