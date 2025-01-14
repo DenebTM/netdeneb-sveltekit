@@ -95,17 +95,15 @@
 </svelte:head>
 
 <div class="gallery" bind:clientWidth={galleryWidth}>
-  <!-- sorting of a/figure is inverted here because i want the whole figcaption
-  to be clickable -->
   <a
+    class="gallery-img gallery-title"
+    class:gallery-hover={hover}
+    style:width={columnCount > 2 ? '70%' : '100%'}
     href={`?img=${titleImage.id}`}
     data-sveltekit-replacestate
     data-sveltekit-noscroll
     tabindex={modalImg ? -1 : undefined}>
-    <figure
-      class="gallery-img gallery-title"
-      class:gallery-hover={hover}
-      style:width={columnCount > 2 ? '70%' : '100%'}>
+    <figure>
       <img src={titleImage.fileName} alt={titleImage.description} />
       <figcaption style="line-height: 1.5">
         {titleImage.description}
@@ -116,15 +114,17 @@
     {#each columns as col}
       <div class="gallery-column">
         {#each col as img, i}
-          <figure class="gallery-img" class:gallery-hover={hover}>
-            <a
-              href={`?img=${img.id}`}
-              data-sveltekit-replacestate
-              data-sveltekit-noscroll
-              tabindex={modalImg ? -1 : undefined}>
+          <a
+            href={`?img=${img.id}`}
+            class="gallery-img"
+            class:gallery-hover={hover}
+            data-sveltekit-replacestate
+            data-sveltekit-noscroll
+            tabindex={modalImg ? -1 : undefined}>
+            <figure>
               <img src={img.fileName} alt={img.description} />
-            </a>
-          </figure>
+            </figure>
+          </a>
         {/each}
       </div>
     {/each}
@@ -186,10 +186,12 @@
   .gallery-img {
     display: block;
     line-height: 0;
-    margin: 0;
   }
   .gallery-img.gallery-title {
     margin: 0 auto 15px auto;
+  }
+  .gallery-img figure {
+    margin: 0;
   }
   .gallery-img img {
     border-radius: var(--border-radius);
@@ -201,7 +203,10 @@
     filter: none;
   }
 
-  .gallery:has(.gallery-hover:hover) .gallery-hover:not(:hover) {
+  .gallery:has(.gallery-hover:hover)
+    .gallery-hover:not(:hover):not(:focus-visible),
+  .gallery:has(.gallery-hover:focus-visible)
+    .gallery-hover:not(:hover):not(:focus-visible) {
     filter: brightness(75%);
   }
 
