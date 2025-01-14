@@ -22,12 +22,11 @@
   <section id="who-i-am">
     <h3>Who/what I am</h3>
     <p>
-      My name (at least online) is deneb. My pronouns are they/them, and I am
-      somewhere on the aromantic and asexual spectrum.<br />
-      I live in Austria — Innsbruck to be precise — I'm {age} years old, and currently
-      in my 7th and hopefully final semester studying computer science (as of 2024-10).
-      I am just working on my bachelor's thesis at this point, and looking to become
-      a <nobr>backend/systems</nobr> engineer in the near future.
+      My name is deneb, I live in Austria — Innsbruck to be precise — I'm {age} years
+      old, and currently in my 7th and hopefully final semester studying computer
+      science (as of 2024-10). I am just working on my bachelor's thesis at this
+      point, and looking to become a <nobr>backend/systems</nobr> (DevOps I guess?)
+      engineer in the near future.
     </p>
     <h4>floof</h4>
     <p>
@@ -57,47 +56,64 @@
     <p>
       I particularly enjoy computers talking to each other, aka. networking. I
       started off on Windows and so have <em>some</em> experience with Microsoft
-      Active Directory (which I had running in the background until 2023!) and
-      associated services, though most of my knowledge does centre around modern
-      Linux and Docker. Besides this website with its handful of
-      <a href="/files">odd files </a> available for your perusal, I self-host most
-      of my stuff, including:
+      Active Directory (which I had running in the background until 2023!) and associated
+      services, though most of my knowledge does centre around modern Linux and Docker.
+      I own a few domains on which I self-host most of my stuff, including:
     </p>
     <ul>
       <li>
         <a class="bold" href="https://leggi.es/">leggi.es</a> — this website!
+        <ul>
+          <li>
+            <a class="bold" href="https://the.leggi.es">the.leggi.es</a> — manes
+            :o
+          </li>
+        </ul>
       </li>
       <li>
-        <a class="bold" href="https://netdeneb.com/">netdeneb.com</a> — this website's
-        old home; redirects here
+        <a class="bold" href="https://screee.ee">screee.ee</a> — fencs :&gt;
+        <ul>
+          <li>
+            a Matrix homeserver; <em>conduwuit</em> to be specific, but will
+            probably migrate to
+            <a href="https://or.computer.surgery/matrix/grapevine">Grapevine</a>
+            soon
+          </li>
+          <li>
+            <a class="bold" href="https://mail.screee.ee/">mail.screee.ee</a>
+            — an email server powered by
+            <a href="https://mailcow.email/">Mailcow</a>
+            <br />
+          </li>
+          <li>
+            <a class="bold" href="https://vault.screee.ee/">vault.screee.ee</a>
+            — a
+            <a href="https://github.com/dani-garcia/vaultwarden">Vaultwarden</a>
+            instance, aka. Bitwarden but entirely free
+          </li>
+        </ul>
       </li>
       <li>
-        <a class="bold" href="https://cloud.netdeneb.com/"
-          >cloud.netdeneb.com</a> — my own Nextcloud instance, since Google killed
-        off unlimited Photos storage in 2020
-      </li>
-      <li>
-        <a class="bold" href="https://screee.ee/">screee.ee</a> — fencs :&gt;
-        <br />
-        also, a Matrix homeserver! <em>conduwuit</em> to be specific, but will
-        probably migrate to
-        <a href="https://or.computer.surgery/matrix/grapevine">Grapevine</a> soon
-      </li>
-      <li>
-        <a class="bold" href="https://mail.screee.ee/">mail.screee.ee</a>
-        — an email server powered by
-        <a href="https://mailcow.email/">Mailcow</a>
-        <br />
-      </li>
-      <li>
-        <a class="bold" href="https://vault.screee.ee/">vault.screee.ee</a>
-        — a
-        <a href="https://github.com/dani-garcia/vaultwarden">Vaultwarden</a> instance,
-        aka. Bitwarden but entirely free
+        <a class="bold" href="https://netdeneb.com/">netdeneb.com</a> — this
+        website's old home; redirects here
+        <ul>
+          <li>also the top-level domain for both of my home networks</li>
+          <li>
+            <a class="bold" href="https://cloud.netdeneb.com/"
+              >cloud.netdeneb.com</a> — my own Nextcloud instance, since Google killed
+            off "unlimited" Photos storage in 2020
+          </li>
+          <li>
+            <a class="bold" href="https://sync.netdeneb.com/"
+              >sync.netdeneb.com</a>
+            — <a href="https://syncthing.net">Syncthing</a> +
+            <a href="https://filebrowser.org/">File Browser</a>, because
+            Nextcloud Kinda Sucks&trade;
+          </li>
+        </ul>
       </li>
     </ul>
-
-    <p>Other things I find fascinating include, but are not limited to:</p>
+    <p>Other things I find fascinating include:</p>
     <ul>
       <li>
         <span class="bold">digital electronics</span> — because software is a pain
@@ -129,7 +145,7 @@
       handles the Files page, and another instance of it acts as an HTTP2/3 + SSL
       reverse proxy for this website as well as my other ones.
     </p>
-    <p>
+    <p style="margin-bottom: 0">
       The full source code is publicly available on Github,
       <a href="https://github.com/DenebTM/netdeneb">here!</a>
     </p>
