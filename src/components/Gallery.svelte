@@ -91,14 +91,13 @@
 
 <div class="gallery" bind:clientWidth={galleryWidth}>
   <a
+    href={`?img=${titleImage.id}`}
     class="gallery-title gallery-img"
     class:gallery-hover={hover}
     tabindex={modalImg ? -1 : undefined}
     style="display: block"
     style:width={columnCount > 2 ? '70%' : '100%'}
     data-sveltekit-replacestate
-    href={`?img=${titleImage.id}`}
-    role="button"
     data-sveltekit-noscroll>
     <img src={titleImage.fileName} alt={titleImage.description} />
     <span style="display: block; width: 100%; line-height: 1.5"
@@ -109,12 +108,11 @@
       <div class="column">
         {#each col as img, i}
           <a
+            href={`?img=${img.id}`}
             class="gallery-img"
             class:gallery-hover={hover}
             tabindex={modalImg ? -1 : undefined}
             data-sveltekit-replacestate
-            href={`?img=${img.id}`}
-            role="button"
             data-sveltekit-noscroll>
             <img src={img.fileName} alt={img.description} />
           </a>
