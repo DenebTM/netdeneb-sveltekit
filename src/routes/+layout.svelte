@@ -41,6 +41,8 @@
   <!-- TODO: un-hardcode this -->
   <meta name="theme-color" content="#ee3a7c" />
   <meta property="og:site_name" content={siteMetadata.name} />
+
+  <meta name="darkreader-lock">
 </svelte:head>
 
 <a
