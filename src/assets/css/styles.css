@@ -7,6 +7,9 @@ body {
   background-position-x: var(--page-background-posx);
   background-position-y: var(--page-background-posy);
   background-size: var(--page-background-size);
+
+  margin: 0;
+  padding: 0 8px 8px 8px;
 }
 
 a {
