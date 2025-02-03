@@ -16,10 +16,6 @@
     "href": "/art"
   },
   {
-    "title": "AAAAAA",
-    "href": "/leggy"
-  },
-  {
     "title": "Files",
     "href": "//files.leggi.es",
     "external": true
@@ -28,18 +24,23 @@
     "title": "Other",
     "items": [
       {
-        "title": "Best website (archived)",
-        "href": "//files.leggi.es/yiff.toys/",
+        "title": "screee.ee",
+        "href": "//screee.ee/",
+        "external": true
+      },
+      {
+        "title": "the.leggi.es",
+        "href": "//the.leggi.es/",
         "external": true
       },
       {
         "title": "Nextcloud",
-        "href": "https://cloud.netdeneb.com/",
+        "href": "//cloud.netdeneb.com/",
         "external": true
       },
       {
         "title": "Screemail",
-        "href": "https://mail.screee.ee/",
+        "href": "//mail.screee.ee/",
         "external": true
       }
     ]
