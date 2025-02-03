@@ -133,7 +133,7 @@
   {#if modalImg}
     <a
       aria-label="close full image view"
-      class="btn modal-close fixed-color"
+      class="btn dark modal-close fixed-color"
       data-sveltekit-replacestate
       href={artBaseURL}
       transition:fade={{ duration: 100 }}>
@@ -157,7 +157,7 @@
           <span>{modalImg.description}</span>
           <a
             aria-label="open artist's page"
-            class="btn"
+            class="btn dark"
             role="button"
             href={modalImg.artistLink}>
             <i class="bx bx-sm bx-link-external fixed-color"></i>

@@ -5,7 +5,7 @@
   --shadow-color-dark: rgba(0, 0, 0, 0.3);
   --shadow-color-light: rgba(0, 0, 0, 0.1);
   --background-color-dark: rgba(0, 0, 0, 0.75);
-  --background-color-light: rgba(255, 232, 240, 0.9);
+  --background-color-light: rgba(255, 245, 249, 0.9);
   --text-color-dark: white;
   --text-color-light: black;
   --text-color-dark-inverted: black;
@@ -32,9 +32,9 @@
   --page-background-blur: url('/img/bg-blur.webp'); /* css gaussian blur is slow on mobile */
 
   --background-hover-dark: rgba(255, 255, 255, 0.4);
-  --background-hover-light: rgba(255, 255, 255, 0.9);
+  --background-hover-light: rgba(255, 119, 169, 0.3);
   --background-active-dark: rgba(255, 255, 255, 0.3);
-  --background-active-light: rgba(255, 255, 255, 0.8);
+  --background-active-light: rgba(255, 119, 169, 0.6);
 
   /* --border-radius: 5px; */
   --border-radius: 2.5px;

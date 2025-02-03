@@ -82,25 +82,27 @@ button,
   transform: translateY(2px) !important;
 }
 
-.box,
 button,
 .btn {
   border: 1px solid var(--text-color);
   border-radius: var(--border-radius);
   box-shadow: 0 0 3px 3px var(--shadow-color);
 }
-.box:hover,
 button:hover,
 .btn:hover {
   background-color: var(--background-hover);
 }
-.box:active,
 button:active,
 .btn:active {
   background-color: var(--background-active);
 }
-.box a {
-  text-decoration: none;
+button.dark:hover,
+.btn.dark:hover {
+  background-color: var(--background-hover-dark);
+}
+button.dark:active,
+.btn.dark:active {
+  background-color: var(--background-active-dark);
 }
 
 :focus-visible {
