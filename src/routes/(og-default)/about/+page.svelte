@@ -24,11 +24,11 @@
     <p>
       My name is deneb, I live in Austria — Innsbruck to be precise — I'm {age} years
       old, and currently in my 7th and hopefully final semester studying computer
-      science (as of 2024-10). I am just working on my bachelor's thesis at this
+      science (as of 2025-02). I am just working on my bachelor's thesis at this
       point, and looking to become a <nobr>backend/systems</nobr> (DevOps I guess?)
       engineer in the near future.
     </p>
-    <h4>floof</h4>
+    <!-- <h4>floof</h4>
     <p>
       In case you're unaware, I'm a furry. This means, tl;dr, that I have a deep
       appreciation for visual art depicting animals (<WikiLink
@@ -41,7 +41,7 @@
       style. Have a look at the
       <a class="bold" href="/art">Art gallery</a> — displaying the commissions I
       get is honestly my website's primary purpose at this point :3
-    </p>
+    </p> -->
   </section>
 
   <section id="what-i-do">
