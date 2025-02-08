@@ -74,10 +74,9 @@
         <a class="bold" href="https://screee.ee">screee.ee</a> — fencs :&gt;
         <ul>
           <li>
-            a Matrix homeserver; <em>conduwuit</em> to be specific, but will
-            probably migrate to
-            <a href="https://or.computer.surgery/matrix/grapevine">Grapevine</a>
-            soon
+            a Matrix homeserver; <a
+              href="https://gitlab.computer.surgery/matrix/grapevine"
+              >Grapevine</a> to be specific
           </li>
           <li>
             <a class="bold" href="https://mail.screee.ee/">mail.screee.ee</a>
