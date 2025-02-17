@@ -66,20 +66,16 @@ const createThumb = async (
 
     default:
       console.log(`generating thumbnail for ${sourceFilename}`)
-      try {
-        gm(sourceFilename)
-          .resize(512, 512, '^')
-          .gravity('Center')
-          .extent(512, 512)
-          .write(thumbFilename, async error => {
-            if (error != null) {
-              throw error
-            }
-          })
-      } catch (error) {
-        console.error(error)
-        return await Promise.reject(error)
-      }
+      gm(sourceFilename)
+        .resize(512, 512, '^')
+        .gravity('Center')
+        .extent(512, 512)
+        .write(thumbFilename, async error => {
+          if (error != null) {
+            console.error(error)
+            return await Promise.reject(error)
+          }
+        })
   }
 }
 
