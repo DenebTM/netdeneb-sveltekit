@@ -3,6 +3,7 @@ import type { RequestHandler } from '@sveltejs/kit'
 import { join as pathJoin, sep as pathSep, dirname, extname } from 'node:path'
 import { promises as fs, existsSync as exists } from 'node:fs'
 import gm from 'gm'
+import { promisify } from 'util'
 import { appConfig } from '~/util/appConfig'
 
 const validExtensions = [
@@ -66,16 +67,19 @@ const createThumb = async (
 
     default:
       console.log(`generating thumbnail for ${sourceFilename}`)
-      gm(sourceFilename)
-        .resize(512, 512, '^')
-        .gravity('Center')
-        .extent(512, 512)
-        .write(thumbFilename, async error => {
-          if (error != null) {
-            console.error(error)
-            return await Promise.reject(error)
-          }
-        })
+
+      try {
+        await promisify<void>(callback =>
+          gm(sourceFilename)
+            .resize(512, 512, '^')
+            .gravity('Center')
+            .extent(512, 512)
+            .write(thumbFilename, err => err !== null && callback(err))
+        )()
+      } catch (err) {
+        console.error(err)
+        throw error(500, 'Thumbnail generation failed')
+      }
   }
 }
 
