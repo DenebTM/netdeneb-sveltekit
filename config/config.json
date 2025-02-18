@@ -1,7 +1,4 @@
 {
   "artBasePath": "./static/art",
-  "artBaseURL": "/art",
-  "filesBasePath": "./static/files",
-  "thumbsBasePath": "./static/thumbs",
-  "thumbsBaseURL": "/thumbs"
+  "artBaseURL": "/art"
 }

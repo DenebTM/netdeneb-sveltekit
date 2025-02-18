@@ -11,9 +11,6 @@ const configPath = (): string => env.APP_CONFIG_PATH || './config/config.json'
 export const defaultConfig: AppConfig = {
   artBasePath: './art',
   artBaseURL: '/art',
-  filesBasePath: './files',
-  thumbsBasePath: './thumbs',
-  thumbsBaseURL: '/thumbs',
 }
 
 export let appConfig: AppConfig = defaultConfig

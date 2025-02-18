@@ -65,10 +65,6 @@ declare global {
   interface AppConfig {
     artBasePath: string
     artBaseURL: string
-
-    filesBasePath: string
-    thumbsBasePath: string
-    thumbsBaseURL: string
   }
 
   // See https://kit.svelte.dev/docs/types#app
