@@ -2,6 +2,11 @@ node_modules
 .svelte-kit
 build
 
+.git
+.github
+.gitignore
+README*
+
 .prettierrc
 .npmrc
 *.service
@@ -9,7 +14,6 @@ build
 !package*.json
 !tsconfig.json
 
-README*
-files
-art
-*.txt
+static/files
+static/art
+static/thumbs

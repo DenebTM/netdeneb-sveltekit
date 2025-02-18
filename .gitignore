@@ -1,20 +1,8 @@
 .DS_Store
-node_modules
-/build
-/.svelte-kit
-/package
-.env
-.env.*
-!.env.example
+node_modules/
+build/
+.svelte-kit/
 
-**/*.png
-**/*.jpg
-**/*.webp
-**/*.svg
-**/*.gif
-
-caddy-auth.conf
-/static
-!/static/favicon.ico
-
-browse-thumbs.html
+static/files/
+static/art/
+static/thumbs/
