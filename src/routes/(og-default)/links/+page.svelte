@@ -2,7 +2,7 @@
   import WikiLink from '~/components/WikiLink.svelte'
   import Button from './Button.svelte'
 
-  import buttons from './buttons.json'
+  import _buttons from './buttons.json'
   import { socials } from '../info.json'
 
   import { page } from '$app/state'
@@ -22,11 +22,7 @@
     return arrayOut
   }
 
-  let buttonLists: { title: string; buttons: ButtonData[] }[] = $state([
-    { title: "Friends' websites", buttons: buttons.webFriends },
-    { title: 'Other cool websites', buttons: buttons.webMisc },
-    { title: 'Miscellaneous', buttons: buttons.general },
-  ])
+  let buttonLists: { title: string; buttons: ButtonData[] }[] = $state(_buttons)
 
   onMount(() =>
     buttonLists.forEach(a => {
@@ -159,7 +155,8 @@
 
   <section id="buttons">
     {#each buttonLists as { title, buttons }}
-      <h2>{title}</h2>
+      <h3 style="margin-bottom: 0">{title}</h3>
+      <hr style="border: 1px solid var(--primary); margin-top: 0" />
       <ul class="bulletless inline-list">
         {#each buttons as button}
           <li>

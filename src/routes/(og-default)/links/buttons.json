@@ -1,168 +1,177 @@
-{
-  "webFriends": [
-    {
-      "href": "https://aquamarine.gay",
-      "img": "/img/8831/aquamarine.png",
-      "alt": "aquamarine"
-    },
-    {
-      "href": "https://ashiecorner.xyz",
-      "img": "/img/8831/ashie.gif",
-      "alt": "ashie"
-    },
-    {
-      "href": "https://ayetsg.com",
-      "img": "/img/8831/ayetsg.png",
-      "alt": "ayetsg"
-    },
-    {
-      "href": "https://bee.movie",
-      "img": "/img/8831/june.png",
-      "alt": "june"
-    },
-    {
-      "href": "https://cato.cat",
-      "img": null,
-      "alt": "cato"
-    },
-    {
-      "href": "https://eeep.ee",
-      "img": null,
-      "alt": "chfour"
-    },
-    {
-      "href": "https://foxboy.dev",
-      "img": null,
-      "alt": "ry755"
-    },
-    {
-      "href": "https://foxgirl.dev",
-      "img": null,
-      "alt": "luavixen"
-    },
-    {
-      "href": "https://freeplay.floof.company",
-      "img": "/img/8831/freeplay.gif",
-      "alt": "freeplay"
-    },
-    {
-      "href": "https://gabrielhuber.at",
-      "img": null,
-      "alt": "yepoleb"
-    },
-    {
-      "href": "https://gry.sh",
-      "img": null,
-      "alt": "greyhash"
-    },
-    {
-      "href": "https://hexaitos.com",
-      "img": "/img/8831/hexaitos.png",
-      "alt": "hexaitos"
-    },
-    {
-      "href": "https://j4.lc",
-      "img": "/img/8831/jae.avif",
-      "alt": "jae"
-    },
-    {
-      "href": "https://kaleidosium.my.id",
-      "img": "/img/8831/kaleidosium.png",
-      "alt": "kaleidosium"
-    },
-    {
-      "href": "https://luciaa.at",
-      "img": "/img/8831/luciaa.png",
-      "alt": "schlecknits"
-    },
-    {
-      "href": "https://m.furrypri.de",
-      "img": null,
-      "alt": "m"
-    },
-    {
-      "href": "https://maidado.xyz",
-      "img": null,
-      "alt": "maidado"
-    },
-    {
-      "href": "https://nilsding.org",
-      "img": null,
-      "alt": "jyrki"
-    },
-    {
-      "href": "https://nytpu.com",
-      "img": null,
-      "alt": "nytpu"
-    },
-    {
-      "href": "https://ohaa.xyz",
-      "img": "/img/8831/ohaa.png",
-      "alt": "ohaa"
-    },
-    {
-      "href": "https://padlet.com/parkercc",
-      "img": "/img/8831/parkercc.gif",
-      "alt": "parkercc"
-    },
-    {
-      "href": "https://pivotman319-owo.github.io",
-      "img": "/img/8831/pivotman.png",
-      "alt": "pivotman"
-    },
-    {
-      "href": "https://sterophonick.github.io",
-      "img": "/img/8831/atapi.gif",
-      "alt": "atapi"
-    },
-    {
-      "href": "https://yummy.cricket",
-      "img": "/img/8831/niss.png",
-      "alt": "niss"
-    },
-    {
-      "href": "https://zencorner.xyz",
-      "img": "/img/8831/zenith.gif",
-      "alt": "zenith"
-    },
-    {
-      "href": "https://zenthefox.online",
-      "img": "/img/8831/zenthefox.gif",
-      "alt": "zen"
-    }
-  ],
-  "webMisc": [
-    {
-      "href": "https://auberylis.moe",
-      "img": "https://auberylis.moe/indexfiles/sitebuttons/auberylismoe.png",
-      "alt": "auby"
-    },
-    {
-      "href": "https://nik.mx",
-      "img": "https://nik.mx/bleat_88x31.gif",
-      "alt": "nik (treat)"
-    },
-    {
-      "href": "https://beepi.ng",
-      "img": "https://beepi.ng/88x31.webp",
-      "alt": "unnick"
-    },
-    {
-      "href": "https://soatok.blog",
-      "img": "https://beepi.ng/buttons/soatok.avif",
-      "alt": "soatok"
-    },
-    {
-      "href": "https://kokoscript.com",
-      "img": "https://kokoscript.com/img/button/kokoscript.gif",
-      "alt": "koko"
-    }
-  ],
-  "general": [
-    {
-      "href": "https://lucida.to",
-      "img": "https://lucida.to/buttons/88x31.gif",
-      "alt": "lucida"
-    }
-  ]
-}
+[
+  {
+    "title": "General",
+    "buttons": [
+      {
+        "href": "https://lucida.to",
+        "img": "https://lucida.to/buttons/88x31.gif",
+        "alt": "lucida"
+      }
+    ]
+  },
+  {
+    "title": "Friends",
+    "buttons": [
+      {
+        "href": "https://aquamarine.gay",
+        "img": "/img/8831/aquamarine.png",
+        "alt": "aquamarine"
+      },
+      {
+        "href": "https://ashiecorner.xyz",
+        "img": "/img/8831/ashie.gif",
+        "alt": "ashie"
+      },
+      {
+        "href": "https://ayetsg.com",
+        "img": "/img/8831/ayetsg.png",
+        "alt": "ayetsg"
+      },
+      {
+        "href": "https://bee.movie",
+        "img": "/img/8831/june.png",
+        "alt": "june"
+      },
+      {
+        "href": "https://cato.cat",
+        "img": null,
+        "alt": "cato"
+      },
+      {
+        "href": "https://eeep.ee",
+        "img": null,
+        "alt": "chfour"
+      },
+      {
+        "href": "https://foxboy.dev",
+        "img": null,
+        "alt": "ry755"
+      },
+      {
+        "href": "https://foxgirl.dev",
+        "img": null,
+        "alt": "luavixen"
+      },
+      {
+        "href": "https://freeplay.floof.company",
+        "img": "/img/8831/freeplay.gif",
+        "alt": "freeplay"
+      },
+      {
+        "href": "https://gabrielhuber.at",
+        "img": null,
+        "alt": "yepoleb"
+      },
+      {
+        "href": "https://gry.sh",
+        "img": null,
+        "alt": "greyhash"
+      },
+      {
+        "href": "https://hexaitos.com",
+        "img": "/img/8831/hexaitos.png",
+        "alt": "hexaitos"
+      },
+      {
+        "href": "https://j4.lc",
+        "img": "/img/8831/jae.avif",
+        "alt": "jae"
+      },
+      {
+        "href": "https://kaleidosium.my.id",
+        "img": "/img/8831/kaleidosium.png",
+        "alt": "kaleidosium"
+      },
+      {
+        "href": "https://luciaa.at",
+        "img": "/img/8831/luciaa.png",
+        "alt": "schlecknits"
+      },
+      {
+        "href": "https://m.furrypri.de",
+        "img": null,
+        "alt": "m"
+      },
+      {
+        "href": "https://maidado.xyz",
+        "img": null,
+        "alt": "maidado"
+      },
+      {
+        "href": "https://nilsding.org",
+        "img": null,
+        "alt": "jyrki"
+      },
+      {
+        "href": "https://nytpu.com",
+        "img": null,
+        "alt": "nytpu"
+      },
+      {
+        "href": "https://ohaa.xyz",
+        "img": "/img/8831/ohaa.png",
+        "alt": "ohaa"
+      },
+      {
+        "href": "https://padlet.com/parkercc",
+        "img": "/img/8831/parkercc.gif",
+        "alt": "parkercc"
+      },
+      {
+        "href": "https://pivotman319-owo.github.io",
+        "img": "/img/8831/pivotman.png",
+        "alt": "pivotman"
+      },
+      {
+        "href": "https://sterophonick.github.io",
+        "img": "/img/8831/atapi.gif",
+        "alt": "atapi"
+      },
+      {
+        "href": "https://yummy.cricket",
+        "img": "/img/8831/niss.png",
+        "alt": "niss"
+      },
+      {
+        "href": "https://zencorner.xyz",
+        "img": "/img/8831/zenith.gif",
+        "alt": "zenith"
+      },
+      {
+        "href": "https://zenthefox.online",
+        "img": "/img/8831/zenthefox.gif",
+        "alt": "zen"
+      }
+    ]
+  },
+  {
+    "title": "Other websites i think you should see",
+    "buttons": [
+      {
+        "href": "https://auberylis.moe",
+        "img": "https://auberylis.moe/indexfiles/sitebuttons/auberylismoe.png",
+        "alt": "auby"
+      },
+      {
+        "href": "https://nik.mx",
+        "img": "https://nik.mx/bleat_88x31.gif",
+        "alt": "nik (treat)"
+      },
+      {
+        "href": "https://beepi.ng",
+        "img": "https://beepi.ng/88x31.webp",
+        "alt": "unnick"
+      },
+      {
+        "href": "https://soatok.blog",
+        "img": "https://beepi.ng/buttons/soatok.avif",
+        "alt": "soatok"
+      },
+      {
+        "href": "https://kokoscript.com",
+        "img": "https://kokoscript.com/img/button/kokoscript.gif",
+        "alt": "koko"
+      }
+    ]
+  }
+]
