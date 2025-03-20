@@ -10,7 +10,7 @@
     ]
   },
   {
-    "title": "Friends",
+    "title": "Friends and others' personal websites",
     "buttons": [
       {
         "href": "https://aquamarine.gay",
@@ -141,12 +141,7 @@
         "href": "https://zenthefox.online",
         "img": "/img/8831/zenthefox.gif",
         "alt": "zen"
-      }
-    ]
-  },
-  {
-    "title": "Other websites i think you should see",
-    "buttons": [
+      },
       {
         "href": "https://auberylis.moe",
         "img": "https://auberylis.moe/indexfiles/sitebuttons/auberylismoe.png",
