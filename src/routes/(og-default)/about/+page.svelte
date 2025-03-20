@@ -23,10 +23,9 @@
     <h3>Who/what I am</h3>
     <p>
       My name is deneb, I live in Austria — Innsbruck to be precise — I'm {age} years
-      old, and currently in my 7th and hopefully final semester studying computer
-      science (as of 2025-02). I am just working on my bachelor's thesis at this
-      point, and looking to become a <nobr>backend/systems</nobr> (DevOps I guess?)
-      engineer in the near future.
+      old, currently finishing my bachelor's thesis in computer science, and looking
+      to become a <nobr>backend/systems</nobr> (DevOps I guess?) engineer in the
+      near future.
     </p>
     <!-- <h4>floof</h4>
     <p>
@@ -68,16 +67,27 @@
             <a class="bold" href="https://the.leggi.es">the.leggi.es</a> — manes
             :o
           </li>
+          <li>
+            <a class="bold" href="https://nd.leggi.es">nd.leggi.es</a> — my
+            music library on <a href="https://www.navidrome.org/">Navidrome</a>
+            (feel free to ask for access)
+          </li>
+          <li>
+            <a class="bold" href="https://radical.leggi.es">radical.leggi.es</a>
+            —
+            <a href="https://radicale.org/v3.html">Radicale</a> for CalDAV/CardDAV
+          </li>
         </ul>
       </li>
       <li>
         <a class="bold" href="https://screee.ee">screee.ee</a> — fencs :&gt;
         <ul>
           <li>
-            a Matrix homeserver; <a
+            my single-user Matrix homeserver, running <a
               href="https://gitlab.computer.surgery/matrix/grapevine"
-              >Grapevine</a> to be specific
+              >Grapevine</a>
           </li>
+          <li>ns1.screee.ee — authoritative DNS for my domains</li>
           <li>
             <a class="bold" href="https://mail.screee.ee/">mail.screee.ee</a>
             — an email server powered by
@@ -86,9 +96,9 @@
           </li>
           <li>
             <a class="bold" href="https://vault.screee.ee/">vault.screee.ee</a>
-            — a
+            —
             <a href="https://github.com/dani-garcia/vaultwarden">Vaultwarden</a>
-            instance, aka. Bitwarden but entirely free
+            (aka. Bitwarden but entirely free)
           </li>
         </ul>
       </li>
@@ -96,23 +106,29 @@
         <a class="bold" href="https://netdeneb.com/">netdeneb.com</a> — this
         website's old home; redirects here
         <ul>
-          <li>also the top-level domain for both of my home networks</li>
+          <li>currently the top-level domain for my home networks</li>
           <li>
             <a class="bold" href="https://sync.netdeneb.com/"
               >sync.netdeneb.com</a>
             — <a href="https://syncthing.net">Syncthing</a> +
-            <a href="https://filebrowser.org/">File Browser</a>, because
-            Nextcloud Kinda Sucks&trade;
+            <a href="https://filebrowser.org/">File Browser</a>
           </li>
         </ul>
       </li>
     </ul>
-    <p>Other things I find fascinating include:</p>
+    <p>
+      Other things I find fascinating (but largely don't participate in)
+      include:
+    </p>
     <ul>
       <li>
-        <span class="bold">digital electronics</span> — because software is a pain
+        <span class="bold">digital electronics</span> — because software isn't painful
+        enough
       </li>
-      <li><span class="bold">retrocomputing</span> — limitations are fun</li>
+      <li>
+        <span class="bold">retrocomputing+demoscene</span> — computing peaked before
+        i was born tbhtbh
+      </li>
       <li>
         <span class="bold">trains</span> — being on them, talking about them
       </li>
