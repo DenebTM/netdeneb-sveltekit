@@ -98,11 +98,6 @@
         <ul>
           <li>also the top-level domain for both of my home networks</li>
           <li>
-            <a class="bold" href="https://cloud.netdeneb.com/"
-              >cloud.netdeneb.com</a> — my own Nextcloud instance, since Google killed
-            off "unlimited" Photos storage in 2020
-          </li>
-          <li>
             <a class="bold" href="https://sync.netdeneb.com/"
               >sync.netdeneb.com</a>
             — <a href="https://syncthing.net">Syncthing</a> +
