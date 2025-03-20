@@ -4,7 +4,7 @@
     "buttons": [
       {
         "href": "https://lucida.to",
-        "img": "https://lucida.to/buttons/88x31.gif",
+        "img": "/img/8831/lucida.gif",
         "alt": "lucida"
       }
     ]
@@ -144,27 +144,27 @@
       },
       {
         "href": "https://auberylis.moe",
-        "img": "https://auberylis.moe/indexfiles/sitebuttons/auberylismoe.png",
+        "img": "/img/8831/auberylismoe.png",
         "alt": "auby"
       },
       {
         "href": "https://nik.mx",
-        "img": "https://nik.mx/bleat_88x31.gif",
+        "img": "/img/8831/nik.gif",
         "alt": "nik (treat)"
       },
       {
         "href": "https://beepi.ng",
-        "img": "https://beepi.ng/88x31.webp",
+        "img": "/img/8831/unnick.webp",
         "alt": "unnick"
       },
       {
         "href": "https://soatok.blog",
-        "img": "https://beepi.ng/buttons/soatok.avif",
+        "img": "/img/8831/soatok.avif",
         "alt": "soatok"
       },
       {
         "href": "https://kokoscript.com",
-        "img": "https://kokoscript.com/img/button/kokoscript.gif",
+        "img": "/img/8831/kokoscript.gif",
         "alt": "koko"
       }
     ]
