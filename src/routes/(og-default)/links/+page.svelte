@@ -157,7 +157,7 @@
     {#each buttonLists as { title, buttons }}
       <h3 style="margin-bottom: 0">{title}</h3>
       <hr style="border: 1px solid var(--primary); margin-top: 0" />
-      <ul class="bulletless inline-list">
+      <ul class="bulletless inline-list" style="margin-left: -4px">
         {#each buttons as button}
           <li>
             <Button {button} />

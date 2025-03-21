@@ -78,7 +78,7 @@
   }
   div.content-box {
     text-align: center;
-    max-width: 1024px;
+    max-width: 958px;
     margin: 0 auto;
     border-radius: calc(2 * var(--border-radius));
     padding: 0 20px 20px 20px;
