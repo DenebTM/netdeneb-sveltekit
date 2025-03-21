@@ -26,6 +26,31 @@
         "href": "https://servfail.network",
         "img": "/img/8831/servfail.png",
         "alt": "servfail dns"
+      },
+      {
+        "href": "https://bandcamp.com",
+        "img": "https://files.leggi.es/8831/bandcamp.png",
+        "alt": "bandcamp.com"
+      },
+      {
+        "href": null,
+        "img": "https://files.leggi.es/8831/bvwe.gif",
+        "alt": "best viewed with eyes"
+      },
+      {
+        "href": "https://archlinux.org",
+        "img": "https://files.leggi.es/8831/archlinux.png",
+        "alt": "archlinux.org"
+      },
+      {
+        "href": null,
+        "img": "https://files.leggi.es/8831/b_resp.png",
+        "alt": "responsive website"
+      },
+      {
+        "href": "https://caddyserver.com",
+        "img": "https://files.leggi.es/8831/caddy.png",
+        "alt": "caddyserver.com"
       }
     ]
   },
@@ -206,6 +231,16 @@
         "href": "https://goliath32.com",
         "img": null,
         "alt": "goliath"
+      },
+      {
+        "href": "https://arch.dog",
+        "img": "https://files.leggi.es/8831/arch.dog.png",
+        "alt": "arch"
+      },
+      {
+        "href": "https://drakonic.zone",
+        "img": "https://files.leggi.es/8831/drakonic.gif",
+        "alt": "drakonic"
       }
     ]
   }
