@@ -40,7 +40,7 @@
   }
 
   @media not (prefers-reduced-motion) {
-    .button88:hover {
+    a.button88:hover {
       animation: rotato 1s infinite linear;
     }
   }
