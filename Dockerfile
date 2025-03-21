@@ -14,6 +14,8 @@ RUN npm install
 FROM node:current-alpine
 ENV NODE_ENV=production
 
+RUN apk update && apk add curl && apk cache purge
+
 COPY --from=build-image /app/build /app/build
 COPY --from=prod-modules /app/node_modules /app/node_modules
 WORKDIR /app
