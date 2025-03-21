@@ -241,7 +241,13 @@
         "href": "https://drakonic.zone",
         "img": "https://files.leggi.es/8831/drakonic.gif",
         "alt": "drakonic"
+      },
+      {
+        "href": "https://keeri.place",
+        "img": "/img/8831/keerifox.gif",
+        "alt": "keerifox"
       }
+
     ]
   }
 ]
