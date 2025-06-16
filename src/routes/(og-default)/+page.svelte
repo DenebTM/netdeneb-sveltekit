@@ -74,7 +74,7 @@
 
     <h1>Hi!</h1>
     <p>
-      I'm <strong title="all-lowercase, please">deneb</strong>, a {age}-year old <WikiLink
+      I'm <strong title="all-lowercase, please">deneb</strong>, a 24-year old <WikiLink
         page="maned wolf" /> from Austria, currently studying computer science (BSc)
       in Innsbruck.
     </p>

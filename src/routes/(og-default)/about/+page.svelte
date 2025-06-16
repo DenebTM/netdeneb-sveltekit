@@ -1,12 +1,8 @@
 <script lang="ts">
-  import WikiLink from '~/components/WikiLink.svelte'
   import { page } from '$app/state'
-  import { birthday } from '../info.json'
   const {
     data: { siteMetadata },
   } = page
-
-  const age = new Date(Date.now() - Date.parse(birthday)).getFullYear() - 1970
 </script>
 
 <svelte:head>
@@ -20,12 +16,10 @@
 
 <div class="page-content">
   <section id="who-i-am">
-    <h3>Who/what I am</h3>
     <p>
-      My name is deneb, I live in Austria — Innsbruck to be precise — I'm {age} years
-      old, currently finishing my bachelor's thesis in computer science, and looking
-      to become a <nobr>backend/systems</nobr> (DevOps I guess?) engineer in the
-      near future.
+      My name is <strong title="all-lowercase, please">deneb</strong>, I live in
+      Innsbruck (Austria), am 24 years old and have a Bachelor's degree in
+      computer science.
     </p>
     <!-- <h4>floof</h4>
     <p>
@@ -48,15 +42,17 @@
     <p>
       My interests centre around PCs and digital technology (unsurprisingly).
       <br />
-      I've been daily-driving Linux since 2019, having played around with Debian,
-      Fedora, Open<a href="https://www.youtube.com/watch?v=nLdexZlVkAY">SUSE</a
-      >, before settling on <span title="btw">Arch</span>.
+      I've been daily-driving Linux since 2019, having played around with Ubuntu,
+      Debian, CentOS, Fedora and Open<a
+        href="https://www.youtube.com/watch?v=nLdexZlVkAY">SUSE</a
+      >, before settling on <span style="cursor: help" title="(btw)">Arch</span>
+      as my preferred distribution (client and server).
     </p>
     <p>
-      I particularly enjoy computers talking to each other, aka. networking. I
-      started off on Windows and so have <em>some</em> experience with Microsoft
-      Active Directory (which I had running in the background until 2023!) and associated
-      services, though most of my knowledge does centre around modern Linux and Docker.
+      I particularly love making computers talk to each other; I started off on
+      Windows and so have <em>some</em> experience with Microsoft Active Directory
+      (which handled LDAP authentication in my network until 2023) and its associated
+      services, though most of my knowledge centers around modern Linux and Docker.
       I own a few domains on which I self-host most of my stuff, including:
     </p>
     <ul>
@@ -64,18 +60,32 @@
         <a class="bold" href="https://leggi.es/">leggi.es</a> — this website!
         <ul>
           <li>
-            <a class="bold" href="https://the.leggi.es">the.leggi.es</a> — manes
-            :o
+            <a class="bold" href="https://the.leggi.es">the.leggi.es</a>
+            — manes :o
           </li>
           <li>
-            <a class="bold" href="https://nd.leggi.es">nd.leggi.es</a> — my
-            music library on <a href="https://www.navidrome.org/">Navidrome</a>
-            (feel free to ask for access)
+            <a class="bold" href="https://nd.leggi.es">nd.leggi.es</a>
+            — my music library on
+            <a href="https://www.navidrome.org/">Navidrome</a>
           </li>
           <li>
             <a class="bold" href="https://radical.leggi.es">radical.leggi.es</a>
-            —
-            <a href="https://radicale.org/v3.html">Radicale</a> for CalDAV/CardDAV
+            — <a href="https://radicale.org/">Radicale</a> for CalDAV/CardDAV
+          </li>
+          <li>
+            <a class="bold" href="https://sync.leggi.es">sync.leggi.es</a>
+            — <a href="https://syncthing.net/">Syncthing</a> +
+            <a href="https://filebrowser.org/">File Browser</a>
+          </li>
+          <li>
+            <a class="bold" href="https://metric.leggi.es">metric.leggi.es</a>
+            — <a href="https://grafana.com/">Grafana</a>, creating pretty graphs
+            from my server's usage stats
+          </li>
+          <li>
+            <a class="bold" href="https://auth.leggi.es">auth.leggi.es</a>
+            — <a href="https://zitadel.com/">Zitadel SSO</a>, currently used for
+            Mailcow and Grafana
           </li>
         </ul>
       </li>
@@ -98,22 +108,13 @@
             <a class="bold" href="https://vault.screee.ee/">vault.screee.ee</a>
             —
             <a href="https://github.com/dani-garcia/vaultwarden">Vaultwarden</a>
-            (aka. Bitwarden but entirely free)
+            (fully-featured backend for the Bitwarden password manager)
           </li>
         </ul>
       </li>
       <li>
-        <a class="bold" href="https://netdeneb.com/">netdeneb.com</a> — this
-        website's old home; redirects here
-        <ul>
-          <li>currently the top-level domain for my home networks</li>
-          <li>
-            <a class="bold" href="https://sync.netdeneb.com/"
-              >sync.netdeneb.com</a>
-            — <a href="https://syncthing.net">Syncthing</a> +
-            <a href="https://filebrowser.org/">File Browser</a>
-          </li>
-        </ul>
+        <a class="bold" href="https://netdeneb.com/">netdeneb.com</a> — this website's
+        old home; redirects here
       </li>
     </ul>
     <p>
@@ -138,8 +139,8 @@
     <code class="bold">TODO #1:</code> One of these days I'll get around to
     creating a projects page. For now, look at my
     <a href="https://github.com/DenebTM"
-      ><i class="inline-icon bx bx-sm bxl-github"></i>&nbsp;Github</a
-    >!<br />
+      ><i class="inline-icon bx bx-sm bxl-github"></i>&nbsp;Github</a>
+    profile.<br />
     <code class="bold">TODO #2:</code> Document my network setup somewhere<br />
     <code class="bold">TODO #3:</code> Expand on the retrocomputing stuff<br />
   </section>
