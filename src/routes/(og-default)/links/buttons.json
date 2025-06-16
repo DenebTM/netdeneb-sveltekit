@@ -3,11 +3,6 @@
     "title": "General",
     "buttons": [
       {
-        "href": "https://lucida.to",
-        "img": "/img/8831/lucida.gif",
-        "alt": "lucida"
-      },
-      {
         "href": "https://badge.les.bi",
         "img": "/img/8831/lesbi_enbyaroace.png",
         "alt": "enby aroace"
@@ -59,7 +54,7 @@
     "buttons": [
       {
         "href": "https://aquamarine.gay",
-        "img": "/img/8831/aquamarine.png",
+        "img": "/img/8831/aquamarine.gif",
         "alt": "aquamarine"
       },
       {
@@ -247,7 +242,6 @@
         "img": "/img/8831/keerifox.gif",
         "alt": "keerifox"
       }
-
     ]
   }
 ]
