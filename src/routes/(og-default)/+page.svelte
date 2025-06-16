@@ -2,14 +2,12 @@
   import Socials from '~/components/Socials.svelte'
   import WikiLink from '~/components/WikiLink.svelte'
   import splashes_dot_txt from './splashes.json'
-  import { socials, birthday } from './info.json'
+  import { socials } from './info.json'
 
   import { page } from '$app/state'
   const {
     data: { siteMetadata },
   } = page
-
-  const age = new Date(Date.now() - Date.parse(birthday)).getFullYear() - 1970
 
   const buttonAStyle = 'display: inline-block'
   const buttonImgStyle =
@@ -59,7 +57,7 @@
         </span>
       </div>
       <div class="blurb-right">
-        <span style="--delay: 0.15s">age {age}</span>
+        <span style="--delay: 0.15s">age 24</span>
         <span style="--delay: 0.25s">
           <img class="nb-pride" src="/img/nb.svg" alt="non-binary pride flag" />
           they/them
