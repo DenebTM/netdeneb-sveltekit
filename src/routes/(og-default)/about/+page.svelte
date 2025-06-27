@@ -112,10 +112,6 @@
           </li>
         </ul>
       </li>
-      <li>
-        <a class="bold" href="https://netdeneb.com/">netdeneb.com</a> — this website's
-        old home; redirects here
-      </li>
     </ul>
     <p>
       Other things I find fascinating (but largely don't participate in)
