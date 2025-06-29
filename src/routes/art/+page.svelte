@@ -12,7 +12,7 @@
   }
 
   const { data }: Props = $props()
-  const { imgList, artBaseURL } = $derived(data)
+  const { imgList } = $derived(data)
 </script>
 
 <svelte:head>
@@ -22,5 +22,5 @@
 <h2 class="page-title">Commissions i got so far!</h2>
 
 <div class="page-content">
-  <Gallery {imgList} {artBaseURL} />
+  <Gallery {imgList} artBaseURL="/art" />
 </div>
