@@ -1,11 +1,11 @@
-FROM node:current-alpine as build-image
+FROM node:current-alpine AS build-image
 WORKDIR /app
 COPY package.json ./
 RUN npm install
 COPY . .
 RUN npm run build
 
-FROM node:current-alpine as prod-modules
+FROM node:current-alpine AS prod-modules
 ENV NODE_ENV=production
 WORKDIR /app
 COPY package.json ./
