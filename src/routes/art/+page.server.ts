@@ -4,7 +4,7 @@ import fs from 'node:fs/promises'
 import { join as pathJoin } from 'node:path'
 import { appConfig } from '~/util/appConfig'
 import mime from 'mime-types'
-import dimensions from 'image-size'
+import { imageSizeFromFile } from 'image-size/fromFile'
 
 export const load: PageServerLoad = async () => {
   const { artBaseURL, artBasePath } = appConfig
@@ -22,20 +22,18 @@ export const load: PageServerLoad = async () => {
 
   return {
     artBaseURL,
-    imgList: fileList
-      .map((item: ArtItem): ArtItemWithMetadata => {
-        const dims = dimensions(`${artBasePath}/${item.full}`)
+    imgList: await Promise.all(
+      fileList.map(async (item: ArtItem): Promise<ArtItemWithMetadata> => {
+        const dims = await imageSizeFromFile(`${artBasePath}/${item.full}`)
         return {
           ...item,
+          fileName: pathJoin(artBaseURL, item.fileName),
+          full: pathJoin(artBaseURL, item.full),
           width: dims.width ?? 0,
           height: dims.height ?? 0,
           mime: mime.lookup(item.full) || 'image/jpeg',
         }
       })
-      .map(item => ({
-        ...item,
-        fileName: pathJoin(artBaseURL, item.fileName),
-        full: pathJoin(artBaseURL, item.full),
-      })),
+    ),
   }
 }
