@@ -2,52 +2,24 @@
   interface Props {
     imageList: ArtList
     gap?: number
+    columnWidth?: number
     hover?: boolean
   }
 
-  const { imageList: imgList, gap = 10, hover = true }: Props = $props()
+  const {
+    imageList,
+    gap = 10,
+    columnWidth = 250,
+    hover = true,
+  }: Props = $props()
 
-  const [titleImage, ...galleryImages] = imgList
-
-  const maxColWidth = 250
-  let galleryWidth = $state(750)
-  let columns: ArtList[] = $state([])
-
-  const updateGallery = (colCount: number): void => {
-    if (colCount === 0) return
-
-    const newColumns: ArtList[] = Array(colCount)
-      .fill([])
-      .map(() => [])
-
-    let col = 0
-    for (const img of galleryImages) {
-      newColumns[col].push(img)
-      col = (col + 1) % colCount
-    }
-
-    columns = newColumns
-  }
-
-  const columnCount = $derived(Math.floor(galleryWidth / maxColWidth))
-
-  // initial column count for non-js rendering
-  updateGallery(3)
-
-  // dynamically update column count
-  $effect(() => {
-    updateGallery(columnCount)
-  })
-  const gridStyle = $derived(
-    `grid-template-columns: repeat(${columnCount}, 1fr); --gap: ${gap}px; gap: var(--gap)`
-  )
+  const [titleImage, ...galleryImages] = imageList
 </script>
 
-<div class="gallery" bind:clientWidth={galleryWidth}>
+<div class="gallery">
   <a
     class="gallery-img gallery-title"
     class:gallery-hover={hover}
-    style:width={columnCount > 2 ? '70%' : '100%'}
     href={`/art/${titleImage.id}`}
     data-sveltekit-replacestate
     data-sveltekit-noscroll>
@@ -58,36 +30,28 @@
       </figcaption>
     </figure>
   </a>
-  <div class="gallery-columns" style={gridStyle}>
-    {#each columns as col}
-      <div class="gallery-column">
-        {#each col as img, i}
-          <a
-            href="/art/{img.id}"
-            class="gallery-img"
-            class:gallery-hover={hover}
-            data-sveltekit-replacestate
-            data-sveltekit-noscroll>
-            <figure>
-              <img src={img.fileName} alt={img.description} />
-            </figure>
-          </a>
-        {/each}
-      </div>
+  <div
+    class="gallery-columns"
+    style="--gap: {gap}px; --column-width: {columnWidth}px">
+    {#each galleryImages as image, i}
+      <a
+        href="/art/{image.id}"
+        class="gallery-img"
+        class:gallery-hover={hover}
+        data-sveltekit-replacestate
+        data-sveltekit-noscroll>
+        <img class="gallery-img" src={image.fileName} alt={image.description} />
+      </a>
     {/each}
   </div>
 </div>
 
 <style>
   .gallery-columns {
-    display: grid;
-  }
-  .gallery-column {
-    display: flex;
-    flex-direction: column;
-  }
-  .gallery-column .gallery-img:not(:last-child) img {
-    margin-bottom: var(--gap);
+    display: inline-block;
+    width: 100%;
+    column-width: var(--column-width);
+    column-gap: var(--gap);
   }
   .gallery-img,
   .gallery-img * {
@@ -96,12 +60,13 @@
   .gallery-img {
     display: block;
     line-height: 0;
+    height: min-content;
+  }
+  .gallery-img:not(:last-child) {
+    margin-bottom: var(--gap);
   }
   .gallery-img.gallery-title {
     margin: 0 auto 15px auto;
-  }
-  .gallery-img figure {
-    margin: 0;
   }
   .gallery-img img {
     border-radius: var(--border-radius);
