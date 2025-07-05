@@ -18,23 +18,27 @@
     data: { siteMetadata },
   } = page
 
-  let animateTransition: boolean | undefined = $state(true)
+  let animate: boolean | undefined = $state(true)
   beforeNavigate(nav => {
-    /* animateTransition must first be set to `undefined`, then `true` in order
-     * for the flyin animation to replay */
+    if (context.doAnimate) {
+      /* animate must first be set to `undefined`, then `true` in order
+       * for the flyin animation to replay */
 
-    // only animate if the new page isn't the one the user is already on
-    if (nav.to?.route.id !== nav.from?.route.id) {
-      animateTransition = undefined
+      // only animate if the new page isn't the one the user is already on
+      if (nav.to?.route.id !== nav.from?.route.id) {
+        animate = undefined
+      }
     }
   })
   afterNavigate(nav => {
-    animateTransition = true
-    enableScroll()
+    if (context.doAnimate) {
+      animate = true
+      enableScroll()
+    }
   })
-  onMount(() => (animateTransition = true))
+  onMount(() => (animate = true))
 
-  let context: AppContext = $state({ modal: null })
+  let context: AppContext = $state({ doAnimate: true, modal: null })
   setContext('shared-state', context)
 </script>
 
@@ -59,7 +63,7 @@
 <div class="content-box">
   <div class="bg-blur"></div>
   <Nav items={navItems} />
-  <main animate={animateTransition}>
+  <main {animate}>
     {@render children?.()}
   </main>
 </div>

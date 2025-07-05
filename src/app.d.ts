@@ -2,6 +2,7 @@ import 'svelte'
 
 declare global {
   interface AppContext {
+    doAnimate?: boolean
     modal?: Snippet<[]>
   }
 

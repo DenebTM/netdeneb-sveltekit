@@ -15,6 +15,10 @@
 
   const context: AppContext = getContext('shared-state')
   context.modal = null
+
+  beforeNavigate(nav => {
+    context.doAnimate = !nav.to?.route.id?.startsWith('/art')
+  })
 </script>
 
 <svelte:head>
