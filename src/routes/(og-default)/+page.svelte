@@ -102,7 +102,7 @@
       <!-- eslint-disable-next-line svelte/no-at-html-tags -- i control this HTML -->
       {@html buttonHtml}
     </p>
-    <p>want more buttons? go <a href="/links#friends">here</a>!</p>
+    <p>want more buttons? go <a href="/links#buttons">here</a>!</p>
   </section>
 
   <hr />

@@ -1,26 +1,40 @@
 <script lang="ts">
-  import type { PageData } from './$types'
   import Gallery from '~/components/Gallery.svelte'
-
   import { page } from '$app/state'
+  import { getContext, onMount } from 'svelte'
+  import { beforeNavigate } from '$app/navigation'
+  import _imageList from './files.json'
+  import { enableScroll } from '~/util/tools'
+
   const {
     data: { siteMetadata },
   } = page
 
-  interface Props {
-    data: PageData
-  }
+  const imageList = _imageList.map(item => {
+    return { ...item, fileName: `art/${item.fileName}` }
+  })
 
-  const { data }: Props = $props()
-  const { imgList } = $derived(data)
+  const context: AppContext = getContext('shared-state')
+  context.modal = null
+
+  beforeNavigate(nav => {
+    context.doAnimate = !nav.to?.route.id?.startsWith('/art')
+  })
+
+  onMount(enableScroll)
 </script>
 
 <svelte:head>
   <title>{`${siteMetadata.name} - Art gallery`}</title>
+
+  <meta name="og:title" content="Art gallery" />
+  <meta property="og:image" content={siteMetadata.titleImage.path} />
+  <meta name="og:description" content="My ref, and other commissions I got" />
+  <meta name="description" content="My ref, and other commissions I got" />
 </svelte:head>
 
 <h2 class="page-title">Commissions i got so far!</h2>
 
 <div class="page-content">
-  <Gallery {imgList} artBaseURL="/art" />
+  <Gallery {imageList} />
 </div>
