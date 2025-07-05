@@ -1,9 +1,10 @@
 <script lang="ts">
   import Gallery from '~/components/Gallery.svelte'
   import { page } from '$app/state'
-  import { getContext } from 'svelte'
+  import { getContext, onMount } from 'svelte'
   import { beforeNavigate } from '$app/navigation'
   import _imageList from './files.json'
+  import { enableScroll } from '~/util/tools'
 
   const {
     data: { siteMetadata },
@@ -19,6 +20,8 @@
   beforeNavigate(nav => {
     context.doAnimate = !nav.to?.route.id?.startsWith('/art')
   })
+
+  onMount(enableScroll)
 </script>
 
 <svelte:head>
