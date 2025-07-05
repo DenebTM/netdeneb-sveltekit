@@ -26,7 +26,7 @@
   aria-label="close full image view"
   class="btn dark modal-close fixed-color"
   data-sveltekit-replacestate
-  href="/art/"
+  href="/art"
   transition:fade={{ duration: 100 }}>
   <i class="bx bx-md bx-x fixed-color"></i>
 </a>
@@ -37,7 +37,7 @@
   <div class="modal-row image">
     <a
       data-sveltekit-replacestate
-      href="/art/"
+      href="/art"
       data-sveltekit-noscroll
       tabindex="-1">
       <img src={modalImg.fileName} alt={modalImg.artistLink} />
