@@ -1,0 +1,50 @@
+(logformat) {
+  log {
+    output stdout
+    format console
+  }
+}
+
+{
+  auto_https off
+}
+
+:3001 {
+  root ./files
+  encode gzip zstd
+
+  import logformat
+  import caddy-auth.conf
+
+  templates
+
+  route {
+    file_server {
+      browse caddy/browse-thumbs.html
+      pass_thru
+    }
+
+    reverse_proxy /thumbs/* localhost:3002
+  }
+}
+
+:3000 {
+  root * ./build
+  encode gzip zstd
+  uri strip_suffix .html
+  try_files {path}.html
+  file_server
+
+  import logformat
+
+  # redirect old urls
+  handle_path /files/* {
+    redir //files.leggi.es{uri} 308
+  }
+  handle_path /ftpfile/* {
+    redir //files.leggi.es{uri} 308
+  }
+  handle_path /getfile/* {
+    redir //files.leggi.es{uri} 308
+  }
+}

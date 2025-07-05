@@ -4,5 +4,6 @@ build/
 .svelte-kit/
 
 static/files/
-static/art/
+static/art/**/*
+!static/art/files.example.json
 static/thumbs/

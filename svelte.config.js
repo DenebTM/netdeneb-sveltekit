@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-node'
+import adapter from '@sveltejs/adapter-static'
 import { sveltePreprocess } from 'svelte-preprocess'
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -8,10 +8,8 @@ const config = {
   preprocess: sveltePreprocess(),
   kit: {
     adapter: adapter(),
-    alias: {
-      '~/*': './src/*',
-      '$lib': './src/lib/*',
-    },
+    prerender: { handleHttpError: 'fail', handleMissingId: 'fail' },
+    alias: { '~/*': './src/*', '$lib': './src/lib/*' },
   },
 }
 
