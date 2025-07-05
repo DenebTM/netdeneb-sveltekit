@@ -41,7 +41,9 @@
   <!-- TODO: un-hardcode this -->
   <meta name="theme-color" content="#ee3a7c" />
   <meta property="og:site_name" content={siteMetadata.name} />
-  <meta name="ocs-site-verification" content="d5362fc6d664bbda57638a599e2c3317" />
+  <meta
+    name="ocs-site-verification"
+    content="d5362fc6d664bbda57638a599e2c3317" />
 
   <meta name="darkreader-lock" />
 </svelte:head>
