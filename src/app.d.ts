@@ -1,6 +1,10 @@
 import 'svelte'
 
 declare global {
+  interface AppContext {
+    modal?: Snippet<[]>
+  }
+
   interface NavItemBase {
     title: string
   }

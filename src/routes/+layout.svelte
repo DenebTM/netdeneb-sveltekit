@@ -1,6 +1,6 @@
 <script lang="ts">
   import '~/util/styles'
-  import { onMount, type Snippet } from 'svelte'
+  import { onMount, setContext, type Snippet } from 'svelte'
   import Nav from '~/components/nav/Nav.svelte'
   import { enableScroll } from '~/util/tools'
   import { page } from '$app/state'
@@ -33,6 +33,9 @@
     enableScroll()
   })
   onMount(() => (animateTransition = true))
+
+  let context: AppContext = $state({ modal: null })
+  setContext('shared-state', context)
 </script>
 
 <svelte:head>
@@ -60,6 +63,8 @@
     {@render children?.()}
   </main>
 </div>
+
+{@render context.modal?.()}
 
 <style>
   div.bg-blur {

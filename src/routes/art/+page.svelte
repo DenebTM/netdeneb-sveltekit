@@ -1,19 +1,20 @@
 <script lang="ts">
   import Gallery from '~/components/Gallery.svelte'
   import { page } from '$app/state'
-  import { enableScroll } from '~/util/tools'
-  import { afterNavigate } from '$app/navigation'
+  import { getContext } from 'svelte'
+  import { beforeNavigate } from '$app/navigation'
+  import _imageList from './files.json'
 
   const {
     data: { siteMetadata },
   } = page
 
-  import _imageList from './files.json'
   const imageList = _imageList.map(item => {
     return { ...item, fileName: `art/${item.fileName}` }
   })
 
-  afterNavigate(enableScroll)
+  const context: AppContext = getContext('shared-state')
+  context.modal = null
 </script>
 
 <svelte:head>

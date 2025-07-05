@@ -4,7 +4,7 @@
   import GalleryImageViewer from '~/components/GalleryImageViewer.svelte'
   import { page } from '$app/state'
   import { disableScroll } from '~/util/tools'
-  import { afterNavigate } from '$app/navigation'
+  import { getContext, onMount } from 'svelte'
 
   const {
     data: { siteMetadata },
@@ -17,7 +17,10 @@
   const { data }: Props = $props()
   const { imageList, image } = data
 
-  afterNavigate(disableScroll)
+  const context: AppContext = getContext('shared-state')
+  context.modal = imageView
+
+  onMount(disableScroll)
 </script>
 
 <svelte:head>
@@ -28,5 +31,8 @@
 
 <div class="page-content">
   <Gallery {imageList} />
-  <GalleryImageViewer {image} />
 </div>
+
+{#snippet imageView()}
+  <GalleryImageViewer {image} />
+{/snippet}
