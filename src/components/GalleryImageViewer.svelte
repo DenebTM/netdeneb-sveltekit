@@ -8,11 +8,9 @@
 
   const { image }: Props = $props()
 
-  let innerHeight = $state(0)
-  const modalStyle = $derived(`grid-template-rows: ${innerHeight - 80}px 1fr;`)
+  const fadeDuration = 100
 </script>
 
-<svelte:window bind:innerHeight />
 <svelte:head>
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="og:title" content={image.description} />
@@ -22,18 +20,15 @@
   <meta property="og:image:height" content={image.height.toString()} />
 </svelte:head>
 
-<a
-  aria-label="close full image view"
-  class="btn dark modal-close fixed-color"
-  data-sveltekit-replacestate
-  href="/art"
-  transition:fade={{ duration: 100 }}>
-  <i class="bx bx-md bx-x fixed-color"></i>
-</a>
-<div
-  class="gallery-modal"
-  transition:fade={{ duration: 100 }}
-  style={modalStyle}>
+<div class="gallery-modal" transition:fade={{ duration: fadeDuration }}>
+  <a
+    aria-label="close full image view"
+    class="btn dark modal-close fixed-color"
+    data-sveltekit-replacestate
+    href="/art"
+    transition:fade={{ duration: fadeDuration }}>
+    <i class="bx bx-md bx-x fixed-color"></i>
+  </a>
   <div class="modal-row image">
     <a
       data-sveltekit-replacestate
@@ -59,14 +54,20 @@
 
 <style>
   .gallery-modal {
+    --desc-height: 80px;
+    --button-size: 50px;
+  }
+
+  .gallery-modal {
     position: fixed;
     z-index: 2;
     top: 0;
     left: 0;
-    width: 100%;
     background-color: rgba(0, 0, 0, 0.8);
     display: grid;
-    /* grid-template-rows set by JavaScript */
+    height: 100vh;
+    width: 100vw;
+    grid-template-rows: 1fr var(--desc-height);
     cursor: initial;
   }
   .modal-close {
@@ -75,13 +76,15 @@
     right: 20px;
     z-index: 3;
   }
+  .modal-row {
+    min-height: 0;
+  }
   .modal-row *,
   .modal-close {
     color: white !important;
   }
   .modal-row.image a {
-    text-decoration: none !important;
-    height: calc(100vh - 80px);
+    height: 100%;
     cursor: zoom-out;
     display: flex;
     flex-direction: column;
@@ -96,11 +99,10 @@
     background: rgba(0, 0, 0, 0.95);
   }
   .modal-row.details span {
-    line-height: 80px;
+    line-height: var(--desc-height);
   }
 
   .description-wrapper {
-    width: 100vw;
     margin: 0 auto;
     display: flex;
     flex-direction: row;
@@ -124,9 +126,10 @@
     padding: 0;
     border: none;
     box-shadow: none;
-    height: 50px;
-    width: 50px;
-    line-height: 50px;
+    height: var(--button-size);
+    width: var(--button-size);
+    line-height: var(--button-size);
     margin-left: 5px;
+    text-decoration: none;
   }
 </style>
