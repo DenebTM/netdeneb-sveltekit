@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { PageData } from './$types'
   import Gallery from '~/components/Gallery.svelte'
-  import GalleryModal from '~/components/GalleryModal.svelte'
+  import GalleryImageViewer from '~/components/GalleryImageViewer.svelte'
   import { page } from '$app/state'
   import { disableScroll } from '~/util/tools'
   import { afterNavigate } from '$app/navigation'
@@ -15,17 +15,7 @@
   }
 
   const { data }: Props = $props()
-  const { imgList } = data
-  const modalImg = imgList.find(item => item.id === page.params.id) ?? {
-    artistLink: '',
-    description: '',
-    fileName: '',
-    full: '',
-    height: 0,
-    id: '',
-    mime: '',
-    width: 0,
-  }
+  const { imageList, image } = data
 
   afterNavigate(disableScroll)
 </script>
@@ -37,6 +27,6 @@
 <h2 class="page-title">Commissions i got so far!</h2>
 
 <div class="page-content">
-  <Gallery {imgList} />
-  <GalleryModal {modalImg} />
+  <Gallery {imageList} />
+  <GalleryImageViewer {image} />
 </div>

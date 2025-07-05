@@ -3,10 +3,10 @@
   import { page } from '$app/state'
 
   interface Props {
-    modalImg: ArtItemWithMetadata
+    image: ArtItemWithMetadata
   }
 
-  const { modalImg }: Props = $props()
+  const { image }: Props = $props()
 
   let innerHeight = $state(0)
   const modalStyle = $derived(`grid-template-rows: ${innerHeight - 80}px 1fr;`)
@@ -15,11 +15,11 @@
 <svelte:window bind:innerHeight />
 <svelte:head>
   <meta property="twitter:card" content="summary_large_image" />
-  <meta property="og:title" content={modalImg.description} />
-  <meta property="og:image" content={page.url.origin + modalImg.full} />
-  <meta property="og:image:type" content={modalImg.mime} />
-  <meta property="og:image:width" content={modalImg.width.toString()} />
-  <meta property="og:image:height" content={modalImg.height.toString()} />
+  <meta property="og:title" content={image.description} />
+  <meta property="og:image" content={page.url.origin + image.full} />
+  <meta property="og:image:type" content={image.mime} />
+  <meta property="og:image:width" content={image.width.toString()} />
+  <meta property="og:image:height" content={image.height.toString()} />
 </svelte:head>
 
 <a
@@ -40,17 +40,17 @@
       href="/art"
       data-sveltekit-noscroll
       tabindex="-1">
-      <img src={modalImg.fileName} alt={modalImg.artistLink} />
+      <img src={image.fileName} alt={image.artistLink} />
     </a>
   </div>
   <div class="modal-row details">
     <div class="description-wrapper">
-      <span>{modalImg.description}</span>
+      <span>{image.description}</span>
       <a
         aria-label="open artist's page"
         class="btn dark"
         role="button"
-        href={modalImg.artistLink}>
+        href={image.artistLink}>
         <i class="bx bx-sm bx-link-external fixed-color"></i>
       </a>
     </div>

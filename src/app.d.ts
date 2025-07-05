@@ -21,12 +21,12 @@ declare global {
     description: string
     artistLink: string
   }
+  type ArtList = ArtItem[]
   interface ArtItemWithMetadata extends ArtItem {
     width: number
     height: number
     mime: string
   }
-  type ArtList = ArtItemWithMetadata[]
 
   interface SocialItem {
     platform: string
@@ -56,10 +56,7 @@ declare global {
   interface SiteMetadata {
     name: string
     description: string
-    titleImage: {
-      path: string
-      description: string
-    }
+    titleImage: { path: string; description: string }
   }
 
   interface AppConfig {

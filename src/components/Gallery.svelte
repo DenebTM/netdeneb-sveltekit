@@ -1,11 +1,11 @@
 <script lang="ts">
   interface Props {
-    imgList: ArtList
+    imageList: ArtList
     gap?: number
     hover?: boolean
   }
 
-  const { imgList, gap = 10, hover = true }: Props = $props()
+  const { imageList: imgList, gap = 10, hover = true }: Props = $props()
 
   const [titleImage, ...galleryImages] = imgList
 
